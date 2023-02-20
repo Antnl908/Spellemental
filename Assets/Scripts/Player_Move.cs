@@ -5,7 +5,11 @@ using UnityEngine.InputSystem;
 
 public class Player_Move : MonoBehaviour
 {
+    //Made by Daniel
+
     private Player_Controls controls;
+    
+    private Player_Look look;
 
     [SerializeField]
     private CharacterController characterController;
@@ -32,16 +36,24 @@ public class Player_Move : MonoBehaviour
     {
         controls = new();
         controls.Player1.Enable();
+        look = GetComponent<Player_Look>();
+        look.HideCursor = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         Vector2 direction = controls.Player1.Move.ReadValue<Vector2>();
+        Vector2 lookDirection = controls.Player1.Look.ReadValue<Vector2>();
 
-        Vector3 moveVector = speed * Time.deltaTime * new Vector3(direction.x, gravitation, direction.y);
+        //Vector3 moveVector = speed * Time.deltaTime * new Vector3(direction.x, gravitation, direction.y);
+        
+        //Anton L 20/2/2023 edit: trying out camera based movement
+        Vector3 moveVector = (look.Forward * direction.y + look.Right * -direction.x + Vector3.up * gravitation) * speed * Time.deltaTime;
 
         characterController.Move(moveVector);
+
+        look.LookVector = lookDirection;
 
         CheckIfGrounded();
     }
