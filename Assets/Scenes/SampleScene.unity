@@ -262,7 +262,24 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
-  gravitation: -9.82
+  downwardAcceleration: -1
+  maxDownwardAcceleration: -9.82
+  jumpHeight: 1.5
+  OnLanding:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 412956195}
+        m_TargetAssemblyTypeName: Player_Move, Assembly-CSharp
+        m_MethodName: LandTest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &412956196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,7 +572,7 @@ GameObject:
   - component: {fileID: 1025205400}
   - component: {fileID: 1025205399}
   - component: {fileID: 1025205398}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -664,7 +681,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1463720477}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.1, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
