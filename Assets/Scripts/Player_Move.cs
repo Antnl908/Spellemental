@@ -59,10 +59,7 @@ public class Player_Move : MonoBehaviour
         look = GetComponent<Player_Look>();
         look.HideCursor = true;
 
-        if (OnLanding != null)
-        {
-            OnLanding = new();  // Does not work yet.
-        }
+        OnLanding ??= new();
     }
 
     // Update is called once per frame
@@ -101,13 +98,6 @@ public class Player_Move : MonoBehaviour
         currentGravitation = -1;
     }
 
-    public void LandTest()
-    {
-        currentGravitation = -1;
-
-        Debug.Log("Landed");
-    }
-
     private void Jump(InputAction.CallbackContext context)
     {
         if(isGrounded)
@@ -132,7 +122,7 @@ public class Player_Move : MonoBehaviour
             {
                 isGrounded = true;
 
-                if(!wasGrounded)
+                if(!wasGrounded && currentGravitation <= 0)
                 {
                     OnLanding.Invoke();
 

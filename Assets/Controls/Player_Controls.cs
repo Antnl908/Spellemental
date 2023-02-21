@@ -53,6 +53,33 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftSpell"",
+                    ""type"": ""Button"",
+                    ""id"": ""4b55b56a-b093-4026-855e-0b04cb4818fb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightSpell"",
+                    ""type"": ""Button"",
+                    ""id"": ""b6bc3d88-de88-4761-94b9-df54b51a46ef"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CombineSpell"",
+                    ""type"": ""Button"",
+                    ""id"": ""0a87ccd5-14f8-49e5-9ae4-78285aefcf2d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -128,8 +155,63 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Player"",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""RightAndLeftClick"",
+                    ""id"": ""80619524-08cc-4b2a-91a9-5093aa324915"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CombineSpell"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""48110e91-358e-45fd-8f10-74ed0acb2f84"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CombineSpell"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""d3c440cc-8a7b-41cf-a3d9-f9045fd6d078"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CombineSpell"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0fc5e297-dc6c-4b0b-8ad4-803c327835f5"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Tap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftSpell"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""69fce274-de88-4e30-b210-5429fd48fdeb"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Tap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightSpell"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -149,6 +231,9 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
         m_Player1_Move = m_Player1.FindAction("Move", throwIfNotFound: true);
         m_Player1_Look = m_Player1.FindAction("Look", throwIfNotFound: true);
         m_Player1_Jump = m_Player1.FindAction("Jump", throwIfNotFound: true);
+        m_Player1_LeftSpell = m_Player1.FindAction("LeftSpell", throwIfNotFound: true);
+        m_Player1_RightSpell = m_Player1.FindAction("RightSpell", throwIfNotFound: true);
+        m_Player1_CombineSpell = m_Player1.FindAction("CombineSpell", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -213,6 +298,9 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player1_Move;
     private readonly InputAction m_Player1_Look;
     private readonly InputAction m_Player1_Jump;
+    private readonly InputAction m_Player1_LeftSpell;
+    private readonly InputAction m_Player1_RightSpell;
+    private readonly InputAction m_Player1_CombineSpell;
     public struct Player1Actions
     {
         private @Player_Controls m_Wrapper;
@@ -220,6 +308,9 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player1_Move;
         public InputAction @Look => m_Wrapper.m_Player1_Look;
         public InputAction @Jump => m_Wrapper.m_Player1_Jump;
+        public InputAction @LeftSpell => m_Wrapper.m_Player1_LeftSpell;
+        public InputAction @RightSpell => m_Wrapper.m_Player1_RightSpell;
+        public InputAction @CombineSpell => m_Wrapper.m_Player1_CombineSpell;
         public InputActionMap Get() { return m_Wrapper.m_Player1; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -238,6 +329,15 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @LeftSpell.started += instance.OnLeftSpell;
+            @LeftSpell.performed += instance.OnLeftSpell;
+            @LeftSpell.canceled += instance.OnLeftSpell;
+            @RightSpell.started += instance.OnRightSpell;
+            @RightSpell.performed += instance.OnRightSpell;
+            @RightSpell.canceled += instance.OnRightSpell;
+            @CombineSpell.started += instance.OnCombineSpell;
+            @CombineSpell.performed += instance.OnCombineSpell;
+            @CombineSpell.canceled += instance.OnCombineSpell;
         }
 
         private void UnregisterCallbacks(IPlayer1Actions instance)
@@ -251,6 +351,15 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @LeftSpell.started -= instance.OnLeftSpell;
+            @LeftSpell.performed -= instance.OnLeftSpell;
+            @LeftSpell.canceled -= instance.OnLeftSpell;
+            @RightSpell.started -= instance.OnRightSpell;
+            @RightSpell.performed -= instance.OnRightSpell;
+            @RightSpell.canceled -= instance.OnRightSpell;
+            @CombineSpell.started -= instance.OnCombineSpell;
+            @CombineSpell.performed -= instance.OnCombineSpell;
+            @CombineSpell.canceled -= instance.OnCombineSpell;
         }
 
         public void RemoveCallbacks(IPlayer1Actions instance)
@@ -282,5 +391,8 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnLeftSpell(InputAction.CallbackContext context);
+        void OnRightSpell(InputAction.CallbackContext context);
+        void OnCombineSpell(InputAction.CallbackContext context);
     }
 }
