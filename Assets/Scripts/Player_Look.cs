@@ -14,12 +14,18 @@ public class Player_Look : MonoBehaviour
     private float Xmin = -75f;
     private float Xmax = 75f;
     private float t = 50f;
+    private float bobbingValue;
+    private float b;
+    private float bs = 1f;
+    private float ba = 0.02f;
     private bool interp = false;
-    private bool interpFOV = false;
+    //private bool interpFOV = false; //implement FOV lerp later
+    private bool bobbing = true;
     // Start is called before the first frame update
     void Start()
     {
-
+        //Nice idle value
+        BobbingAmount = 0.03f;
     }
 
     // Update is called once per frame
@@ -28,11 +34,15 @@ public class Player_Look : MonoBehaviour
         //Update rotation
         VirtualCamera.transform.rotation = Quaternion.Slerp(VirtualCamera.transform.rotation, Quaternion.Euler(-LookVector.y, LookVector.x, 0f), TAmount);
 
+        //Update headbobbing
+        b += Time.deltaTime * bs;
+        Bobbing = Mathf.Sin(b) * ba;
+
     }
     void LateUpdate()
     {
         //Update position
-        VirtualCamera.transform.position = transform.position;
+        VirtualCamera.transform.position = transform.position + Vector3.up * Bobbing;
 
     }
 
@@ -96,6 +106,32 @@ public class Player_Look : MonoBehaviour
     {
         get { return VirtualCamera.m_Lens.FieldOfView; }
         set { VirtualCamera.m_Lens.FieldOfView = value; }
+    }
+
+    //Set true/false to enable/disable head bobbing
+    public bool UseBobbing
+    {
+        set { bobbing = value; }
+    }
+
+    float Bobbing
+    {
+        get { return bobbing ? bobbingValue : 0f; }
+        set { if (bobbing) bobbingValue = value; else b = 0f; }
+    }
+
+    //Frequency of headbobbing
+    public float BobbingSpeed
+    {
+        get { return bs; }
+        set { bs = value; }
+    }
+
+    //How high/low 
+    public float BobbingAmount
+    {
+        get { return ba; }
+        set { ba = value; }
     }
 
     //Set if cursor should be hidden and confined to game window, can be set to false to use ui menus
