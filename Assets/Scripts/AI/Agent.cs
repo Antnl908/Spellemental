@@ -24,6 +24,7 @@ public class Agent : MonoBehaviour
     {
         stateMachine = new StateMachine(this);
         stateMachine.RegisterState(new ChaseState());
+        stateMachine.RegisterState(new DeathState());
         //stateMachine.RegisterState(new AIPlayerState());
         //stateMachine.RegisterState(new AIDeathState());
         stateMachine.ChangeState(entryState);

@@ -8,7 +8,8 @@ using UnityEngine;
 
 public enum StateId
 {
-    Chase
+    Chase,
+    Death
 }
 public interface State
 {
