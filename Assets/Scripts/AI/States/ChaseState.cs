@@ -19,6 +19,8 @@ public class ChaseState : State
         if(agent.Target == null) { return; }
 
         agent.NavAgent.SetDestination(agent.Target.position);
+
+        
     }
     public void LateUpdate(Agent agent)
     {
