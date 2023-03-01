@@ -14,6 +14,12 @@ public class Spell_Casting : MonoBehaviour
     private Spell_Hand rightHand;
 
     [SerializeField]
+    private Transform spellSpawn;
+
+    [SerializeField]
+    private Player_Look player_Look;
+
+    [SerializeField]
     private List<Spell_Recipe> recipes;
 
     private Player_Controls controls;
@@ -30,10 +36,12 @@ public class Spell_Casting : MonoBehaviour
         controls.Player1.Enable();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void LateUpdate()
     {
-        
+        transform.rotation = player_Look.VirtualCamera.transform.rotation;
+
+        leftHand.transform.rotation = player_Look.VirtualCamera.transform.rotation;
+        rightHand.transform.rotation = player_Look.VirtualCamera.transform.rotation;
     }
 
     private void CastCombinationSpell(InputAction.CallbackContext context)
@@ -43,7 +51,7 @@ public class Spell_Casting : MonoBehaviour
             if(recipe.SpellMatchesRecipe(leftHand.ActiveSpell, rightHand.ActiveSpell) || 
                                                                              recipe.SpellMatchesRecipe(rightHand.ActiveSpell, leftHand.ActiveSpell))
             {
-                recipe.ReturnedSpell.CastSpell();
+                recipe.ReturnedSpell.CastSpell(spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
 
                 return;
             }

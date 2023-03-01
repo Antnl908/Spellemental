@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   damage: 8
+  destructionTime: 3
+  travelDistance: 10
+  projectile: {fileID: 4575547422007608594, guid: 3bcb30acc0334d34aa7258d82cf021ad, type: 3}

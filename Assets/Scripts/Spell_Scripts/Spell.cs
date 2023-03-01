@@ -13,11 +13,25 @@ public class Spell : ScriptableObject
     [SerializeField]
     private int damage;
 
+    [Range(0.001f, 10f)]
+    [SerializeField]
+    private float destructionTime = 0.01f;
+
+    [SerializeField]
+    private float travelDistance = 1f;
+
+    [SerializeField]
+    private GameObject projectile;
+
     public SpellType Type { get => type; }
 
-    public void CastSpell()
+    public void CastSpell(Vector3 position, Quaternion rotation, Vector3 direction)
     {
-        Debug.Log(type.ToString());
+        GameObject spawnedProjectile = Instantiate(projectile, position, rotation);
+
+        spawnedProjectile.GetComponent<Spell_Projectile>().Initialize(damage, Type, direction * travelDistance);
+
+        Destroy(spawnedProjectile, destructionTime);
     }
 
     public enum SpellType

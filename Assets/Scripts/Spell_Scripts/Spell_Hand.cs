@@ -10,6 +10,9 @@ public class Spell_Hand : MonoBehaviour
     [SerializeField]
     private List<Spell> spells;
 
+    [SerializeField]
+    private Transform spellSpawn;
+
     private int activeSpellIndex = 0;
 
     public Spell ActiveSpell { get => spells[activeSpellIndex]; }
@@ -28,7 +31,7 @@ public class Spell_Hand : MonoBehaviour
 
     public void CastActiveSpell(InputAction.CallbackContext context)
     {
-        ActiveSpell.CastSpell();
+        ActiveSpell.CastSpell(spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
     }
 
     public void CycleSpell(int stepsCycledAhead)
