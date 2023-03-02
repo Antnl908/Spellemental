@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Spell_Projectile : MonoBehaviour
 {
+    // Made by Daniel.
+
     private Rigidbody rb;
 
     private int damage;

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy_Health : MonoBehaviour, IDamageable
 {
+    // Made by Daniel.
+
     [SerializeField]
     private int health;
 
@@ -12,6 +14,12 @@ public class Enemy_Health : MonoBehaviour, IDamageable
 
     [SerializeField]
     private Spell.SpellType resistance;
+
+    [SerializeField]
+    private GameObject damageIndicator;
+
+    [SerializeField]
+    private float damageIndicatorForce = 10f;
 
     private bool isDamageable = true;
 
@@ -44,6 +52,12 @@ public class Enemy_Health : MonoBehaviour, IDamageable
             isDamageable = false;
 
             currentTimeUntilNextHit = timeUntilNextHit;
+
+            GameObject indicator = Instantiate(damageIndicator, transform.position, Quaternion.Euler(transform.eulerAngles));
+
+            indicator.GetComponentInChildren<Damage_Indicator>().SetValues(appliedDamage, damageIndicatorForce);
+
+            Destroy(indicator, 1);
         }
 
         if(health <= 0)

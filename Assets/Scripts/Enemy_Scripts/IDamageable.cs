@@ -4,6 +4,8 @@ using UnityEngine;
 
 public interface IDamageable
 {
+    // Made by Daniel.
+
     public void TakeDamage(int damage, Spell.SpellType spellType);
 
     public void KnockBack(float knockBack);
