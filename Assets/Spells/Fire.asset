@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   damage: 5
+  effectDamage: 1
+  effectBuildUp: 10
   destructionTime: 0.05
   travelDistance: 0.1
   projectile: {fileID: 2925457146899921912, guid: 1f9c88388e7979f4c86124c8b0ca5d6d, type: 3}

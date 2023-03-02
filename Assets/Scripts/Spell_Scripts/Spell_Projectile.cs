@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Spell_Projectile : MonoBehaviour
@@ -9,6 +10,10 @@ public class Spell_Projectile : MonoBehaviour
     private Rigidbody rb;
 
     private int damage;
+
+    private int effectDamage;
+
+    private int effectBuildUp;
 
     private Spell.SpellType spellType;
 
@@ -35,12 +40,14 @@ public class Spell_Projectile : MonoBehaviour
         
     }
 
-    public void Initialize(int damage, Spell.SpellType spellType, Vector3 direction)
+    public void Initialize(int damage, int effectDamage, int effectBuildUp, Spell.SpellType spellType, Vector3 direction)
     {
         rb = GetComponent<Rigidbody>();
 
         this.damage = damage;
         this.spellType = spellType;
+        this.effectDamage = effectDamage;
+        this.effectBuildUp = effectBuildUp;
 
         rb.AddForce(direction, ForceMode.Impulse);
     }
@@ -66,6 +73,10 @@ public class Spell_Projectile : MonoBehaviour
                 IDamageable damagable = colliders[i].transform.GetComponent<IDamageable>();
 
                 damagable?.TakeDamage(damage, spellType);
+
+                IMagicEffect magicEffect = colliders[i].transform.GetComponent<IMagicEffect>();
+
+                magicEffect?.ApplyMagicEffect(effectDamage, effectBuildUp, spellType);
             }
         }
     }

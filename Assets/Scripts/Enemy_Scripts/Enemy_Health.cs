@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Health : MonoBehaviour, IDamageable
+public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 {
     // Made by Daniel.
 
@@ -27,26 +27,34 @@ public class Enemy_Health : MonoBehaviour, IDamageable
 
     private float currentTimeUntilNextHit = 0;
 
+    private int effectDamage;
+
+    private int effectBuildUp = 0;
+
+    private float timeUntilEffectDisappears = 0;
+
+    private const float effectDuration = 5;
+
+    private bool effectIsApplied = false;
+
+    private EffectType effectType = EffectType.None;
+
     public void KnockBack(float knockBack)
     {
         //throw new System.NotImplementedException();
     }
 
-    public void TakeDamage(int damage, Spell.SpellType spellType)
+    public void TakeDamage(int damage, Spell.SpellType? spellType)
     {
         if (isDamageable)
         {
             int appliedDamage = damage;
 
-            if (spellType == weakness)
+            if(spellType != null)
             {
-                appliedDamage *= 2;
+                ApplyWeaknessOrResistanceToDamage(ref appliedDamage, (Spell.SpellType)spellType);
             }
-            else if (spellType == resistance)
-            {
-                appliedDamage /= 2;
-            }
-
+            
             health -= appliedDamage;
 
             isDamageable = false;
@@ -66,6 +74,8 @@ public class Enemy_Health : MonoBehaviour, IDamageable
         }
     }
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,5 +94,99 @@ public class Enemy_Health : MonoBehaviour, IDamageable
                 isDamageable = true;
             }
         }
+
+        if (effectIsApplied)
+        {
+            TakeDamage(effectDamage, null);
+
+            timeUntilEffectDisappears -= Time.deltaTime;
+
+            if(timeUntilEffectDisappears <= 0)
+            {
+                effectIsApplied = false;
+            }
+        }
+    }
+
+    public void FireEffect(int fireDamage, int effectBuildUp)
+    {
+        this.effectBuildUp += effectBuildUp;
+
+        if(this.effectBuildUp >= 100 && !effectIsApplied)
+        {
+            ApplyWeaknessOrResistanceToDamage(ref fireDamage, Spell.SpellType.Fire);
+
+            ApplyEffect(fireDamage);
+
+            effectType = EffectType.Fire;
+
+            Debug.Log("Fire effect");
+        }
+    }
+
+    public void FrostEffect(int iceDamage, int effectBuildUp)
+    {
+        this.effectBuildUp += effectBuildUp;
+
+        if (this.effectBuildUp >= 100 && !effectIsApplied)
+        {
+            ApplyWeaknessOrResistanceToDamage(ref iceDamage, Spell.SpellType.Ice);
+
+            ApplyEffect(iceDamage);
+
+            effectType = EffectType.Ice;
+
+            Debug.Log("Ice effect");
+        }
+    }
+
+    public void SlowDownEffect(float slowDownAmount)
+    {
+        // Make it later.
+
+        effectType = EffectType.Slowdown;
+    }
+
+    private void ApplyWeaknessOrResistanceToDamage(ref int damage, Spell.SpellType type)
+    {
+        if(type == weakness)
+        {
+            damage *= 2;
+        }
+        else if(type == resistance)
+        {
+            damage /= 2;
+        }
+    }
+
+    private void ApplyEffect(int effectDamage)
+    {
+        this.effectDamage = effectDamage;
+
+        effectBuildUp = 0;
+
+        timeUntilEffectDisappears = effectDuration;
+
+        effectIsApplied = true;
+    }
+
+    public void ApplyMagicEffect(int effectDamage, int effectBuildUp, Spell.SpellType spellType)
+    {
+        if(spellType == Spell.SpellType.Fire)
+        {
+            FireEffect(effectDamage, effectBuildUp);
+        }
+        else if(spellType == Spell.SpellType.Ice)
+        {
+            FrostEffect(effectDamage, effectBuildUp);
+        }
+    }
+
+    public enum EffectType
+    {
+        None,
+        Fire,
+        Ice,
+        Slowdown,
     }
 }

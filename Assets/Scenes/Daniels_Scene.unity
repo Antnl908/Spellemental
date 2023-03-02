@@ -570,10 +570,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b399d4016ced12442a2fb6f993fd72ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 1000
   weakness: 0
   resistance: 1
   damageIndicator: {fileID: 6915552866366894602, guid: 87df4a1a74fd2a348b46a50d5af78033, type: 3}
+  damageIndicatorForce: 10
 --- !u!1001 &2134644256
 PrefabInstance:
   m_ObjectHideFlags: 0

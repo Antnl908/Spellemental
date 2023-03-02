@@ -13,6 +13,12 @@ public class Spell : ScriptableObject
     [SerializeField]
     private int damage;
 
+    [SerializeField]
+    private int effectDamage = 5;
+
+    [SerializeField]
+    private int effectBuildUp = 10;
+
     [Range(0.001f, 10f)]
     [SerializeField]
     private float destructionTime = 0.01f;
@@ -29,7 +35,7 @@ public class Spell : ScriptableObject
     {
         GameObject spawnedProjectile = Instantiate(projectile, position, rotation);
 
-        spawnedProjectile.GetComponent<Spell_Projectile>().Initialize(damage, Type, direction * travelDistance);
+        spawnedProjectile.GetComponent<Spell_Projectile>().Initialize(damage, effectDamage, effectBuildUp, Type, direction * travelDistance);
 
         Destroy(spawnedProjectile, destructionTime);
     }
