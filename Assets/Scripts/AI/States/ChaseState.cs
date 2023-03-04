@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ChaseState : State
 {
+    float timer;
+    //float updateTime = 3f;
     public StateId GetId()
     {
         return StateId.Chase;
@@ -14,13 +16,18 @@ public class ChaseState : State
     }
     public void Update(Agent agent)
     {
-        Debug.Log("Update Chase State");
         //Do logic here
         if(agent.Target == null) { return; }
 
-        agent.NavAgent.SetDestination(agent.Target.position);
+        timer += Time.deltaTime;
+        if(timer > agent.Config.chaseUpdateTime)
+        {
+            Debug.Log("Update Chase State");
+            agent.NavAgent.SetDestination(agent.Target.position);
+            timer = 0f;
+        }
 
-        
+
     }
     public void LateUpdate(Agent agent)
     {

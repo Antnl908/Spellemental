@@ -9,6 +9,9 @@ public class Player_Look : MonoBehaviour
 
     private CinemachineVirtualCamera vcam;
     private Vector2 lookVector;
+    private Vector2 inputDirection;
+    private Vector3 moveVector;
+    float moveMagnitude;
 
     [SerializeField]
     private float mouseSensitivity = 0.5f;
@@ -27,6 +30,22 @@ public class Player_Look : MonoBehaviour
     private float bobbingAmount = 0.03f;
     private bool isBobbing = true;
 
+    private float swayingValue;
+    private float sway;
+    //[SerializeField]
+    //private float swayingSpeed = 1f;
+    [SerializeField]
+    private float swayingAmount = 0.03f;
+    private bool isSwaying = true;
+    
+    private float leaningValue;
+    private float lean;
+    //[SerializeField]
+    //private float swayingSpeed = 1f;
+    //[SerializeField]
+    //private float leaningAmount = 0f;
+    private bool isLeaning = true;
+
     private bool interp = false;
     //private bool interpFOV = false; //implement FOV lerp later   
 
@@ -40,17 +59,20 @@ public class Player_Look : MonoBehaviour
     void Update()
     {
         //Update rotation
-        VirtualCamera.transform.rotation = Quaternion.Slerp(VirtualCamera.transform.rotation, Quaternion.Euler(-LookVector.y, LookVector.x, 0f), TAmount);
+        VirtualCamera.transform.rotation = Quaternion.Slerp(VirtualCamera.transform.rotation, Quaternion.Euler(-LookVector.y, LookVector.x, LeaningValue), TAmount);
 
-        //Update headbobbing
-        bobb += Time.deltaTime * bobbingSpeed;
-        BobbingValue = Mathf.Sin(bobb) * bobbingAmount;
+        //Update headbobbing/leaning
+        bobb += Time.deltaTime * BobbingSpeed;
+        sway += Time.deltaTime * SwayingSpeed * MoveMagnitude;
+        BobbingValue = Mathf.Sin(bobb) * BobbingAmount;
+        SwayingValue = Mathf.Sin(sway) * SwayingAmount;
+        LeaningValue = Mathf.Lerp(LeaningValue, LeaningAmount, 7f * Time.deltaTime);
 
     }
     void LateUpdate()
     {
         //Update position
-        VirtualCamera.transform.position = transform.position + Vector3.up * BobbingValue;
+        VirtualCamera.transform.position = transform.position + Vector3.up * BobbingValue + Right * SwayingValue;
     }
 
     public CinemachineVirtualCamera VirtualCamera
@@ -77,7 +99,8 @@ public class Player_Look : MonoBehaviour
     }
     public Vector3 Right
     {
-        get { return Vector3.Cross(VirtualCamera.transform.forward, Vector3.up); }
+        //get { return Vector3.Cross(VirtualCamera.transform.forward, Vector3.up); }
+        get { return Vector3.Cross(Forward, Vector3.up); }
     }
 
     //The vector used to set camera rotation, mouse delta is applied to this vector
@@ -85,6 +108,16 @@ public class Player_Look : MonoBehaviour
     {
         get { return lookVector; }
         set { lookVector += value * MouseSensitivity; lookVector.y = Mathf.Clamp(lookVector.y, Xmin, Xmax); }
+    }
+    public Vector2 InputDirection
+    {
+        get { return inputDirection; }
+        set { inputDirection = value; MoveMagnitude = inputDirection.magnitude; }
+    }
+    public Vector2 MoveVector
+    {
+        get { return moveVector; }
+        set { moveVector = value; }
     }
 
     //Sensitivity of mouse input
@@ -120,25 +153,72 @@ public class Player_Look : MonoBehaviour
     {
         set { isBobbing = value; }
     }
+    public bool UseSwaying
+    {
+        set { isSwaying = value; }
+    }
+    public bool UseLeaning
+    {
+        set { isLeaning = value; }
+    }
 
     float BobbingValue
     {
         get { return isBobbing ? bobbingValue : 0f; }
         set { if (isBobbing) bobbingValue = value; else bobb = 0f; }
     }
+    float SwayingValue
+    {
+        get { return isSwaying ? swayingValue : 0f; }
+        set { if (isSwaying) swayingValue = value; else sway = 0f; }
+    }
+    float LeaningValue
+    {
+        get { return isLeaning ? leaningValue : 0f; }
+        set { if (isLeaning) leaningValue = value; else lean = 0f; }
+    }
 
     //Frequency of headbobbing
     public float BobbingSpeed
     {
-        get { return bobbingSpeed; }
+        get { return bobbingSpeed + MoveMagnitude * 15f; }
         set { bobbingSpeed = value; }
     }
+    public float SwayingSpeed
+    {
+        get { return BobbingSpeed * 0.5f; }
+        //get { return swayingSpeed; }
+        //set { swayingSpeed = value; }
+    }
+    //public float LeaningSpeed
+    //{
+    //    get { return swayingSpeed; }
+    //    set { swayingSpeed = value; }
+    //}
 
     //How high/low 
     public float BobbingAmount
     {
-        get { return bobbingAmount; }
+        get { return bobbingAmount + MoveMagnitude * 0.005f; }
         set { bobbingAmount = value; }
+    }
+    public float SwayingAmount
+    {
+        get { return swayingAmount + MoveMagnitude * 0.015f; }
+        set { swayingAmount = value; }
+    }
+    public float LeaningAmount
+    {
+        get { return Vector3.Dot(Forward * InputDirection.y + Right * -InputDirection.x, Right); }
+        //get { return leaningAmount; }
+        //set { leaningAmount = value; }
+    }
+    public float MoveMagnitude
+    {
+        get { return moveMagnitude; }
+        set { moveMagnitude = value; }
+        //get { return leaningAmount; }
+        //set { leaningAmount = value; }
     }
 
     //Set if cursor should be hidden and confined to game window, can be set to false to use ui menus
