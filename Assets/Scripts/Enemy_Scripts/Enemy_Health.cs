@@ -23,9 +23,15 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 
     private bool isDamageable = true;
 
+    private bool canBeHitByEffect = true;
+
     private const float timeUntilNextHit = 0.1f;
 
     private float currentTimeUntilNextHit = 0;
+
+    private const float timeUntilNextEffectDamage = 0.5f;
+
+    private float currentTimeUntilNextEffectDamage = 0;
 
     private int effectDamage;
 
@@ -46,26 +52,30 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 
     public void TakeDamage(int damage, Spell.SpellType? spellType)
     {
-        if (isDamageable)
+        if (isDamageable && spellType != null)
         {
             int appliedDamage = damage;
 
-            if(spellType != null)
-            {
-                ApplyWeaknessOrResistanceToDamage(ref appliedDamage, (Spell.SpellType)spellType);
-            }
-            
+            ApplyWeaknessOrResistanceToDamage(ref appliedDamage, (Spell.SpellType)spellType);
+
             health -= appliedDamage;
 
             isDamageable = false;
 
             currentTimeUntilNextHit = timeUntilNextHit;
 
-            GameObject indicator = Instantiate(damageIndicator, transform.position, Quaternion.Euler(transform.eulerAngles));
+            SpawnDamageIndicator(appliedDamage);
+        }
+        
+        if(canBeHitByEffect && spellType == null)
+        {
+            health -= damage;
 
-            indicator.GetComponentInChildren<Damage_Indicator>().SetValues(appliedDamage, damageIndicatorForce);
+            canBeHitByEffect = false;
 
-            Destroy(indicator, 1);
+            currentTimeUntilNextEffectDamage = timeUntilNextEffectDamage;
+
+            SpawnDamageIndicator(damage);
         }
 
         if(health <= 0)
@@ -74,7 +84,14 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
         }
     }
 
+    private void SpawnDamageIndicator(int appliedDamage)
+    {
+        GameObject indicator = Instantiate(damageIndicator, transform.position, Quaternion.Euler(transform.eulerAngles));
 
+        indicator.GetComponentInChildren<Damage_Indicator>().SetValues(appliedDamage, damageIndicatorForce);
+
+        Destroy(indicator, 1);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -92,6 +109,16 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
             if(currentTimeUntilNextHit <= 0)
             {
                 isDamageable = true;
+            }
+        }
+
+        if (!canBeHitByEffect)
+        {
+            currentTimeUntilNextEffectDamage -= Time.deltaTime;
+
+            if(currentTimeUntilNextEffectDamage <= 0)
+            {
+                canBeHitByEffect = true;
             }
         }
 

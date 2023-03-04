@@ -29,17 +29,6 @@ public class Spell_Projectile : MonoBehaviour
     [SerializeField]
     private LayerMask enemyLayer;
 
-    private void Awake()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Initialize(int damage, int effectDamage, int effectBuildUp, Spell.SpellType spellType, Vector3 direction)
     {
         rb = GetComponent<Rigidbody>();

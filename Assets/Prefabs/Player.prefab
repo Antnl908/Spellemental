@@ -23,13 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 553187926035390152}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1896577773665415601}
-  m_RootOrder: 3
+  m_Father: {fileID: 2607859691337785530}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1896577772581150094
 GameObject:
@@ -86,14 +86,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1896577773207431160}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 476620351808168059}
-  m_Father: {fileID: 1896577773665415601}
-  m_RootOrder: 1
+  m_Father: {fileID: 2607859691337785530}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1896577773207431167
 MonoBehaviour:
@@ -110,7 +110,6 @@ MonoBehaviour:
   spells:
   - {fileID: 11400000, guid: af7c4f4063df1bd4c856cbbe2c7fe10f, type: 2}
   spellSpawn: {fileID: 476620351808168059}
-  player_Look: {fileID: 1896577773665415607}
 --- !u!1 &1896577773665415566
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,7 +125,6 @@ GameObject:
   - component: {fileID: 1896577773665415565}
   - component: {fileID: 1896577773665415600}
   - component: {fileID: 1896577773665415607}
-  - component: {fileID: 1896577773665415606}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -147,9 +145,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1896577772581150093}
-  - {fileID: 1896577773207431166}
-  - {fileID: 1896577773715153923}
-  - {fileID: 2132735719052353264}
+  - {fileID: 2607859691337785530}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -290,24 +286,7 @@ MonoBehaviour:
   t: 50
   bobbingSpeed: 1
   bobbingAmount: 0.03
---- !u!114 &1896577773665415606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1896577773665415566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df6d2c630da35f944adab7121d6a06c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftHand: {fileID: 1896577773207431167}
-  rightHand: {fileID: 1896577773715153948}
-  spellSpawn: {fileID: 2132735719052353264}
-  player_Look: {fileID: 1896577773665415607}
-  recipes:
-  - {fileID: 11400000, guid: 22358f35495909144b38cd755bf92e88, type: 2}
+  swayingAmount: 0.03
 --- !u!1 &1896577773715153949
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,14 +311,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1896577773715153949}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7202341465791823141}
-  m_Father: {fileID: 1896577773665415601}
-  m_RootOrder: 2
+  m_Father: {fileID: 2607859691337785530}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1896577773715153948
 MonoBehaviour:
@@ -356,7 +335,6 @@ MonoBehaviour:
   spells:
   - {fileID: 11400000, guid: 24c863607be159f4a8e8efeb3b55a8d0, type: 2}
   spellSpawn: {fileID: 7202341465791823141}
-  player_Look: {fileID: 1896577773665415607}
 --- !u!1 &4315366369778140448
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,3 +397,56 @@ Transform:
   m_Father: {fileID: 1896577773715153923}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8652721030959556118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2607859691337785530}
+  - component: {fileID: 9195265739867163846}
+  m_Layer: 0
+  m_Name: Spell Caster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2607859691337785530
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8652721030959556118}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1896577773207431166}
+  - {fileID: 1896577773715153923}
+  - {fileID: 2132735719052353264}
+  m_Father: {fileID: 1896577773665415601}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9195265739867163846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8652721030959556118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df6d2c630da35f944adab7121d6a06c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHand: {fileID: 1896577773207431167}
+  rightHand: {fileID: 1896577773715153948}
+  spellSpawn: {fileID: 2132735719052353264}
+  player_Look: {fileID: 1896577773665415607}
+  recipes:
+  - {fileID: 11400000, guid: 22358f35495909144b38cd755bf92e88, type: 2}

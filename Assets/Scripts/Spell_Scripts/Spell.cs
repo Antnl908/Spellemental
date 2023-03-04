@@ -27,6 +27,11 @@ public class Spell : ScriptableObject
     private float travelDistance = 1f;
 
     [SerializeField]
+    private bool isBeam = false;
+
+    public bool IsBeam { get => isBeam; }
+
+    [SerializeField]
     private GameObject projectile;
 
     public SpellType Type { get => type; }
