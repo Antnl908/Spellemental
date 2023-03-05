@@ -8,6 +8,7 @@ public class Player_Look : MonoBehaviour
     //Made by Anton L
 
     private CinemachineVirtualCamera vcam;
+    private Vector2 lookInput;
     private Vector2 lookVector;
     private Vector2 inputDirection;
     private Vector3 moveVector;
@@ -46,16 +47,19 @@ public class Player_Look : MonoBehaviour
     //private float leaningAmount = 0f;
     private bool isLeaning = true;
 
-    private bool interp = true;
+    private bool interp = false;
     //private bool interpFOV = false; //implement FOV lerp later   
 
     [SerializeField]
-    private Transform hands;
+    private Transform fpsrig;
+    private Vector3 weaponSway;
+    private float weaponSwayMultiplier = 0.5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        hands = Instantiate(hands);
+        fpsrig = Instantiate(fpsrig);
+        fpsrig.parent = VirtualCamera.transform;
     }
 
     // Update is called once per frame
@@ -63,8 +67,8 @@ public class Player_Look : MonoBehaviour
     {
         //Update rotation
         VirtualCamera.transform.rotation = Quaternion.Slerp(VirtualCamera.transform.rotation, Quaternion.Euler(-LookVector.y, LookVector.x, LeaningValue), TAmount);
-        hands.rotation = Quaternion.Slerp(hands.rotation, VirtualCamera.transform.rotation, 1f); //use delta over time when fixing this
-
+        fpsrig.localRotation = Quaternion.Slerp(fpsrig.localRotation, WeaponSway, 8f * Time.deltaTime);
+        
         //Update headbobbing/leaning
         bobb += Time.deltaTime * BobbingSpeed;
         sway += Time.deltaTime * SwayingSpeed * MoveMagnitude;
@@ -77,7 +81,7 @@ public class Player_Look : MonoBehaviour
     {
         //Update position
         VirtualCamera.transform.position = transform.position + Vector3.up * BobbingValue + Right * SwayingValue;
-        hands.position = transform.position + -VirtualCamera.transform.up * 0.25f;
+        fpsrig.position = transform.position + -VirtualCamera.transform.up * 0.25f;
     }
 
     public CinemachineVirtualCamera VirtualCamera
@@ -109,6 +113,11 @@ public class Player_Look : MonoBehaviour
     }
 
     //The vector used to set camera rotation, mouse delta is applied to this vector
+    public Vector2 LookInput
+    {
+        get { return lookInput; }
+        set { lookInput = value; LookVector = value; }
+    }
     public Vector2 LookVector
     {
         get { return lookVector; }
@@ -140,7 +149,7 @@ public class Player_Look : MonoBehaviour
     }
     public float OTAmount
     {
-        get { if (Vector3.Dot(hands.forward, VirtualCamera.transform.forward) > 0.45f) { return Time.deltaTime * 15f; } else { return 1f; } }
+        get { if (Vector3.Dot(fpsrig.forward, VirtualCamera.transform.forward) > 0.45f) { return Time.deltaTime * 15f; } else { return 1f; } }
         //set { t = value; }
     }
 
@@ -197,8 +206,6 @@ public class Player_Look : MonoBehaviour
     public float SwayingSpeed
     {
         get { return BobbingSpeed * 0.5f; }
-        //get { return swayingSpeed; }
-        //set { swayingSpeed = value; }
     }
     //public float LeaningSpeed
     //{
@@ -229,6 +236,19 @@ public class Player_Look : MonoBehaviour
         set { moveMagnitude = value; }
         //get { return leaningAmount; }
         //set { leaningAmount = value; }
+    }
+
+    public Quaternion WeaponSway
+    {
+        get
+        {
+            Quaternion xSway = Quaternion.AngleAxis(-LookInput.y * weaponSwayMultiplier, Vector3.right);
+            Quaternion ySway = Quaternion.AngleAxis(LookInput.x * weaponSwayMultiplier, Vector3.up);
+
+            Quaternion targetSway = xSway * ySway;
+
+            return targetSway;
+        }
     }
 
     //Set if cursor should be hidden and confined to game window, can be set to false to use ui menus

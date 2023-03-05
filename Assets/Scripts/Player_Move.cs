@@ -78,7 +78,7 @@ public class Player_Move : MonoBehaviour
 
         characterController.Move(moveVector);
 
-        look.LookVector = lookDirection;
+        look.LookInput = lookDirection;
         look.InputDirection = direction;
         look.MoveVector = moveVector;
         look.UseBobbing = isGrounded;
