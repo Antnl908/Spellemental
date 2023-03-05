@@ -287,6 +287,7 @@ MonoBehaviour:
   bobbingSpeed: 1
   bobbingAmount: 0.03
   swayingAmount: 0.03
+  hands: {fileID: 8173546143632170497, guid: a4073eca48c6f7d4591d6f055b4fbf67, type: 3}
 --- !u!1 &1896577773715153949
 GameObject:
   m_ObjectHideFlags: 0

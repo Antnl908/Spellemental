@@ -46,13 +46,16 @@ public class Player_Look : MonoBehaviour
     //private float leaningAmount = 0f;
     private bool isLeaning = true;
 
-    private bool interp = false;
+    private bool interp = true;
     //private bool interpFOV = false; //implement FOV lerp later   
+
+    [SerializeField]
+    private Transform hands;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        hands = Instantiate(hands);
     }
 
     // Update is called once per frame
@@ -60,6 +63,7 @@ public class Player_Look : MonoBehaviour
     {
         //Update rotation
         VirtualCamera.transform.rotation = Quaternion.Slerp(VirtualCamera.transform.rotation, Quaternion.Euler(-LookVector.y, LookVector.x, LeaningValue), TAmount);
+        hands.rotation = Quaternion.Slerp(hands.rotation, VirtualCamera.transform.rotation, 1f); //use delta over time when fixing this
 
         //Update headbobbing/leaning
         bobb += Time.deltaTime * BobbingSpeed;
@@ -73,6 +77,7 @@ public class Player_Look : MonoBehaviour
     {
         //Update position
         VirtualCamera.transform.position = transform.position + Vector3.up * BobbingValue + Right * SwayingValue;
+        hands.position = transform.position + -VirtualCamera.transform.up * 0.25f;
     }
 
     public CinemachineVirtualCamera VirtualCamera
@@ -132,6 +137,11 @@ public class Player_Look : MonoBehaviour
     {
         get { return Interpolation? t * Time.deltaTime : 1f; }
         set { t = value; }
+    }
+    public float OTAmount
+    {
+        get { if (Vector3.Dot(hands.forward, VirtualCamera.transform.forward) > 0.45f) { return Time.deltaTime * 15f; } else { return 1f; } }
+        //set { t = value; }
     }
 
     //Should camera rotation be lerped?
