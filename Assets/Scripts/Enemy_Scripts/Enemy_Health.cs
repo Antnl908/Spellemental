@@ -86,11 +86,14 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 
     private void SpawnDamageIndicator(int appliedDamage)
     {
-        GameObject indicator = Instantiate(damageIndicator, transform.position, Quaternion.Euler(transform.eulerAngles));
+        if(appliedDamage > 0)
+        {
+            GameObject indicator = Instantiate(damageIndicator, transform.position, Quaternion.Euler(transform.eulerAngles));
 
-        indicator.GetComponentInChildren<Damage_Indicator>().SetValues(appliedDamage, damageIndicatorForce);
+            indicator.GetComponentInChildren<Damage_Indicator>().SetValues(appliedDamage, damageIndicatorForce);
 
-        Destroy(indicator, 1);
+            Destroy(indicator, 1);
+        }
     }
 
     // Start is called before the first frame update

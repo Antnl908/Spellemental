@@ -29,6 +29,9 @@ public class Spell_Projectile : MonoBehaviour
     [SerializeField]
     private LayerMask enemyLayer;
 
+    [SerializeField]
+    private Color capsuleColor = Color.red;
+
     public void Initialize(int damage, int effectDamage, int effectBuildUp, Spell.SpellType spellType, Vector3 direction)
     {
         rb = GetComponent<Rigidbody>();
@@ -72,8 +75,6 @@ public class Spell_Projectile : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawSphere(point0.position, damageRadius);
-
-        Gizmos.DrawSphere(point1.position, damageRadius);
+        Extra_Gizmos.DrawCapsule(point0.position, point1.position, damageRadius, capsuleColor);
     }
 }

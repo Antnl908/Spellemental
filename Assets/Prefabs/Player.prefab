@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spells:
-  - {fileID: 11400000, guid: af7c4f4063df1bd4c856cbbe2c7fe10f, type: 2}
+  - {fileID: 11400000, guid: 24c863607be159f4a8e8efeb3b55a8d0, type: 2}
   spellSpawn: {fileID: 476620351808168059}
 --- !u!1 &1896577773665415566
 GameObject:
@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spells:
-  - {fileID: 11400000, guid: 24c863607be159f4a8e8efeb3b55a8d0, type: 2}
+  - {fileID: 11400000, guid: af7c4f4063df1bd4c856cbbe2c7fe10f, type: 2}
   spellSpawn: {fileID: 7202341465791823141}
 --- !u!1 &4315366369778140448
 GameObject:
