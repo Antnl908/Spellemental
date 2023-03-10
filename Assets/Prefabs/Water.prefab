@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8379155686124696796}
   - component: {fileID: 7995362538227362887}
   - component: {fileID: 3789053826862358779}
-  - component: {fileID: 2277638268578365328}
   - component: {fileID: 764326864914900587}
   - component: {fileID: 3066938846416666655}
+  - component: {fileID: 7079626230065009859}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4575547422007608594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.9276351, y: 1.4549546, z: 4.7030573}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -88,19 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2277638268578365328
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4575547422007608594}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &764326864914900587
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -136,6 +123,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   capsuleColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!136 &7079626230065009859
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4575547422007608594}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.626266
+  m_Height: 1.1
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6895723176153293423
 GameObject:
   m_ObjectHideFlags: 0
