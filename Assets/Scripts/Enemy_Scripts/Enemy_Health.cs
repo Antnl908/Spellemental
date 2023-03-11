@@ -50,7 +50,7 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
         //throw new System.NotImplementedException();
     }
 
-    public void TakeDamage(int damage, Spell.SpellType? spellType)
+    public bool TryToDestroyDamageable(int damage, Spell.SpellType? spellType)
     {
         if (isDamageable && spellType != null)
         {
@@ -81,7 +81,11 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
         if(health <= 0)
         {
             Destroy(gameObject);
+
+            return true;
         }
+
+        return false;
     }
 
     private void SpawnDamageIndicator(int appliedDamage)
@@ -127,7 +131,7 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 
         if (effectIsApplied)
         {
-            TakeDamage(effectDamage, null);
+            TryToDestroyDamageable(effectDamage, null);
 
             timeUntilEffectDisappears -= Time.deltaTime;
 

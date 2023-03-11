@@ -64,7 +64,12 @@ public class Spell_Projectile : MonoBehaviour
             {
                 IDamageable damagable = colliders[i].transform.GetComponent<IDamageable>();
 
-                damagable?.TakeDamage(damage, spellType);
+                bool gotAKill = (bool)(damagable?.TryToDestroyDamageable(damage, spellType));
+
+                if (gotAKill)
+                {
+                    Player_Health.killCount++;
+                }
 
                 IMagicEffect magicEffect = colliders[i].transform.GetComponent<IMagicEffect>();
 
