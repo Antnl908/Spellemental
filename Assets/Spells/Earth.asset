@@ -18,4 +18,6 @@ MonoBehaviour:
   effectBuildUp: 5
   destructionTime: 2
   travelDistance: 2
+  isBeam: 0
   projectile: {fileID: 0}
+  objectPoolName: Earth

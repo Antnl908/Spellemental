@@ -34,15 +34,17 @@ public class Spell : ScriptableObject
     [SerializeField]
     private GameObject projectile;
 
+    [SerializeField]
+    private string objectPoolName = "Error";
+
     public SpellType Type { get => type; }
 
     public virtual void CastSpell(Vector3 position, Quaternion rotation, Vector3 direction)
     {
-        GameObject spawnedProjectile = Instantiate(projectile, position, rotation);
+        Spell_Projectile spawnedProjectile = (Spell_Projectile)Object_Pooler.Pools[objectPoolName].Get();
 
-        spawnedProjectile.GetComponent<Spell_Projectile>().Initialize(damage, effectDamage, effectBuildUp, Type, direction * travelDistance);
-
-        Destroy(spawnedProjectile, destructionTime);
+        spawnedProjectile.Initialize(damage, effectDamage, effectBuildUp, Type, direction * travelDistance, 
+                                                   position, rotation, Object_Pooler.Pools[objectPoolName], destructionTime);
     }
 
     public enum SpellType

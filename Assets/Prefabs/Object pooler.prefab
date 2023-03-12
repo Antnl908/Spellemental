@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9074428711204857759
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9074428711204857757}
+  - component: {fileID: 9074428711204857756}
+  m_Layer: 0
+  m_Name: Object pooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9074428711204857757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9074428711204857759}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.8130784, y: 2.0673566, z: -1.3459697}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9074428711204857756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9074428711204857759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da2dc95c56ac7d8469c968d6c48d7878, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPools:
+  - name: Ice
+    poolingObject: {fileID: 405336425281659223, guid: dd698360b9539f8428388170144c760a, type: 3}
+    poolCount: 50
+    maxPoolCount: 100
+  - name: Fire
+    poolingObject: {fileID: 217544316131323549, guid: 1f9c88388e7979f4c86124c8b0ca5d6d, type: 3}
+    poolCount: 100
+    maxPoolCount: 1000
+  - name: Water
+    poolingObject: {fileID: 3066938846416666655, guid: 3bcb30acc0334d34aa7258d82cf021ad, type: 3}
+    poolCount: 10
+    maxPoolCount: 50

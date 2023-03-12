@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac4dbd7258ed5841b9a5d13737980c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  orderInList: 2
   point0: {fileID: 1499142920651763701}
   point1: {fileID: 8364614679445135115}
   damageRadius: 0.5

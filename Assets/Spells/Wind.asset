@@ -20,6 +20,7 @@ MonoBehaviour:
   travelDistance: 10
   isBeam: 0
   projectile: {fileID: 0}
+  objectPoolName: Wind
   range: 25
   layerMask:
     serializedVersion: 2

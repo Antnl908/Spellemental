@@ -20,3 +20,4 @@ MonoBehaviour:
   travelDistance: 10
   isBeam: 0
   projectile: {fileID: 8424666782953285552, guid: dd698360b9539f8428388170144c760a, type: 3}
+  objectPoolName: Ice

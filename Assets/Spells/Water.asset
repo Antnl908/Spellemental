@@ -18,4 +18,6 @@ MonoBehaviour:
   effectBuildUp: 10
   destructionTime: 3
   travelDistance: 10
+  isBeam: 0
   projectile: {fileID: 4575547422007608594, guid: 3bcb30acc0334d34aa7258d82cf021ad, type: 3}
+  objectPoolName: Water

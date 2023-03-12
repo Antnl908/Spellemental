@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Pool;
 
-public class Spell_Projectile : MonoBehaviour
+public class Spell_Projectile : Pooling_Object
 {
     // Made by Daniel.
 
@@ -32,24 +33,44 @@ public class Spell_Projectile : MonoBehaviour
     [SerializeField]
     private Color capsuleColor = Color.red;
 
-    public void Initialize(int damage, int effectDamage, int effectBuildUp, Spell.SpellType spellType, Vector3 direction)
+    private IObjectPool<Pooling_Object> pool;
+
+    private float destructionTime;
+
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+    }
+
+    public void Initialize(int damage, int effectDamage, int effectBuildUp, Spell.SpellType spellType, 
+        Vector3 direction, Vector3 position, Quaternion rotation, IObjectPool<Pooling_Object> pool, float destructionTime)
+    {
+        rb.velocity = Vector3.zero;
 
         this.damage = damage;
         this.spellType = spellType;
         this.effectDamage = effectDamage;
         this.effectBuildUp = effectBuildUp;
+        this.destructionTime = destructionTime;
+
+        transform.SetPositionAndRotation(position, rotation);
 
         rb.AddForce(direction, ForceMode.Impulse);
+
+        this.pool = pool;
+    }
+
+    private void Update()
+    {
+        destructionTime -= Time.deltaTime;
+
+        if(destructionTime <= 0 && enabled)
+        {
+            pool.Release(this);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
-    {
-        Destroy(gameObject);
-    }
-
-    private void OnDestroy()
     {
         CheckHits();
     }
@@ -76,6 +97,13 @@ public class Spell_Projectile : MonoBehaviour
                 magicEffect?.ApplyMagicEffect(effectDamage, effectBuildUp, spellType);
             }
         }
+
+        pool.Release(this);
+    }
+
+    public override void Initialize(Vector3 position, Quaternion rotation, Vector3 direction)
+    {
+        rb.AddForce(direction, ForceMode.Impulse);
     }
 
     private void OnDrawGizmosSelected()

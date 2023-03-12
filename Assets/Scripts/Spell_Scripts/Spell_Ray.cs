@@ -8,16 +8,18 @@ using UnityEngine.UIElements;
 [CreateAssetMenu(fileName = "New Spell Ray", menuName = "Spell Ray")]
 public class Spell_Ray : Spell
 {
+    //Made by Anton Lindeborg.
+
     [SerializeField] float range;
     int count;
-    Collider[] colliders = new Collider[20]; //Used for overlap sphere
-    List<GameObject> targets = new List<GameObject> (); //Objects that are within the bounds set by the spell settings
+    readonly Collider[] colliders = new Collider[20]; //Used for overlap sphere
+    readonly List<GameObject> targets = new(); //Objects that are within the bounds set by the spell settings
     [SerializeField] LayerMask layerMask;
     [SerializeField] bool cone;
     [Range(0f, 1f)]
     [SerializeField] float radius;
-    Ray ray = new Ray();
-    RaycastHit hit = new RaycastHit();
+    Ray ray = new();
+    RaycastHit hit = new();
 
     public override void CastSpell(Vector3 position, Quaternion rotation, Vector3 direction)
     {
@@ -127,6 +129,5 @@ public class Spell_Ray : Spell
             Gizmos.DrawWireSphere(go.transform.position, 5f);
 
         }
-
     }
 }
