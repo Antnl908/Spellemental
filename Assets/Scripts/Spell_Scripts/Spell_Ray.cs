@@ -76,6 +76,7 @@ public class Spell_Ray : Spell
 
     bool CheckTarget(GameObject go, Vector3 pos, Vector3 dir)
     {
+        //pos += Vector3.up * 1.5f;
         if(cone)
         {
             if(IsInSight(go, pos, dir) && IsVisible(go, pos))
@@ -98,6 +99,7 @@ public class Spell_Ray : Spell
         Vector3 sightDir = obj.transform.position - pos;
         if(Vector3.Dot(sightDir, dir) >= radius)
         {
+            Debug.Log("Dot: " + Vector3.Dot(sightDir, dir));
             return true;
         }
         return false;
@@ -108,7 +110,8 @@ public class Spell_Ray : Spell
         ray.direction = obj.transform.position - pos;
         if(Physics.Raycast(ray, out hit, range, layerMask))
         {
-            if(hit.collider.gameObject == obj)
+            Debug.Log("Dot: " + hit.collider.gameObject.name);
+            if (hit.collider.gameObject == obj)
             {
                 return true;
             }
