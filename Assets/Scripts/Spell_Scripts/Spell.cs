@@ -11,7 +11,7 @@ public class Spell : ScriptableObject
     private SpellType type;
 
     [SerializeField]
-    private int damage;
+    protected int damage;
 
     [SerializeField]
     private int effectDamage = 5;
@@ -36,7 +36,7 @@ public class Spell : ScriptableObject
 
     public SpellType Type { get => type; }
 
-    public void CastSpell(Vector3 position, Quaternion rotation, Vector3 direction)
+    public virtual void CastSpell(Vector3 position, Quaternion rotation, Vector3 direction)
     {
         GameObject spawnedProjectile = Instantiate(projectile, position, rotation);
 
