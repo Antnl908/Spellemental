@@ -39,9 +39,11 @@ public class Spell_Casting : MonoBehaviour
 
         controls.Player1.LeftSpell.performed += leftHand.CastActiveSpell;
         controls.Player1.LeftSpell.performed += SetCastingToFalse;
+        controls.Player1.SwapLeftSpell.performed += leftHand.CycleSpell;
 
         controls.Player1.RightSpell.performed += rightHand.CastActiveSpell;
         controls.Player1.RightSpell.performed += SetCastingToFalse;
+        controls.Player1.SwapRightSpell.performed += rightHand.CycleSpell;
 
         controls.Player1.CombineSpell.performed += CastCombinationSpell;
 

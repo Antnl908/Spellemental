@@ -57,9 +57,9 @@ public class Spell_Hand : MonoBehaviour
         }
     }
 
-    public void CycleSpell(int stepsCycledAhead)
+    public void CycleSpell(InputAction.CallbackContext context)
     {
-        activeSpellIndex += stepsCycledAhead;
+        activeSpellIndex++;
 
         WrapSpellIndex();
     }
