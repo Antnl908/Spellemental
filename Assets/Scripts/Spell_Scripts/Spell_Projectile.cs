@@ -28,7 +28,7 @@ public class Spell_Projectile : Pooling_Object
     private float damageRadius = 0.1f;
 
     [SerializeField]
-    private LayerMask enemyLayer;
+    private LayerMask enemyAndGroundLayer;
 
     [SerializeField]
     private Color capsuleColor = Color.red;
@@ -37,9 +37,21 @@ public class Spell_Projectile : Pooling_Object
 
     private float destructionTime;
 
+    [SerializeField]
+    private string stationarySpellPoolName = "Error";
+
+    private IObjectPool<Pooling_Object> stationarySpellPool;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+
+        if(stationarySpellPoolName != "Error")
+        {
+            stationarySpellPool = Object_Pooler.Pools[stationarySpellPoolName];
+
+            Debug.Log("Added to spell the pool " + stationarySpellPoolName);
+        }
     }
 
     public void Initialize(int damage, int effectDamage, int effectBuildUp, Spell.SpellType spellType, 
@@ -77,7 +89,7 @@ public class Spell_Projectile : Pooling_Object
 
     private void CheckHits()
     {
-        Collider[] colliders = Physics.OverlapCapsule(point0.position, point1.position, damageRadius, enemyLayer);
+        Collider[] colliders = Physics.OverlapCapsule(point0.position, point1.position, damageRadius, enemyAndGroundLayer);
 
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -85,7 +97,12 @@ public class Spell_Projectile : Pooling_Object
             {
                 IDamageable damagable = colliders[i].transform.GetComponent<IDamageable>();
 
-                bool gotAKill = (bool)(damagable?.TryToDestroyDamageable(damage, spellType));
+                bool gotAKill = false;
+
+                if (damagable != null)
+                {
+                    gotAKill = (bool)(damagable?.TryToDestroyDamageable(damage, spellType));
+                }
 
                 if (gotAKill)
                 {
@@ -95,6 +112,15 @@ public class Spell_Projectile : Pooling_Object
                 IMagicEffect magicEffect = colliders[i].transform.GetComponent<IMagicEffect>();
 
                 magicEffect?.ApplyMagicEffect(effectDamage, effectBuildUp, spellType);
+
+                if(stationarySpellPoolName != "Error")
+                {
+                    Spell_Stationary stationary = (Spell_Stationary)stationarySpellPool.Get();
+
+                    stationary.Initialize(colliders[i].ClosestPoint(transform.position), Quaternion.identity, stationarySpellPool);
+
+                    Debug.Log("Spawned stationary");
+                }
             }
         }
 

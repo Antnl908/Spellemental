@@ -57,3 +57,7 @@ MonoBehaviour:
     poolingObject: {fileID: 3066938846416666655, guid: 3bcb30acc0334d34aa7258d82cf021ad, type: 3}
     poolCount: 10
     maxPoolCount: 50
+  - name: Water_Puddle
+    poolingObject: {fileID: 1043521862343659384, guid: 3bfe4ba7446d85345bd0c75cf797af7b, type: 3}
+    poolCount: 10
+    maxPoolCount: 50
