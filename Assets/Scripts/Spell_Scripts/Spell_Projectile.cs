@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.UIElements;
 
 public class Spell_Projectile : Pooling_Object
 {
@@ -28,7 +29,10 @@ public class Spell_Projectile : Pooling_Object
     private float damageRadius = 0.1f;
 
     [SerializeField]
-    private LayerMask enemyAndGroundLayer;
+    private LayerMask enemyLayer;
+
+    [SerializeField]
+    private LayerMask terrainLayer;
 
     [SerializeField]
     private Color capsuleColor = Color.red;
@@ -42,6 +46,10 @@ public class Spell_Projectile : Pooling_Object
 
     private IObjectPool<Pooling_Object> stationarySpellPool;
 
+    [Range(0, 1000)]
+    [SerializeField]
+    private float spawnStationaryRange = 0f;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -49,8 +57,6 @@ public class Spell_Projectile : Pooling_Object
         if(stationarySpellPoolName != "Error")
         {
             stationarySpellPool = Object_Pooler.Pools[stationarySpellPoolName];
-
-            Debug.Log("Added to spell the pool " + stationarySpellPoolName);
         }
     }
 
@@ -89,7 +95,7 @@ public class Spell_Projectile : Pooling_Object
 
     private void CheckHits()
     {
-        Collider[] colliders = Physics.OverlapCapsule(point0.position, point1.position, damageRadius, enemyAndGroundLayer);
+        Collider[] colliders = Physics.OverlapCapsule(point0.position, point1.position, damageRadius, enemyLayer);
 
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -112,15 +118,39 @@ public class Spell_Projectile : Pooling_Object
                 IMagicEffect magicEffect = colliders[i].transform.GetComponent<IMagicEffect>();
 
                 magicEffect?.ApplyMagicEffect(effectDamage, effectBuildUp, spellType);
+            }
+        }
 
-                if(stationarySpellPoolName != "Error")
+        if (stationarySpellPoolName != "Error")
+        {
+            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitInfo, spawnStationaryRange))
+            {
+                Spell_Stationary stationary = (Spell_Stationary)stationarySpellPool.Get();
+
+                Quaternion rotation = new();
+
+                if(Physics.Raycast(transform.position + Vector3.right, Vector3.down, out RaycastHit rightHitInfo,
+                                                                  spawnStationaryRange) && rightHitInfo.point.y != hitInfo.point.y)
                 {
-                    Spell_Stationary stationary = (Spell_Stationary)stationarySpellPool.Get();
-
-                    stationary.Initialize(colliders[i].ClosestPoint(transform.position), Quaternion.identity, stationarySpellPool);
-
-                    Debug.Log("Spawned stationary");
+                    rotation = Quaternion.LookRotation(hitInfo.point - rightHitInfo.point);
                 }
+                else if (Physics.Raycast(transform.position + Vector3.left, Vector3.down, out RaycastHit leftHitInfo,
+                                                                  spawnStationaryRange) && leftHitInfo.point.y != hitInfo.point.y)
+                {
+                    rotation = Quaternion.LookRotation(hitInfo.point - leftHitInfo.point);
+                }
+                else if (Physics.Raycast(transform.position + Vector3.forward, Vector3.down, out RaycastHit forwardHitInfo,
+                                                                  spawnStationaryRange) && forwardHitInfo.point.y != hitInfo.point.y)
+                {
+                    rotation = Quaternion.LookRotation(hitInfo.point - forwardHitInfo.point);
+                }
+                else if (Physics.Raycast(transform.position + Vector3.back, Vector3.down, out RaycastHit backwardHitInfo,
+                                                                  spawnStationaryRange) && backwardHitInfo.point.y != hitInfo.point.y)
+                {
+                    rotation = Quaternion.LookRotation(hitInfo.point - backwardHitInfo.point);
+                }
+
+                stationary.Initialize(hitInfo.point, rotation, stationarySpellPool);
             }
         }
 
@@ -135,5 +165,8 @@ public class Spell_Projectile : Pooling_Object
     private void OnDrawGizmosSelected()
     {
         Extra_Gizmos.DrawCapsule(point0.position, point1.position, damageRadius, capsuleColor);
+
+        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - spawnStationaryRange,
+                                                                                                        transform.position.z));
     }
 }

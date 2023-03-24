@@ -119,11 +119,15 @@ MonoBehaviour:
   point0: {fileID: 1499142920651763701}
   point1: {fileID: 8364614679445135115}
   damageRadius: 0.5
-  enemyAndGroundLayer:
+  enemyLayer:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 128
+  terrainLayer:
+    serializedVersion: 2
+    m_Bits: 64
   capsuleColor: {r: 1, g: 0, b: 0, a: 1}
   stationarySpellPoolName: Water_Puddle
+  spawnStationaryRange: 5
 --- !u!136 &7079626230065009859
 CapsuleCollider:
   m_ObjectHideFlags: 0

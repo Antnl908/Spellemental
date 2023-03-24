@@ -5,6 +5,7 @@ using UnityEngine.Pool;
 
 public class Spell_Stationary : Pooling_Object
 {
+    //Made by Daniel.
 
     [SerializeField]
     private int damage;

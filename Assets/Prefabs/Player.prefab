@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 1896577773665415600}
   - component: {fileID: 1896577773665415607}
   - component: {fileID: 2862401888132647007}
+  - component: {fileID: 5566858272368778473}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -305,6 +306,25 @@ MonoBehaviour:
   maxHealth: 1
   heart: {fileID: 0}
   timeUntilDeath: 5
+--- !u!114 &5566858272368778473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896577773665415566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c91ac4a3026c4b4e9e17c2dd673a6a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  look: {fileID: 0}
+  directionIndicator: {fileID: 0}
+  range: 100
+  detectableSurfaces:
+    serializedVersion: 2
+    m_Bits: 193
+  indicatorColor: {r: 0, g: 0.05882353, b: 1, a: 1}
 --- !u!1 &1896577773715153949
 GameObject:
   m_ObjectHideFlags: 0
