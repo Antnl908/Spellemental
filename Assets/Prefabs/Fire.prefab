@@ -155,6 +155,8 @@ MonoBehaviour:
     m_Bits: 64
   capsuleColor: {r: 1, g: 0, b: 0, a: 1}
   stationarySpellPoolName: Error
+  spawnStationaryRange: 0
+  spawnOffset: 1.5
 --- !u!54 &5143407315807038287
 Rigidbody:
   m_ObjectHideFlags: 0

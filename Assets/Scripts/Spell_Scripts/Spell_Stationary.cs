@@ -57,14 +57,14 @@ public class Spell_Stationary : Pooling_Object
 
     public void Initialize(Vector3 position, Quaternion rotation, IObjectPool<Pooling_Object> pool)
     {
-        transform.SetPositionAndRotation(new Vector3(position.x, position.y + height / 2, position.z), rotation);
+        transform.SetPositionAndRotation(new Vector3(position.x, position.y + height / 4, position.z), rotation);
 
         this.pool = pool;
 
         currentDestructionTime = destructionTime;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         CheckHits();
     }
@@ -75,6 +75,7 @@ public class Spell_Stationary : Pooling_Object
 
         for (int i = 0; i < colliders.Length; i++)
         {
+
             if (colliders[i].gameObject != gameObject)
             {
                 IDamageable damagable = colliders[i].transform.GetComponent<IDamageable>();

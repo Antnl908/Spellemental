@@ -90,7 +90,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8424666782953285552}
-  m_LocalRotation: {x: -0.017404415, y: 0.07409717, z: -0.0012933708, w: -0.9970983}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.85255146, y: 1.5538251, z: 0.630453}
   m_LocalScale: {x: 0.2, y: 0.1, z: 0.5}
   m_ConstrainProportionsScale: 0
@@ -99,7 +99,7 @@ Transform:
   - {fileID: 7865987610414132463}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2505239931247304382
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -187,6 +187,8 @@ MonoBehaviour:
     m_Bits: 64
   capsuleColor: {r: 1, g: 0, b: 0, a: 1}
   stationarySpellPoolName: Error
+  spawnStationaryRange: 0
+  spawnOffset: 0.25
 --- !u!54 &3334576805258467954
 Rigidbody:
   m_ObjectHideFlags: 0

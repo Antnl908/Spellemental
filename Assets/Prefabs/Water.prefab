@@ -127,7 +127,9 @@ MonoBehaviour:
     m_Bits: 64
   capsuleColor: {r: 1, g: 0, b: 0, a: 1}
   stationarySpellPoolName: Water_Puddle
+  spawnStationaryRangeAboveTransform: 0.4
   spawnStationaryRange: 5
+  spawnOffset: 0.5
 --- !u!136 &7079626230065009859
 CapsuleCollider:
   m_ObjectHideFlags: 0

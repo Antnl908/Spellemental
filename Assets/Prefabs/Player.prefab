@@ -489,3 +489,4 @@ MonoBehaviour:
   player_Look: {fileID: 1896577773665415607}
   recipes:
   - {fileID: 11400000, guid: 22358f35495909144b38cd755bf92e88, type: 2}
+  - {fileID: 11400000, guid: a85568abfe2a69f419d94b38f4d8a710, type: 2}

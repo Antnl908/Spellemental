@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
-using UnityEngine.UIElements;
 
 public class Spell_Projectile : Pooling_Object
 {
@@ -48,7 +46,14 @@ public class Spell_Projectile : Pooling_Object
 
     [Range(0, 1000)]
     [SerializeField]
+    private float spawnStationaryRangeAboveTransform = 0f;
+
+    [Range(0, 1000)]
+    [SerializeField]
     private float spawnStationaryRange = 0f;
+
+    [SerializeField]
+    private float spawnOffset;
 
     private void Awake()
     {
@@ -71,7 +76,7 @@ public class Spell_Projectile : Pooling_Object
         this.effectBuildUp = effectBuildUp;
         this.destructionTime = destructionTime;
 
-        transform.SetPositionAndRotation(position, rotation);
+        transform.SetPositionAndRotation(position + (direction.normalized * spawnOffset), rotation);
 
         rb.AddForce(direction, ForceMode.Impulse);
 
@@ -123,32 +128,14 @@ public class Spell_Projectile : Pooling_Object
 
         if (stationarySpellPoolName != "Error")
         {
-            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitInfo, spawnStationaryRange))
+            if (Physics.Raycast(transform.position + Vector3.up * spawnStationaryRangeAboveTransform, 
+                                                            Vector3.down, out RaycastHit hitInfo, spawnStationaryRange, terrainLayer))
             {
                 Spell_Stationary stationary = (Spell_Stationary)stationarySpellPool.Get();
 
-                Quaternion rotation = new();
+                //Rotates it along the ground.
+                Quaternion rotation = Quaternion.FromToRotation(transform.up, hitInfo.normal) * transform.rotation;
 
-                if(Physics.Raycast(transform.position + Vector3.right, Vector3.down, out RaycastHit rightHitInfo,
-                                                                  spawnStationaryRange) && rightHitInfo.point.y != hitInfo.point.y)
-                {
-                    rotation = Quaternion.LookRotation(hitInfo.point - rightHitInfo.point);
-                }
-                else if (Physics.Raycast(transform.position + Vector3.left, Vector3.down, out RaycastHit leftHitInfo,
-                                                                  spawnStationaryRange) && leftHitInfo.point.y != hitInfo.point.y)
-                {
-                    rotation = Quaternion.LookRotation(hitInfo.point - leftHitInfo.point);
-                }
-                else if (Physics.Raycast(transform.position + Vector3.forward, Vector3.down, out RaycastHit forwardHitInfo,
-                                                                  spawnStationaryRange) && forwardHitInfo.point.y != hitInfo.point.y)
-                {
-                    rotation = Quaternion.LookRotation(hitInfo.point - forwardHitInfo.point);
-                }
-                else if (Physics.Raycast(transform.position + Vector3.back, Vector3.down, out RaycastHit backwardHitInfo,
-                                                                  spawnStationaryRange) && backwardHitInfo.point.y != hitInfo.point.y)
-                {
-                    rotation = Quaternion.LookRotation(hitInfo.point - backwardHitInfo.point);
-                }
 
                 stationary.Initialize(hitInfo.point, rotation, stationarySpellPool);
             }
@@ -166,7 +153,13 @@ public class Spell_Projectile : Pooling_Object
     {
         Extra_Gizmos.DrawCapsule(point0.position, point1.position, damageRadius, capsuleColor);
 
-        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - spawnStationaryRange,
-                                                                                                        transform.position.z));
+        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, 
+                           transform.position.y - (spawnStationaryRange - spawnStationaryRangeAboveTransform), transform.position.z));
+
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.forward * -spawnOffset);
+        Gizmos.DrawLine(transform.position + Vector3.right * 2, transform.position + Vector3.up * spawnStationaryRangeAboveTransform
+                                                                                                                 + Vector3.right * 2);
+
+        Gizmos.color = Color.yellow;
     }
 }

@@ -40,8 +40,11 @@ public class Spell_Direction_Indicator : MonoBehaviour
         {
             directionIndicator.SetActive(true);
 
-            directionIndicator.transform.SetPositionAndRotation(hitInfo.point + Vector3.up / 10 + Vector3.back / 10, 
-                                                                                              Quaternion.LookRotation(hitInfo.normal));
+            Vector3 position = hitInfo.point + hitInfo.normal.normalized / 10;
+
+            Quaternion rotation = Quaternion.LookRotation(hitInfo.normal);
+
+            directionIndicator.transform.SetPositionAndRotation(position, rotation);
         }
         else
         {
