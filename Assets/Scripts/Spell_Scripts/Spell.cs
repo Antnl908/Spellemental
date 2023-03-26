@@ -39,7 +39,7 @@ public class Spell : ScriptableObject
 
     public SpellType Type { get => type; }
 
-    public virtual void CastSpell(Vector3 position, Quaternion rotation, Vector3 direction)
+    public virtual void CastSpell(Player_Look player_Look, Vector3 position, Quaternion rotation, Vector3 direction)
     {
         Spell_Projectile spawnedProjectile = (Spell_Projectile)Object_Pooler.Pools[objectPoolName].Get();
 

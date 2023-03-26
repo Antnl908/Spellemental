@@ -21,9 +21,9 @@ MonoBehaviour:
   isBeam: 0
   projectile: {fileID: 0}
   objectPoolName: Wind
-  range: 1155
+  range: 150
   layerMask:
     serializedVersion: 2
     m_Bits: 129
   cone: 1
-  radius: 0.4
+  radius: 0.85

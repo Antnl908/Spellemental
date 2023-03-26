@@ -13,6 +13,8 @@ public class Spell_Hand : MonoBehaviour
     [SerializeField]
     private Transform spellSpawn;
 
+    private Player_Look player_Look;
+
     private int activeSpellIndex = 0;
 
     public Spell ActiveSpell { get => spells[activeSpellIndex]; }
@@ -38,7 +40,7 @@ public class Spell_Hand : MonoBehaviour
 
             if(timeUntilCast <= 0 )
             {
-                ActiveSpell.CastSpell(spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+                ActiveSpell.CastSpell(Player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
 
                 timeUntilCast = castTime;
             }
@@ -53,7 +55,7 @@ public class Spell_Hand : MonoBehaviour
         }
         else
         {
-            ActiveSpell.CastSpell(spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+            ActiveSpell.CastSpell(Player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
         }
     }
 
@@ -83,5 +85,11 @@ public class Spell_Hand : MonoBehaviour
     {
         isCasting = false;
         timeUntilCast = 0;
+    }
+
+    public Player_Look Player_Look
+    {
+        get { return player_Look; }
+        set { player_Look = value; }
     }
 }
