@@ -48,6 +48,10 @@ public class Spell_Casting : MonoBehaviour
         controls.Player1.CombineSpell.performed += CastCombinationSpell;
 
         controls.Player1.Enable();
+
+        leftHand.Player_Look = player_Look;
+        rightHand.Player_Look = player_Look;
+
     }
 
     // Update is called once per frame
@@ -59,7 +63,7 @@ public class Spell_Casting : MonoBehaviour
 
             if (timeUntilCast <= 0)
             {
-                beamSpell.CastSpell(spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+                beamSpell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
 
                 timeUntilCast = castTime;
             }
@@ -85,7 +89,7 @@ public class Spell_Casting : MonoBehaviour
                 }
                 else
                 {
-                    recipe.ReturnedSpell.CastSpell(spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+                    recipe.ReturnedSpell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
                 }
 
                 leftHand.SetCastingToFalse();
