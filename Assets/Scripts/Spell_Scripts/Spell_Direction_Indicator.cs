@@ -35,23 +35,35 @@ public class Spell_Direction_Indicator : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (Physics.Raycast(look.VirtualCamera.transform.position, look.VirtualCamera.transform.forward.normalized, 
-                                                                                   out RaycastHit hitInfo, range, detectableSurfaces))
+        if(Time.timeScale > 0)
         {
-            directionIndicator.SetActive(true);
+            if (Physics.Raycast(look.VirtualCamera.transform.position, look.VirtualCamera.transform.forward.normalized,
+                                                                                   out RaycastHit hitInfo, range, detectableSurfaces))
+            {
+                directionIndicator.SetActive(true);
 
-            Vector3 position = hitInfo.point + hitInfo.normal.normalized / 10;
+                Vector3 position = hitInfo.point + hitInfo.normal.normalized / 10;
 
-            Quaternion rotation = Quaternion.LookRotation(hitInfo.normal);
+                Quaternion rotation = Quaternion.LookRotation(hitInfo.normal);
 
-            directionIndicator.transform.SetPositionAndRotation(position, rotation);
+                directionIndicator.transform.SetPositionAndRotation(position, rotation);
+            }
+            else
+            {
+                Deactivate();
+            }
         }
         else
         {
-            if (directionIndicator.activeInHierarchy)
-            {
-                directionIndicator.SetActive(false);
-            }            
+            Deactivate();
+        }
+    }
+
+    private void Deactivate()
+    {
+        if (directionIndicator.activeInHierarchy)
+        {
+            directionIndicator.SetActive(false);
         }
     }
 

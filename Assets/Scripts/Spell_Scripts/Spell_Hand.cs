@@ -10,6 +10,8 @@ public class Spell_Hand : MonoBehaviour
     [SerializeField]
     private List<Spell> spells;
 
+    public List<Spell> Spells { get => spells; }
+
     [SerializeField]
     private Transform spellSpawn;
 
