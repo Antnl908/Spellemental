@@ -32,7 +32,10 @@ public class Spell : ScriptableObject
     public bool IsBeam { get => isBeam; }
 
     [SerializeField]
-    private GameObject projectile;
+    private bool isProjectileNotStationary = true;
+
+    [SerializeField]
+    private LayerMask possibleStationarySpawn;
 
     [SerializeField]
     private string objectPoolName = "Error";
@@ -41,10 +44,22 @@ public class Spell : ScriptableObject
 
     public virtual void CastSpell(Player_Look player_Look, Vector3 position, Quaternion rotation, Vector3 direction)
     {
-        Spell_Projectile spawnedProjectile = (Spell_Projectile)Object_Pooler.Pools[objectPoolName].Get();
+        if (isProjectileNotStationary)
+        {
+            Spell_Projectile spawnedProjectile = (Spell_Projectile)Object_Pooler.Pools[objectPoolName].Get();
 
-        spawnedProjectile.Initialize(damage, effectDamage, effectBuildUp, Type, direction * travelDistance, 
-                                                   position, rotation, Object_Pooler.Pools[objectPoolName], destructionTime);
+            spawnedProjectile.Initialize(damage, effectDamage, effectBuildUp, Type, direction * travelDistance,
+                                                       position, rotation, Object_Pooler.Pools[objectPoolName], destructionTime);
+        }
+        else
+        {
+            if(Physics.Raycast(position, direction, out RaycastHit hitInfo, travelDistance, possibleStationarySpawn))
+            {
+                Spell_Stationary stationary = (Spell_Stationary)Object_Pooler.Pools[objectPoolName].Get();
+
+                stationary.Initialize(hitInfo.point, Quaternion.identity, Object_Pooler.Pools[objectPoolName]);
+            }
+        }
     }
 
     public enum SpellType

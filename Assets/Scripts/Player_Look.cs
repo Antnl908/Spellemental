@@ -66,8 +66,11 @@ public class Player_Look : MonoBehaviour
     void Update()
     {
         //Update rotation
-        VirtualCamera.transform.rotation = Quaternion.Slerp(VirtualCamera.transform.rotation, Quaternion.Euler(-LookVector.y, LookVector.x, LeaningValue), TAmount);
-        fpsrig.localRotation = Quaternion.Slerp(fpsrig.localRotation, WeaponSway, 8f * Time.deltaTime);
+        if(Time.timeScale > 0)
+        {
+            VirtualCamera.transform.rotation = Quaternion.Slerp(VirtualCamera.transform.rotation, Quaternion.Euler(-LookVector.y, LookVector.x, LeaningValue), TAmount);
+            fpsrig.localRotation = Quaternion.Slerp(fpsrig.localRotation, WeaponSway, 8f * Time.deltaTime);
+        }        
         
         //Update headbobbing/leaning
         bobb += Time.deltaTime * BobbingSpeed;

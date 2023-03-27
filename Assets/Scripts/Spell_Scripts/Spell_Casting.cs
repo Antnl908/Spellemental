@@ -77,25 +77,28 @@ public class Spell_Casting : MonoBehaviour
 
     private void CastCombinationSpell(InputAction.CallbackContext context)
     {
-        foreach(var recipe in recipes)
+        if(Time.timeScale > 0)
         {
-            if(recipe.SpellMatchesRecipe(leftHand.ActiveSpell, rightHand.ActiveSpell) || 
-                                                                             recipe.SpellMatchesRecipe(rightHand.ActiveSpell, leftHand.ActiveSpell))
+            foreach (var recipe in recipes)
             {
-                if(recipe.ReturnedSpell.IsBeam)
+                if (recipe.SpellMatchesRecipe(leftHand.ActiveSpell, rightHand.ActiveSpell) ||
+                                                                                 recipe.SpellMatchesRecipe(rightHand.ActiveSpell, leftHand.ActiveSpell))
                 {
-                    isCasting = !isCasting;
-                    beamSpell = recipe.ReturnedSpell;
-                }
-                else
-                {
-                    recipe.ReturnedSpell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
-                }
+                    if (recipe.ReturnedSpell.IsBeam)
+                    {
+                        isCasting = !isCasting;
+                        beamSpell = recipe.ReturnedSpell;
+                    }
+                    else
+                    {
+                        recipe.ReturnedSpell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+                    }
 
-                leftHand.SetCastingToFalse();
-                rightHand.SetCastingToFalse();
+                    leftHand.SetCastingToFalse();
+                    rightHand.SetCastingToFalse();
 
-                return;
+                    return;
+                }
             }
         }
     }
