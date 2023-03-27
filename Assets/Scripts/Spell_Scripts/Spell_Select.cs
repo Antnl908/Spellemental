@@ -29,16 +29,26 @@ public class Spell_Select : MonoBehaviour
         UnSelect();
     }
 
-    public bool SelectIfContaionPoint(Vector3 point)
+    public bool SelectIfHit(Vector3 playerPos, List<Spell_Select> selects)
     {
-        if (collider.bounds.Contains(point))
+        foreach(Spell_Select s in selects)
         {
-            image.sprite = selectedSprite;
-
-            return true;
+            if(Vector3.Distance(transform.position, playerPos) > Vector3.Distance(s.transform.position, playerPos))
+            {
+                return false;
+            }
         }
 
-        return false;
+        image.sprite = selectedSprite;
+
+        Debug.Log("Selected spell!");
+
+        return true;
+    }
+
+    public void Select()
+    {
+        image.sprite = selectedSprite;
     }
 
     public void UnSelect()

@@ -34,7 +34,7 @@ public class Spell_Hand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isCasting)
+        if(isCasting && Time.timeScale > 0)
         {
             timeUntilCast -= Time.deltaTime;
 
@@ -49,13 +49,16 @@ public class Spell_Hand : MonoBehaviour
 
     public void CastActiveSpell(InputAction.CallbackContext context)
     {
-        if (ActiveSpell.IsBeam)
+        if(Time.timeScale > 0)
         {
-            isCasting = !isCasting;
-        }
-        else
-        {
-            ActiveSpell.CastSpell(spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+            if (ActiveSpell.IsBeam)
+            {
+                isCasting = !isCasting;
+            }
+            else
+            {
+                ActiveSpell.CastSpell(spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+            }
         }
     }
 
