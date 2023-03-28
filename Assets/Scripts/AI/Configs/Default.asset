@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Default
   m_EditorClassIdentifier: 
   speed: 7
+  runSpeed: 7
   startHealth: 100
+  chaseUpdateTime: 1
+  idleUpdateTime: 1
