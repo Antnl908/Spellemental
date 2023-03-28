@@ -16,7 +16,7 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
     private Spell.SpellType resistance;
 
     [SerializeField]
-    private GameObject damageIndicator;
+    private string objectPoolName = "Damage_Indicator";
 
     [SerializeField]
     private float damageIndicatorForce = 10f;
@@ -45,11 +45,15 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 
     private EffectType effectType = EffectType.None;
 
+    [SerializeField]
+    private float damageIndicatorDestructiontime = 1f;
+
     public void KnockBack(float knockBack)
     {
         //throw new System.NotImplementedException();
     }
 
+    //Deals damage to object. Regular damage and effect damage is handled seperately. Destroys object if health reaches 0.
     public bool TryToDestroyDamageable(int damage, Spell.SpellType? spellType)
     {
         if (isDamageable && spellType != null)
@@ -88,15 +92,15 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
         return false;
     }
 
+    //Spawns a damage indicator that shows how much damage was dealt to this enemy.
     private void SpawnDamageIndicator(int appliedDamage)
     {
         if(appliedDamage > 0)
         {
-            GameObject indicator = Instantiate(damageIndicator, transform.position, Quaternion.Euler(transform.eulerAngles));
+            Damage_Indicator indicator = (Damage_Indicator)Object_Pooler.Pools[objectPoolName].Get();
 
-            indicator.GetComponentInChildren<Damage_Indicator>().SetValues(appliedDamage, damageIndicatorForce);
-
-            Destroy(indicator, 1);
+            indicator.SetValues(appliedDamage, damageIndicatorForce, Object_Pooler.Pools[objectPoolName], 
+                                                               damageIndicatorDestructiontime, transform.position, transform.rotation);
         }
     }
 
@@ -142,6 +146,7 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
         }
     }
 
+    //Deals fire damage.
     public void FireEffect(int fireDamage, int effectBuildUp)
     {
         this.effectBuildUp += effectBuildUp;
@@ -158,6 +163,7 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
         }
     }
 
+    //Deals ice damage.
     public void FrostEffect(int iceDamage, int effectBuildUp)
     {
         this.effectBuildUp += effectBuildUp;
@@ -174,6 +180,7 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
         }
     }
 
+    //SLows down enemy movement.
     public void SlowDownEffect(float slowDownAmount)
     {
         // Make it later.
@@ -181,6 +188,7 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
         effectType = EffectType.Slowdown;
     }
 
+    //Damage is increased or decreased if enemy is weak or resistant to its type.
     private void ApplyWeaknessOrResistanceToDamage(ref int damage, Spell.SpellType type)
     {
         if(type == weakness)
@@ -193,6 +201,7 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
         }
     }
 
+    //Effect is applied and enemy will take effect damage.
     private void ApplyEffect(int effectDamage)
     {
         this.effectDamage = effectDamage;
@@ -204,6 +213,7 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
         effectIsApplied = true;
     }
 
+    //Tries to apply an effect of a certain type.
     public void ApplyMagicEffect(int effectDamage, int effectBuildUp, Spell.SpellType spellType)
     {
         if(spellType == Spell.SpellType.Fire)

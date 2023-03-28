@@ -16,7 +16,7 @@ MonoBehaviour:
   damage: 3
   effectDamage: 6
   effectBuildUp: 8
-  destructionTime: 5
+  destructionTime: 8
   travelDistance: 100
   isBeam: 0
   isProjectileNotStationary: 0

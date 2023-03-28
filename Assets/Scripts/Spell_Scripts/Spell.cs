@@ -42,6 +42,8 @@ public class Spell : ScriptableObject
 
     public SpellType Type { get => type; }
 
+    //If the spell is a projectile then a projectile is taken from the object pool and shot forward.
+    //If the spell is a stationary then it is spawned where the player is looking.
     public virtual void CastSpell(Player_Look player_Look, Vector3 position, Quaternion rotation, Vector3 direction)
     {
         if (isProjectileNotStationary)
@@ -57,7 +59,8 @@ public class Spell : ScriptableObject
             {
                 Spell_Stationary stationary = (Spell_Stationary)Object_Pooler.Pools[objectPoolName].Get();
 
-                stationary.Initialize(hitInfo.point, Quaternion.identity, Object_Pooler.Pools[objectPoolName]);
+                stationary.Initialize(hitInfo.point, Quaternion.identity, Object_Pooler.Pools[objectPoolName], 
+                                                                          damage, effectDamage, effectBuildUp, Type, destructionTime);
             }
         }
     }

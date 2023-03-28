@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -53,6 +54,18 @@ public class Spell_Stationary : Pooling_Object
                 pool.Release(this);
             }
         }
+    }
+
+    public void Initialize(Vector3 position, Quaternion rotation, IObjectPool<Pooling_Object> pool, 
+                 int damage, int effectDamage, int effectBuildUp, Spell.SpellType spellType, float destructionTime)
+    {
+        this.damage = damage;
+        this.effectDamage = effectDamage;
+        this.effectBuildUp = effectBuildUp;
+        this.spellType = spellType;
+        this.destructionTime = destructionTime;
+
+        Initialize(position, rotation, pool);
     }
 
     public void Initialize(Vector3 position, Quaternion rotation, IObjectPool<Pooling_Object> pool)

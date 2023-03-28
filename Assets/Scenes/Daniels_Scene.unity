@@ -457,8 +457,9 @@ MonoBehaviour:
   health: 10
   weakness: 1
   resistance: 0
-  damageIndicator: {fileID: 6915552866366894602, guid: 87df4a1a74fd2a348b46a50d5af78033, type: 3}
+  objectPoolName: Damage_Indicator
   damageIndicatorForce: 10
+  damageIndicatorDestructiontime: 1
 --- !u!135 &400036078
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -796,8 +797,9 @@ MonoBehaviour:
   health: 10
   weakness: 1
   resistance: 0
-  damageIndicator: {fileID: 6915552866366894602, guid: 87df4a1a74fd2a348b46a50d5af78033, type: 3}
+  objectPoolName: Damage_Indicator
   damageIndicatorForce: 10
+  damageIndicatorDestructiontime: 1
 --- !u!135 &1087775187
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1148,8 +1150,9 @@ MonoBehaviour:
   health: 1000
   weakness: 0
   resistance: 1
-  damageIndicator: {fileID: 6915552866366894602, guid: 87df4a1a74fd2a348b46a50d5af78033, type: 3}
-  damageIndicatorForce: 10
+  objectPoolName: Damage_Indicator
+  damageIndicatorForce: 8
+  damageIndicatorDestructiontime: 1
 --- !u!1 &1715770536
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,8 +1188,9 @@ MonoBehaviour:
   health: 10
   weakness: 1
   resistance: 0
-  damageIndicator: {fileID: 6915552866366894602, guid: 87df4a1a74fd2a348b46a50d5af78033, type: 3}
+  objectPoolName: Damage_Indicator
   damageIndicatorForce: 10
+  damageIndicatorDestructiontime: 1
 --- !u!135 &1715770538
 SphereCollider:
   m_ObjectHideFlags: 0

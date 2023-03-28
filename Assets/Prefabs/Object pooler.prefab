@@ -65,3 +65,7 @@ MonoBehaviour:
     poolingObject: {fileID: 7948680658141206982, guid: 68a564cfa1379324da370fa9ab095f1a, type: 3}
     poolCount: 5
     maxPoolCount: 30
+  - name: Damage_Indicator
+    poolingObject: {fileID: -4284638386547729326, guid: 87df4a1a74fd2a348b46a50d5af78033, type: 3}
+    poolCount: 100
+    maxPoolCount: 1000
