@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,13 +9,22 @@ public class Spell_Select : MonoBehaviour
     private Collider collider;
 
     [SerializeField]
-    private Image image;
+    private Image imageLeft;
+
+    [SerializeField] 
+    private Image imageRight;
 
     [SerializeField]
-    private Sprite selectedSprite;
+    private Sprite selectedLeftSprite;
 
     [SerializeField]
-    private Sprite unselectedSprite;
+    private Sprite unselectedLeftSprite;
+
+    [SerializeField]
+    private Sprite selectedRightSprite;
+
+    [SerializeField]
+    private Sprite unselectedRightSprite;
 
     [SerializeField]
     private Spell spell;
@@ -26,10 +36,11 @@ public class Spell_Select : MonoBehaviour
     {
         collider = GetComponent<Collider>();
 
-        UnSelect();
+        UnSelect(true);
+        UnSelect(false);
     }
 
-    public bool SelectIfHit(Vector3 playerPos, List<Spell_Select> selects)
+    public bool SelectIfHit(Vector3 playerPos, List<Spell_Select> selects, bool isLeftSprite)
     {
         foreach(Spell_Select s in selects)
         {
@@ -39,20 +50,32 @@ public class Spell_Select : MonoBehaviour
             }
         }
 
-        image.sprite = selectedSprite;
-
-        Debug.Log("Selected spell!");
+        Select(isLeftSprite);
 
         return true;
     }
 
-    public void Select()
+    public void Select(bool isLeftSprite)
     {
-        image.sprite = selectedSprite;
+        if(isLeftSprite)
+        {
+            imageLeft.sprite = selectedLeftSprite;
+        }
+        else
+        {
+            imageRight.sprite = selectedRightSprite;
+        }
     }
 
-    public void UnSelect()
+    public void UnSelect(bool isLeftSprite)
     {
-        image.sprite = unselectedSprite;
+        if (isLeftSprite)
+        {
+            imageLeft.sprite = unselectedLeftSprite;
+        }
+        else
+        {
+            imageRight.sprite = unselectedRightSprite;
+        }
     }
 }

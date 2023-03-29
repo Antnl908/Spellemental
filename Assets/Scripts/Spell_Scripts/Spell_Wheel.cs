@@ -79,22 +79,22 @@ public class Spell_Wheel : MonoBehaviour
 
     private void ActivateLeftHandSpell(InputAction.CallbackContext context)
     {
-        ActivateSpells(leftHand);
+        ActivateSpells(leftHand, true);
     }
 
     private void ActivateRightHandSpell(InputAction.CallbackContext context)
     {
-        ActivateSpells(rightHand);
+        ActivateSpells(rightHand, false);
     }
 
     //Activates a SPell_Select if its spell matches one of your equipped spells.
-    private void ActivateSpells(Spell_Hand hand)
+    private void ActivateSpells(Spell_Hand hand, bool isLeftSprite)
     {
         if(Time.timeScale == 0)
         {
             foreach (var spellSelect in spellSelects)
             {
-                if (spellSelect.SelectIfHit(look.transform.position, spellSelects))
+                if (spellSelect.SelectIfHit(look.transform.position, spellSelects, isLeftSprite))
                 {
                     hand.SetSpellIndex(hand.Spells.IndexOf(spellSelect.SelectedSpell));
                 }
@@ -131,9 +131,14 @@ public class Spell_Wheel : MonoBehaviour
     {
         foreach (Spell_Select spellSelect in spellSelects)
         {
-            if (spellSelect.SelectedSpell == leftHand.ActiveSpell || spellSelect.SelectedSpell == rightHand.ActiveSpell)
+            if (spellSelect.SelectedSpell == leftHand.ActiveSpell)
             {
-                spellSelect.Select();
+                spellSelect.Select(true);
+            }
+
+            if(spellSelect.SelectedSpell == rightHand.ActiveSpell)
+            {
+                spellSelect.Select(false);
             }
         }
     }
@@ -143,9 +148,14 @@ public class Spell_Wheel : MonoBehaviour
     {
         for (int i = 0; i < spellSelects.Count; i++)
         {
-            if (spellSelects[i].SelectedSpell != leftHand.ActiveSpell && spellSelects[i].SelectedSpell != rightHand.ActiveSpell)
+            if (spellSelects[i].SelectedSpell != leftHand.ActiveSpell)
             {
-                spellSelects[i].UnSelect();
+                spellSelects[i].UnSelect(true);
+            }
+
+            if(spellSelects[i].SelectedSpell != rightHand.ActiveSpell)
+            {
+                spellSelects[i].UnSelect(false);
             }
         }
     }
