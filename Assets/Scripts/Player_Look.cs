@@ -51,15 +51,14 @@ public class Player_Look : MonoBehaviour
     //private bool interpFOV = false; //implement FOV lerp later   
 
     [SerializeField]
-    private Transform fpsrig;
+    private GameObject fpsrig; //Turned into Gameobject - 31/3 - 2023 by Daniel Svensson.
     private Vector3 weaponSway;
     private float weaponSwayMultiplier = 0.5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        fpsrig = Instantiate(fpsrig);
-        fpsrig.parent = VirtualCamera.transform;
+        fpsrig.transform.parent = VirtualCamera.transform;
     }
 
     // Update is called once per frame
@@ -69,7 +68,7 @@ public class Player_Look : MonoBehaviour
         if(Time.timeScale > 0)
         {
             VirtualCamera.transform.rotation = Quaternion.Slerp(VirtualCamera.transform.rotation, Quaternion.Euler(-LookVector.y, LookVector.x, LeaningValue), TAmount);
-            fpsrig.localRotation = Quaternion.Slerp(fpsrig.localRotation, WeaponSway, 8f * Time.deltaTime);
+            fpsrig.transform.localRotation = Quaternion.Slerp(fpsrig.transform.localRotation, WeaponSway, 8f * Time.deltaTime);
         }        
         
         //Update headbobbing/leaning
@@ -84,7 +83,7 @@ public class Player_Look : MonoBehaviour
     {
         //Update position
         VirtualCamera.transform.position = transform.position + Vector3.up * BobbingValue + Right * SwayingValue;
-        fpsrig.position = transform.position + -VirtualCamera.transform.up * 0.25f;
+        fpsrig.transform.position = transform.position + -VirtualCamera.transform.up * 0.25f;
     }
 
     public CinemachineVirtualCamera VirtualCamera
@@ -152,7 +151,7 @@ public class Player_Look : MonoBehaviour
     }
     public float OTAmount
     {
-        get { if (Vector3.Dot(fpsrig.forward, VirtualCamera.transform.forward) > 0.45f) { return Time.deltaTime * 15f; } else { return 1f; } }
+        get { if (Vector3.Dot(fpsrig.transform.forward, VirtualCamera.transform.forward) > 0.45f) { return Time.deltaTime * 15f; } else { return 1f; } }
         //set { t = value; }
     }
 

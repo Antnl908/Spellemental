@@ -689,6 +689,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 664198113421658132, guid: 54e20032884c85642a91d62545f51f35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1896577773665415566, guid: 54e20032884c85642a91d62545f51f35, type: 3}
       propertyPath: m_Name
       value: Player
@@ -737,10 +741,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2101647347496584581, guid: 54e20032884c85642a91d62545f51f35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2862401888132647007, guid: 54e20032884c85642a91d62545f51f35, type: 3}
       propertyPath: heart
       value: 
       objectReference: {fileID: 693037474}
+    - target: {fileID: 3071993163649015950, guid: 54e20032884c85642a91d62545f51f35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3245326280954914847, guid: 54e20032884c85642a91d62545f51f35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164507242090027264, guid: 54e20032884c85642a91d62545f51f35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4672400327060512025, guid: 54e20032884c85642a91d62545f51f35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5566858272368778473, guid: 54e20032884c85642a91d62545f51f35, type: 3}
       propertyPath: look
       value: 
@@ -749,6 +773,14 @@ PrefabInstance:
       propertyPath: directionIndicator
       value: 
       objectReference: {fileID: 1124988557}
+    - target: {fileID: 7424798189351293814, guid: 54e20032884c85642a91d62545f51f35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190394203195807104, guid: 54e20032884c85642a91d62545f51f35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54e20032884c85642a91d62545f51f35, type: 3}
 --- !u!114 &693037474 stripped
