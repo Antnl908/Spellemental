@@ -52,6 +52,7 @@ public class Spell_Wheel : MonoBehaviour
 
         controls.Player1.Enable();
 
+        DeactivateUnusedSpellSelects();
         ActivateSpellSelects();
 
         wheel.SetActive(false);
@@ -62,18 +63,18 @@ public class Spell_Wheel : MonoBehaviour
     {
         if(wheel.activeInHierarchy)
         {
-            if (wasRecentlyActivated)
-            {
-                ActivateSpellSelects();
-
-                DeactivateUnusedSpellSelects();
-
-                wasRecentlyActivated = false;
-            }
-
             Vector2 rotation = controls.Player1.Look.ReadValue<Vector2>();
 
             wheel.transform.Rotate(rotation.y * rotationAmount * Time.unscaledDeltaTime * Vector3.right, Space.Self);
+        }
+
+        if (wasRecentlyActivated)
+        {
+            ActivateSpellSelects();
+
+            DeactivateUnusedSpellSelects();
+
+            wasRecentlyActivated = false;
         }
     }
 
