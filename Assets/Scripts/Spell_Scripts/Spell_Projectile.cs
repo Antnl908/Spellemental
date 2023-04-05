@@ -55,6 +55,8 @@ public class Spell_Projectile : Pooling_Object
     [SerializeField]
     private float spawnOffset;
 
+    private bool gotAHit = false;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -75,6 +77,8 @@ public class Spell_Projectile : Pooling_Object
         this.effectDamage = effectDamage;
         this.effectBuildUp = effectBuildUp;
         this.destructionTime = destructionTime;
+
+        gotAHit = false;
 
         transform.SetPositionAndRotation(position + (direction.normalized * spawnOffset), rotation);
 
@@ -113,6 +117,8 @@ public class Spell_Projectile : Pooling_Object
                 if (damagable != null)
                 {
                     gotAKill = (bool)(damagable?.TryToDestroyDamageable(damage, spellType));
+
+                    gotAHit = true;
                 }
 
                 if (gotAKill)
@@ -140,8 +146,20 @@ public class Spell_Projectile : Pooling_Object
                 stationary.Initialize(hitInfo.point, rotation, stationarySpellPool);
             }
         }
+        else
+        {
+            Collider[] terrainColliders = Physics.OverlapCapsule(point0.position, point1.position, damageRadius * 2, terrainLayer);
 
-        pool.Release(this);
+            if(terrainColliders.Length > 0)
+            {
+                gotAHit = true;
+            }
+        }
+
+        if (gotAHit)
+        {
+            pool.Release(this);
+        }       
     }
 
     public override void Initialize(Vector3 position, Quaternion rotation, Vector3 direction)
