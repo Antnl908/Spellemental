@@ -44,6 +44,8 @@ public class NoiseGeneration : MonoBehaviour
         controls = new();
 
         controls.Player1.RightSpell.performed += CaptureScreenShot;
+
+        controls.Player1.Enable();
     }
 
     private void Update()
@@ -93,7 +95,7 @@ public class NoiseGeneration : MonoBehaviour
     {
         byte[] bytes = currentTex.EncodeToPNG();
 
-        var directionPath = Application.dataPath + "/../Images/NoiseImages/";
+        var directionPath = Application.dataPath + "/Images/NoiseImages/";
 
         if(!Directory.Exists(directionPath))
         {
@@ -101,5 +103,7 @@ public class NoiseGeneration : MonoBehaviour
         }
 
         File.WriteAllBytes(directionPath + name + ".png", bytes);
+
+        Debug.Log("Done with saving png!");
     }
 }
