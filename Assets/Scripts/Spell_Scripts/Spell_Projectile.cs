@@ -104,13 +104,13 @@ public class Spell_Projectile : Pooling_Object
 
     private void CheckHits()
     {
-        Collider[] colliders = Physics.OverlapCapsule(point0.position, point1.position, damageRadius, enemyLayer);
+        Collider[] enemyColliders = Physics.OverlapCapsule(point0.position, point1.position, damageRadius, enemyLayer);
 
-        for (int i = 0; i < colliders.Length; i++)
+        for (int i = 0; i < enemyColliders.Length; i++)
         {
-            if (colliders[i].gameObject != gameObject)
+            if (enemyColliders[i].gameObject != gameObject)
             {
-                IDamageable damagable = colliders[i].transform.GetComponent<IDamageable>();
+                IDamageable damagable = enemyColliders[i].transform.GetComponent<IDamageable>();
 
                 bool gotAKill = false;
 
@@ -126,7 +126,7 @@ public class Spell_Projectile : Pooling_Object
                     Player_Health.killCount++;
                 }
 
-                IMagicEffect magicEffect = colliders[i].transform.GetComponent<IMagicEffect>();
+                IMagicEffect magicEffect = enemyColliders[i].transform.GetComponent<IMagicEffect>();
 
                 magicEffect?.ApplyMagicEffect(effectDamage, effectBuildUp, spellType);
             }
@@ -146,11 +146,12 @@ public class Spell_Projectile : Pooling_Object
                 stationary.Initialize(hitInfo.point, rotation, stationarySpellPool);
             }
         }
-        else
+        
+        if(enemyColliders.Length <= 0)
         {
             Collider[] terrainColliders = Physics.OverlapCapsule(point0.position, point1.position, damageRadius * 2, terrainLayer);
 
-            if(terrainColliders.Length > 0)
+            if (terrainColliders.Length > 0)
             {
                 gotAHit = true;
             }
