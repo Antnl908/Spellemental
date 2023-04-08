@@ -26,9 +26,9 @@ public class NoiseGeneration : MonoBehaviour
     private bool isActive = false;
 
     [SerializeField]
-    private string name = "Noise1";
+    private string imageName = "Noise1";
 
-    private Renderer renderer;
+    private Renderer imageRenderer;
 
     private Player_Controls controls;
 
@@ -36,7 +36,7 @@ public class NoiseGeneration : MonoBehaviour
 
     private void Awake()
     {
-        renderer= GetComponent<Renderer>();
+        imageRenderer= GetComponent<Renderer>();
 
         offsetX = Random.Range(0, 999999);
         offsetY = Random.Range(0, 999999);
@@ -54,7 +54,7 @@ public class NoiseGeneration : MonoBehaviour
         {
             currentTex = NewNoiseTexture();
 
-            renderer.material.mainTexture = currentTex;
+            imageRenderer.material.mainTexture = currentTex;
         }
     }
 
@@ -102,7 +102,7 @@ public class NoiseGeneration : MonoBehaviour
             Directory.CreateDirectory(directionPath);
         }
 
-        File.WriteAllBytes(directionPath + name + ".png", bytes);
+        File.WriteAllBytes(directionPath + imageName + ".png", bytes);
 
         Debug.Log("Done with saving png!");
     }

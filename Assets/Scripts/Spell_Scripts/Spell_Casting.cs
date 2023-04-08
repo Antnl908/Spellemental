@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,33 @@ public class Spell_Casting : MonoBehaviour
     [SerializeField]
     private List<Spell_Recipe> recipes;
 
+    [Serializable]
+    public class HandColorsForSpells
+    {
+        [SerializeField]
+        private Spell.SpellType leftHandSpell;
+        [SerializeField]
+        private Spell.SpellType rightHandSpell;
+
+        public Spell.SpellType Left { get => leftHandSpell; }
+
+        public Spell.SpellType Right { get => rightHandSpell; }
+
+        [SerializeField]
+        private Color handColor;
+
+        public Color HandColor { get => handColor; }
+    }
+
+    [SerializeField]
+    private List<HandColorsForSpells> handColors;
+
+    private readonly Dictionary<Spell.SpellType[], Color> handColorsForSpellCombinations = new();
+
+    public static Color HandColor { get; private set; }
+
+    private Spell.SpellType[] handSpellTypes;
+
     private Spell beamSpell;
 
     private bool isCasting = false;
@@ -35,6 +63,17 @@ public class Spell_Casting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        foreach(var handColor in handColors)
+        {
+            handColorsForSpellCombinations.Add(new Spell.SpellType[] { handColor.Left, handColor.Right }, handColor.HandColor);
+
+            Debug.Log("Added 1 color");
+        }
+
+        Debug.Log(handColorsForSpellCombinations.Count.ToString());
+
+        handSpellTypes = new Spell.SpellType[] { leftHand.ActiveSpell.Type, rightHand.ActiveSpell.Type };
+
         controls = new();
 
         controls.Player1.LeftSpell.performed += leftHand.CastActiveSpell;
@@ -52,6 +91,10 @@ public class Spell_Casting : MonoBehaviour
         leftHand.Player_Look = player_Look;
         rightHand.Player_Look = player_Look;
 
+        SetHandColor();
+
+        leftHand.SwitchedSpellEvent += SetHandColor;
+        rightHand.SwitchedSpellEvent += SetHandColor;
     }
 
     // Update is called once per frame
@@ -107,5 +150,10 @@ public class Spell_Casting : MonoBehaviour
     {
         isCasting = false;
         timeUntilCast = 0;
+    }
+
+    private void SetHandColor()
+    {
+        HandColor = handColorsForSpellCombinations[handSpellTypes];
     }
 }
