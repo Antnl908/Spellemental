@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -44,9 +45,7 @@ public class Spell_Casting : MonoBehaviour
     [SerializeField]
     private List<HandColorsForSpells> handColors;
 
-    private readonly Dictionary<Spell.SpellType[], Color> handColorsForSpellCombinations = new();
-
-    public static Color HandColor { get; private set; }
+    private Color colorOnHands;
 
     private Spell.SpellType[] handSpellTypes;
 
@@ -63,14 +62,6 @@ public class Spell_Casting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach(var handColor in handColors)
-        {
-            handColorsForSpellCombinations.Add(new Spell.SpellType[] { handColor.Left, handColor.Right }, handColor.HandColor);
-
-            Debug.Log("Added 1 color");
-        }
-
-        Debug.Log(handColorsForSpellCombinations.Count.ToString());
 
         handSpellTypes = new Spell.SpellType[] { leftHand.ActiveSpell.Type, rightHand.ActiveSpell.Type };
 
@@ -152,8 +143,21 @@ public class Spell_Casting : MonoBehaviour
         timeUntilCast = 0;
     }
 
-    private void SetHandColor()
+    public void SetHandColor()
     {
-        HandColor = handColorsForSpellCombinations[handSpellTypes];
+        for(int i = 0; i < handColors.Count; i++)
+        {
+            if (handSpellTypes[0] == handColors[i].Left && handSpellTypes[1] == handColors[i].Right)
+            {
+                colorOnHands = handColors[i].HandColor;
+
+                Debug.Log(colorOnHands);
+            }
+        }
+    }
+
+    public Color HandColor()
+    {
+        return colorOnHands;
     }
 }
