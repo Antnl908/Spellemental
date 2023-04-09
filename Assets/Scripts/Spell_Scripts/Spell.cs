@@ -71,5 +71,8 @@ public class Spell : ScriptableObject
         Ice,
         Earth,
         Water,
+        Lightning,
+        Wind,
+        None,
     }
 }

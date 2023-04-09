@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Spell_Select : MonoBehaviour
 {
-    private Collider collider;
+    private Collider colliderSelect;
 
     [SerializeField]
     private Image imageLeft;
@@ -34,7 +34,7 @@ public class Spell_Select : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        collider = GetComponent<Collider>();
+        colliderSelect = GetComponent<Collider>();
 
         UnSelect(true);
         UnSelect(false);

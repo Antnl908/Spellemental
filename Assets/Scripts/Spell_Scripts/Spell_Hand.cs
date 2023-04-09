@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,10 +28,35 @@ public class Spell_Hand : MonoBehaviour
 
     private float timeUntilCast = 0;
 
-    // Start is called before the first frame update
-    void Start()
+    public event EventHandler OnSwitchedSpell;
+
+    [Serializable]
+    public class Effect
     {
-        
+        [SerializeField]
+        private Spell.SpellType spellType;
+
+        public Spell.SpellType SpellType { get { return spellType; } }
+
+        [SerializeField]
+        private GameObject spellEffect;
+
+        public GameObject SpellEffect { get { return spellEffect; } }
+    }
+
+    [SerializeField]
+    private List<Effect> effects;
+
+    private Dictionary<Spell.SpellType, GameObject> spellEffects = new();
+
+    private void Awake()
+    {
+        foreach(var effect in effects)
+        {
+            spellEffects.Add(effect.SpellType, effect.SpellEffect);
+        }
+
+        SetSpellEffect();
     }
 
     // Update is called once per frame
@@ -69,6 +95,10 @@ public class Spell_Hand : MonoBehaviour
         activeSpellIndex++;
 
         WrapSpellIndex();
+
+        SetSpellEffect();
+
+        OnSwitchedSpell?.Invoke(this, EventArgs.Empty);
     }
 
     public void SetSpellIndex(int index)
@@ -76,6 +106,10 @@ public class Spell_Hand : MonoBehaviour
         activeSpellIndex = index;
 
         WrapSpellIndex();
+
+        SetSpellEffect();
+
+        OnSwitchedSpell?.Invoke(this, EventArgs.Empty);
     }
 
     private void WrapSpellIndex()
@@ -90,6 +124,16 @@ public class Spell_Hand : MonoBehaviour
     {
         isCasting = false;
         timeUntilCast = 0;
+    }
+
+    private void SetSpellEffect()
+    {
+        foreach(var effect in spellEffects)
+        {
+            effect.Value.SetActive(false);
+        }
+
+        spellEffects[ActiveSpell.Type].SetActive(true);
     }
 
     public Player_Look Player_Look

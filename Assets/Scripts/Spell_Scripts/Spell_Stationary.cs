@@ -8,16 +8,12 @@ public class Spell_Stationary : Pooling_Object
 {
     //Made by Daniel.
 
-    [SerializeField]
     private int damage;
 
-    [SerializeField]
     private int effectDamage;
 
-    [SerializeField]
     private int effectBuildUp;
 
-    [SerializeField]
     private Spell.SpellType spellType;
 
     [SerializeField]
@@ -25,7 +21,6 @@ public class Spell_Stationary : Pooling_Object
 
     private IObjectPool<Pooling_Object> pool;
 
-    [SerializeField]
     private float destructionTime = 1f;
 
     private float currentDestructionTime;

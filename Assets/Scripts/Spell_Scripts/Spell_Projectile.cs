@@ -55,6 +55,8 @@ public class Spell_Projectile : Pooling_Object
     [SerializeField]
     private float spawnOffset;
 
+    private bool gotAHit = false;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -75,6 +77,8 @@ public class Spell_Projectile : Pooling_Object
         this.effectDamage = effectDamage;
         this.effectBuildUp = effectBuildUp;
         this.destructionTime = destructionTime;
+
+        gotAHit = false;
 
         transform.SetPositionAndRotation(position + (direction.normalized * spawnOffset), rotation);
 
@@ -100,19 +104,21 @@ public class Spell_Projectile : Pooling_Object
 
     private void CheckHits()
     {
-        Collider[] colliders = Physics.OverlapCapsule(point0.position, point1.position, damageRadius, enemyLayer);
+        Collider[] enemyColliders = Physics.OverlapCapsule(point0.position, point1.position, damageRadius, enemyLayer);
 
-        for (int i = 0; i < colliders.Length; i++)
+        for (int i = 0; i < enemyColliders.Length; i++)
         {
-            if (colliders[i].gameObject != gameObject)
+            if (enemyColliders[i].gameObject != gameObject)
             {
-                IDamageable damagable = colliders[i].transform.GetComponent<IDamageable>();
+                IDamageable damagable = enemyColliders[i].transform.GetComponent<IDamageable>();
 
                 bool gotAKill = false;
 
                 if (damagable != null)
                 {
                     gotAKill = (bool)(damagable?.TryToDestroyDamageable(damage, spellType));
+
+                    gotAHit = true;
                 }
 
                 if (gotAKill)
@@ -120,7 +126,7 @@ public class Spell_Projectile : Pooling_Object
                     Player_Health.killCount++;
                 }
 
-                IMagicEffect magicEffect = colliders[i].transform.GetComponent<IMagicEffect>();
+                IMagicEffect magicEffect = enemyColliders[i].transform.GetComponent<IMagicEffect>();
 
                 magicEffect?.ApplyMagicEffect(effectDamage, effectBuildUp, spellType);
             }
@@ -140,8 +146,21 @@ public class Spell_Projectile : Pooling_Object
                 stationary.Initialize(hitInfo.point, rotation, stationarySpellPool);
             }
         }
+        
+        if(enemyColliders.Length <= 0)
+        {
+            Collider[] terrainColliders = Physics.OverlapCapsule(point0.position, point1.position, damageRadius * 2, terrainLayer);
 
-        pool.Release(this);
+            if (terrainColliders.Length > 0)
+            {
+                gotAHit = true;
+            }
+        }
+
+        if (gotAHit)
+        {
+            pool.Release(this);
+        }       
     }
 
     public override void Initialize(Vector3 position, Quaternion rotation, Vector3 direction)

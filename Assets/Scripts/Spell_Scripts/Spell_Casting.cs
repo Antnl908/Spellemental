@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,6 +23,31 @@ public class Spell_Casting : MonoBehaviour
 
     [SerializeField]
     private List<Spell_Recipe> recipes;
+
+    [Serializable]
+    public class HandColorsForSpells
+    {
+        [SerializeField]
+        private Spell.SpellType leftHandSpell;
+        [SerializeField]
+        private Spell.SpellType rightHandSpell;
+
+        public Spell.SpellType Left { get => leftHandSpell; }
+
+        public Spell.SpellType Right { get => rightHandSpell; }
+
+        [SerializeField]
+        private Color handColor;
+
+        public Color HandColor { get => handColor; }
+    }
+
+    [SerializeField]
+    private List<HandColorsForSpells> handColors;
+
+    private Color colorOnHands;
+
+    private Spell.SpellType[] handSpellTypes = null;
 
     private Spell beamSpell;
 
@@ -52,6 +79,10 @@ public class Spell_Casting : MonoBehaviour
         leftHand.Player_Look = player_Look;
         rightHand.Player_Look = player_Look;
 
+        SetHandColor(this, EventArgs.Empty);
+
+        leftHand.OnSwitchedSpell += SetHandColor;
+        rightHand.OnSwitchedSpell += SetHandColor;
     }
 
     // Update is called once per frame
@@ -107,5 +138,32 @@ public class Spell_Casting : MonoBehaviour
     {
         isCasting = false;
         timeUntilCast = 0;
+    }
+
+    public void SetHandColor(object sender, EventArgs e)
+    {
+        if(handSpellTypes == null)
+        {
+            handSpellTypes = new Spell.SpellType[] { leftHand.ActiveSpell.Type, rightHand.ActiveSpell.Type };
+        }
+        else
+        {
+            handSpellTypes[0] = leftHand.ActiveSpell.Type;
+            handSpellTypes[1] = rightHand.ActiveSpell.Type;
+        }
+
+        for (int i = 0; i < handColors.Count; i++)
+        {
+            if ((handSpellTypes[0] == handColors[i].Left && handSpellTypes[1] == handColors[i].Right) ||
+                (handSpellTypes[1] == handColors[i].Left && handSpellTypes[0] == handColors[i].Right))
+            {
+                colorOnHands = handColors[i].HandColor;
+            }
+        }
+    }
+
+    public Color HandColor()
+    {
+        return colorOnHands;
     }
 }

@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b42b19c1d3328d4c8627c8f3da798cd, type: 3}
-  m_Name: Wind
+  m_Name: Lightning
   m_EditorClassIdentifier: 
-  type: 5
-  damage: 10
+  type: 4
+  damage: 3
   effectDamage: 5
-  effectBuildUp: 10
+  effectBuildUp: 15
   destructionTime: 0.05
   travelDistance: 10
-  isBeam: 0
+  isBeam: 1
   isProjectileNotStationary: 1
   possibleStationarySpawn:
     serializedVersion: 2
     m_Bits: 0
-  objectPoolName: Wind
+  objectPoolName: Error
   range: 150
   layerMask:
     serializedVersion: 2
     m_Bits: 129
   cone: 1
-  radius: 0.85
+  radius: 0.855
