@@ -154,7 +154,8 @@ public class Spell_Casting : MonoBehaviour
 
         for (int i = 0; i < handColors.Count; i++)
         {
-            if (handSpellTypes[0] == handColors[i].Left && handSpellTypes[1] == handColors[i].Right)
+            if ((handSpellTypes[0] == handColors[i].Left && handSpellTypes[1] == handColors[i].Right) ||
+                (handSpellTypes[1] == handColors[i].Left && handSpellTypes[0] == handColors[i].Right))
             {
                 colorOnHands = handColors[i].HandColor;
             }
