@@ -28,7 +28,7 @@ public class Spell_Hand : MonoBehaviour
 
     private float timeUntilCast = 0;
 
-    public event Action SwitchedSpellEvent = delegate { };
+    public event EventHandler OnSwitchedSpell;
 
     [Serializable]
     public class Effect
@@ -98,7 +98,7 @@ public class Spell_Hand : MonoBehaviour
 
         SetSpellEffect();
 
-        SwitchedSpellEvent.Invoke();
+        OnSwitchedSpell?.Invoke(this, EventArgs.Empty);
     }
 
     public void SetSpellIndex(int index)
@@ -109,7 +109,7 @@ public class Spell_Hand : MonoBehaviour
 
         SetSpellEffect();
 
-        SwitchedSpellEvent.Invoke();
+        OnSwitchedSpell?.Invoke(this, EventArgs.Empty);
     }
 
     private void WrapSpellIndex()

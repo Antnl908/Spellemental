@@ -1476,6 +1476,54 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player VFX
       objectReference: {fileID: 0}
+    - target: {fileID: 2581287094138577525, guid: 89d81112739ccfb4d85408134edf8445, type: 3}
+      propertyPath: handColors.Array.data[0].handColor.b
+      value: 0.05941554
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581287094138577525, guid: 89d81112739ccfb4d85408134edf8445, type: 3}
+      propertyPath: handColors.Array.data[0].handColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581287094138577525, guid: 89d81112739ccfb4d85408134edf8445, type: 3}
+      propertyPath: handColors.Array.data[0].handColor.r
+      value: 0.6886792
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581287094138577525, guid: 89d81112739ccfb4d85408134edf8445, type: 3}
+      propertyPath: handColors.Array.data[1].handColor.b
+      value: 0.6415094
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581287094138577525, guid: 89d81112739ccfb4d85408134edf8445, type: 3}
+      propertyPath: handColors.Array.data[1].handColor.g
+      value: 0.17792808
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581287094138577525, guid: 89d81112739ccfb4d85408134edf8445, type: 3}
+      propertyPath: handColors.Array.data[1].handColor.r
+      value: 0.47058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581287094138577525, guid: 89d81112739ccfb4d85408134edf8445, type: 3}
+      propertyPath: handColors.Array.data[2].handColor.b
+      value: 0.6431373
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581287094138577525, guid: 89d81112739ccfb4d85408134edf8445, type: 3}
+      propertyPath: handColors.Array.data[2].handColor.g
+      value: 0.18039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581287094138577525, guid: 89d81112739ccfb4d85408134edf8445, type: 3}
+      propertyPath: handColors.Array.data[2].handColor.r
+      value: 0.47058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581287094138577525, guid: 89d81112739ccfb4d85408134edf8445, type: 3}
+      propertyPath: handColors.Array.data[3].handColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581287094138577525, guid: 89d81112739ccfb4d85408134edf8445, type: 3}
+      propertyPath: handColors.Array.data[3].handColor.g
+      value: 0.11698109
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581287094138577525, guid: 89d81112739ccfb4d85408134edf8445, type: 3}
+      propertyPath: handColors.Array.data[3].handColor.r
+      value: 0.15258981
+      objectReference: {fileID: 0}
     - target: {fileID: 8932886344921376492, guid: 89d81112739ccfb4d85408134edf8445, type: 3}
       propertyPath: heart
       value: 

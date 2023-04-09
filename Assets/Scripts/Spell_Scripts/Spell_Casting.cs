@@ -47,7 +47,7 @@ public class Spell_Casting : MonoBehaviour
 
     private Color colorOnHands;
 
-    private Spell.SpellType[] handSpellTypes;
+    private Spell.SpellType[] handSpellTypes = null;
 
     private Spell beamSpell;
 
@@ -62,9 +62,6 @@ public class Spell_Casting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        handSpellTypes = new Spell.SpellType[] { leftHand.ActiveSpell.Type, rightHand.ActiveSpell.Type };
-
         controls = new();
 
         controls.Player1.LeftSpell.performed += leftHand.CastActiveSpell;
@@ -82,10 +79,10 @@ public class Spell_Casting : MonoBehaviour
         leftHand.Player_Look = player_Look;
         rightHand.Player_Look = player_Look;
 
-        SetHandColor();
+        SetHandColor(this, EventArgs.Empty);
 
-        leftHand.SwitchedSpellEvent += SetHandColor;
-        rightHand.SwitchedSpellEvent += SetHandColor;
+        leftHand.OnSwitchedSpell += SetHandColor;
+        rightHand.OnSwitchedSpell += SetHandColor;
     }
 
     // Update is called once per frame
@@ -143,15 +140,23 @@ public class Spell_Casting : MonoBehaviour
         timeUntilCast = 0;
     }
 
-    public void SetHandColor()
+    public void SetHandColor(object sender, EventArgs e)
     {
-        for(int i = 0; i < handColors.Count; i++)
+        if(handSpellTypes == null)
+        {
+            handSpellTypes = new Spell.SpellType[] { leftHand.ActiveSpell.Type, rightHand.ActiveSpell.Type };
+        }
+        else
+        {
+            handSpellTypes[0] = leftHand.ActiveSpell.Type;
+            handSpellTypes[1] = rightHand.ActiveSpell.Type;
+        }
+
+        for (int i = 0; i < handColors.Count; i++)
         {
             if (handSpellTypes[0] == handColors[i].Left && handSpellTypes[1] == handColors[i].Right)
             {
                 colorOnHands = handColors[i].HandColor;
-
-                Debug.Log(colorOnHands);
             }
         }
     }
