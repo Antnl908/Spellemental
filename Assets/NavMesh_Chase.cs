@@ -20,10 +20,17 @@ public class NavMesh_Chase : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
-        if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, animator.GetComponent<Transform>().position) > 5)
+        if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, animator.GetComponent<Transform>().position) > 10)
         {
             Debug.Log("Set Chase to Idle State");
             animator.SetTrigger("Idle");
+
+        }
+
+        if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, animator.GetComponent<Transform>().position) < 2)
+        {
+            Debug.Log("Set Chase to Attack State");
+            animator.SetTrigger("Attack");
 
         }
 
