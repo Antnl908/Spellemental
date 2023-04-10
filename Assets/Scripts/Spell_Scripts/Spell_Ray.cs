@@ -72,7 +72,7 @@ public class Spell_Ray : Spell
 
         }
 
-        Debug.Log("Count: " + count + " Targets: "+targets.Count);
+        //Debug.Log("Count: " + count + " Targets: "+targets.Count);
 
     }
 
@@ -103,7 +103,7 @@ public class Spell_Ray : Spell
         if (Vector3.Dot(sightDir.normalized, dir.normalized) >= radius)
         {
             Debug.DrawRay(pos, sightDir, Color.blue, 10f);
-            Debug.Log("Dot: " + Vector3.Dot(sightDir, dir));
+            //Debug.Log("Dot: " + Vector3.Dot(sightDir, dir));
             return true;
         }
         Debug.DrawRay(pos, sightDir, Color.yellow, 10f);
@@ -118,7 +118,7 @@ public class Spell_Ray : Spell
         if(Physics.Raycast(ray, out hit, range, layerMask))
         {
             Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.green, 10f);
-            Debug.Log("Object name: " + hit.collider.gameObject.name);
+            //Debug.Log("Object name: " + hit.collider.gameObject.name);
             if (hit.collider.gameObject == obj)
             {
                 return true;

@@ -6,7 +6,8 @@ public class Spell_Targeting : MonoBehaviour
 {
     [SerializeField] float range;
     int count;
-    readonly Collider[] colliders = new Collider[20]; //Used for overlap sphere
+    //readonly Collider[] colliders = new Collider[20]; //Used for overlap sphere
+    readonly Collider[] colliders = new Collider[30]; //Used for overlap sphere
     readonly List<GameObject> targets = new(); //Objects that are within the bounds set by the spell settings
     [SerializeField] LayerMask layerMask;
     [SerializeField] bool cone;
@@ -91,7 +92,7 @@ public class Spell_Targeting : MonoBehaviour
 
         }
 
-        Debug.Log("Count: " + count + " Targets: " + targets.Count);
+        //Debug.Log("Count: " + count + " Targets: " + targets.Count);
 
     }
 
