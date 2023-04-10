@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,8 +11,12 @@ public class Spell_Hand : MonoBehaviour
     [SerializeField]
     private List<Spell> spells;
 
+    public List<Spell> Spells { get => spells; }
+
     [SerializeField]
     private Transform spellSpawn;
+
+    private Player_Look player_Look;
 
     private int activeSpellIndex = 0;
 
@@ -23,22 +28,47 @@ public class Spell_Hand : MonoBehaviour
 
     private float timeUntilCast = 0;
 
-    // Start is called before the first frame update
-    void Start()
+    public event EventHandler OnSwitchedSpell;
+
+    [Serializable]
+    public class Effect
     {
-        
+        [SerializeField]
+        private Spell.SpellType spellType;
+
+        public Spell.SpellType SpellType { get { return spellType; } }
+
+        [SerializeField]
+        private GameObject spellEffect;
+
+        public GameObject SpellEffect { get { return spellEffect; } }
+    }
+
+    [SerializeField]
+    private List<Effect> effects;
+
+    private Dictionary<Spell.SpellType, GameObject> spellEffects = new();
+
+    private void Awake()
+    {
+        foreach(var effect in effects)
+        {
+            spellEffects.Add(effect.SpellType, effect.SpellEffect);
+        }
+
+        SetSpellEffect();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isCasting)
+        if(isCasting && Time.timeScale > 0)
         {
             timeUntilCast -= Time.deltaTime;
 
             if(timeUntilCast <= 0 )
             {
-                ActiveSpell.CastSpell(spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+                ActiveSpell.CastSpell(Player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
 
                 timeUntilCast = castTime;
             }
@@ -47,13 +77,16 @@ public class Spell_Hand : MonoBehaviour
 
     public void CastActiveSpell(InputAction.CallbackContext context)
     {
-        if (ActiveSpell.IsBeam)
+        if(Time.timeScale > 0)
         {
-            isCasting = !isCasting;
-        }
-        else
-        {
-            ActiveSpell.CastSpell(spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+            if (ActiveSpell.IsBeam)
+            {
+                isCasting = !isCasting;
+            }
+            else
+            {
+                ActiveSpell.CastSpell(Player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+            }
         }
     }
 
@@ -62,6 +95,10 @@ public class Spell_Hand : MonoBehaviour
         activeSpellIndex++;
 
         WrapSpellIndex();
+
+        SetSpellEffect();
+
+        OnSwitchedSpell?.Invoke(this, EventArgs.Empty);
     }
 
     public void SetSpellIndex(int index)
@@ -69,6 +106,10 @@ public class Spell_Hand : MonoBehaviour
         activeSpellIndex = index;
 
         WrapSpellIndex();
+
+        SetSpellEffect();
+
+        OnSwitchedSpell?.Invoke(this, EventArgs.Empty);
     }
 
     private void WrapSpellIndex()
@@ -83,5 +124,21 @@ public class Spell_Hand : MonoBehaviour
     {
         isCasting = false;
         timeUntilCast = 0;
+    }
+
+    private void SetSpellEffect()
+    {
+        foreach(var effect in spellEffects)
+        {
+            effect.Value.SetActive(false);
+        }
+
+        spellEffects[ActiveSpell.Type].SetActive(true);
+    }
+
+    public Player_Look Player_Look
+    {
+        get { return player_Look; }
+        set { player_Look = value; }
     }
 }

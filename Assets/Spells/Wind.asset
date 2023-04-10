@@ -12,18 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b42b19c1d3328d4c8627c8f3da798cd, type: 3}
   m_Name: Wind
   m_EditorClassIdentifier: 
-  type: 3
+  type: 5
   damage: 10
   effectDamage: 5
   effectBuildUp: 10
   destructionTime: 0.05
   travelDistance: 10
   isBeam: 0
-  projectile: {fileID: 0}
+  isProjectileNotStationary: 1
+  possibleStationarySpawn:
+    serializedVersion: 2
+    m_Bits: 0
   objectPoolName: Wind
-  range: 1155
+  range: 150
   layerMask:
     serializedVersion: 2
     m_Bits: 129
   cone: 1
-  radius: 0.4
+  radius: 0.85

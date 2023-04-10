@@ -21,7 +21,7 @@ public class Spell_Ray : Spell
     Ray ray = new();
     RaycastHit hit = new();
 
-    public override void CastSpell(Vector3 position, Quaternion rotation, Vector3 direction)
+    public override void CastSpell(Player_Look player_Look, Vector3 position, Quaternion rotation, Vector3 direction)
     {
         //GameObject spawnedProjectile = Instantiate(projectile, position, rotation);
 
@@ -40,7 +40,9 @@ public class Spell_Ray : Spell
                 //{
                 //    targets.Add(go);
                 //}
-                if (CheckTarget(go, position, direction))
+                //if (CheckTarget(go, position, direction))
+                //if (CheckTarget(go, ((CapsuleCollider)colliders[i]).height * 0.5f ,player_Look.VirtualCamera.transform.position, player_Look.VirtualCamera.transform.forward))
+                if (CheckTarget(go, colliders[i].bounds.size.y * 0.5f ,player_Look.VirtualCamera.transform.position, player_Look.VirtualCamera.transform.forward))
                 {
                     targets.Add(go);
                 }
@@ -66,27 +68,27 @@ public class Spell_Ray : Spell
 
             //}
             IDamageable damagable = targets[i].transform.GetComponent<IDamageable>();
-            damagable?.TryToDestroyDamageable(damage, null);
+            damagable?.TryToDestroyDamageable(damage, Type);
 
         }
 
-        Debug.Log("Count: " + count + " Targets: "+targets.Count);
+        //Debug.Log("Count: " + count + " Targets: "+targets.Count);
 
     }
 
-    bool CheckTarget(GameObject go, Vector3 pos, Vector3 dir)
+    bool CheckTarget(GameObject go, float offset, Vector3 pos, Vector3 dir)
     {
         //pos += Vector3.up * 1.5f;
         if(cone)
         {
-            if(IsInSight(go, pos, dir) && IsVisible(go, pos))
+            if(IsInSight(go, offset, pos, dir) && IsVisible(go, offset, pos))
             {
                 return true;
             }
         }
         else
         {
-            if (IsVisible(go, pos))
+            if (IsVisible(go, offset, pos))
             {
                 return true;
             }
@@ -94,23 +96,29 @@ public class Spell_Ray : Spell
         return false;
     }
 
-    bool IsInSight(GameObject obj, Vector3 pos, Vector3 dir)
+    bool IsInSight(GameObject obj, float offset, Vector3 pos, Vector3 dir)
     {
-        Vector3 sightDir = obj.transform.position - pos;
-        if(Vector3.Dot(sightDir, dir) >= radius)
+        Vector3 sightDir = obj.transform.position + (Vector3.up * offset) - pos;
+        
+        if (Vector3.Dot(sightDir.normalized, dir.normalized) >= radius)
         {
-            Debug.Log("Dot: " + Vector3.Dot(sightDir, dir));
+            Debug.DrawRay(pos, sightDir, Color.blue, 10f);
+            //Debug.Log("Dot: " + Vector3.Dot(sightDir, dir));
             return true;
         }
+        Debug.DrawRay(pos, sightDir, Color.yellow, 10f);
         return false;
     }
-    bool IsVisible(GameObject obj, Vector3 pos)
+    bool IsVisible(GameObject obj, float offset, Vector3 pos)
     {
         ray.origin = pos;
-        ray.direction = obj.transform.position - pos;
+        ray.direction = (obj.transform.position + (Vector3.up * offset) - pos).normalized;
+        //Debug.DrawRay(ray.origin, ray.direction, Color.green, 10f);
+        //if(Physics.Raycast(ray, out hit, range, layerMask))
         if(Physics.Raycast(ray, out hit, range, layerMask))
         {
-            Debug.Log("Dot: " + hit.collider.gameObject.name);
+            Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.green, 10f);
+            //Debug.Log("Object name: " + hit.collider.gameObject.name);
             if (hit.collider.gameObject == obj)
             {
                 return true;
@@ -120,6 +128,7 @@ public class Spell_Ray : Spell
                 return false;
             }
         }
+        Debug.DrawRay(ray.origin, ray.direction * 100f, Color.red, 10f);
         return false;
     }
 

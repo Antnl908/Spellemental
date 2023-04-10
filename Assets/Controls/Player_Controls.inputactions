@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SpellWheel",
+                    "type": "Button",
+                    "id": "6649e949-0d5b-4f0e-abc6-9dceb5b510e0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -225,11 +234,22 @@
                 {
                     "name": "",
                     "id": "a5b993a1-1ce4-4000-82b5-62bf668522f0",
-                    "path": "<Keyboard>/r",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "SwapRightSpell",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1c3086ae-3be1-4921-b7dd-0c39825441f1",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpellWheel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
