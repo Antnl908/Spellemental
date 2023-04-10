@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.UIElements;
 
 public class Spell_Projectile : Pooling_Object
 {
@@ -59,6 +60,12 @@ public class Spell_Projectile : Pooling_Object
 
     [SerializeField]
     private bool destroyOnHit = true;
+
+    [SerializeField]
+    private string effectObjectPoolName = "Error";
+
+    [SerializeField]
+    private int effectInstanceAmount = 3;
 
     private void Awake()
     {
@@ -142,6 +149,17 @@ public class Spell_Projectile : Pooling_Object
                 if (gotAKill)
                 {
                     Player_Health.killCount++;
+                }
+
+                if (effectObjectPoolName != "Error")
+                {
+                    for (int x = 0; x < effectInstanceAmount; x++)
+                    {
+                        Pooling_Object pooling_Object = Object_Pooler.Pools[effectObjectPoolName].Get();
+
+                        pooling_Object.Initialize(transform.position, Quaternion.identity,
+                                                     enemyColliders[i].transform.position, Object_Pooler.Pools[effectObjectPoolName]);
+                    }
                 }
             }
         }

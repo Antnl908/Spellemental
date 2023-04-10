@@ -85,3 +85,7 @@ MonoBehaviour:
     poolingObject: {fileID: 6294351746542280853, guid: a6b984902eb33904e954686ef7709c05, type: 3}
     poolCount: 20
     maxPoolCount: 80
+  - name: Lightning_Ball
+    poolingObject: {fileID: 3414324216020215887, guid: 3d24c64d4b3906b4ab9d60330e084580, type: 3}
+    poolCount: 20
+    maxPoolCount: 80
