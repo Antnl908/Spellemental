@@ -187,8 +187,12 @@ MonoBehaviour:
     m_Bits: 64
   capsuleColor: {r: 1, g: 0, b: 0, a: 1}
   stationarySpellPoolName: Error
+  spawnStationaryRangeAboveTransform: 0
   spawnStationaryRange: 0
   spawnOffset: 0.25
+  destroyOnHit: 1
+  effectObjectPoolName: Error
+  effectInstanceAmount: 3
 --- !u!54 &3334576805258467954
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -102,7 +102,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Glow: 0
-    - _MaxEmission: 0.2
+    - _MaxEmission: 0.3
     - _Max_Fresnel: 10
     - _Metallic: 0
     - _OcclusionStrength: 1
