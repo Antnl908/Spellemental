@@ -68,8 +68,12 @@ MonoBehaviour:
   - name: Damage_Indicator
     poolingObject: {fileID: -4284638386547729326, guid: 87df4a1a74fd2a348b46a50d5af78033, type: 3}
     poolCount: 100
-    maxPoolCount: 1000
+    maxPoolCount: 10000
   - name: Ice_Cloud
     poolingObject: {fileID: 6452314678556727206, guid: 61b8752e9134ddb47adfce9ff0f614fd, type: 3}
     poolCount: 10
     maxPoolCount: 50
+  - name: Lightning_Hit
+    poolingObject: {fileID: 4153450037329125271, guid: b7c82e4b42b0ba944993aa46599d920a, type: 3}
+    poolCount: 100
+    maxPoolCount: 10000

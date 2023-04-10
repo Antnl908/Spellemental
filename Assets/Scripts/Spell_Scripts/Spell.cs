@@ -8,16 +8,16 @@ public class Spell : ScriptableObject
     //Made by Daniel.
 
     [SerializeField]
-    private SpellType type;
+    protected SpellType type;
 
     [SerializeField]
     protected int damage;
 
     [SerializeField]
-    private int effectDamage = 5;
+    protected int effectDamage = 5;
 
     [SerializeField]
-    private int effectBuildUp = 10;
+    protected int effectBuildUp = 10;
 
     [Range(0.001f, 100f)]
     [SerializeField]

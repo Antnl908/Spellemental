@@ -177,7 +177,7 @@ public class Spell_Projectile : Pooling_Object
         }       
     }
 
-    public override void Initialize(Vector3 position, Quaternion rotation, Vector3 direction)
+    public override void Initialize(Vector3 position, Quaternion rotation, Vector3 direction, IObjectPool<Pooling_Object> pool)
     {
         rb.AddForce(direction, ForceMode.Impulse);
     }

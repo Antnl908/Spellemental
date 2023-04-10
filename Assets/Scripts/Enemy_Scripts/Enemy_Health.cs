@@ -235,6 +235,26 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
             {
                 FrostEffect(effectDamage, effectBuildUp);
             }
+            else if(spellType == Spell.SpellType.Lightning)
+            {
+                LightningEffect(effectDamage, effectBuildUp);
+            }
+        }
+    }
+
+    public void LightningEffect(int lightningDamage, int effectBuildUp)
+    {
+        this.effectBuildUp += effectBuildUp;
+
+        if (this.effectBuildUp >= 100 && !effectIsApplied)
+        {
+            ApplyWeaknessOrResistanceToDamage(ref lightningDamage, Spell.SpellType.Lightning);
+
+            ApplyEffect(lightningDamage);
+
+            effectType = EffectType.Lightning;
+
+            Debug.Log("Lightning effect");
         }
     }
 
@@ -244,5 +264,6 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
         Fire,
         Ice,
         Slowdown,
+        Lightning,
     }
 }
