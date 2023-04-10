@@ -19,7 +19,7 @@ public class Spell : ScriptableObject
     [SerializeField]
     private int effectBuildUp = 10;
 
-    [Range(0.001f, 10f)]
+    [Range(0.001f, 100f)]
     [SerializeField]
     private float destructionTime = 0.01f;
 

@@ -57,6 +57,9 @@ public class Spell_Projectile : Pooling_Object
 
     private bool gotAHit = false;
 
+    [SerializeField]
+    private bool destroyOnHit = true;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -99,7 +102,18 @@ public class Spell_Projectile : Pooling_Object
 
     private void OnTriggerEnter(Collider other)
     {
-        CheckHits();
+        if(destroyOnHit)
+        {
+            CheckHits();
+        }       
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(!destroyOnHit)
+        {
+            CheckHits();
+        }
     }
 
     private void CheckHits()
@@ -157,7 +171,7 @@ public class Spell_Projectile : Pooling_Object
             }
         }
 
-        if (gotAHit)
+        if (gotAHit && destroyOnHit)
         {
             pool.Release(this);
         }       

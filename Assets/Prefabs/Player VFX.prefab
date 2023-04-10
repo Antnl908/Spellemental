@@ -4028,6 +4028,8 @@ MonoBehaviour:
   recipes:
   - {fileID: 11400000, guid: 22358f35495909144b38cd755bf92e88, type: 2}
   - {fileID: 11400000, guid: a85568abfe2a69f419d94b38f4d8a710, type: 2}
+  - {fileID: 11400000, guid: fe1caab75bb16cf449d9138d4facd8fe, type: 2}
+  cooldownText: {fileID: 0}
   handColors:
   - leftHandSpell: 0
     rightHandSpell: 0
@@ -7035,6 +7037,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 24c863607be159f4a8e8efeb3b55a8d0, type: 2}
   - {fileID: 11400000, guid: 40f77652a6283234d8dcefba30af67e7, type: 2}
   spellSpawn: {fileID: 4592946973419656086}
+  cooldownText: {fileID: 0}
   effects:
   - spellType: 0
     spellEffect: {fileID: 745902296498734988}
@@ -7123,6 +7126,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: af7c4f4063df1bd4c856cbbe2c7fe10f, type: 2}
   - {fileID: 11400000, guid: 40f77652a6283234d8dcefba30af67e7, type: 2}
   spellSpawn: {fileID: 6544852001338642120}
+  cooldownText: {fileID: 0}
   effects:
   - spellType: 0
     spellEffect: {fileID: 745902296958246987}
