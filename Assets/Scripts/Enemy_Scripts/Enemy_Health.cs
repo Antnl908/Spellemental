@@ -25,11 +25,13 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 
     private bool canBeHitByEffect = true;
 
-    private const float timeUntilNextHit = 0.1f;
+    [SerializeField]
+    private float timeUntilNextHit = 0.1f;
 
     private float currentTimeUntilNextHit = 0;
 
-    private const float timeUntilNextEffectDamage = 0.5f;
+    [SerializeField]
+    private float timeUntilNextEffectDamage = 0.5f;
 
     private float currentTimeUntilNextEffectDamage = 0;
 
@@ -39,7 +41,8 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 
     private float timeUntilEffectDisappears = 0;
 
-    private const float effectDuration = 5;
+    [SerializeField] 
+    private float effectDuration = 5;
 
     private bool effectIsApplied = false;
 
@@ -47,6 +50,12 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 
     [SerializeField]
     private float damageIndicatorDestructiontime = 1f;
+
+    [SerializeField]
+    private int weaknessMultiplier = 2;
+
+    [SerializeField]
+    private int strengthMultiplier = 2;
 
     public void KnockBack(float knockBack)
     {
@@ -193,11 +202,11 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
     {
         if(type == weakness)
         {
-            damage *= 2;
+            damage *= weaknessMultiplier;
         }
         else if(type == resistance)
         {
-            damage /= 2;
+            damage /= strengthMultiplier;
         }
     }
 
@@ -216,13 +225,36 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
     //Tries to apply an effect of a certain type.
     public void ApplyMagicEffect(int effectDamage, int effectBuildUp, Spell.SpellType spellType)
     {
-        if(spellType == Spell.SpellType.Fire)
+        if(isDamageable)
         {
-            FireEffect(effectDamage, effectBuildUp);
+            if (spellType == Spell.SpellType.Fire)
+            {
+                FireEffect(effectDamage, effectBuildUp);
+            }
+            else if (spellType == Spell.SpellType.Ice)
+            {
+                FrostEffect(effectDamage, effectBuildUp);
+            }
+            else if(spellType == Spell.SpellType.Lightning)
+            {
+                LightningEffect(effectDamage, effectBuildUp);
+            }
         }
-        else if(spellType == Spell.SpellType.Ice)
+    }
+
+    public void LightningEffect(int lightningDamage, int effectBuildUp)
+    {
+        this.effectBuildUp += effectBuildUp;
+
+        if (this.effectBuildUp >= 100 && !effectIsApplied)
         {
-            FrostEffect(effectDamage, effectBuildUp);
+            ApplyWeaknessOrResistanceToDamage(ref lightningDamage, Spell.SpellType.Lightning);
+
+            ApplyEffect(lightningDamage);
+
+            effectType = EffectType.Lightning;
+
+            Debug.Log("Lightning effect");
         }
     }
 
@@ -232,5 +264,6 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
         Fire,
         Ice,
         Slowdown,
+        Lightning,
     }
 }

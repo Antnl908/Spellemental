@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6be037755cc5ac141a32e5c210f385fa, type: 3}
-  m_Name: Ice
+  m_Name: Lightning_Trap
   m_EditorClassIdentifier: 
-  type: 1
-  damage: 5
-  effectDamage: 2
-  effectBuildUp: 10
-  destructionTime: 3
-  cooldownTime: 0.5
-  travelDistance: 10
+  type: 4
+  damage: 30
+  effectDamage: 10
+  effectBuildUp: 100
+  destructionTime: 5
+  cooldownTime: 8
+  travelDistance: 100
   isBeam: 0
-  isProjectileNotStationary: 1
+  isProjectileNotStationary: 0
   possibleStationarySpawn:
     serializedVersion: 2
-    m_Bits: 0
-  objectPoolName: Ice
+    m_Bits: 192
+  objectPoolName: Lightning_Trap

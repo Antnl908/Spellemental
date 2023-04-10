@@ -17,7 +17,11 @@ MonoBehaviour:
   effectDamage: 0
   effectBuildUp: 10
   destructionTime: 3
+  cooldownTime: 5
   travelDistance: 10
   isBeam: 0
-  projectile: {fileID: 4575547422007608594, guid: 3bcb30acc0334d34aa7258d82cf021ad, type: 3}
+  isProjectileNotStationary: 1
+  possibleStationarySpawn:
+    serializedVersion: 2
+    m_Bits: 0
   objectPoolName: Water

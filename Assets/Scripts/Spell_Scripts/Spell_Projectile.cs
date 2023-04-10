@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.UIElements;
 
 public class Spell_Projectile : Pooling_Object
 {
@@ -57,6 +58,15 @@ public class Spell_Projectile : Pooling_Object
 
     private bool gotAHit = false;
 
+    [SerializeField]
+    private bool destroyOnHit = true;
+
+    [SerializeField]
+    private string effectObjectPoolName = "Error";
+
+    [SerializeField]
+    private int effectInstanceAmount = 3;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -99,7 +109,18 @@ public class Spell_Projectile : Pooling_Object
 
     private void OnTriggerEnter(Collider other)
     {
-        CheckHits();
+        if(destroyOnHit)
+        {
+            CheckHits();
+        }       
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(!destroyOnHit)
+        {
+            CheckHits();
+        }
     }
 
     private void CheckHits()
@@ -110,6 +131,10 @@ public class Spell_Projectile : Pooling_Object
         {
             if (enemyColliders[i].gameObject != gameObject)
             {
+                IMagicEffect magicEffect = enemyColliders[i].transform.GetComponent<IMagicEffect>();
+
+                magicEffect?.ApplyMagicEffect(effectDamage, effectBuildUp, spellType);
+
                 IDamageable damagable = enemyColliders[i].transform.GetComponent<IDamageable>();
 
                 bool gotAKill = false;
@@ -126,9 +151,16 @@ public class Spell_Projectile : Pooling_Object
                     Player_Health.killCount++;
                 }
 
-                IMagicEffect magicEffect = enemyColliders[i].transform.GetComponent<IMagicEffect>();
+                if (effectObjectPoolName != "Error")
+                {
+                    for (int x = 0; x < effectInstanceAmount; x++)
+                    {
+                        Pooling_Object pooling_Object = Object_Pooler.Pools[effectObjectPoolName].Get();
 
-                magicEffect?.ApplyMagicEffect(effectDamage, effectBuildUp, spellType);
+                        pooling_Object.Initialize(transform.position, Quaternion.identity,
+                                                     enemyColliders[i].transform.position, Object_Pooler.Pools[effectObjectPoolName]);
+                    }
+                }
             }
         }
 
@@ -157,13 +189,13 @@ public class Spell_Projectile : Pooling_Object
             }
         }
 
-        if (gotAHit)
+        if (gotAHit && destroyOnHit)
         {
             pool.Release(this);
         }       
     }
 
-    public override void Initialize(Vector3 position, Quaternion rotation, Vector3 direction)
+    public override void Initialize(Vector3 position, Quaternion rotation, Vector3 direction, IObjectPool<Pooling_Object> pool)
     {
         rb.AddForce(direction, ForceMode.Impulse);
     }
