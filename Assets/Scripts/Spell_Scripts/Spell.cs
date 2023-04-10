@@ -64,7 +64,10 @@ public class Spell : ScriptableObject
             {
                 Spell_Stationary stationary = (Spell_Stationary)Object_Pooler.Pools[objectPoolName].Get();
 
-                stationary.Initialize(hitInfo.point, Quaternion.identity, Object_Pooler.Pools[objectPoolName], 
+                Quaternion stationaryRotation = Quaternion.FromToRotation(hitInfo.transform.up, hitInfo.normal) *
+                                                                                                            hitInfo.transform.rotation;
+
+                stationary.Initialize(hitInfo.point, stationaryRotation, Object_Pooler.Pools[objectPoolName], 
                                                                           damage, effectDamage, effectBuildUp, Type, destructionTime);
             }
         }

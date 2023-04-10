@@ -35,7 +35,15 @@ public class Spell_Stationary : Pooling_Object
     private float depth;
 
     [SerializeField]
+    private float heightOffset = 0.2f;
+
+    [SerializeField]
     private LayerMask enemyLayer;
+
+    [SerializeField]
+    private bool destroyOnHit = false;
+
+    private bool gotAHit;
 
     // Update is called once per frame
     void Update()
@@ -60,12 +68,19 @@ public class Spell_Stationary : Pooling_Object
         this.spellType = spellType;
         this.destructionTime = destructionTime;
 
+        gotAHit = false;
+
         Initialize(position, rotation, pool);
     }
 
     public void Initialize(Vector3 position, Quaternion rotation, IObjectPool<Pooling_Object> pool)
     {
-        transform.SetPositionAndRotation(new Vector3(position.x, position.y + height / 4, position.z), rotation);
+        //Has to be done in this order for it to work.
+#pragma warning disable UNT0022 // Inefficient position/rotation assignment
+        transform.rotation = rotation;
+#pragma warning restore UNT0022 // Inefficient position/rotation assignment
+
+        transform.position = position + transform.up * heightOffset;
 
         this.pool = pool;
 
@@ -74,7 +89,18 @@ public class Spell_Stationary : Pooling_Object
 
     private void OnTriggerStay(Collider other)
     {
-        CheckHits();
+        if(!destroyOnHit)
+        {
+            CheckHits();
+        }       
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(destroyOnHit)
+        {
+            CheckHits();
+        }
     }
 
     private void CheckHits()
@@ -97,12 +123,22 @@ public class Spell_Stationary : Pooling_Object
                 {
                     Player_Health.killCount++;
                 }
+
+                gotAHit = true;
             }
+        }
+
+        if(gotAHit && destroyOnHit)
+        {
+            pool.Release(this);
         }
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(width / 2, height / 2, depth / 2));
+
+        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y + heightOffset, 
+                                                                                                      transform.position.z));
     }
 }

@@ -112,15 +112,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 160ca1a3955a0b148a4600248a0b662c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  effectDamage: 1
-  effectBuildUp: 1
-  spellType: 3
   destroyedAfterSomeTime: 1
-  destructionTime: 5
   height: 0.4
   width: 2
   depth: 2
+  heightOffset: 0.1
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128

@@ -77,3 +77,11 @@ MonoBehaviour:
     poolingObject: {fileID: 4153450037329125271, guid: b7c82e4b42b0ba944993aa46599d920a, type: 3}
     poolCount: 100
     maxPoolCount: 10000
+  - name: Landmine
+    poolingObject: {fileID: 3542884803256913532, guid: 6d2adb89e056b0240800dfdb8f6c754e, type: 3}
+    poolCount: 10
+    maxPoolCount: 50
+  - name: Lightning_Trap
+    poolingObject: {fileID: 6294351746542280853, guid: a6b984902eb33904e954686ef7709c05, type: 3}
+    poolCount: 20
+    maxPoolCount: 80
