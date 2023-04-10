@@ -8,20 +8,25 @@ public class Spell : ScriptableObject
     //Made by Daniel.
 
     [SerializeField]
-    private SpellType type;
+    protected SpellType type;
 
     [SerializeField]
     protected int damage;
 
     [SerializeField]
-    private int effectDamage = 5;
+    protected int effectDamage = 5;
 
     [SerializeField]
-    private int effectBuildUp = 10;
+    protected int effectBuildUp = 10;
 
-    [Range(0.001f, 10f)]
+    [Range(0.001f, 100f)]
     [SerializeField]
     private float destructionTime = 0.01f;
+
+    [SerializeField]
+    private float cooldownTime = 0.1f;
+
+    public float CooldownTime { get => cooldownTime; }
 
     [SerializeField]
     private float travelDistance = 1f;
@@ -59,7 +64,10 @@ public class Spell : ScriptableObject
             {
                 Spell_Stationary stationary = (Spell_Stationary)Object_Pooler.Pools[objectPoolName].Get();
 
-                stationary.Initialize(hitInfo.point, Quaternion.identity, Object_Pooler.Pools[objectPoolName], 
+                Quaternion stationaryRotation = Quaternion.FromToRotation(hitInfo.transform.up, hitInfo.normal) *
+                                                                                                            hitInfo.transform.rotation;
+
+                stationary.Initialize(hitInfo.point, stationaryRotation, Object_Pooler.Pools[objectPoolName], 
                                                                           damage, effectDamage, effectBuildUp, Type, destructionTime);
             }
         }

@@ -21,6 +21,12 @@ public class Spell_Ray : Spell
     Ray ray = new();
     RaycastHit hit = new();
 
+    [SerializeField]
+    private string effectObjectPoolName = "Error";
+
+    [SerializeField]
+    private int effectInstanceAmount = 3;
+
     public override void CastSpell(Player_Look player_Look, Vector3 position, Quaternion rotation, Vector3 direction)
     {
         //GameObject spawnedProjectile = Instantiate(projectile, position, rotation);
@@ -59,20 +65,39 @@ public class Spell_Ray : Spell
         //    }
         //}
 
+        //10-04-2023 Daniel changed this for loop so it deals both regular and effect damage.
+        //It also now adds to the players kill count and activates a visual effect.
         for (int i = 0; i < targets.Count; i++)
         {
-            //if (targets[i] != player)
-            //{
-            //    IDamageable damagable = targets[i].transform.GetComponent<IDamageable>();
-            //    damagable?.TryToDestroyDamageable(damage, null);
+            IMagicEffect magicEffect = targets[i].transform.GetComponent<IMagicEffect>();
 
-            //}
+            magicEffect?.ApplyMagicEffect(effectDamage, effectBuildUp, Type);
+
             IDamageable damagable = targets[i].transform.GetComponent<IDamageable>();
-            damagable?.TryToDestroyDamageable(damage, Type);
 
+            bool gotAKill = false;
+
+            if (damagable != null)
+            {
+                gotAKill = (bool)(damagable?.TryToDestroyDamageable(damage, Type));
+            }
+
+            if (gotAKill)
+            {
+                Player_Health.killCount++;
+            }
+
+            if (effectObjectPoolName != "Error")
+            {
+                for(int x = 0; x < effectInstanceAmount; x++)
+                {
+                    Pooling_Object pooling_Object = Object_Pooler.Pools[effectObjectPoolName].Get();
+
+                    pooling_Object.Initialize(position, rotation, targets[i].transform.position, 
+                                                                                       Object_Pooler.Pools[effectObjectPoolName]);
+                }
+            }
         }
-
-        //Debug.Log("Count: " + count + " Targets: "+targets.Count);
 
     }
 

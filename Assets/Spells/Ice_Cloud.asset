@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6be037755cc5ac141a32e5c210f385fa, type: 3}
-  m_Name: Ice
+  m_Name: Ice_Cloud
   m_EditorClassIdentifier: 
-  type: 1
-  damage: 5
-  effectDamage: 2
-  effectBuildUp: 10
-  destructionTime: 3
-  cooldownTime: 0.5
-  travelDistance: 10
+  type: 0
+  damage: 2
+  effectDamage: 8
+  effectBuildUp: 8
+  destructionTime: 10
+  cooldownTime: 10
+  travelDistance: 1
   isBeam: 0
   isProjectileNotStationary: 1
   possibleStationarySpawn:
     serializedVersion: 2
     m_Bits: 0
-  objectPoolName: Ice
+  objectPoolName: Ice_Cloud
