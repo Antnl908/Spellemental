@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -23,6 +24,11 @@ public class Spell_Casting : MonoBehaviour
 
     [SerializeField]
     private List<Spell_Recipe> recipes;
+
+    private int spellIndex;
+
+    [SerializeField]
+    private TextMeshProUGUI cooldownText;
 
     [Serializable]
     public class HandColorsForSpells
@@ -51,11 +57,8 @@ public class Spell_Casting : MonoBehaviour
 
     private Spell beamSpell;
 
-    private bool isCasting = false;
-
-    private const float castTime = 0.1f;
-
-    private float timeUntilCast = 0;
+    private readonly List<bool> spellsCanBeCast = new();
+    private readonly List<float> spellCooldowns = new();
 
     private Player_Controls controls;
 
@@ -83,22 +86,59 @@ public class Spell_Casting : MonoBehaviour
 
         leftHand.OnSwitchedSpell += SetHandColor;
         rightHand.OnSwitchedSpell += SetHandColor;
+
+        for(int i = 0; i < recipes.Count; i++)
+        {
+            if (recipes[i].ReturnedSpell.IsBeam)
+            {
+                spellsCanBeCast.Add(false);
+            }
+            else
+            {
+                spellsCanBeCast.Add(true);
+            }
+
+            spellCooldowns.Add(recipes[i].ReturnedSpell.CooldownTime);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isCasting)
+        if (Time.timeScale > 0)
         {
-            timeUntilCast -= Time.deltaTime;
-
-            if (timeUntilCast <= 0)
+            for (int i = 0; i < recipes.Count; i++)
             {
-                beamSpell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+                if (recipes[i].ReturnedSpell.IsBeam)
+                {
+                    if (spellsCanBeCast[i] == true)
+                    {
+                        spellCooldowns[i] -= Time.deltaTime;
 
-                timeUntilCast = castTime;
+                        if (spellCooldowns[i] <= 0 && recipes[i].ReturnedSpell == beamSpell)
+                        {
+                            spellCooldowns[i] = beamSpell.CooldownTime;
+
+                            beamSpell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+                        }
+                    }
+                }
+                else
+                {
+                    if (spellsCanBeCast[i] == false)
+                    {
+                        spellCooldowns[i] -= Time.deltaTime;
+
+                        if (spellCooldowns[i] <= 0)
+                        {
+                            spellsCanBeCast[i] = true;
+                        }
+                    }
+                }
             }
         }
+
+        cooldownText.text = Math.Round(spellCooldowns[spellIndex], 2).ToString();
     }
 
     private void LateUpdate()
@@ -113,17 +153,29 @@ public class Spell_Casting : MonoBehaviour
             foreach (var recipe in recipes)
             {
                 if (recipe.SpellMatchesRecipe(leftHand.ActiveSpell, rightHand.ActiveSpell) ||
-                                                                                 recipe.SpellMatchesRecipe(rightHand.ActiveSpell, leftHand.ActiveSpell))
+                                                               recipe.SpellMatchesRecipe(rightHand.ActiveSpell, leftHand.ActiveSpell))
                 {
+                    int index = recipes.IndexOf(recipe);
+
                     if (recipe.ReturnedSpell.IsBeam)
                     {
-                        isCasting = !isCasting;
+                        spellsCanBeCast[index] = !spellsCanBeCast[index];
                         beamSpell = recipe.ReturnedSpell;
                     }
                     else
                     {
-                        recipe.ReturnedSpell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+                        if (spellsCanBeCast[index])
+                        {
+                            recipe.ReturnedSpell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), 
+                                                                                                                    transform.forward);
+
+                            spellsCanBeCast[index] = false;
+
+                            spellCooldowns[index] = recipe.ReturnedSpell.CooldownTime;
+                        }
                     }
+
+                    spellIndex = index;
 
                     leftHand.SetCastingToFalse();
                     rightHand.SetCastingToFalse();
@@ -136,8 +188,10 @@ public class Spell_Casting : MonoBehaviour
 
     private void SetCastingToFalse(InputAction.CallbackContext context)
     {
-        isCasting = false;
-        timeUntilCast = 0;
+        if (recipes[spellIndex].ReturnedSpell.IsBeam)
+        {
+            spellsCanBeCast[spellIndex] = false;
+        }
     }
 
     public void SetHandColor(object sender, EventArgs e)

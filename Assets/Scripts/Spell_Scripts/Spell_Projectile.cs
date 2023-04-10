@@ -110,6 +110,10 @@ public class Spell_Projectile : Pooling_Object
         {
             if (enemyColliders[i].gameObject != gameObject)
             {
+                IMagicEffect magicEffect = enemyColliders[i].transform.GetComponent<IMagicEffect>();
+
+                magicEffect?.ApplyMagicEffect(effectDamage, effectBuildUp, spellType);
+
                 IDamageable damagable = enemyColliders[i].transform.GetComponent<IDamageable>();
 
                 bool gotAKill = false;
@@ -125,10 +129,6 @@ public class Spell_Projectile : Pooling_Object
                 {
                     Player_Health.killCount++;
                 }
-
-                IMagicEffect magicEffect = enemyColliders[i].transform.GetComponent<IMagicEffect>();
-
-                magicEffect?.ApplyMagicEffect(effectDamage, effectBuildUp, spellType);
             }
         }
 

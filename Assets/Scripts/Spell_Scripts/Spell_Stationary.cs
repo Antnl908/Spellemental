@@ -83,9 +83,12 @@ public class Spell_Stationary : Pooling_Object
 
         for (int i = 0; i < colliders.Length; i++)
         {
-
             if (colliders[i].gameObject != gameObject)
             {
+                IMagicEffect magicEffect = colliders[i].transform.GetComponent<IMagicEffect>();
+
+                magicEffect?.ApplyMagicEffect(effectDamage, effectBuildUp, spellType);
+
                 IDamageable damagable = colliders[i].transform.GetComponent<IDamageable>();
 
                 bool gotAKill = (bool)(damagable?.TryToDestroyDamageable(damage, spellType));
@@ -94,10 +97,6 @@ public class Spell_Stationary : Pooling_Object
                 {
                     Player_Health.killCount++;
                 }
-
-                IMagicEffect magicEffect = colliders[i].transform.GetComponent<IMagicEffect>();
-
-                magicEffect?.ApplyMagicEffect(effectDamage, effectBuildUp, spellType);
             }
         }
     }

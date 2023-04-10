@@ -459,7 +459,12 @@ MonoBehaviour:
   resistance: 0
   objectPoolName: Damage_Indicator
   damageIndicatorForce: 10
+  timeUntilNextHit: 0.1
+  timeUntilNextEffectDamage: 0.5
+  effectDuration: 5
   damageIndicatorDestructiontime: 1
+  weaknessMultiplier: 2
+  strengthMultiplier: 2
 --- !u!135 &400036078
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -719,7 +724,12 @@ MonoBehaviour:
   resistance: 0
   objectPoolName: Damage_Indicator
   damageIndicatorForce: 10
+  timeUntilNextHit: 0.1
+  timeUntilNextEffectDamage: 0.5
+  effectDuration: 5
   damageIndicatorDestructiontime: 1
+  weaknessMultiplier: 2
+  strengthMultiplier: 2
 --- !u!135 &1087775187
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -803,6 +813,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2033945412428589640, guid: 1c00bd9a858758d48a1f9c572ce89193, type: 3}
   m_PrefabInstance: {fileID: 2033945413552872645}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1315353817 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 724228985755558408, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+  m_PrefabInstance: {fileID: 8677477181014619129}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1327252459
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1072,7 +1093,12 @@ MonoBehaviour:
   resistance: 1
   objectPoolName: Damage_Indicator
   damageIndicatorForce: 8
+  timeUntilNextHit: 0.5
+  timeUntilNextEffectDamage: 0.5
+  effectDuration: 5
   damageIndicatorDestructiontime: 1
+  weaknessMultiplier: 2
+  strengthMultiplier: 2
 --- !u!1 &1715770536
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,7 +1136,12 @@ MonoBehaviour:
   resistance: 0
   objectPoolName: Damage_Indicator
   damageIndicatorForce: 10
+  timeUntilNextHit: 0.1
+  timeUntilNextEffectDamage: 0.5
+  effectDuration: 5
   damageIndicatorDestructiontime: 1
+  weaknessMultiplier: 2
+  strengthMultiplier: 2
 --- !u!135 &1715770538
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1477,6 +1508,10 @@ PrefabInstance:
       value: Player VFX
       objectReference: {fileID: 0}
     - target: {fileID: 2581287094138577525, guid: 89d81112739ccfb4d85408134edf8445, type: 3}
+      propertyPath: cooldownText
+      value: 
+      objectReference: {fileID: 1315353817}
+    - target: {fileID: 2581287094138577525, guid: 89d81112739ccfb4d85408134edf8445, type: 3}
       propertyPath: handColors.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -1612,6 +1647,14 @@ PrefabInstance:
       propertyPath: handColors.Array.data[6].rightHandSpell
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5052837539443198639, guid: 89d81112739ccfb4d85408134edf8445, type: 3}
+      propertyPath: cooldownText
+      value: 
+      objectReference: {fileID: 8677477181014619130}
+    - target: {fileID: 5052837540975479116, guid: 89d81112739ccfb4d85408134edf8445, type: 3}
+      propertyPath: cooldownText
+      value: 
+      objectReference: {fileID: 8677477181014619131}
     - target: {fileID: 8932886344921376492, guid: 89d81112739ccfb4d85408134edf8445, type: 3}
       propertyPath: heart
       value: 
@@ -1816,3 +1859,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+--- !u!114 &8677477181014619130 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7695152033610285541, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+  m_PrefabInstance: {fileID: 8677477181014619129}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8677477181014619131 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4445724845561057641, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+  m_PrefabInstance: {fileID: 8677477181014619129}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -17,7 +17,11 @@ MonoBehaviour:
   effectDamage: 2
   effectBuildUp: 10
   destructionTime: 2
+  cooldownTime: 0.5
   travelDistance: 10
   isBeam: 0
-  projectile: {fileID: 8424666782953285552, guid: dd698360b9539f8428388170144c760a, type: 3}
+  isProjectileNotStationary: 1
+  possibleStationarySpawn:
+    serializedVersion: 2
+    m_Bits: 0
   objectPoolName: Ice

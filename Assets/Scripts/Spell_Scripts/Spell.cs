@@ -24,6 +24,11 @@ public class Spell : ScriptableObject
     private float destructionTime = 0.01f;
 
     [SerializeField]
+    private float cooldownTime = 0.1f;
+
+    public float CooldownTime { get => cooldownTime; }
+
+    [SerializeField]
     private float travelDistance = 1f;
 
     [SerializeField]

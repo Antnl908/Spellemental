@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,11 +23,11 @@ public class Spell_Hand : MonoBehaviour
 
     public Spell ActiveSpell { get => spells[activeSpellIndex]; }
 
-    private bool isCasting = false;
+    [SerializeField]
+    private TextMeshProUGUI cooldownText;
 
-    private const float castTime = 0.1f;
-
-    private float timeUntilCast = 0;
+    private readonly List<bool> spellsCanBeCast = new();
+    private readonly List<float> spellCooldowns = new();
 
     public event EventHandler OnSwitchedSpell;
 
@@ -57,22 +58,59 @@ public class Spell_Hand : MonoBehaviour
         }
 
         SetSpellEffect();
+
+        for(int i = 0; i < Spells.Count; i++)
+        {
+            if (Spells[i].IsBeam)
+            {
+                spellsCanBeCast.Add(false);
+            }
+            else
+            {
+                spellsCanBeCast.Add(true);
+            }
+
+            spellCooldowns.Add(Spells[i].CooldownTime);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isCasting && Time.timeScale > 0)
+        if(Time.timeScale > 0)
         {
-            timeUntilCast -= Time.deltaTime;
-
-            if(timeUntilCast <= 0 )
+            for (int i = 0; i < Spells.Count; i++)
             {
-                ActiveSpell.CastSpell(Player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+                if (Spells[i].IsBeam)
+                {
+                    if(spellsCanBeCast[i] == true)
+                    {
+                        spellCooldowns[i] -= Time.deltaTime;
 
-                timeUntilCast = castTime;
+                        if (spellCooldowns[i] <= 0 && i == activeSpellIndex)
+                        {
+                            spellCooldowns[i] = Spells[i].CooldownTime;
+
+                            ActiveSpell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+                        }
+                    }
+                }
+                else
+                {
+                    if(spellsCanBeCast[i] == false)
+                    {
+                        spellCooldowns[i] -= Time.deltaTime;
+
+                        if(spellCooldowns[i] <= 0)
+                        {
+                            spellsCanBeCast[i] = true;
+                        }
+                    }
+                }
             }
         }
+
+        cooldownText.text = Math.Round(spellCooldowns[activeSpellIndex], 2).ToString();
     }
 
     public void CastActiveSpell(InputAction.CallbackContext context)
@@ -81,11 +119,18 @@ public class Spell_Hand : MonoBehaviour
         {
             if (ActiveSpell.IsBeam)
             {
-                isCasting = !isCasting;
+                spellsCanBeCast[activeSpellIndex] = !spellsCanBeCast[activeSpellIndex];
             }
             else
             {
-                ActiveSpell.CastSpell(Player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+                if (spellsCanBeCast[activeSpellIndex] == true)
+                {
+                    ActiveSpell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+
+                    spellsCanBeCast[activeSpellIndex] = false;
+
+                    spellCooldowns[activeSpellIndex] = ActiveSpell.CooldownTime;
+                }
             }
         }
     }
@@ -122,8 +167,10 @@ public class Spell_Hand : MonoBehaviour
 
     public void SetCastingToFalse()
     {
-        isCasting = false;
-        timeUntilCast = 0;
+        if (ActiveSpell.IsBeam)
+        {
+            spellsCanBeCast[activeSpellIndex] = false;
+        }
     }
 
     private void SetSpellEffect()
