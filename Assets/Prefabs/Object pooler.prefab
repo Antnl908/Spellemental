@@ -93,3 +93,7 @@ MonoBehaviour:
     poolingObject: {fileID: 5238778599833289069, guid: 49111983857ea2c458409a5b98c1f3f9, type: 3}
     poolCount: 20
     maxPoolCount: 80
+  - name: Magma_Floor
+    poolingObject: {fileID: 2230529825281270848, guid: ff8c24ca2a3d858488ad1ab86f1d35ac, type: 3}
+    poolCount: 10
+    maxPoolCount: 60
