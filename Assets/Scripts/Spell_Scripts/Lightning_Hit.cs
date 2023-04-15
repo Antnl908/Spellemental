@@ -52,7 +52,7 @@ public class Lightning_Hit : Pooling_Object
 
         point2.position += new Vector3(Random.Range(-randomXRange, randomXRange + 1), Random.Range(-randomYRange, randomYRange + 1), 
                                                                                         Random.Range(-randomZRange, randomZRange + 1));
-        point3.position += new Vector3(Random.Range(-randomXRange, randomXRange + 1), Random.Range(-randomYRange, randomYRange + 1), 
+        point3.position += new Vector3(Random.Range(-randomXRange, randomXRange + 1), Random.Range(-randomYRange, randomYRange + 1),
                                                                                         Random.Range(-randomZRange, randomZRange + 1));
 
         point4.position = direction;

@@ -89,3 +89,7 @@ MonoBehaviour:
     poolingObject: {fileID: 3414324216020215887, guid: 3d24c64d4b3906b4ab9d60330e084580, type: 3}
     poolCount: 20
     maxPoolCount: 80
+  - name: Rock_Throw
+    poolingObject: {fileID: 5238778599833289069, guid: 49111983857ea2c458409a5b98c1f3f9, type: 3}
+    poolCount: 20
+    maxPoolCount: 80

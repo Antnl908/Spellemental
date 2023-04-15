@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5697720672799200213}
   - component: {fileID: 884027339839878217}
   - component: {fileID: 6294351746542280853}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lightning Trap
   m_TagString: Untagged
   m_Icon: {fileID: 0}

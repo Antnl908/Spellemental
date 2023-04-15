@@ -45,6 +45,10 @@ public class Spell_Stationary : Pooling_Object
 
     private bool gotAHit;
 
+    private const float hitDelayAtStart = 0.1f;
+
+    private float hitDelay;
+
     // Update is called once per frame
     void Update()
     {
@@ -56,6 +60,11 @@ public class Spell_Stationary : Pooling_Object
             {
                 pool.Release(this);
             }
+        }
+
+        if(hitDelay > 0)
+        {
+            hitDelay -= Time.deltaTime;
         }
     }
 
@@ -69,6 +78,8 @@ public class Spell_Stationary : Pooling_Object
         this.destructionTime = destructionTime;
 
         gotAHit = false;
+
+        hitDelay = hitDelayAtStart;
 
         Initialize(position, rotation, pool);
     }
@@ -103,13 +114,18 @@ public class Spell_Stationary : Pooling_Object
         }
     }
 
-    private void CheckHits()
+    public void CheckHits()
     {
+        if (!isActiveAndEnabled)
+        {
+            return;
+        }
+
         Collider[] colliders = Physics.OverlapBox(transform.position, new Vector3(width / 2, height / 2, depth / 2), transform.rotation, enemyLayer);
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            if (colliders[i].gameObject != gameObject)
+            if (colliders[i].gameObject != gameObject && hitDelay <= 0)
             {
                 IMagicEffect magicEffect = colliders[i].transform.GetComponent<IMagicEffect>();
 
@@ -132,6 +148,11 @@ public class Spell_Stationary : Pooling_Object
         {
             pool.Release(this);
         }
+    }
+
+    public void SetGotHitToTrue()
+    {
+        gotAHit = true;
     }
 
     private void OnDrawGizmosSelected()
