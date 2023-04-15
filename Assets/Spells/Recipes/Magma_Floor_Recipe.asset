@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Magma_Floor_Recipe
   m_EditorClassIdentifier: 
   requiredSpell1: {fileID: 11400000, guid: 50952efc7ae79744499f3a149499cd47, type: 2}
-  requiredSpell2: {fileID: 11400000, guid: 50952efc7ae79744499f3a149499cd47, type: 2}
+  requiredSpell2: {fileID: 11400000, guid: af7c4f4063df1bd4c856cbbe2c7fe10f, type: 2}
   returnedSpell: {fileID: 11400000, guid: f7089b4334de48846ba7bcad0b448560, type: 2}
