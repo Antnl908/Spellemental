@@ -49,6 +49,9 @@ public class Spell_Stationary : Pooling_Object
 
     private float hitDelay;
 
+    [SerializeField]
+    private bool usesRotation = true;
+
     // Update is called once per frame
     void Update()
     {
@@ -88,7 +91,10 @@ public class Spell_Stationary : Pooling_Object
     {
         //Has to be done in this order for it to work.
 #pragma warning disable UNT0022 // Inefficient position/rotation assignment
-        transform.rotation = rotation;
+        if(usesRotation)
+        {
+            transform.rotation = rotation;
+        }
 
 
         transform.position = position + transform.up * heightOffset;

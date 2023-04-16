@@ -101,3 +101,7 @@ MonoBehaviour:
     poolingObject: {fileID: 53339798610434407, guid: 0543d06f9afc13b4a900b2ec84ba052a, type: 3}
     poolCount: 10
     maxPoolCount: 60
+  - name: Lightning_Strike
+    poolingObject: {fileID: 439457917507925615, guid: 38aa3eb67a1108749ac6b9cfbeaab14c, type: 3}
+    poolCount: 10
+    maxPoolCount: 30
