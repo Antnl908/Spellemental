@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 140637512}
   - component: {fileID: 140637511}
   - component: {fileID: 140637510}
+  - component: {fileID: 140637516}
   m_Layer: 7
   m_Name: MovingDummy
   m_TagString: Untagged
@@ -182,6 +183,7 @@ MonoBehaviour:
   pointA: {fileID: 981373017}
   pointB: {fileID: 430001613}
   speed: 5
+  isUsingForce: 0
 --- !u!65 &140637512
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -260,6 +262,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &140637516
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140637509}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &280639188
 GameObject:
   m_ObjectHideFlags: 0
@@ -858,6 +876,7 @@ GameObject:
   - component: {fileID: 548093539}
   - component: {fileID: 548093538}
   - component: {fileID: 548093537}
+  - component: {fileID: 548093543}
   m_Layer: 7
   m_Name: MovingSphere
   m_TagString: Untagged
@@ -903,6 +922,7 @@ MonoBehaviour:
   pointA: {fileID: 981373017}
   pointB: {fileID: 430001613}
   speed: 3
+  isUsingForce: 0
 --- !u!135 &548093539
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -981,6 +1001,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &548093543
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548093536}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &693037474 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8677477181428980315, guid: dd8daed611489de4fb5750d034525aad, type: 3}

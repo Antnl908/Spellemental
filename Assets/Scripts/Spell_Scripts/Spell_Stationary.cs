@@ -89,9 +89,10 @@ public class Spell_Stationary : Pooling_Object
         //Has to be done in this order for it to work.
 #pragma warning disable UNT0022 // Inefficient position/rotation assignment
         transform.rotation = rotation;
-#pragma warning restore UNT0022 // Inefficient position/rotation assignment
+
 
         transform.position = position + transform.up * heightOffset;
+#pragma warning restore UNT0022 // Inefficient position/rotation assignment
 
         this.pool = pool;
 

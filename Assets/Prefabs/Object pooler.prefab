@@ -97,3 +97,7 @@ MonoBehaviour:
     poolingObject: {fileID: 2230529825281270848, guid: ff8c24ca2a3d858488ad1ab86f1d35ac, type: 3}
     poolCount: 10
     maxPoolCount: 60
+  - name: Rock_Wall
+    poolingObject: {fileID: 53339798610434407, guid: 0543d06f9afc13b4a900b2ec84ba052a, type: 3}
+    poolCount: 10
+    maxPoolCount: 60
