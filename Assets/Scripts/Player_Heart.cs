@@ -9,6 +9,12 @@ public class Player_Heart : MonoBehaviour
     [SerializeField]
     private Image heartFill;
 
+    [SerializeField]
+    private Color fullHealthColor;
+
+    [SerializeField]
+    private Color defenseBuffColor;
+
     private float currentScale = 1f;
 
     [SerializeField]
@@ -29,6 +35,8 @@ public class Player_Heart : MonoBehaviour
         heartFill.fillAmount = 1;
 
         deathUI.SetActive(false);
+
+        SetColor(false);
     }
 
     // Update is called once per frame
@@ -57,5 +65,17 @@ public class Player_Heart : MonoBehaviour
         deathText.text = $"Time Until Death: {(int)timeUntilDeath}";
 
         deathIndicator.fillAmount = percentageOfTimeUntilDeath;
+    }
+
+    public void SetColor(bool hasDefenseBuff)
+    {
+        if(hasDefenseBuff)
+        {
+            heartFill.color = defenseBuffColor;
+        }
+        else
+        {
+            heartFill.color = fullHealthColor;
+        }
     }
 }

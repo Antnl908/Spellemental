@@ -18,12 +18,16 @@ public class Player_Health : MonoBehaviour, IDamageable
     [SerializeField]
     private Player_Heart heart;
 
-    private bool isDying = false;
+    private static bool isDying = false;
 
     [SerializeField]
     private float timeUntilDeath = 10f;
 
     private float currentTimeUntilDeath;
+
+    private static bool hasDefenseBuff = false;
+
+    private static bool giveHeartDefenseBuffColor = false;
 
     public void KnockBack(float knockBack)
     {
@@ -32,12 +36,21 @@ public class Player_Health : MonoBehaviour, IDamageable
 
     public bool TryToDestroyDamageable(int damage, Spell.SpellType? spellType)
     {
-        currentHealth = Math.Clamp(currentHealth - damage, 0, maxHealth);
-
-        if(currentHealth <= 0)
+        if (hasDefenseBuff)
         {
-            Dying();
+            hasDefenseBuff = false;
+
+            heart.SetColor(false);
         }
+        else
+        {
+            currentHealth = Math.Clamp(currentHealth - damage, 0, maxHealth);
+
+            if (currentHealth <= 0)
+            {
+                Dying();
+            }
+        }       
 
         return isDying;
     }
@@ -69,6 +82,13 @@ public class Player_Health : MonoBehaviour, IDamageable
                 SceneManager.LoadScene("Death_Scene");
             }
         }
+
+        if (giveHeartDefenseBuffColor)
+        {
+            heart.SetColor(true);
+
+            giveHeartDefenseBuffColor = false;
+        }
         
         heart.SetHealth(currentHealth, maxHealth);
     }
@@ -93,5 +113,14 @@ public class Player_Health : MonoBehaviour, IDamageable
         currentTimeUntilDeath = timeUntilDeath;
 
         heart.SetIfIsDying(true);
+    }
+
+    public static void GiveDefenseBuff()
+    {
+        if (!isDying)
+        {
+            hasDefenseBuff = true;
+            giveHeartDefenseBuffColor = true;
+        }
     }
 }
