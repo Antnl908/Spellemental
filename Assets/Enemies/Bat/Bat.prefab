@@ -752,6 +752,7 @@ GameObject:
   - component: {fileID: 7794879932759533802}
   - component: {fileID: 8826768621841413151}
   - component: {fileID: 2576903520314295308}
+  - component: {fileID: 6248163160952398639}
   m_Layer: 7
   m_Name: Bat
   m_TagString: Untagged
@@ -828,8 +829,21 @@ MonoBehaviour:
   health: 100
   weakness: 0
   resistance: 1
-  damageIndicator: {fileID: 6915552866366894602, guid: 87df4a1a74fd2a348b46a50d5af78033, type: 3}
+  objectPoolName: Damage_Indicator
   damageIndicatorForce: 10
+  timeUntilNextHit: 0.1
+  timeUntilNextEffectDamage: 0.5
+  effectDuration: 5
+  damageIndicatorDestructiontime: 1
+  weaknessMultiplier: 2
+  strengthMultiplier: 2
+  material: {fileID: 0}
+  fireRes: {r: 1, g: 0, b: 0, a: 1}
+  iceRes: {r: 0, g: 1, b: 1, a: 1}
+  windRes: {r: 0, g: 1, b: 0, a: 1}
+  lightningRes: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  earthRes: {r: 1, g: 0, b: 1, a: 1}
+  matInst: {fileID: 0}
 --- !u!135 &2576903520314295308
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -843,6 +857,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.6
   m_Center: {x: 0, y: 0.89, z: 0}
+--- !u!114 &6248163160952398639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6984397126436156768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00fd5030481f0544d888e04288b3d01b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  albedo: {r: 1, g: 1, b: 1, a: 1}
+  color: {r: 0, g: 0, b: 0, a: 0}
+  amount: 0
+  glow: 0
 --- !u!1 &7671311095785818616
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,7 +1094,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: 35c682aa1b0515447861030a556d1eb3, type: 3}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
