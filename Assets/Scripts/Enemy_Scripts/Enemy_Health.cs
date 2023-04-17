@@ -316,6 +316,8 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 
     private void OnValidate()
     {
+        if (material == null) { return; }
+
         MeshRenderer[] renderers = transform.GetComponentsInChildren<MeshRenderer>();
 
         foreach(MeshRenderer r in renderers)
