@@ -13,9 +13,12 @@ public class AIConfig : ScriptableObject
     public float startHealth = 100f;
     //enum ElementType, om en fiende ska vara av någon slags element, kanske kan knytas samman med enum i Spell så det är enkelt att jämföra dem när man attackerar?
 
-    [Header("AI Values")]
+    [Header("Update Intervals Values")]
     public float chaseUpdateTime = 3f;
     public float idleUpdateTime = 3f;
 
+    [Header("Range")]
+    public float aggroMinRange = 1.5f;
+    public float aggroMaxRange = 10f;
 
 }

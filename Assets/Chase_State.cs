@@ -20,14 +20,14 @@ public class Chase_State : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
-        if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, animator.GetComponent<Transform>().position) > 10)
+        if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, animator.GetComponent<Transform>().position) > enemy.Config.aggroMaxRange)
         {
             Debug.Log("Set Chase to Idle State");
             animator.SetTrigger("Idle");
 
         }
 
-        if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, animator.GetComponent<Transform>().position) < 2)
+        if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, animator.GetComponent<Transform>().position) < 1.5f)
         {
             Debug.Log("Set Chase to Attack State");
             animator.SetTrigger("Attack");

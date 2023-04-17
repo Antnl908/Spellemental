@@ -13,6 +13,8 @@ public class IdleState : StateMachineBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         enemy = animator.GetComponent<Enemy>();
+
+        enemy.NavAgent.speed = 0f;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -24,7 +26,7 @@ public class IdleState : StateMachineBehaviour
         timer += Time.deltaTime;
         if (timer > enemy.Config.idleUpdateTime)
         {
-            if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, animator.GetComponent<Transform>().position) < 5)
+            if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, animator.GetComponent<Transform>().position) < enemy.Config.aggroMinRange)
             {
                 Debug.Log("Set Idle to Chase State");
                 animator.SetTrigger("Chase");
@@ -37,6 +39,8 @@ public class IdleState : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.ResetTrigger("Chase");
+
+        enemy.NavAgent.speed = enemy.Config.speed;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

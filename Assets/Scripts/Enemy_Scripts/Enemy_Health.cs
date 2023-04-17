@@ -6,9 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(MaterialInstance))]
 public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 {
-    // Made by Daniel.
-
-    
+    // Made by Daniel, edited by Andreas J
 
     [SerializeField]
     private int health;
@@ -77,6 +75,9 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
     [SerializeField]
     private MaterialInstance matInst;
 
+    [SerializeField]
+    private ParticleSystem particle;
+
     public void KnockBack(float knockBack)
     {
         //throw new System.NotImplementedException();
@@ -113,7 +114,7 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 
         if(health <= 0)
         {
-            
+            Instantiate(particle, new Vector3(transform.position.x, transform.position.y + 0.6f, transform.position.z), Quaternion.identity);
 
             Destroy(gameObject);
 
@@ -318,6 +319,13 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
         MeshRenderer[] renderers = transform.GetComponentsInChildren<MeshRenderer>();
 
         foreach(MeshRenderer r in renderers)
+        {
+            r.material = material;
+        }
+
+        SkinnedMeshRenderer[] sRenderers = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
+
+        foreach (SkinnedMeshRenderer r in sRenderers)
         {
             r.material = material;
         }

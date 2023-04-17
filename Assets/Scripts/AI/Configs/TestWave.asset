@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67c820539cdc67c458f8616fd7bef9e8, type: 3}
-  m_Name: Default
+  m_Script: {fileID: 11500000, guid: 1c8e6ce6b065ee940a876086bc880993, type: 3}
+  m_Name: TestWave
   m_EditorClassIdentifier: 
-  speed: 1.5
-  runSpeed: 1.5
-  startHealth: 100
-  chaseUpdateTime: 0.5
-  idleUpdateTime: 0.5
-  aggroMinRange: 5
-  aggroMaxRange: 15
+  nbrOfBasicSkeletons: 5
+  nbrOfFireSkeletons: 1
+  nbrOfIceSkeletons: 1
+  nbrOfLightningSkeletons: 1
+  nbrOfEarthSkeletons: 1
+  spawnDelay: 5
+  spawnArea: 1

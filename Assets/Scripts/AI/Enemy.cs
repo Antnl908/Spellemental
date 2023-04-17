@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private UnityEngine.AI.NavMeshAgent navAgent;
 
-    [SerializeField] private Material material; 
+    //[SerializeField] private Material material; 
 
     private Component[] meshes;
 
@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     {
         NavAgent.speed = Config.speed;
 
+        /*
         meshes = gameObject.GetComponentsInChildren(typeof(SkinnedMeshRenderer));
         foreach (SkinnedMeshRenderer component in meshes)
         {
@@ -34,6 +35,7 @@ public class Enemy : MonoBehaviour
         {
             component.material = material;
         }
+        */
     }
 
     // Update is called once per frame
@@ -51,15 +53,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    /*
-    public Transform Target
-    {
-        get { return target; }
-    }
-    */
-
     public AIConfig Config
     {
         get { return config; }
     }
+
+    
 }
