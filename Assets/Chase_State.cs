@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NavMesh_Chase : StateMachineBehaviour
+public class Chase_State : StateMachineBehaviour
 {
     float timer;
     Enemy enemy;
@@ -48,6 +48,7 @@ public class NavMesh_Chase : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.ResetTrigger("Idle");
+        animator.ResetTrigger("Attack");
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
