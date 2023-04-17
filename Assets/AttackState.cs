@@ -6,7 +6,7 @@ public class AttackState : StateMachineBehaviour
 {
     Transform player;
     Enemy enemy;
-    float timer;
+    //float timer;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -22,21 +22,15 @@ public class AttackState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        timer += Time.deltaTime;
-        if (timer > enemy.Config.idleUpdateTime)
+        if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, animator.GetComponent<Transform>().position) > 1f)
         {
-            if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, animator.GetComponent<Transform>().position) > 2)
-            {
-                Debug.Log("Set Chase to Attack State");
-                animator.SetTrigger("Chase");
-            }
-            else
-            {
-                animator.ResetTrigger("Chase");
-            }
+            Debug.Log("Set Chase to Attack State");
+            animator.SetTrigger("Chase");
         }
-
-
+        else
+        {
+            animator.ResetTrigger("Chase");
+        }
 
     }
 
@@ -44,6 +38,7 @@ public class AttackState : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.ResetTrigger("Chase");
+
         enemy.NavAgent.speed = enemy.Config.speed;
     }
 
