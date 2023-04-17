@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MaterialInstance : MonoBehaviour
 {
+    //Made by AntonL, edited by Andreas J
+
     public Color albedo = Color.white;
     public Color color;
     public float amount;
@@ -17,7 +19,7 @@ public class MaterialInstance : MonoBehaviour
         {
             mpb = new MaterialPropertyBlock();
         }
-        rend = GetComponentInChildren<Renderer>();
+        //rend = GetComponentInChildren<Renderer>();
     }
 
     // Update is called once per frame
@@ -36,11 +38,7 @@ public class MaterialInstance : MonoBehaviour
 
         //Renderer rend = GetComponentInChildren<Renderer>();
         glow = g;
-        mpb.SetFloat("_Amount", amount);
-        mpb.SetFloat("_Glow", glow ? 1f : 0f);
-        mpb.SetColor("_Color", color);
-        mpb.SetColor("_Albedo", albedo);
-        rend.SetPropertyBlock(mpb);
+        ChangeMatColor();
     }
     public void SetGlow(float a)
     {
@@ -52,11 +50,7 @@ public class MaterialInstance : MonoBehaviour
         //Renderer rend = GetComponentInChildren<Renderer>();
         //glow = g;
         amount = a;
-        mpb.SetFloat("_Amount", amount);
-        mpb.SetFloat("_Glow", glow ? 1f : 0f);
-        mpb.SetColor("_Color", color);
-        mpb.SetColor("_Albedo", albedo);
-        rend.SetPropertyBlock(mpb);
+        ChangeMatColor();
     }
     public void SetGlow()
     {
@@ -67,25 +61,41 @@ public class MaterialInstance : MonoBehaviour
 
         //Renderer rend = GetComponentInChildren<Renderer>();
         //glow = g;
-        mpb.SetFloat("_Amount", amount);
-        mpb.SetFloat("_Glow", glow ? 1f : 0f);
-        mpb.SetColor("_Color", color);
-        mpb.SetColor("_Albedo", albedo);
-        rend.SetPropertyBlock(mpb);
+        ChangeMatColor();
     }
 
     private void OnValidate()
     {
-        if(mpb == null)
+        if (mpb == null)
         {
             mpb = new MaterialPropertyBlock();
         }
 
-        Renderer rend = GetComponentInChildren<Renderer>();
-        mpb.SetFloat("_Amount", amount);
-        mpb.SetFloat("_Glow", glow ? 1f : 0f);
-        mpb.SetColor("_Color", color);
-        mpb.SetColor("_Albedo", albedo);
-        rend.SetPropertyBlock(mpb);
+        ChangeMatColor();
+    }
+
+    private void ChangeMatColor()
+    {
+        MeshRenderer[] renderers = transform.GetComponentsInChildren<MeshRenderer>();
+
+        foreach (MeshRenderer r in renderers)
+        {
+            mpb.SetFloat("_Amount", amount);
+            mpb.SetFloat("_Glow", glow ? 1f : 0f);
+            mpb.SetColor("_Color", color);
+            mpb.SetColor("_Albedo", albedo);
+            r.SetPropertyBlock(mpb);
+        }
+
+        SkinnedMeshRenderer[] sRenderers = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
+
+        foreach (SkinnedMeshRenderer r in sRenderers)
+        {
+            mpb.SetFloat("_Amount", amount);
+            mpb.SetFloat("_Glow", glow ? 1f : 0f);
+            mpb.SetColor("_Color", color);
+            mpb.SetColor("_Albedo", albedo);
+            r.SetPropertyBlock(mpb);
+        }
     }
 }

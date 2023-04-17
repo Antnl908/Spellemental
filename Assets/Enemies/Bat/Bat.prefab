@@ -120,7 +120,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3846018093981099296, guid: 35c682aa1b0515447861030a556d1eb3, type: 3}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -844,6 +844,7 @@ MonoBehaviour:
   lightningRes: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   earthRes: {r: 1, g: 0, b: 1, a: 1}
   matInst: {fileID: 0}
+  particle: {fileID: 0}
 --- !u!135 &2576903520314295308
 SphereCollider:
   m_ObjectHideFlags: 0
