@@ -5,11 +5,13 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    [Header("Configs")]
     [SerializeField] private AIConfig config;
 
-    [Header("NavMesh")]
     [SerializeField] private UnityEngine.AI.NavMeshAgent navAgent;
+
+    [SerializeField] private Material material; 
+
+    private Component[] meshes;
 
     /*
     [Header("Target Temporary/Debug")]
@@ -20,6 +22,18 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         NavAgent.speed = Config.speed;
+
+        meshes = gameObject.GetComponentsInChildren(typeof(SkinnedMeshRenderer));
+        foreach (SkinnedMeshRenderer component in meshes)
+        {
+            component.material = material;
+        }
+
+        meshes = gameObject.GetComponentsInChildren(typeof(MeshRenderer));
+        foreach (MeshRenderer component in meshes)
+        {
+            component.material = material;
+        }
     }
 
     // Update is called once per frame

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1039526102318017278}
   - component: {fileID: 3725468729841774273}
   - component: {fileID: 3394282830229949383}
+  - component: {fileID: 8093750680172335204}
   m_Layer: 0
   m_Name: Ice Particles
   m_TagString: Untagged
@@ -4812,3 +4813,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &8093750680172335204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2467362865073319304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b714a87e73129c4991c3dab44861737, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myPrefab: {fileID: 0}

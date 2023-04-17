@@ -93,6 +93,8 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 
         if(health <= 0)
         {
+            
+
             Destroy(gameObject);
 
             return true;

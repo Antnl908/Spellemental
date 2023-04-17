@@ -14,6 +14,7 @@ public class AttackState : StateMachineBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         enemy = animator.GetComponent<Enemy>();
 
+        animator.GetComponent<Enemy>().NavAgent.SetDestination(GameObject.FindGameObjectWithTag("Player").transform.position);
         animator.transform.LookAt(player);
         enemy.NavAgent.speed = 0f;
     }
