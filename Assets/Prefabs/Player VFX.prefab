@@ -4545,6 +4545,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4206ff927b6422e45bf826dfe40d750e, type: 2}
   - {fileID: 11400000, guid: b80e64264e8191d4ba21ce9db2a0ace8, type: 2}
   - {fileID: 11400000, guid: c5210153b209f81459b0b3aeedfd283b, type: 2}
+  - {fileID: 11400000, guid: cfd51a4e8ecfc034eabdff9d6fff8f69, type: 2}
   cooldownText: {fileID: 0}
   handColors:
   - leftHandSpell: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -52,6 +53,8 @@ public class Spell_Stationary : Pooling_Object
     [SerializeField]
     private bool usesRotation = true;
 
+    public event EventHandler OnInitialisation;
+
     // Update is called once per frame
     void Update()
     {
@@ -85,6 +88,13 @@ public class Spell_Stationary : Pooling_Object
         hitDelay = hitDelayAtStart;
 
         Initialize(position, rotation, pool);
+
+        OnInitialisation?.Invoke(this, EventArgs.Empty);
+
+        if(OnInitialisation == null)
+        {
+            Debug.Log("Initialsation is null");
+        }
     }
 
     public void Initialize(Vector3 position, Quaternion rotation, IObjectPool<Pooling_Object> pool)
