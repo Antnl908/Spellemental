@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,11 +13,19 @@ public class Spell_Projectile : Pooling_Object
 
     private int damage;
 
+    public int Damage { get { return damage; } }
+
     private int effectDamage;
+
+    public int EffectDamage { get { return effectDamage; } }
 
     private int effectBuildUp;
 
+    public int EffectBuildUp { get { return effectBuildUp; } }
+
     private Spell.SpellType spellType;
+
+    public Spell.SpellType SpellType { get { return spellType; } }
 
     [SerializeField]
     private Transform point0;
@@ -38,12 +47,14 @@ public class Spell_Projectile : Pooling_Object
 
     private IObjectPool<Pooling_Object> pool;
 
+    public IObjectPool<Pooling_Object> Pool { get { return pool; } }
+
     private float destructionTime;
 
     [SerializeField]
     private string stationarySpellPoolName = "Error";
 
-    private IObjectPool<Pooling_Object> stationarySpellPool;
+    private IObjectPool<Pooling_Object> stationarySpellPool; 
 
     [Range(0, 1000)]
     [SerializeField]
@@ -62,10 +73,15 @@ public class Spell_Projectile : Pooling_Object
     private bool destroyOnHit = true;
 
     [SerializeField]
+    private bool destroyAfterSomeTime = true;
+
+    [SerializeField]
     private string effectObjectPoolName = "Error";
 
     [SerializeField]
     private int effectInstanceAmount = 3;
+
+    public event EventHandler OnInitialisation;
 
     private void Awake()
     {
@@ -95,16 +111,21 @@ public class Spell_Projectile : Pooling_Object
         rb.AddForce(direction, ForceMode.Impulse);
 
         this.pool = pool;
+
+        OnInitialisation?.Invoke(this, EventArgs.Empty);
     }
 
     private void Update()
     {
-        destructionTime -= Time.deltaTime;
-
-        if(destructionTime <= 0 && enabled)
+        if (destroyAfterSomeTime)
         {
-            pool.Release(this);
-        }
+            destructionTime -= Time.deltaTime;
+
+            if (destructionTime <= 0 && enabled)
+            {
+                pool.Release(this);
+            }
+        }       
     }
 
     private void OnTriggerEnter(Collider other)

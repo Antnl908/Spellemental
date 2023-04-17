@@ -121,3 +121,7 @@ MonoBehaviour:
     poolingObject: {fileID: 7649432715610366927, guid: 497af0b59d4362d4892b64948d9e9512, type: 3}
     poolCount: 20
     maxPoolCount: 50
+  - name: Ice_Shards
+    poolingObject: {fileID: 7870963796997098937, guid: 982b6296864ffbf48bde3c5440cf70d4, type: 3}
+    poolCount: 20
+    maxPoolCount: 50
