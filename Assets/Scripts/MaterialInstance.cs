@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MaterialInstance : MonoBehaviour
 {
+    public Color albedo = Color.white;
     public Color color;
     public float amount;
     public bool glow;
@@ -38,6 +39,7 @@ public class MaterialInstance : MonoBehaviour
         mpb.SetFloat("_Amount", amount);
         mpb.SetFloat("_Glow", glow ? 1f : 0f);
         mpb.SetColor("_Color", color);
+        mpb.SetColor("_Albedo", albedo);
         rend.SetPropertyBlock(mpb);
     }
     public void SetGlow(float a)
@@ -53,6 +55,7 @@ public class MaterialInstance : MonoBehaviour
         mpb.SetFloat("_Amount", amount);
         mpb.SetFloat("_Glow", glow ? 1f : 0f);
         mpb.SetColor("_Color", color);
+        mpb.SetColor("_Albedo", albedo);
         rend.SetPropertyBlock(mpb);
     }
     public void SetGlow()
@@ -67,6 +70,7 @@ public class MaterialInstance : MonoBehaviour
         mpb.SetFloat("_Amount", amount);
         mpb.SetFloat("_Glow", glow ? 1f : 0f);
         mpb.SetColor("_Color", color);
+        mpb.SetColor("_Albedo", albedo);
         rend.SetPropertyBlock(mpb);
     }
 
@@ -81,6 +85,7 @@ public class MaterialInstance : MonoBehaviour
         mpb.SetFloat("_Amount", amount);
         mpb.SetFloat("_Glow", glow ? 1f : 0f);
         mpb.SetColor("_Color", color);
+        mpb.SetColor("_Albedo", albedo);
         rend.SetPropertyBlock(mpb);
     }
 }
