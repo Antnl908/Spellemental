@@ -11,5 +11,9 @@ public class Spell_Buff : Spell
         {
             Player_Health.GiveDefenseBuff();
         }
+        else if(Type == SpellType.Wind)
+        {
+            Player_Health.GiveHealthBuff();
+        }
     }
 }

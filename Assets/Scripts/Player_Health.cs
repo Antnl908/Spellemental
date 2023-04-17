@@ -29,6 +29,8 @@ public class Player_Health : MonoBehaviour, IDamageable
 
     private static bool giveHeartDefenseBuffColor = false;
 
+    private static bool hasHealthBuff = false;
+
     public void KnockBack(float knockBack)
     {
         //throw new System.NotImplementedException();
@@ -66,6 +68,11 @@ public class Player_Health : MonoBehaviour, IDamageable
     // Update is called once per frame
     void Update()
     {
+        if(hasHealthBuff)
+        {
+            SecondWind();
+        }
+
         if(isDying)
         {
             if(killCount > 0)
@@ -121,6 +128,14 @@ public class Player_Health : MonoBehaviour, IDamageable
         {
             hasDefenseBuff = true;
             giveHeartDefenseBuffColor = true;
+        }
+    }
+
+    public static void GiveHealthBuff()
+    {
+        if(isDying)
+        {
+            hasHealthBuff = true;
         }
     }
 }

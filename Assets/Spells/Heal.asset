@@ -9,19 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6be037755cc5ac141a32e5c210f385fa, type: 3}
-  m_Name: Fire
+  m_Script: {fileID: 11500000, guid: b2e7fc16b8cfff3438f1724e9b3eb9b8, type: 3}
+  m_Name: Heal
   m_EditorClassIdentifier: 
-  type: 0
-  damage: 8
-  effectDamage: 2
-  effectBuildUp: 10
-  destructionTime: 0.05
-  cooldownTime: 0.1
-  travelDistance: 0.1
-  isBeam: 1
+  type: 5
+  damage: 0
+  effectDamage: 0
+  effectBuildUp: 0
+  destructionTime: 0.01
+  cooldownTime: 50
+  travelDistance: 1
+  isBeam: 0
   isProjectileNotStationary: 1
   possibleStationarySpawn:
     serializedVersion: 2
     m_Bits: 0
-  objectPoolName: Fire
+  objectPoolName: Error

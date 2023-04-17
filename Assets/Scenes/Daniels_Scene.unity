@@ -711,7 +711,7 @@ MonoBehaviour:
   resistance: 0
   objectPoolName: Damage_Indicator
   damageIndicatorForce: 10
-  timeUntilNextHit: 0.1
+  timeUntilNextHit: 0.5
   timeUntilNextEffectDamage: 0.5
   effectDuration: 5
   damageIndicatorDestructiontime: 1
@@ -1193,7 +1193,7 @@ MonoBehaviour:
   resistance: 0
   objectPoolName: Damage_Indicator
   damageIndicatorForce: 10
-  timeUntilNextHit: 0.1
+  timeUntilNextHit: 0.5
   timeUntilNextEffectDamage: 0.5
   effectDuration: 5
   damageIndicatorDestructiontime: 1
@@ -1605,7 +1605,7 @@ MonoBehaviour:
   resistance: 0
   objectPoolName: Damage_Indicator
   damageIndicatorForce: 10
-  timeUntilNextHit: 0.1
+  timeUntilNextHit: 0.5
   timeUntilNextEffectDamage: 0.5
   effectDuration: 5
   damageIndicatorDestructiontime: 1

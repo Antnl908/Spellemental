@@ -109,3 +109,11 @@ MonoBehaviour:
     poolingObject: {fileID: 2221788386320036086, guid: 2a7afafdd9d370a41a940d002cb7721f, type: 3}
     poolCount: 50
     maxPoolCount: 100
+  - name: Thunder_Cloud
+    poolingObject: {fileID: 1749740926122146421, guid: e6a8829cacd678b4084b022571515c52, type: 3}
+    poolCount: 10
+    maxPoolCount: 30
+  - name: Fire_Burst
+    poolingObject: {fileID: 4909860279662022476, guid: 84d4cd25aaa7a414cb01cff36d1e348d, type: 3}
+    poolCount: 50
+    maxPoolCount: 120

@@ -26,7 +26,7 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
     private bool canBeHitByEffect = true;
 
     [SerializeField]
-    private float timeUntilNextHit = 0.1f;
+    private float timeUntilNextHit = 0.5f;
 
     private float currentTimeUntilNextHit = 0;
 
