@@ -105,3 +105,7 @@ MonoBehaviour:
     poolingObject: {fileID: 439457917507925615, guid: 38aa3eb67a1108749ac6b9cfbeaab14c, type: 3}
     poolCount: 10
     maxPoolCount: 30
+  - name: Wind_Hit
+    poolingObject: {fileID: 2221788386320036086, guid: 2a7afafdd9d370a41a940d002cb7721f, type: 3}
+    poolCount: 50
+    maxPoolCount: 100
