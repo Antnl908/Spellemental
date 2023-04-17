@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(MaterialInstance))]
 public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 {
     // Made by Daniel.
+
+    
 
     [SerializeField]
     private int health;
@@ -56,6 +60,22 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 
     [SerializeField]
     private int strengthMultiplier = 2;
+
+    [SerializeField]
+    private Material material;
+    
+    [SerializeField]
+    private Color fireRes = Color.red;
+    [SerializeField]
+    private Color iceRes = Color.cyan;
+    [SerializeField]
+    private Color windRes = Color.green;
+    [SerializeField]
+    private Color lightningRes = Color.yellow;
+    [SerializeField]
+    private Color earthRes = Color.magenta;
+    [SerializeField]
+    private MaterialInstance matInst;
 
     public void KnockBack(float knockBack)
     {
@@ -116,7 +136,8 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(matInst == null) { matInst = GetComponent<MaterialInstance>(); }
+        if(matInst != null) { matInst.albedo = ResColor; }
     }
 
     // Update is called once per frame
@@ -265,5 +286,38 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
         Ice,
         Slowdown,
         Lightning,
+    }
+
+    Color ResColor
+    {
+        get
+        {
+            Color c = Color.gray;
+            switch(resistance)
+            {
+                case Spell.SpellType.Fire: c = fireRes;
+                    break;
+                case Spell.SpellType.Ice: c = iceRes;
+                    break;
+                case Spell.SpellType.Wind: c = windRes;
+                    break;
+                case Spell.SpellType.Lightning: c = lightningRes;
+                    break;
+                case Spell.SpellType.Earth: c = earthRes;
+                    break;
+            }
+
+            return c;
+        }
+    }
+
+    private void OnValidate()
+    {
+        MeshRenderer[] renderers = transform.GetComponentsInChildren<MeshRenderer>();
+
+        foreach(MeshRenderer r in renderers)
+        {
+            r.material = material;
+        }
     }
 }
