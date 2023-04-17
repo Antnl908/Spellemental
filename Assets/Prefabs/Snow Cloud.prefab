@@ -173,8 +173,10 @@ MonoBehaviour:
   stationarySpellPoolName: Error
   spawnStationaryRangeAboveTransform: 0
   spawnStationaryRange: 0
-  spawnOffset: 0
+  spawnOffset: 3
   destroyOnHit: 0
+  effectObjectPoolName: Error
+  effectInstanceAmount: 3
 --- !u!1 &3983997658240651652
 GameObject:
   m_ObjectHideFlags: 0

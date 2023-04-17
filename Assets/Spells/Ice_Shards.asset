@@ -10,14 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6be037755cc5ac141a32e5c210f385fa, type: 3}
-  m_Name: Earth
+  m_Name: Ice_Shards
   m_EditorClassIdentifier: 
-  type: 2
-  damage: 10
+  type: 1
+  damage: 4
   effectDamage: 5
-  effectBuildUp: 5
-  destructionTime: 2
-  travelDistance: 2
+  effectBuildUp: 10
+  destructionTime: 1
+  cooldownTime: 10
+  travelDistance: 1
   isBeam: 0
-  projectile: {fileID: 0}
-  objectPoolName: Earth
+  isProjectileNotStationary: 1
+  possibleStationarySpawn:
+    serializedVersion: 2
+    m_Bits: 0
+  objectPoolName: Ice_Shards

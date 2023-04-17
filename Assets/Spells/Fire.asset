@@ -13,11 +13,15 @@ MonoBehaviour:
   m_Name: Fire
   m_EditorClassIdentifier: 
   type: 0
-  damage: 5
+  damage: 8
   effectDamage: 2
   effectBuildUp: 10
   destructionTime: 0.05
+  cooldownTime: 0.1
   travelDistance: 0.1
   isBeam: 1
-  projectile: {fileID: 2925457146899921912, guid: 1f9c88388e7979f4c86124c8b0ca5d6d, type: 3}
+  isProjectileNotStationary: 1
+  possibleStationarySpawn:
+    serializedVersion: 2
+    m_Bits: 0
   objectPoolName: Fire

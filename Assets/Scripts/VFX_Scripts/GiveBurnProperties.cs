@@ -88,7 +88,11 @@ public class GiveBurnProperties : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = gizmoColor;
-        Gizmos.DrawSphere(effectPosition.position, scale);
+
+        if (effectPosition)
+        {
+            Gizmos.DrawSphere(effectPosition.position, scale);
+        }      
 
         if(shaderEffectPosition)
         {

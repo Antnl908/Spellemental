@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -45,6 +46,15 @@ public class Spell_Stationary : Pooling_Object
 
     private bool gotAHit;
 
+    private const float hitDelayAtStart = 0.1f;
+
+    private float hitDelay;
+
+    [SerializeField]
+    private bool usesRotation = true;
+
+    public event EventHandler OnInitialisation;
+
     // Update is called once per frame
     void Update()
     {
@@ -56,6 +66,11 @@ public class Spell_Stationary : Pooling_Object
             {
                 pool.Release(this);
             }
+        }
+
+        if(hitDelay > 0)
+        {
+            hitDelay -= Time.deltaTime;
         }
     }
 
@@ -70,17 +85,30 @@ public class Spell_Stationary : Pooling_Object
 
         gotAHit = false;
 
+        hitDelay = hitDelayAtStart;
+
         Initialize(position, rotation, pool);
+
+        OnInitialisation?.Invoke(this, EventArgs.Empty);
+
+        if(OnInitialisation == null)
+        {
+            Debug.Log("Initialsation is null");
+        }
     }
 
     public void Initialize(Vector3 position, Quaternion rotation, IObjectPool<Pooling_Object> pool)
     {
         //Has to be done in this order for it to work.
 #pragma warning disable UNT0022 // Inefficient position/rotation assignment
-        transform.rotation = rotation;
-#pragma warning restore UNT0022 // Inefficient position/rotation assignment
+        if(usesRotation)
+        {
+            transform.rotation = rotation;
+        }
+
 
         transform.position = position + transform.up * heightOffset;
+#pragma warning restore UNT0022 // Inefficient position/rotation assignment
 
         this.pool = pool;
 
@@ -103,13 +131,18 @@ public class Spell_Stationary : Pooling_Object
         }
     }
 
-    private void CheckHits()
+    public void CheckHits()
     {
+        if (!isActiveAndEnabled)
+        {
+            return;
+        }
+
         Collider[] colliders = Physics.OverlapBox(transform.position, new Vector3(width / 2, height / 2, depth / 2), transform.rotation, enemyLayer);
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            if (colliders[i].gameObject != gameObject)
+            if (colliders[i].gameObject != gameObject && hitDelay <= 0)
             {
                 IMagicEffect magicEffect = colliders[i].transform.GetComponent<IMagicEffect>();
 
@@ -132,6 +165,11 @@ public class Spell_Stationary : Pooling_Object
         {
             pool.Release(this);
         }
+    }
+
+    public void SetGotHitToTrue()
+    {
+        gotAHit = true;
     }
 
     private void OnDrawGizmosSelected()

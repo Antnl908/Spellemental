@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Spell", menuName = "Spell")]
@@ -64,8 +65,29 @@ public class Spell : ScriptableObject
             {
                 Spell_Stationary stationary = (Spell_Stationary)Object_Pooler.Pools[objectPoolName].Get();
 
-                Quaternion stationaryRotation = Quaternion.FromToRotation(hitInfo.transform.up, hitInfo.normal) *
-                                                                                                            hitInfo.transform.rotation;
+                Quaternion stationaryRotation;
+
+                if (hitInfo.transform.eulerAngles.x == 0 && hitInfo.transform.eulerAngles.z == 0)
+                {
+                    Quaternion eulerAngles = Quaternion.Euler(hitInfo.normal);
+
+                    int additionalDegrees = 0;
+
+                    if(hitInfo.transform.position.y > player_Look.transform.position.y)
+                    {
+                        additionalDegrees = 180;
+                    }
+
+                    eulerAngles.eulerAngles = new Vector3(eulerAngles.eulerAngles.x + additionalDegrees,
+                                                         player_Look.VirtualCamera.transform.eulerAngles.y, eulerAngles.eulerAngles.z);
+
+                    stationaryRotation = eulerAngles;
+                }
+                else
+                {
+                    stationaryRotation = Quaternion.FromToRotation(hitInfo.transform.up, hitInfo.normal) *
+                                                                                                    hitInfo.transform.rotation;
+                }
 
                 stationary.Initialize(hitInfo.point, stationaryRotation, Object_Pooler.Pools[objectPoolName], 
                                                                           damage, effectDamage, effectBuildUp, Type, destructionTime);

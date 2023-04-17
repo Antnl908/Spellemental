@@ -1004,6 +1004,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartFill: {fileID: 8677477181523831392}
+  fullHealthColor: {r: 0.8980392, g: 0, b: 0, a: 1}
+  defenseBuffColor: {r: 0, g: 0.17752671, b: 1, a: 1}
   scaleChangeRate: 8
   deathUI: {fileID: 8677477179912971105}
   deathText: {fileID: 8677477180841577171}

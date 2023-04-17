@@ -28,7 +28,7 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
     private bool canBeHitByEffect = true;
 
     [SerializeField]
-    private float timeUntilNextHit = 0.1f;
+    private float timeUntilNextHit = 0.5f;
 
     private float currentTimeUntilNextHit = 0;
 
@@ -263,6 +263,10 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
             {
                 LightningEffect(effectDamage, effectBuildUp);
             }
+            else if(spellType == Spell.SpellType.Earth)
+            {
+                EarthEffect(effectDamage, effectBuildUp);
+            }
         }
     }
 
@@ -282,6 +286,22 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
         }
     }
 
+    public void EarthEffect(int earthDamage, int effectBuildUp)
+    {
+        this.effectBuildUp += effectBuildUp;
+
+        if (this.effectBuildUp >= 100 && !effectIsApplied)
+        {
+            ApplyWeaknessOrResistanceToDamage(ref earthDamage, Spell.SpellType.Earth);
+
+            ApplyEffect(earthDamage);
+
+            effectType = EffectType.Earth;
+
+            Debug.Log("Earth effect");
+        }
+    }
+
     public enum EffectType
     {
         None,
@@ -289,6 +309,7 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
         Ice,
         Slowdown,
         Lightning,
+        Earth,
     }
 
     Color ResColor
