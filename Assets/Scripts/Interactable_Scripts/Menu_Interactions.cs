@@ -27,6 +27,8 @@ public class Menu_Interactions : MonoBehaviour
 
     public void StartLevel()
     {
+        Score_Keeper.ResetScore();
+
         StartCoroutine(LoadLevelAsynchronously(levelName));
     }
 

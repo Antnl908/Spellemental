@@ -78,6 +78,9 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
     [SerializeField]
     private ParticleSystem particle;
 
+    [SerializeField]
+    private int score = 100;
+
     public void KnockBack(float knockBack)
     {
         //throw new System.NotImplementedException();
@@ -114,6 +117,8 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 
         if(health <= 0)
         {
+            Score_Keeper.AddScore(score);
+
             Instantiate(particle, new Vector3(transform.position.x, transform.position.y + 0.6f, transform.position.z), Quaternion.identity);
 
             Destroy(gameObject);
