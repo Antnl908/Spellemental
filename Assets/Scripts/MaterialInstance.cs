@@ -7,7 +7,7 @@ public class MaterialInstance : MonoBehaviour
     //Made by AntonL, edited by Andreas J
 
     public Color albedo = Color.white;
-    public Color color;
+    public Color color = Color.white;
     public float amount = 0f;
     public bool glow = false;
     private MaterialPropertyBlock mpb;
@@ -111,7 +111,8 @@ public class MaterialInstance : MonoBehaviour
 
         mpb.SetFloat("_Amount", amount);
         mpb.SetFloat("_Glow", glow ? 1f : 0f);
-        mpb.SetColor("_Color", color);
+        //mpb.SetColor("_Color", color);
+        mpb.SetColor("_GlowColor", color);
         mpb.SetColor("_Albedo", albedo);
 
         //MeshRenderer[] renderers = transform.GetComponentsInChildren<MeshRenderer>();

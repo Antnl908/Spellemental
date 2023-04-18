@@ -146,7 +146,7 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
         if(matInst != null) 
         { 
             matInst.albedo = ResColor; 
-            matInst.color = ResColor * (colorConfig ? colorConfig.amount : 5f);
+            matInst.color = ResColor * (colorConfig ? colorConfig.amount : 1f);
             matInst.MeshRenderer = transform.GetComponentsInChildren<MeshRenderer>();
             matInst.SkinMesh = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
             matInst.NewMBP();

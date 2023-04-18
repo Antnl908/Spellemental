@@ -17,4 +17,4 @@ MonoBehaviour:
   wind: {r: 0, g: 1, b: 0, a: 1}
   lightning: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   earth: {r: 0.7490196, g: 0.41568628, b: 0.26666668, a: 1}
-  amount: 5
+  amount: 1
