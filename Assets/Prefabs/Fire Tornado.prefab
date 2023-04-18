@@ -118,7 +118,9 @@ MonoBehaviour:
   heightOffset: 2.5
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1664
+  destroyOnHit: 0
+  usesRotation: 1
 --- !u!54 &160970336082883956
 Rigidbody:
   m_ObjectHideFlags: 0

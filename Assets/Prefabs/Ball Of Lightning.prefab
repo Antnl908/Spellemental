@@ -149,7 +149,7 @@ MonoBehaviour:
   damageRadius: 5
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1664
   terrainLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -159,6 +159,7 @@ MonoBehaviour:
   spawnStationaryRange: 0
   spawnOffset: 0
   destroyOnHit: 0
+  destroyAfterSomeTime: 1
   effectObjectPoolName: Lightning_Hit
   effectInstanceAmount: 3
 --- !u!54 &-116222772300951813

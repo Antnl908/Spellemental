@@ -68,7 +68,7 @@ public class Player_Look : MonoBehaviour
         if(Time.timeScale > 0)
         {
             VirtualCamera.transform.rotation = Quaternion.Slerp(VirtualCamera.transform.rotation, Quaternion.Euler(-LookVector.y, LookVector.x, LeaningValue), TAmount);
-            fpsrig.transform.localRotation = Quaternion.Slerp(fpsrig.transform.localRotation, WeaponSway, 8f * Time.deltaTime);
+            //fpsrig.transform.localRotation = Quaternion.Slerp(fpsrig.transform.localRotation, WeaponSway, 8f * Time.deltaTime);
         }        
         
         //Update headbobbing/leaning
@@ -83,7 +83,7 @@ public class Player_Look : MonoBehaviour
     {
         //Update position
         VirtualCamera.transform.position = transform.position + Vector3.up * BobbingValue + Right * SwayingValue;
-        fpsrig.transform.position = transform.position + -VirtualCamera.transform.up * 0.25f;
+        //fpsrig.transform.position = transform.position + -VirtualCamera.transform.up * 0.25f;
     }
 
     public CinemachineVirtualCamera VirtualCamera

@@ -119,7 +119,7 @@ MonoBehaviour:
   damageRadius: 0.1
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1664
   terrainLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -267,7 +267,7 @@ MonoBehaviour:
   damageRadius: 0.1
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1664
   terrainLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -601,7 +601,7 @@ MonoBehaviour:
   damageRadius: 0.1
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1664
   terrainLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -842,7 +842,7 @@ MonoBehaviour:
   damageRadius: 0.1
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1664
   terrainLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -990,7 +990,7 @@ MonoBehaviour:
   damageRadius: 0.1
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1664
   terrainLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -1169,7 +1169,7 @@ MonoBehaviour:
   damageRadius: 0.1
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1664
   terrainLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -1348,7 +1348,7 @@ MonoBehaviour:
   damageRadius: 0.1
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1664
   terrainLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -1496,7 +1496,7 @@ MonoBehaviour:
   damageRadius: 0.1
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1664
   terrainLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -1955,7 +1955,7 @@ MonoBehaviour:
   damageRadius: 0.1
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1664
   terrainLayer:
     serializedVersion: 2
     m_Bits: 64

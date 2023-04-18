@@ -3753,7 +3753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   weakness: 6
-  resistance: 6
+  resistance: 1
   objectPoolName: Damage_Indicator
   damageIndicatorForce: 10
   timeUntilNextHit: 0.1
@@ -3769,7 +3769,9 @@ MonoBehaviour:
   lightningRes: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   earthRes: {r: 0.6415094, g: 0.358659, b: 0.2269491, a: 1}
   matInst: {fileID: 7468934283145908092}
+  colorConfig: {fileID: 11400000, guid: 4a37f45f486ed464b9c89752781ce43b, type: 2}
   particle: {fileID: 1728005529349570728, guid: bcc285c92c7d20d4eb5ba9fe38a356fd, type: 3}
+  score: 100
 --- !u!195 &7222420314790321881
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3808,6 +3810,20 @@ MonoBehaviour:
   color: {r: 0.9056604, g: 0.03844783, b: 0.03844783, a: 0}
   amount: 5.01
   glow: 0
+  renderers:
+  - {fileID: 7666328768777053306}
+  - {fileID: 7666328769026616155}
+  - {fileID: 7666328769942339956}
+  - {fileID: 7666328768399884755}
+  sRenderers:
+  - {fileID: 7666328769155672242}
+  - {fileID: 7666328768045382227}
+  - {fileID: 7666328768485779129}
+  - {fileID: 7666328769970758238}
+  - {fileID: 7666328768861721505}
+  - {fileID: 7666328769479498429}
+  - {fileID: 7666328768437299471}
+  - {fileID: 7666328769896539248}
 --- !u!1 &7666328769398538602
 GameObject:
   m_ObjectHideFlags: 0
