@@ -6001,6 +6001,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3494946798594353677, guid: 93c392b8eefbe9a47bee5827c83ef913, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93c392b8eefbe9a47bee5827c83ef913, type: 3}
 --- !u!1001 &424651959
@@ -21866,7 +21870,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1666992093}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b399d4016ced12442a2fb6f993fd72ca, type: 3}
   m_Name: 
@@ -21889,6 +21893,7 @@ MonoBehaviour:
   lightningRes: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   earthRes: {r: 1, g: 0, b: 1, a: 1}
   matInst: {fileID: 0}
+  colorConfig: {fileID: 0}
   particle: {fileID: 0}
 --- !u!135 &1666992095
 SphereCollider:
@@ -21923,7 +21928,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 286896fd4deaefa4991458356cdafebf, type: 2}
+  - {fileID: 2100000, guid: d3e48aa17caccd048a22a54b9b790bcc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -21975,7 +21980,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1666992093}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00fd5030481f0544d888e04288b3d01b, type: 3}
   m_Name: 
@@ -21984,6 +21989,8 @@ MonoBehaviour:
   color: {r: 0, g: 0, b: 0, a: 0}
   amount: 0
   glow: 0
+  renderers: []
+  sRenderers: []
 --- !u!1 &1678008940
 GameObject:
   m_ObjectHideFlags: 0
@@ -22670,6 +22677,10 @@ PrefabInstance:
     - target: {fileID: 5478770832938835542, guid: 8a778e1e7f7769e418204f782f017dd1, type: 3}
       propertyPath: m_Name
       value: SkeletonSpawner (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478770832938835542, guid: 8a778e1e7f7769e418204f782f017dd1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a778e1e7f7769e418204f782f017dd1, type: 3}

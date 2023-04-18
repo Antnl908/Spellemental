@@ -74,6 +74,9 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
     private Color earthRes = Color.magenta;
     [SerializeField]
     private MaterialInstance matInst;
+    
+    [SerializeField]
+    private ColorConfig colorConfig;
 
     [SerializeField]
     private ParticleSystem particle;
@@ -140,7 +143,14 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
     void Start()
     {
         if(matInst == null) { matInst = GetComponent<MaterialInstance>(); }
-        if(matInst != null) { matInst.albedo = ResColor; }
+        if(matInst != null) 
+        { 
+            matInst.albedo = ResColor; 
+            matInst.color = ResColor * (colorConfig ? colorConfig.amount : 5f);
+            matInst.MeshRenderer = transform.GetComponentsInChildren<MeshRenderer>();
+            matInst.SkinMesh = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
+            matInst.NewMBP();
+        }
     }
 
     // Update is called once per frame
@@ -319,15 +329,15 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
             Color c = Color.gray;
             switch(resistance)
             {
-                case Spell.SpellType.Fire: c = fireRes;
+                case Spell.SpellType.Fire: if (colorConfig != null) { c = colorConfig.fire; } else { c = fireRes; } /*return colorConfig ? c = colorConfig.fire : c = fireRes;*/
                     break;
-                case Spell.SpellType.Ice: c = iceRes;
+                case Spell.SpellType.Ice: if (colorConfig != null) { c = colorConfig.ice; } else { c = iceRes; } //return colorConfig ? c = colorConfig.ice : c = iceRes; //c = iceRes;
                     break;
-                case Spell.SpellType.Wind: c = windRes;
+                case Spell.SpellType.Wind: if (colorConfig != null) { c = colorConfig.wind; } else { c = windRes; } //return colorConfig ? c = colorConfig.wind : c = windRes; //c = windRes;
                     break;
-                case Spell.SpellType.Lightning: c = lightningRes;
+                case Spell.SpellType.Lightning: if (colorConfig != null) { c = colorConfig.lightning; } else { c = lightningRes; } //return colorConfig ? c = colorConfig.lightning : c = lightningRes; //c = lightningRes;
                     break;
-                case Spell.SpellType.Earth: c = earthRes;
+                case Spell.SpellType.Earth: if (colorConfig != null) { c = colorConfig.earth; } else { c = earthRes; } //return colorConfig ? c = colorConfig.earth : c = earthRes; //c = earthRes;
                     break;
             }
 
@@ -337,11 +347,16 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 
     private void OnValidate()
     {
+        SetMaterial();
+    }
+
+    void SetMaterial()
+    {
         if (material == null) { return; }
 
         MeshRenderer[] renderers = transform.GetComponentsInChildren<MeshRenderer>();
 
-        foreach(MeshRenderer r in renderers)
+        foreach (MeshRenderer r in renderers)
         {
             r.material = material;
         }
