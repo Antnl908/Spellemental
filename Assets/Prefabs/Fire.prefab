@@ -149,14 +149,19 @@ MonoBehaviour:
   damageRadius: 0.4
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1664
   terrainLayer:
     serializedVersion: 2
     m_Bits: 64
   capsuleColor: {r: 1, g: 0, b: 0, a: 1}
   stationarySpellPoolName: Error
+  spawnStationaryRangeAboveTransform: 0
   spawnStationaryRange: 0
   spawnOffset: 1.5
+  destroyOnHit: 1
+  destroyAfterSomeTime: 1
+  effectObjectPoolName: Error
+  effectInstanceAmount: 3
 --- !u!54 &5143407315807038287
 Rigidbody:
   m_ObjectHideFlags: 0

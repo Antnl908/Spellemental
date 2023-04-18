@@ -3753,7 +3753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   weakness: 6
-  resistance: 6
+  resistance: 0
   objectPoolName: Damage_Indicator
   damageIndicatorForce: 10
   timeUntilNextHit: 0.1
@@ -3807,7 +3807,7 @@ MonoBehaviour:
   albedo: {r: 0.8301887, g: 0.763617, b: 0.763617, a: 1}
   color: {r: 0.9056604, g: 0.03844783, b: 0.03844783, a: 0}
   amount: 5.01
-  glow: 0
+  glow: 1
 --- !u!1 &7666328769398538602
 GameObject:
   m_ObjectHideFlags: 0

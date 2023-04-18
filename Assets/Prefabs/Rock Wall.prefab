@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7536167543443998947}
   - component: {fileID: 5532415160476339893}
   - component: {fileID: 53339798610434407}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rock Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,3 +136,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   destroyOnHit: 0
+  usesRotation: 1
