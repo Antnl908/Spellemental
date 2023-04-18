@@ -135,5 +135,6 @@ MonoBehaviour:
   heightOffset: 1
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1664
   destroyOnHit: 1
+  usesRotation: 1

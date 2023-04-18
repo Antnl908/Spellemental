@@ -107,6 +107,15 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""9c38e0a0-ac9e-401f-bc9f-263078485f57"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -274,6 +283,17 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
                     ""action"": ""SpellWheel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""480bfc54-0bb9-4551-b654-8b95808f6af6"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -297,6 +317,7 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
         m_Player1_SwapLeftSpell = m_Player1.FindAction("SwapLeftSpell", throwIfNotFound: true);
         m_Player1_SwapRightSpell = m_Player1.FindAction("SwapRightSpell", throwIfNotFound: true);
         m_Player1_SpellWheel = m_Player1.FindAction("SpellWheel", throwIfNotFound: true);
+        m_Player1_Pause = m_Player1.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -367,6 +388,7 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player1_SwapLeftSpell;
     private readonly InputAction m_Player1_SwapRightSpell;
     private readonly InputAction m_Player1_SpellWheel;
+    private readonly InputAction m_Player1_Pause;
     public struct Player1Actions
     {
         private @Player_Controls m_Wrapper;
@@ -380,6 +402,7 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
         public InputAction @SwapLeftSpell => m_Wrapper.m_Player1_SwapLeftSpell;
         public InputAction @SwapRightSpell => m_Wrapper.m_Player1_SwapRightSpell;
         public InputAction @SpellWheel => m_Wrapper.m_Player1_SpellWheel;
+        public InputAction @Pause => m_Wrapper.m_Player1_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player1; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -416,6 +439,9 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
             @SpellWheel.started += instance.OnSpellWheel;
             @SpellWheel.performed += instance.OnSpellWheel;
             @SpellWheel.canceled += instance.OnSpellWheel;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IPlayer1Actions instance)
@@ -447,6 +473,9 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
             @SpellWheel.started -= instance.OnSpellWheel;
             @SpellWheel.performed -= instance.OnSpellWheel;
             @SpellWheel.canceled -= instance.OnSpellWheel;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IPlayer1Actions instance)
@@ -484,5 +513,6 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
         void OnSwapLeftSpell(InputAction.CallbackContext context);
         void OnSwapRightSpell(InputAction.CallbackContext context);
         void OnSpellWheel(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

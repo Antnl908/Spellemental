@@ -181,7 +181,7 @@ MonoBehaviour:
   damageRadius: 0.1
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1664
   terrainLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -191,6 +191,7 @@ MonoBehaviour:
   spawnStationaryRange: 0
   spawnOffset: 0.25
   destroyOnHit: 1
+  destroyAfterSomeTime: 1
   effectObjectPoolName: Error
   effectInstanceAmount: 3
 --- !u!54 &3334576805258467954
