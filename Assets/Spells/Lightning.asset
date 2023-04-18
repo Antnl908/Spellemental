@@ -28,7 +28,7 @@ MonoBehaviour:
   range: 150
   layerMask:
     serializedVersion: 2
-    m_Bits: 129
+    m_Bits: 1665
   cone: 1
   radius: 0.855
   effectObjectPoolName: Lightning_Hit

@@ -2365,7 +2365,7 @@ MonoBehaviour:
   range: 100
   detectableSurfaces:
     serializedVersion: 2
-    m_Bits: 193
+    m_Bits: 1601
   indicatorColor: {r: 0, g: 0.05882353, b: 1, a: 1}
 --- !u!114 &2979008036315325794
 MonoBehaviour:
