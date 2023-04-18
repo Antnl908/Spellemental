@@ -123,6 +123,38 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 6d714e40b3d370042912eed57ad55a09, type: 2}
+--- !u!1 &6436987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6436988}
+  m_Layer: 0
+  m_Name: Effect Positions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6436988
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6436987}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1395684919}
+  m_Father: {fileID: 543450652748339092}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &133850237
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -490,6 +522,37 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!1 &1395684918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1395684919}
+  m_Layer: 0
+  m_Name: Burn Pos Center
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1395684919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395684918}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.06, y: -2, z: 2.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6436988}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1965735202
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,7 +984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos1
-  Target: {fileID: 0}
+  Target: {fileID: 4558951723324041899}
 --- !u!114 &405575755114438290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1037,6 +1100,7 @@ Transform:
   m_Children:
   - {fileID: 4167280744343157317}
   - {fileID: 8160277322696846211}
+  - {fileID: 6436988}
   m_Father: {fileID: 145043400679672113}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -65.411, y: 0, z: 0}
@@ -1163,7 +1227,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &729741355042921292
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -1175,7 +1239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Spawn Pos
-  Target: {fileID: 4612224579997389836}
+  Target: {fileID: 4558951723324041899}
 --- !u!114 &744582470226841539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1190,7 +1254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos4
-  Target: {fileID: 0}
+  Target: {fileID: 4612224579997389836}
 --- !u!1 &745902295337069030
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,7 +1305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Root Bone Transform
-  Target: {fileID: 4612224579997389836}
+  Target: {fileID: 4986059808465433676}
 --- !u!114 &745902295337069033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1270,12 +1334,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cbbcf603c3bd434da8009925b653c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPosition: {fileID: 4612224579997389836}
-  shaderEffectPosition: {fileID: 4612224579997389836}
-  scale: -0.18
+  effectPosition: {fileID: 4558951723324041899}
+  shaderEffectPosition: {fileID: 1395684919}
+  scale: 0.03
   material: {fileID: 2100000, guid: 7192d46cb5ae9234c8e2e4d3b9911b0a, type: 2}
-  noisePower: 0.22
-  noiseSize: 1.72
+  noisePower: 0.3
+  noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 2581287095092764522}
 --- !u!73398921 &745902295337069035
@@ -1476,7 +1540,7 @@ VisualEffect:
       - m_Value: {fileID: 4493585093827132993, guid: b1ac0cc7726fdb047b88564b21313f1b, type: 3}
         m_Name: Mesh
         m_Overridden: 1
-      - m_Value: {fileID: 0}
+      - m_Value: {fileID: 1630794972381801773}
         m_Name: SkinnedMeshRenderer
         m_Overridden: 1
     m_Bool:
@@ -1529,12 +1593,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cbbcf603c3bd434da8009925b653c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPosition: {fileID: 4612224579997389836}
-  shaderEffectPosition: {fileID: 4612224579997389836}
-  scale: -0.18
+  effectPosition: {fileID: 4558951723324041899}
+  shaderEffectPosition: {fileID: 1395684919}
+  scale: 0.03
   material: {fileID: 2100000, guid: 7192d46cb5ae9234c8e2e4d3b9911b0a, type: 2}
-  noisePower: 0.22
-  noiseSize: 1.72
+  noisePower: 0.3
+  noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 2581287095092764522}
 --- !u!73398921 &745902295506975382
@@ -1600,16 +1664,16 @@ VisualEffect:
       - m_Value: 0.1
         m_Name: X and Z Velocity Random
         m_Overridden: 1
-      - m_Value: 0.45
+      - m_Value: 0.3
         m_Name: Noise Power
         m_Overridden: 1
-      - m_Value: 0.8
+      - m_Value: 1.7
         m_Name: Noise Size
         m_Overridden: 1
       - m_Value: 1000
         m_Name: Spawn Rate
         m_Overridden: 1
-      - m_Value: 0.15
+      - m_Value: 0.03
         m_Name: Ball Size
         m_Overridden: 1
       - m_Value: 0.08
@@ -1625,7 +1689,7 @@ VisualEffect:
         m_Overridden: 1
     m_Vector3f:
       m_Array:
-      - m_Value: {x: 0.508, y: 1.808, z: 1.31}
+      - m_Value: {x: 0.3989907, y: -0.46102953, z: -1.9926264}
         m_Name: Ball Pos
         m_Overridden: 1
       - m_Value: {x: 0, y: 1.5, z: 0.25}
@@ -1637,13 +1701,13 @@ VisualEffect:
       - m_Value: {x: 1, y: 1, z: 1}
         m_Name: Root Bone_scale
         m_Overridden: 1
-      - m_Value: {x: 3.8825118e-19, y: -0.000013660375, z: 3.2568876e-12}
+      - m_Value: {x: 324.8355, y: 157.17061, z: 94.50614}
         m_Name: Root Bone Transform_angles
         m_Overridden: 1
-      - m_Value: {x: 0, y: 1.5, z: 0.25}
+      - m_Value: {x: 0.2442659, y: -1.1017208, z: -2.5348163}
         m_Name: Root Bone Transform_position
         m_Overridden: 1
-      - m_Value: {x: 1, y: 1, z: 1}
+      - m_Value: {x: 0.99999994, y: 0.99999994, z: 1}
         m_Name: Root Bone Transform_scale
         m_Overridden: 1
     m_Vector4f:
@@ -1735,14 +1799,14 @@ VisualEffect:
       - m_Value: {fileID: 4493585093827132993, guid: b1ac0cc7726fdb047b88564b21313f1b, type: 3}
         m_Name: Mesh
         m_Overridden: 1
-      - m_Value: {fileID: 0}
+      - m_Value: {fileID: 1630794972381801773}
         m_Name: SkinnedMeshRenderer
         m_Overridden: 1
     m_Bool:
       m_Array: []
 --- !u!114 &745902295506975384
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -1754,7 +1818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Root Bone Transform
-  Target: {fileID: 4612224579997389836}
+  Target: {fileID: 4986059808465433676}
 --- !u!114 &745902295506975385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1821,7 +1885,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Root Bone Transform
-  Target: {fileID: 8125515995556998912}
+  Target: {fileID: 4986059808465433676}
 --- !u!114 &745902295665345550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1850,12 +1914,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cbbcf603c3bd434da8009925b653c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPosition: {fileID: 8125515995556998912}
-  shaderEffectPosition: {fileID: 8125515995556998912}
-  scale: -0.18
+  effectPosition: {fileID: 5913074530392030205}
+  shaderEffectPosition: {fileID: 1395684919}
+  scale: 0.03
   material: {fileID: 2100000, guid: 7192d46cb5ae9234c8e2e4d3b9911b0a, type: 2}
-  noisePower: 0.22
-  noiseSize: 1.72
+  noisePower: 0.3
+  noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 2581287095092764522}
 --- !u!73398921 &745902295665345552
@@ -2056,7 +2120,7 @@ VisualEffect:
       - m_Value: {fileID: 4493585093827132993, guid: b1ac0cc7726fdb047b88564b21313f1b, type: 3}
         m_Name: Mesh
         m_Overridden: 1
-      - m_Value: {fileID: 0}
+      - m_Value: {fileID: 1630794972381801773}
         m_Name: SkinnedMeshRenderer
         m_Overridden: 1
     m_Bool:
@@ -2099,7 +2163,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &745902296239168854
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -2111,7 +2175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Root Bone Transform
-  Target: {fileID: 8125515995556998912}
+  Target: {fileID: 4986059808465433676}
 --- !u!114 &745902296239168855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2141,11 +2205,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectPosition: {fileID: 8125515995556998912}
-  shaderEffectPosition: {fileID: 8125515995556998912}
-  scale: -0.18
+  shaderEffectPosition: {fileID: 1395684919}
+  scale: 0.03
   material: {fileID: 2100000, guid: 7192d46cb5ae9234c8e2e4d3b9911b0a, type: 2}
-  noisePower: 0.22
-  noiseSize: 1.72
+  noisePower: 0.3
+  noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 2581287095092764522}
 --- !u!73398921 &745902296239168857
@@ -2211,16 +2275,16 @@ VisualEffect:
       - m_Value: 0.1
         m_Name: X and Z Velocity Random
         m_Overridden: 1
-      - m_Value: 0.45
+      - m_Value: 0.3
         m_Name: Noise Power
         m_Overridden: 1
-      - m_Value: 0.8
+      - m_Value: 1.7
         m_Name: Noise Size
         m_Overridden: 1
       - m_Value: 1000
         m_Name: Spawn Rate
         m_Overridden: 1
-      - m_Value: 0.15
+      - m_Value: 0.03
         m_Name: Ball Size
         m_Overridden: 1
       - m_Value: 0.08
@@ -2236,7 +2300,7 @@ VisualEffect:
         m_Overridden: 1
     m_Vector3f:
       m_Array:
-      - m_Value: {x: -0.508, y: 1.808, z: 1.31}
+      - m_Value: {x: -0.17805809, y: -0.40825188, z: -2.1050186}
         m_Name: Ball Pos
         m_Overridden: 1
       - m_Value: {x: 0, y: 1.5, z: 0.25}
@@ -2248,13 +2312,13 @@ VisualEffect:
       - m_Value: {x: 1, y: 1, z: 1}
         m_Name: Root Bone_scale
         m_Overridden: 1
-      - m_Value: {x: 3.8825118e-19, y: -0.000013660375, z: 3.2568876e-12}
+      - m_Value: {x: 324.8355, y: 157.17061, z: 94.50614}
         m_Name: Root Bone Transform_angles
         m_Overridden: 1
-      - m_Value: {x: 0, y: 1.5, z: 0.25}
+      - m_Value: {x: 0.2442659, y: -1.1017208, z: -2.5348163}
         m_Name: Root Bone Transform_position
         m_Overridden: 1
-      - m_Value: {x: 1, y: 1, z: 1}
+      - m_Value: {x: 0.99999994, y: 0.99999994, z: 1}
         m_Name: Root Bone Transform_scale
         m_Overridden: 1
     m_Vector4f:
@@ -2346,7 +2410,7 @@ VisualEffect:
       - m_Value: {fileID: 4493585093827132993, guid: b1ac0cc7726fdb047b88564b21313f1b, type: 3}
         m_Name: Mesh
         m_Overridden: 1
-      - m_Value: {fileID: 0}
+      - m_Value: {fileID: 1630794972381801773}
         m_Name: SkinnedMeshRenderer
         m_Overridden: 1
     m_Bool:
@@ -2609,7 +2673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos2
-  Target: {fileID: 0}
+  Target: {fileID: 6256315397409001091}
 --- !u!4 &1105371083183906614
 Transform:
   m_ObjectHideFlags: 0
@@ -2643,7 +2707,7 @@ GameObject:
   m_IsActive: 1
 --- !u!114 &1194298012724142587
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -2654,8 +2718,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Property:
-    m_Name: Spawn Pos
-  Target: {fileID: 8125515995556998912}
+    m_Name: Bone
+  Target: {fileID: 4986059808465433676}
 --- !u!4 &1226871938776536312
 Transform:
   m_ObjectHideFlags: 0
@@ -2881,7 +2945,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos3
-  Target: {fileID: 0}
+  Target: {fileID: 3228756451951367201}
 --- !u!4 &1568323779669121916
 Transform:
   m_ObjectHideFlags: 0
@@ -3490,7 +3554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos4
-  Target: {fileID: 0}
+  Target: {fileID: 8125515995556998912}
 --- !u!4 &2445768698828201319
 Transform:
   m_ObjectHideFlags: 0
@@ -3891,7 +3955,7 @@ GameObject:
   m_IsActive: 1
 --- !u!114 &2892443324142420310
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -3903,7 +3967,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Spawn Pos
-  Target: {fileID: 8125515995556998912}
+  Target: {fileID: 5913074530392030205}
 --- !u!114 &3025680731487125604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3987,12 +4051,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cbbcf603c3bd434da8009925b653c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPosition: {fileID: 8125515995556998912}
-  shaderEffectPosition: {fileID: 8125515995556998912}
-  scale: -0.18
+  effectPosition: {fileID: 0}
+  shaderEffectPosition: {fileID: 1395684919}
+  scale: 0.03
   material: {fileID: 2100000, guid: 7192d46cb5ae9234c8e2e4d3b9911b0a, type: 2}
-  noisePower: 0.22
-  noiseSize: 1.72
+  noisePower: 0.3
+  noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 2581287095092764522}
 --- !u!114 &3155575134719237970
@@ -4009,7 +4073,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos1
-  Target: {fileID: 0}
+  Target: {fileID: 5913074530392030205}
 --- !u!1 &3190319612244297759
 GameObject:
   m_ObjectHideFlags: 0
@@ -4326,7 +4390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos3
-  Target: {fileID: 0}
+  Target: {fileID: 726662764923215240}
 --- !u!4 &3777963383936375780
 Transform:
   m_ObjectHideFlags: 0
@@ -4455,12 +4519,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cbbcf603c3bd434da8009925b653c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPosition: {fileID: 4612224579997389836}
-  shaderEffectPosition: {fileID: 4612224579997389836}
-  scale: -0.18
+  effectPosition: {fileID: 0}
+  shaderEffectPosition: {fileID: 1395684919}
+  scale: 0.03
   material: {fileID: 2100000, guid: 7192d46cb5ae9234c8e2e4d3b9911b0a, type: 2}
-  noisePower: 0.22
-  noiseSize: 1.72
+  noisePower: 0.3
+  noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 2581287095092764522}
 --- !u!1 &3918552928395979707
@@ -4562,7 +4626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos3
-  Target: {fileID: 0}
+  Target: {fileID: 3228756451951367201}
 --- !u!1 &4002314635013109339
 GameObject:
   m_ObjectHideFlags: 0
@@ -4697,12 +4761,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cbbcf603c3bd434da8009925b653c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPosition: {fileID: 8125515995556998912}
-  shaderEffectPosition: {fileID: 8125515995556998912}
-  scale: -0.18
+  effectPosition: {fileID: 0}
+  shaderEffectPosition: {fileID: 1395684919}
+  scale: 0.03
   material: {fileID: 2100000, guid: 7192d46cb5ae9234c8e2e4d3b9911b0a, type: 2}
-  noisePower: 0.22
-  noiseSize: 1.72
+  noisePower: 0.3
+  noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 2581287095092764522}
 --- !u!114 &4140924195819688644
@@ -4719,7 +4783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos1
-  Target: {fileID: 0}
+  Target: {fileID: 5913074530392030205}
 --- !u!223 &4157922822787388719
 Canvas:
   m_ObjectHideFlags: 0
@@ -4823,12 +4887,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cbbcf603c3bd434da8009925b653c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPosition: {fileID: 8125515995556998912}
-  shaderEffectPosition: {fileID: 8125515995556998912}
-  scale: -0.18
+  effectPosition: {fileID: 0}
+  shaderEffectPosition: {fileID: 1395684919}
+  scale: 0.03
   material: {fileID: 2100000, guid: 7192d46cb5ae9234c8e2e4d3b9911b0a, type: 2}
-  noisePower: 0.22
-  noiseSize: 1.72
+  noisePower: 0.3
+  noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 2581287095092764522}
 --- !u!2083052967 &4212899169180495719
@@ -5058,7 +5122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos3
-  Target: {fileID: 0}
+  Target: {fileID: 835400938342054961}
 --- !u!114 &4335375120275211344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5169,7 +5233,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6985922588836139077}
-  m_LocalRotation: {x: -0.036575437, y: 0.12583399, z: -0.26893115, w: 0.9542034}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.00000050149856, y: 0.0028195253, z: 0.0000000131875275}
   m_LocalScale: {x: 0.99999994, y: 1.0000001, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5227,7 +5291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos4
-  Target: {fileID: 0}
+  Target: {fileID: 4612224579997389836}
 --- !u!1 &4656209697369902369
 GameObject:
   m_ObjectHideFlags: 0
@@ -5291,7 +5355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos3
-  Target: {fileID: 0}
+  Target: {fileID: 6957185789502320848}
 --- !u!1 &4728357368107436490
 GameObject:
   m_ObjectHideFlags: 0
@@ -5415,7 +5479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos2
-  Target: {fileID: 0}
+  Target: {fileID: 8500481989157636794}
 --- !u!1 &4790157943197442418
 GameObject:
   m_ObjectHideFlags: 0
@@ -6195,12 +6259,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cbbcf603c3bd434da8009925b653c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPosition: {fileID: 4612224579997389836}
-  shaderEffectPosition: {fileID: 4612224579997389836}
-  scale: -0.18
+  effectPosition: {fileID: 0}
+  shaderEffectPosition: {fileID: 1395684919}
+  scale: 0.03
   material: {fileID: 2100000, guid: 7192d46cb5ae9234c8e2e4d3b9911b0a, type: 2}
-  noisePower: 0.22
-  noiseSize: 1.72
+  noisePower: 0.3
+  noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 2581287095092764522}
 --- !u!1 &5522750660570532309
@@ -6255,7 +6319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos2
-  Target: {fileID: 0}
+  Target: {fileID: 6957185789502320848}
 --- !u!114 &5555687175197730331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6579,7 +6643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos2
-  Target: {fileID: 0}
+  Target: {fileID: 7452097339764155464}
 --- !u!224 &5931107185961301388
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6797,10 +6861,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos2
-  Target: {fileID: 0}
+  Target: {fileID: 835400938342054961}
 --- !u!114 &6182490468344717272
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -6812,7 +6876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Bone
-  Target: {fileID: 4167280744343157317}
+  Target: {fileID: 4986059808465433676}
 --- !u!1 &6185546290317968720
 GameObject:
   m_ObjectHideFlags: 0
@@ -6901,7 +6965,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos1
-  Target: {fileID: 0}
+  Target: {fileID: 4558951723324041899}
 --- !u!1 &6252976598447966532
 GameObject:
   m_ObjectHideFlags: 0
@@ -6995,7 +7059,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos3
-  Target: {fileID: 0}
+  Target: {fileID: 726662764923215240}
 --- !u!1 &6400419447810090651
 GameObject:
   m_ObjectHideFlags: 0
@@ -7059,7 +7123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos4
-  Target: {fileID: 0}
+  Target: {fileID: 8125515995556998912}
 --- !u!4 &6491481566544257182
 Transform:
   m_ObjectHideFlags: 0
@@ -7118,22 +7182,22 @@ VisualEffect:
       - m_Value: {x: 0.1, y: 0.5, z: 0.1}
         m_Name: Velocity Maximum
         m_Overridden: 1
-      - m_Value: {x: 3.8825118e-19, y: -0.000013660375, z: 3.2568876e-12}
+      - m_Value: {x: 324.8355, y: 157.17061, z: 94.50614}
         m_Name: Bone_angles
         m_Overridden: 1
-      - m_Value: {x: 0, y: 1.5, z: 0.25}
+      - m_Value: {x: 0.2442659, y: -1.1017208, z: -2.5348163}
         m_Name: Bone_position
         m_Overridden: 1
-      - m_Value: {x: 1, y: 1, z: 1}
+      - m_Value: {x: 0.99999994, y: 0.99999994, z: 1}
         m_Name: Bone_scale
         m_Overridden: 1
-      - m_Value: {x: -0, y: 0, z: 0}
+      - m_Value: {x: 346.9335, y: 130.92603, z: 349.4043}
         m_Name: Spawn Pos_angles
         m_Overridden: 1
-      - m_Value: {x: 0.25, y: 1.5, z: 1}
+      - m_Value: {x: 0.3989907, y: -0.46102953, z: -1.9926264}
         m_Name: Spawn Pos_position
         m_Overridden: 1
-      - m_Value: {x: 1, y: 1, z: 1}
+      - m_Value: {x: 0.99999994, y: 1.0000001, z: 1}
         m_Name: Spawn Pos_scale
         m_Overridden: 1
     m_Vector4f:
@@ -7419,7 +7483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos1
-  Target: {fileID: 0}
+  Target: {fileID: 5913074530392030205}
 --- !u!114 &6768492532064195244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7664,7 +7728,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos4
-  Target: {fileID: 0}
+  Target: {fileID: 4612224579997389836}
 --- !u!1 &7008969768956846846
 GameObject:
   m_ObjectHideFlags: 0
@@ -8048,7 +8112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos4
-  Target: {fileID: 0}
+  Target: {fileID: 8125515995556998912}
 --- !u!4 &7427792695151367797
 Transform:
   m_ObjectHideFlags: 0
@@ -8156,12 +8220,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cbbcf603c3bd434da8009925b653c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPosition: {fileID: 4612224579997389836}
-  shaderEffectPosition: {fileID: 4612224579997389836}
-  scale: -0.18
+  effectPosition: {fileID: 0}
+  shaderEffectPosition: {fileID: 1395684919}
+  scale: 0.03
   material: {fileID: 2100000, guid: 7192d46cb5ae9234c8e2e4d3b9911b0a, type: 2}
-  noisePower: 0.22
-  noiseSize: 1.72
+  noisePower: 0.3
+  noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 2581287095092764522}
 --- !u!4 &7491341751876005645
@@ -8224,7 +8288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Spawn Pos
-  Target: {fileID: 4612224579997389836}
+  Target: {fileID: 4558951723324041899}
 --- !u!114 &7610485774069017041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8239,7 +8303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos1
-  Target: {fileID: 0}
+  Target: {fileID: 4558951723324041899}
 --- !u!1 &7649179887763089579
 GameObject:
   m_ObjectHideFlags: 0
@@ -8370,9 +8434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ExecuteInEditor: 1
-  m_Bindings:
-  - {fileID: 6182490468344717272}
-  - {fileID: 729741355042921292}
+  m_Bindings: []
   m_VisualEffect: {fileID: 6532098133912150029}
 --- !u!73398921 &7761386223016051988
 VFXRenderer:
@@ -8661,7 +8723,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4366890051225976821}
-  m_LocalRotation: {x: 0.019772097, y: -0.060590003, z: -0.031744488, w: 0.9974619}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.00007266462, y: 0.0009635025, z: 0.000062917024}
   m_LocalScale: {x: 0.9999999, y: 0.99999994, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8841,7 +8903,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos2
-  Target: {fileID: 0}
+  Target: {fileID: 5417819357477645995}
 --- !u!1 &8306507274667651164
 GameObject:
   m_ObjectHideFlags: 0
@@ -9284,9 +9346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ExecuteInEditor: 1
-  m_Bindings:
-  - {fileID: 1194298012724142587}
-  - {fileID: 2892443324142420310}
+  m_Bindings: []
   m_VisualEffect: {fileID: 8902523972569572564}
 --- !u!1 &8792304033256394112
 GameObject:
@@ -9471,22 +9531,22 @@ VisualEffect:
       - m_Value: {x: 0.1, y: 0.5, z: 0.1}
         m_Name: Velocity Maximum
         m_Overridden: 1
-      - m_Value: {x: 3.8825118e-19, y: -0.000013660375, z: 3.2568876e-12}
+      - m_Value: {x: 324.8355, y: 157.17061, z: 94.50614}
         m_Name: Bone_angles
         m_Overridden: 1
-      - m_Value: {x: 0, y: 1.5, z: 0.25}
+      - m_Value: {x: 0.2442659, y: -1.1017208, z: -2.5348163}
         m_Name: Bone_position
         m_Overridden: 1
-      - m_Value: {x: 1, y: 1, z: 1}
+      - m_Value: {x: 0.99999994, y: 0.99999994, z: 1}
         m_Name: Bone_scale
         m_Overridden: 1
-      - m_Value: {x: -0, y: 0, z: 0}
+      - m_Value: {x: 359.9209, y: 218.36658, z: 39.90934}
         m_Name: Spawn Pos_angles
         m_Overridden: 1
-      - m_Value: {x: -0.25, y: 1.5, z: 1}
+      - m_Value: {x: -0.26430944, y: -0.53017455, z: -2.0228257}
         m_Name: Spawn Pos_position
         m_Overridden: 1
-      - m_Value: {x: 1, y: 1, z: 1}
+      - m_Value: {x: 1.0000001, y: 0.9999998, z: 0.99999994}
         m_Name: Spawn Pos_scale
         m_Overridden: 1
     m_Vector4f:
@@ -9544,7 +9604,7 @@ VisualEffect:
       m_Array: []
     m_NamedObject:
       m_Array:
-      - m_Value: {fileID: 0}
+      - m_Value: {fileID: 1630794972381801773}
         m_Name: SkinnedMeshRenderer
         m_Overridden: 1
       - m_Value: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
@@ -9735,7 +9795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Spawn Pos
-  Target: {fileID: 8125515995556998912}
+  Target: {fileID: 5913074530392030205}
 --- !u!222 &9136112734441686106
 CanvasRenderer:
   m_ObjectHideFlags: 0

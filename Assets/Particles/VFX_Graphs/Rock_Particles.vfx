@@ -5206,7 +5206,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614757}
   m_ExposedName: Velocity Minimum
   m_Exposed: 1
-  m_Order: 9
+  m_Order: 7
   m_Category: 
   m_Min:
     m_Type:
@@ -5388,7 +5388,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614762}
   m_ExposedName: Velocity Maximum
   m_Exposed: 1
-  m_Order: 10
+  m_Order: 8
   m_Category: 
   m_Min:
     m_Type:
@@ -7503,7 +7503,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614847}
   m_ExposedName: Spawn Pos
   m_Exposed: 1
-  m_Order: 11
+  m_Order: 9
   m_Category: 
   m_Min:
     m_Type:
@@ -7991,7 +7991,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614861}
   m_ExposedName: Spawn Area Size
   m_Exposed: 1
-  m_Order: 12
+  m_Order: 10
   m_Category: 
   m_Min:
     m_Type:
@@ -8303,7 +8303,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614870}
   m_ExposedName: Distance Threshold
   m_Exposed: 1
-  m_Order: 13
+  m_Order: 11
   m_Category: 
   m_Min:
     m_Type:

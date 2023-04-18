@@ -83,7 +83,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
-    - _Ball_Size: 0.15
+    - _Ball_Size: 0.03
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
@@ -99,8 +99,8 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _Noise_Power: 0.45
-    - _Noise_Size: 0.8
+    - _Noise_Power: 0.3
+    - _Noise_Size: 1.7
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -116,10 +116,10 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _Ball_Pos: {r: -0.85161775, g: 1.0453098, b: 2.3993194, a: 0}
+    - _Ball_Pos: {r: 4.9149594, g: 2.1769583, b: 0.16528383, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Edge_Color: {r: 0.745283, g: 0.6130508, b: 0.12233887, a: 1}
+    - _Edge_Color: {r: 0.4339623, g: 0.28148973, b: 0.054859374, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
