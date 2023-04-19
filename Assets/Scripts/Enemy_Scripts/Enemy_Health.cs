@@ -84,6 +84,15 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
     [SerializeField]
     private int score = 100;
 
+    [SerializeField]
+    private int damage = 1;
+
+    [SerializeField]
+    private Transform attackPoint;
+
+    [SerializeField]
+    private float attackRadius = 1f;
+
     public void KnockBack(float knockBack)
     {
         //throw new System.NotImplementedException();
@@ -315,6 +324,26 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 
             Debug.Log("Earth effect");
         }
+    }
+
+    public void Attack()
+    {
+        Collider[] colliders = Physics.OverlapSphere(attackPoint.position, attackRadius);
+
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].gameObject != gameObject)
+            {
+                IDamageable damagable = colliders[i].transform.GetComponent<IDamageable>();
+
+                damagable?.TryToDestroyDamageable(damage, null);
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }
 
     public enum EffectType
