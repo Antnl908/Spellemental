@@ -48,8 +48,8 @@ public class Spell_Ray : Spell
                 //}
                 //if (CheckTarget(go, position, direction))
                 //if (CheckTarget(go, ((CapsuleCollider)colliders[i]).height * 0.5f ,player_Look.VirtualCamera.transform.position, player_Look.VirtualCamera.transform.forward))
-                //if (CheckTarget(go, colliders[i].bounds.size.y * 0.5f ,player_Look.VirtualCamera.transform.position, player_Look.VirtualCamera.transform.forward))
-                if (CheckTarget(go, 0, player_Look.VirtualCamera.transform.position, player_Look.VirtualCamera.transform.forward))
+                if (CheckTarget(go, colliders[i].bounds.size.y * 0.5f ,player_Look.VirtualCamera.transform.position, player_Look.VirtualCamera.transform.forward))
+                //if (CheckTarget(go, 0, player_Look.VirtualCamera.transform.position, player_Look.VirtualCamera.transform.forward))
                 {
                     targets.Add(go);
                 }
