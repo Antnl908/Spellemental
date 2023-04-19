@@ -21,7 +21,7 @@ public class IdleState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
-        Debug.Log(Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, animator.GetComponent<Transform>().position));
+        //Debug.Log(Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, animator.GetComponent<Transform>().position));
 
         timer += Time.deltaTime;
         if (timer > enemy.Config.idleUpdateTime)

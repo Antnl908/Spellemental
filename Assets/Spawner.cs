@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(timer);
+       // Debug.Log(timer);
 
         timer += Time.deltaTime;
         if (timer > waveConfig.spawnDelay && nbrOfEnemiesSpawned < waveConfig.nbrOfBasicSkeletons)

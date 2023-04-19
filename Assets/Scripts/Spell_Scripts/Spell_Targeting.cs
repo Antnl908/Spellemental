@@ -153,14 +153,14 @@ public class Spell_Targeting : MonoBehaviour
     }
 
     //Debug
-    void OnDrawGizmos()
-    {
-        foreach (GameObject go in targets)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(go.transform.position, 5f);
+    //void OnDrawGizmos()
+    //{
+    //    foreach (GameObject go in targets)
+    //    {
+    //        Gizmos.color = Color.green;
+    //        Gizmos.DrawWireSphere(go.transform.position, 5f);
 
-        }
-    }
+    //    }
+    //}
 
 }
