@@ -34,13 +34,8 @@ public class Spell_Casting : MonoBehaviour
     public class HandColorsForSpells
     {
         [SerializeField]
-        private Spell.SpellType leftHandSpell;
-        [SerializeField]
-        private Spell.SpellType rightHandSpell;
-
-        public Spell.SpellType Left { get => leftHandSpell; }
-
-        public Spell.SpellType Right { get => rightHandSpell; }
+        private Spell.SpellType spell;
+        public Spell.SpellType Spell { get => spell; }
 
         [SerializeField]
         private Color handColor;
@@ -49,9 +44,14 @@ public class Spell_Casting : MonoBehaviour
     }
 
     [SerializeField]
-    private List<HandColorsForSpells> handColors;
+    private List<HandColorsForSpells> rightHandColors;
 
-    private Color colorOnHands;
+    [SerializeField]
+    private List<HandColorsForSpells> leftHandColors;
+
+    private Color colorOnLeftHand;
+
+    private Color colorOnRightHand;
 
     private Spell.SpellType[] handSpellTypes = null;
 
@@ -206,18 +206,30 @@ public class Spell_Casting : MonoBehaviour
             handSpellTypes[1] = rightHand.ActiveSpell.Type;
         }
 
-        for (int i = 0; i < handColors.Count; i++)
+        for (int i = 0; i < rightHandColors.Count; i++)
         {
-            if ((handSpellTypes[0] == handColors[i].Left && handSpellTypes[1] == handColors[i].Right) ||
-                (handSpellTypes[1] == handColors[i].Left && handSpellTypes[0] == handColors[i].Right))
+            if (handSpellTypes[1] == rightHandColors[i].Spell)
             {
-                colorOnHands = handColors[i].HandColor;
+                colorOnRightHand = rightHandColors[i].HandColor;
+            }
+        }
+
+        for (int i = 0; i < leftHandColors.Count; i++)
+        {
+            if (handSpellTypes[0] == leftHandColors[i].Spell)
+            {
+                colorOnLeftHand = leftHandColors[i].HandColor;
             }
         }
     }
 
-    public Color HandColor()
+    public Color LeftHandColor()
     {
-        return colorOnHands;
+        return colorOnLeftHand;
+    }
+
+    public Color RightHandColor()
+    {
+        return colorOnRightHand;
     }
 }

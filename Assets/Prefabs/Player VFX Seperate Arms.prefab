@@ -251,22 +251,22 @@ VisualEffect:
       - m_Value: {x: 0.1, y: 0.5, z: 0.1}
         m_Name: Velocity Maximum
         m_Overridden: 1
-      - m_Value: {x: 324.8355, y: 157.17061, z: 94.50614}
+      - m_Value: {x: 291.61804, y: 54.497555, z: 208.26021}
         m_Name: Bone_angles
         m_Overridden: 1
-      - m_Value: {x: 0.2442659, y: -1.1017208, z: -2.5348163}
+      - m_Value: {x: 0.19426534, y: -0.05148703, z: -0.32630777}
         m_Name: Bone_position
         m_Overridden: 1
-      - m_Value: {x: 0.99999994, y: 0.99999994, z: 1}
+      - m_Value: {x: 0.99999994, y: 0.99999994, z: 1.0000001}
         m_Name: Bone_scale
         m_Overridden: 1
-      - m_Value: {x: 346.9335, y: 130.92603, z: 349.4043}
+      - m_Value: {x: 315.2042, y: 98.96094, z: 31.962677}
         m_Name: Spawn Pos_angles
         m_Overridden: 1
-      - m_Value: {x: 0.3989907, y: -0.46102953, z: -1.9926264}
+      - m_Value: {x: 0.31148517, y: -0.22878867, z: 0.4774341}
         m_Name: Spawn Pos_position
         m_Overridden: 1
-      - m_Value: {x: 0.99999994, y: 1.0000001, z: 1}
+      - m_Value: {x: 0.9999999, y: 1, z: 0.9999999}
         m_Name: Spawn Pos_scale
         m_Overridden: 1
     m_Vector4f:
@@ -324,7 +324,7 @@ VisualEffect:
       m_Array: []
     m_NamedObject:
       m_Array:
-      - m_Value: {fileID: 0}
+      - m_Value: {fileID: 422550781965363555}
         m_Name: SkinnedMeshRenderer
         m_Overridden: 1
       - m_Value: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
@@ -403,7 +403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Bone
-  Target: {fileID: 0}
+  Target: {fileID: 292520293506274048}
 --- !u!114 &3215469906131585048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,7 +418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Spawn Pos
-  Target: {fileID: 0}
+  Target: {fileID: 3571471758943440529}
 --- !u!114 &1198614537720613867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,13 +432,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectPosition: {fileID: 0}
-  shaderEffectPosition: {fileID: 0}
+  shaderEffectPosition: {fileID: 4661038817848417546}
   scale: 0.03
-  material: {fileID: 2100000, guid: 7192d46cb5ae9234c8e2e4d3b9911b0a, type: 2}
+  material: {fileID: 2100000, guid: 177bffb1efb990f4491f4f43477597aa, type: 2}
   noisePower: 0.3
   noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 391173102825737278}
+  isLeftHandEffect: 0
 --- !u!1 &208642551134217966
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,52 +508,28 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cfd51a4e8ecfc034eabdff9d6fff8f69, type: 2}
   - {fileID: 11400000, guid: 7019b96f6bec6424b80c4662ed209b0a, type: 2}
   cooldownText: {fileID: 0}
-  handColors:
-  - leftHandSpell: 0
-    rightHandSpell: 0
-    handColor: {r: 0.6886792, g: 0, b: 0.05941554, a: 1}
-  - leftHandSpell: 0
-    rightHandSpell: 1
-    handColor: {r: 0.47058824, g: 0.17792808, b: 0.6415094, a: 1}
-  - leftHandSpell: 1
-    rightHandSpell: 1
-    handColor: {r: 0.15258981, g: 0.11698109, b: 1, a: 1}
-  - leftHandSpell: 4
-    rightHandSpell: 4
-    handColor: {r: 0.745283, g: 0.6130508, b: 0.12233887, a: 1}
-  - leftHandSpell: 4
-    rightHandSpell: 0
-    handColor: {r: 0.74509805, g: 0.42412043, b: 0.12156862, a: 1}
-  - leftHandSpell: 4
-    rightHandSpell: 1
-    handColor: {r: 0.12156862, g: 0.74509805, b: 0.56809664, a: 1}
-  - leftHandSpell: 2
-    rightHandSpell: 2
-    handColor: {r: 0.3490566, g: 0.12750874, b: 0.011196132, a: 1}
-  - leftHandSpell: 2
-    rightHandSpell: 0
-    handColor: {r: 0.5849056, g: 0.25603414, b: 0.25994924, a: 1}
-  - leftHandSpell: 2
-    rightHandSpell: 1
-    handColor: {r: 0.3741323, g: 0.22399428, b: 0.49056602, a: 1}
-  - leftHandSpell: 2
-    rightHandSpell: 4
-    handColor: {r: 0.4339623, g: 0.28148973, b: 0.054859374, a: 1}
-  - leftHandSpell: 5
-    rightHandSpell: 5
-    handColor: {r: 0.07227111, g: 1, b: 0, a: 1}
-  - leftHandSpell: 5
-    rightHandSpell: 0
-    handColor: {r: 0.732628, g: 1, b: 0, a: 1}
-  - leftHandSpell: 5
-    rightHandSpell: 1
-    handColor: {r: 0, g: 1, b: 0.71388006, a: 1}
-  - leftHandSpell: 5
-    rightHandSpell: 2
-    handColor: {r: 0.014625889, g: 0.3301887, b: 0, a: 1}
-  - leftHandSpell: 5
-    rightHandSpell: 4
-    handColor: {r: 0.32884097, g: 0.4528302, b: 0, a: 1}
+  rightHandColors:
+  - spell: 0
+    handColor: {r: 1, g: 0, b: 0.13335371, a: 1}
+  - spell: 1
+    handColor: {r: 0, g: 0.011090994, b: 1, a: 1}
+  - spell: 2
+    handColor: {r: 0.43137255, g: 0.20738441, b: 0, a: 1}
+  - spell: 4
+    handColor: {r: 1, g: 0.86925906, b: 0, a: 1}
+  - spell: 5
+    handColor: {r: 0.066957, g: 1, b: 0, a: 1}
+  leftHandColors:
+  - spell: 0
+    handColor: {r: 1, g: 0, b: 0.13333334, a: 1}
+  - spell: 1
+    handColor: {r: 0, g: 0.011764706, b: 1, a: 1}
+  - spell: 2
+    handColor: {r: 0.43137255, g: 0.20784314, b: 0, a: 1}
+  - spell: 4
+    handColor: {r: 1, g: 0.87058824, b: 0, a: 1}
+  - spell: 5
+    handColor: {r: 0.06666667, g: 1, b: 0, a: 1}
 --- !u!1 &500051618232473216
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,13 +858,13 @@ VisualEffect:
       - m_Value: {x: 0.6, y: 2, z: 1}
         m_Name: Outer Scale
         m_Overridden: 1
-      - m_Value: {x: -0, y: 0, z: 0}
+      - m_Value: {x: 322.0608, y: 93.492165, z: 53.99833}
         m_Name: Spawn Pos_angles
         m_Overridden: 1
-      - m_Value: {x: 0.25, y: 1.5, z: 0.75}
+      - m_Value: {x: 0.46606612, y: -0.45887703, z: 0.065726876}
         m_Name: Spawn Pos_position
         m_Overridden: 1
-      - m_Value: {x: 1, y: 1, z: 1}
+      - m_Value: {x: 1.0000004, y: 0.99999994, z: 1.0000001}
         m_Name: Spawn Pos_scale
         m_Overridden: 1
       - m_Value: {x: 90, y: 0, z: 0}
@@ -988,7 +965,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Spawn Pos
-  Target: {fileID: 0}
+  Target: {fileID: 6119133742515899048}
 --- !u!114 &7652368115290916147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1002,13 +979,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectPosition: {fileID: 0}
-  shaderEffectPosition: {fileID: 0}
+  shaderEffectPosition: {fileID: 4661038817848417546}
   scale: 0.03
-  material: {fileID: 2100000, guid: 7192d46cb5ae9234c8e2e4d3b9911b0a, type: 2}
+  material: {fileID: 2100000, guid: 177bffb1efb990f4491f4f43477597aa, type: 2}
   noisePower: 0.3
   noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 391173102825737278}
+  isLeftHandEffect: 0
 --- !u!1 &1251593483599452070
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,13 +1162,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectPosition: {fileID: 0}
-  shaderEffectPosition: {fileID: 0}
+  shaderEffectPosition: {fileID: 4661038817848417546}
   scale: 0.03
-  material: {fileID: 2100000, guid: 7192d46cb5ae9234c8e2e4d3b9911b0a, type: 2}
+  material: {fileID: 2100000, guid: 177bffb1efb990f4491f4f43477597aa, type: 2}
   noisePower: 0.3
   noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 391173102825737278}
+  isLeftHandEffect: 0
 --- !u!1 &1780348236303722837
 GameObject:
   m_ObjectHideFlags: 0
@@ -1415,16 +1394,16 @@ VisualEffect:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: -0.25, y: 1.5, z: 0.886}
+      - m_Value: {x: -0.3142583, y: -0.27785283, z: 0.40332258}
         m_Name: Pos1
         m_Overridden: 1
-      - m_Value: {x: -0.25, y: 1.621, z: 0.944}
+      - m_Value: {x: -0.20072818, y: -0.15738636, z: 0.4395963}
         m_Name: Pos2
         m_Overridden: 1
-      - m_Value: {x: -0.25, y: 1.502, z: 1.105}
+      - m_Value: {x: -0.25819457, y: -0.17269427, z: 0.5224058}
         m_Name: Pos3
         m_Overridden: 1
-      - m_Value: {x: -0.25, y: 1.53, z: 1.165}
+      - m_Value: {x: -0.22800699, y: -0.15238076, z: 0.47998804}
         m_Name: Pos4
         m_Overridden: 1
     m_Vector4f:
@@ -1519,7 +1498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos1
-  Target: {fileID: 0}
+  Target: {fileID: 6456930025844205537}
 --- !u!114 &8395011649781347346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1534,7 +1513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos2
-  Target: {fileID: 0}
+  Target: {fileID: 5281872237257751308}
 --- !u!114 &7482194309921439814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1549,7 +1528,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos3
-  Target: {fileID: 0}
+  Target: {fileID: 3985048134443826557}
 --- !u!114 &4633411705696104009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1564,7 +1543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos4
-  Target: {fileID: 0}
+  Target: {fileID: 445937737059582452}
 --- !u!1 &2274064190645473668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1732,13 +1711,13 @@ VisualEffect:
       - m_Value: {x: 0.6, y: 2, z: 1}
         m_Name: Outer Scale
         m_Overridden: 1
-      - m_Value: {x: -0, y: 0, z: 0}
+      - m_Value: {x: 320.02612, y: 254.651, z: 304.9858}
         m_Name: Spawn Pos_angles
         m_Overridden: 1
-      - m_Value: {x: -0.25, y: 1.5, z: 0.75}
+      - m_Value: {x: -0.38292632, y: -0.4959374, z: -0.037203193}
         m_Name: Spawn Pos_position
         m_Overridden: 1
-      - m_Value: {x: 1, y: 1, z: 1}
+      - m_Value: {x: 0.9999998, y: 0.99999994, z: 0.99999976}
         m_Name: Spawn Pos_scale
         m_Overridden: 1
       - m_Value: {x: 90, y: 0, z: 0}
@@ -1839,7 +1818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Spawn Pos
-  Target: {fileID: 0}
+  Target: {fileID: 9202718773468266642}
 --- !u!114 &2291588463915610888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1853,13 +1832,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectPosition: {fileID: 0}
-  shaderEffectPosition: {fileID: 0}
+  shaderEffectPosition: {fileID: 4661038817848417546}
   scale: 0.03
   material: {fileID: 2100000, guid: 7192d46cb5ae9234c8e2e4d3b9911b0a, type: 2}
   noisePower: 0.3
   noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 391173102825737278}
+  isLeftHandEffect: 1
 --- !u!1 &2827650418478522252
 GameObject:
   m_ObjectHideFlags: 0
@@ -2055,16 +2035,16 @@ VisualEffect:
       - m_Value: 0.01
         m_Name: X and Z Velocity Random
         m_Overridden: 1
-      - m_Value: 0.45
+      - m_Value: 0.3
         m_Name: Noise Power
         m_Overridden: 1
-      - m_Value: 0.8
+      - m_Value: 1.7
         m_Name: Noise Size
         m_Overridden: 1
       - m_Value: 1000
         m_Name: Spawn Rate
         m_Overridden: 1
-      - m_Value: 0.15
+      - m_Value: 0.03
         m_Name: Ball Size
         m_Overridden: 1
       - m_Value: 0.08
@@ -2080,7 +2060,7 @@ VisualEffect:
         m_Overridden: 1
     m_Vector3f:
       m_Array:
-      - m_Value: {x: 0.508, y: 1.808, z: 1.31}
+      - m_Value: {x: 0.22667304, y: -0.11405569, z: 0.57072514}
         m_Name: Ball Pos
         m_Overridden: 1
       - m_Value: {x: 0, y: 1.5, z: 0.25}
@@ -2092,13 +2072,13 @@ VisualEffect:
       - m_Value: {x: 1, y: 1, z: 1}
         m_Name: Root Bone_scale
         m_Overridden: 1
-      - m_Value: {x: 3.8825118e-19, y: -0.000013660375, z: 3.2568876e-12}
+      - m_Value: {x: 291.61804, y: 54.497555, z: 208.26021}
         m_Name: Root Bone Transform_angles
         m_Overridden: 1
-      - m_Value: {x: 0, y: 1.5, z: 0.25}
+      - m_Value: {x: 0.19426534, y: -0.05148703, z: -0.32630777}
         m_Name: Root Bone Transform_position
         m_Overridden: 1
-      - m_Value: {x: 1, y: 1, z: 1}
+      - m_Value: {x: 0.99999994, y: 0.99999994, z: 1.0000001}
         m_Name: Root Bone Transform_scale
         m_Overridden: 1
     m_Vector4f:
@@ -2190,7 +2170,7 @@ VisualEffect:
       - m_Value: {fileID: 4493585093827132993, guid: b1ac0cc7726fdb047b88564b21313f1b, type: 3}
         m_Name: Mesh
         m_Overridden: 1
-      - m_Value: {fileID: 0}
+      - m_Value: {fileID: 422550781965363555}
         m_Name: SkinnedMeshRenderer
         m_Overridden: 1
     m_Bool:
@@ -2247,14 +2227,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cbbcf603c3bd434da8009925b653c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPosition: {fileID: 0}
-  shaderEffectPosition: {fileID: 0}
+  effectPosition: {fileID: 8643953764386665715}
+  shaderEffectPosition: {fileID: 4661038817848417546}
   scale: 0.03
-  material: {fileID: 2100000, guid: 7192d46cb5ae9234c8e2e4d3b9911b0a, type: 2}
+  material: {fileID: 2100000, guid: 177bffb1efb990f4491f4f43477597aa, type: 2}
   noisePower: 0.3
   noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 391173102825737278}
+  isLeftHandEffect: 0
 --- !u!114 &3235503304920709821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2285,7 +2266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Root Bone Transform
-  Target: {fileID: 0}
+  Target: {fileID: 292520293506274048}
 --- !u!1 &3235503305082218951
 GameObject:
   m_ObjectHideFlags: 0
@@ -2370,7 +2351,7 @@ VisualEffect:
         m_Overridden: 1
     m_Vector3f:
       m_Array:
-      - m_Value: {x: 0.3989907, y: -0.46102953, z: -1.9926264}
+      - m_Value: {x: 0.22667304, y: -0.11405569, z: 0.57072514}
         m_Name: Ball Pos
         m_Overridden: 1
       - m_Value: {x: 0, y: 1.5, z: 0.25}
@@ -2382,13 +2363,13 @@ VisualEffect:
       - m_Value: {x: 1, y: 1, z: 1}
         m_Name: Root Bone_scale
         m_Overridden: 1
-      - m_Value: {x: 324.8355, y: 157.17061, z: 94.50614}
+      - m_Value: {x: 291.61804, y: 54.497555, z: 208.26021}
         m_Name: Root Bone Transform_angles
         m_Overridden: 1
-      - m_Value: {x: 0.2442659, y: -1.1017208, z: -2.5348163}
+      - m_Value: {x: 0.19426534, y: -0.05148703, z: -0.32630777}
         m_Name: Root Bone Transform_position
         m_Overridden: 1
-      - m_Value: {x: 0.99999994, y: 0.99999994, z: 1}
+      - m_Value: {x: 0.99999994, y: 0.99999994, z: 1.0000001}
         m_Name: Root Bone Transform_scale
         m_Overridden: 1
     m_Vector4f:
@@ -2480,7 +2461,7 @@ VisualEffect:
       - m_Value: {fileID: 4493585093827132993, guid: b1ac0cc7726fdb047b88564b21313f1b, type: 3}
         m_Name: Mesh
         m_Overridden: 1
-      - m_Value: {fileID: 0}
+      - m_Value: {fileID: 422550781965363555}
         m_Name: SkinnedMeshRenderer
         m_Overridden: 1
     m_Bool:
@@ -2537,14 +2518,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cbbcf603c3bd434da8009925b653c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPosition: {fileID: 0}
-  shaderEffectPosition: {fileID: 0}
+  effectPosition: {fileID: 8643953764386665715}
+  shaderEffectPosition: {fileID: 4661038817848417546}
   scale: 0.03
-  material: {fileID: 2100000, guid: 7192d46cb5ae9234c8e2e4d3b9911b0a, type: 2}
+  material: {fileID: 2100000, guid: 177bffb1efb990f4491f4f43477597aa, type: 2}
   noisePower: 0.3
   noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 391173102825737278}
+  isLeftHandEffect: 0
 --- !u!114 &3235503305082218957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2575,7 +2557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Root Bone Transform
-  Target: {fileID: 0}
+  Target: {fileID: 292520293506274048}
 --- !u!1 &3235503305259505503
 GameObject:
   m_ObjectHideFlags: 0
@@ -2635,16 +2617,16 @@ VisualEffect:
       - m_Value: 0.01
         m_Name: X and Z Velocity Random
         m_Overridden: 1
-      - m_Value: 0.45
+      - m_Value: 0.3
         m_Name: Noise Power
         m_Overridden: 1
-      - m_Value: 0.8
+      - m_Value: 1.7
         m_Name: Noise Size
         m_Overridden: 1
       - m_Value: 1000
         m_Name: Spawn Rate
         m_Overridden: 1
-      - m_Value: 0.15
+      - m_Value: 0.03
         m_Name: Ball Size
         m_Overridden: 1
       - m_Value: 0.08
@@ -2660,7 +2642,7 @@ VisualEffect:
         m_Overridden: 1
     m_Vector3f:
       m_Array:
-      - m_Value: {x: -0.508, y: 1.808, z: 1.31}
+      - m_Value: {x: -0.22800699, y: -0.15238076, z: 0.47998804}
         m_Name: Ball Pos
         m_Overridden: 1
       - m_Value: {x: 0, y: 1.5, z: 0.25}
@@ -2672,13 +2654,13 @@ VisualEffect:
       - m_Value: {x: 1, y: 1, z: 1}
         m_Name: Root Bone_scale
         m_Overridden: 1
-      - m_Value: {x: 3.8825118e-19, y: -0.000013660375, z: 3.2568876e-12}
+      - m_Value: {x: 292.12976, y: 304.8767, z: 148.17058}
         m_Name: Root Bone Transform_angles
         m_Overridden: 1
-      - m_Value: {x: 0, y: 1.5, z: 0.25}
+      - m_Value: {x: -0.0025623776, y: -0.049953997, z: -0.3293004}
         m_Name: Root Bone Transform_position
         m_Overridden: 1
-      - m_Value: {x: 1, y: 1, z: 1}
+      - m_Value: {x: 1, y: 0.99999994, z: 0.9999999}
         m_Name: Root Bone Transform_scale
         m_Overridden: 1
     m_Vector4f:
@@ -2770,7 +2752,7 @@ VisualEffect:
       - m_Value: {fileID: 4493585093827132993, guid: b1ac0cc7726fdb047b88564b21313f1b, type: 3}
         m_Name: Mesh
         m_Overridden: 1
-      - m_Value: {fileID: 0}
+      - m_Value: {fileID: 7099111215813360967}
         m_Name: SkinnedMeshRenderer
         m_Overridden: 1
     m_Bool:
@@ -2827,14 +2809,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cbbcf603c3bd434da8009925b653c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPosition: {fileID: 0}
-  shaderEffectPosition: {fileID: 0}
+  effectPosition: {fileID: 445937737059582452}
+  shaderEffectPosition: {fileID: 4661038817848417546}
   scale: 0.03
   material: {fileID: 2100000, guid: 7192d46cb5ae9234c8e2e4d3b9911b0a, type: 2}
   noisePower: 0.3
   noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 391173102825737278}
+  isLeftHandEffect: 1
 --- !u!114 &3235503305259505498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2865,7 +2848,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Root Bone Transform
-  Target: {fileID: 0}
+  Target: {fileID: 1249182466996044104}
 --- !u!1 &3235503305831190016
 GameObject:
   m_ObjectHideFlags: 0
@@ -2895,7 +2878,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3235503305831190016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.241, y: -0.201, z: 0.588}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2950,7 +2933,7 @@ VisualEffect:
         m_Overridden: 1
     m_Vector3f:
       m_Array:
-      - m_Value: {x: -0.17805809, y: -0.40825188, z: -2.1050186}
+      - m_Value: {x: -0.22800699, y: -0.15238076, z: 0.47998804}
         m_Name: Ball Pos
         m_Overridden: 1
       - m_Value: {x: 0, y: 1.5, z: 0.25}
@@ -2962,13 +2945,13 @@ VisualEffect:
       - m_Value: {x: 1, y: 1, z: 1}
         m_Name: Root Bone_scale
         m_Overridden: 1
-      - m_Value: {x: 324.8355, y: 157.17061, z: 94.50614}
+      - m_Value: {x: 292.12976, y: 304.8767, z: 148.17058}
         m_Name: Root Bone Transform_angles
         m_Overridden: 1
-      - m_Value: {x: 0.2442659, y: -1.1017208, z: -2.5348163}
+      - m_Value: {x: -0.0025623776, y: -0.049953997, z: -0.3293004}
         m_Name: Root Bone Transform_position
         m_Overridden: 1
-      - m_Value: {x: 0.99999994, y: 0.99999994, z: 1}
+      - m_Value: {x: 1, y: 0.99999994, z: 0.9999999}
         m_Name: Root Bone Transform_scale
         m_Overridden: 1
     m_Vector4f:
@@ -3060,7 +3043,7 @@ VisualEffect:
       - m_Value: {fileID: 4493585093827132993, guid: b1ac0cc7726fdb047b88564b21313f1b, type: 3}
         m_Name: Mesh
         m_Overridden: 1
-      - m_Value: {fileID: 0}
+      - m_Value: {fileID: 7099111215813360967}
         m_Name: SkinnedMeshRenderer
         m_Overridden: 1
     m_Bool:
@@ -3117,14 +3100,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cbbcf603c3bd434da8009925b653c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPosition: {fileID: 0}
-  shaderEffectPosition: {fileID: 0}
+  effectPosition: {fileID: 445937737059582452}
+  shaderEffectPosition: {fileID: 4661038817848417546}
   scale: 0.03
   material: {fileID: 2100000, guid: 7192d46cb5ae9234c8e2e4d3b9911b0a, type: 2}
   noisePower: 0.3
   noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 391173102825737278}
+  isLeftHandEffect: 1
 --- !u!114 &3235503305831190019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3155,7 +3139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Root Bone Transform
-  Target: {fileID: 0}
+  Target: {fileID: 1249182466996044104}
 --- !u!1 &3235503305862472089
 GameObject:
   m_ObjectHideFlags: 0
@@ -3390,16 +3374,16 @@ VisualEffect:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: -0.25, y: 1.5, z: 0.886}
+      - m_Value: {x: -0.3142583, y: -0.27785283, z: 0.40332258}
         m_Name: Pos1
         m_Overridden: 1
-      - m_Value: {x: -0.405, y: 1.545, z: 0.977}
+      - m_Value: {x: -0.2818272, y: -0.19987994, z: 0.5504622}
         m_Name: Pos2
         m_Overridden: 1
-      - m_Value: {x: 0.037999988, y: 1.555, z: 1.043}
+      - m_Value: {x: -0.25221145, y: -0.2336021, z: 0.39427495}
         m_Name: Pos3
         m_Overridden: 1
-      - m_Value: {x: -0.25, y: 1.53, z: 1.165}
+      - m_Value: {x: -0.22800699, y: -0.15238076, z: 0.47998804}
         m_Name: Pos4
         m_Overridden: 1
     m_Vector4f:
@@ -3494,7 +3478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos1
-  Target: {fileID: 0}
+  Target: {fileID: 6456930025844205537}
 --- !u!114 &3005627955258598172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3509,7 +3493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos2
-  Target: {fileID: 0}
+  Target: {fileID: 3185324765916913901}
 --- !u!114 &1240336869899227563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3524,7 +3508,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos3
-  Target: {fileID: 0}
+  Target: {fileID: 377609721568459465}
 --- !u!114 &9180327848002461097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3539,7 +3523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos4
-  Target: {fileID: 0}
+  Target: {fileID: 445937737059582452}
 --- !u!1 &4098215700770715623
 GameObject:
   m_ObjectHideFlags: 0
@@ -3597,7 +3581,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4315441393280296039}
-  m_LocalRotation: {x: -0.60265946, y: 0.04387144, z: -0.0877448, w: 0.7919456}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.00007266558, y: 0.0009634985, z: 0.000062919295}
   m_LocalScale: {x: 0.99999994, y: 1, z: 1.0000004}
   m_ConstrainProportionsScale: 0
@@ -3906,16 +3890,16 @@ VisualEffect:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: 0.25, y: 1.5, z: 0.886}
+      - m_Value: {x: 0.31148517, y: -0.22878867, z: 0.4774341}
         m_Name: Pos1
         m_Overridden: 1
-      - m_Value: {x: 0.428, y: 1.647, z: 0.977}
+      - m_Value: {x: 0.26914743, y: -0.17955738, z: 0.6341674}
         m_Name: Pos2
         m_Overridden: 1
-      - m_Value: {x: 0.052, y: 1.503, z: 1.043}
+      - m_Value: {x: 0.21590996, y: -0.14572579, z: 0.49097127}
         m_Name: Pos3
         m_Overridden: 1
-      - m_Value: {x: 0.25, y: 1.53, z: 1.165}
+      - m_Value: {x: 0.24916056, y: -0.14144331, z: 0.53814715}
         m_Name: Pos4
         m_Overridden: 1
     m_Vector4f:
@@ -4010,7 +3994,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos1
-  Target: {fileID: 0}
+  Target: {fileID: 3571471758943440529}
 --- !u!114 &8297338806554433611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4025,7 +4009,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos2
-  Target: {fileID: 0}
+  Target: {fileID: 7626293932502830821}
 --- !u!114 &1525109000176103996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4040,7 +4024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos3
-  Target: {fileID: 0}
+  Target: {fileID: 4130874786169248900}
 --- !u!114 &5161828563540393686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4055,7 +4039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos4
-  Target: {fileID: 0}
+  Target: {fileID: 6943401330158040727}
 --- !u!1 &4954307409017133282
 GameObject:
   m_ObjectHideFlags: 0
@@ -4292,16 +4276,16 @@ VisualEffect:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: 0.25, y: 1.5, z: 0.886}
+      - m_Value: {x: 0.31148517, y: -0.22878867, z: 0.4774341}
         m_Name: Pos1
         m_Overridden: 1
-      - m_Value: {x: 0.095, y: 1.545, z: 0.977}
+      - m_Value: {x: 0.26914743, y: -0.17955738, z: 0.6341674}
         m_Name: Pos2
         m_Overridden: 1
-      - m_Value: {x: 0.538, y: 1.555, z: 1.043}
+      - m_Value: {x: 0.2540612, y: -0.17812926, z: 0.4723665}
         m_Name: Pos3
         m_Overridden: 1
-      - m_Value: {x: 0.25, y: 1.53, z: 1.165}
+      - m_Value: {x: 0.22667304, y: -0.11405569, z: 0.57072514}
         m_Name: Pos4
         m_Overridden: 1
     m_Vector4f:
@@ -4396,7 +4380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos1
-  Target: {fileID: 0}
+  Target: {fileID: 3571471758943440529}
 --- !u!114 &7262348085482992562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4411,7 +4395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos2
-  Target: {fileID: 0}
+  Target: {fileID: 7626293932502830821}
 --- !u!114 &9089832170281181433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4426,7 +4410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos3
-  Target: {fileID: 0}
+  Target: {fileID: 485944551825570597}
 --- !u!114 &7408347373700156404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4441,7 +4425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos4
-  Target: {fileID: 0}
+  Target: {fileID: 8643953764386665715}
 --- !u!1 &5213253437510832683
 GameObject:
   m_ObjectHideFlags: 0
@@ -4721,16 +4705,16 @@ VisualEffect:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: -0.25, y: 1.5, z: 0.886}
+      - m_Value: {x: -0.3142583, y: -0.27785283, z: 0.40332258}
         m_Name: Pos1
         m_Overridden: 1
-      - m_Value: {x: -0.072, y: 1.647, z: 0.977}
+      - m_Value: {x: -0.2818272, y: -0.19987994, z: 0.5504622}
         m_Name: Pos2
         m_Overridden: 1
-      - m_Value: {x: -0.448, y: 1.503, z: 1.043}
+      - m_Value: {x: -0.13781604, y: -0.08795673, z: 0.47802943}
         m_Name: Pos3
         m_Overridden: 1
-      - m_Value: {x: -0.25, y: 1.53, z: 1.165}
+      - m_Value: {x: -0.07610268, y: -0.075766385, z: 0.6010789}
         m_Name: Pos4
         m_Overridden: 1
     m_Vector4f:
@@ -4825,7 +4809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos1
-  Target: {fileID: 0}
+  Target: {fileID: 6456930025844205537}
 --- !u!114 &7760294639825506196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4840,7 +4824,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos2
-  Target: {fileID: 0}
+  Target: {fileID: 3185324765916913901}
 --- !u!114 &3732444482964196562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4855,7 +4839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos3
-  Target: {fileID: 0}
+  Target: {fileID: 7475783278137041587}
 --- !u!114 &439350258678185360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4870,7 +4854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos4
-  Target: {fileID: 0}
+  Target: {fileID: 7016036797290445987}
 --- !u!1 &5634028325811883702
 GameObject:
   m_ObjectHideFlags: 0
@@ -4904,6 +4888,7 @@ Transform:
   - {fileID: 7365702199710440288}
   - {fileID: 1436250560599413991}
   - {fileID: 2806714276036523246}
+  - {fileID: 4661038817848417546}
   m_Father: {fileID: 2647103960067250789}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7105,22 +7090,22 @@ VisualEffect:
       - m_Value: {x: 0.1, y: 0.5, z: 0.1}
         m_Name: Velocity Maximum
         m_Overridden: 1
-      - m_Value: {x: 324.8355, y: 157.17061, z: 94.50614}
+      - m_Value: {x: 292.12976, y: 304.8767, z: 148.17058}
         m_Name: Bone_angles
         m_Overridden: 1
-      - m_Value: {x: 0.2442659, y: -1.1017208, z: -2.5348163}
+      - m_Value: {x: -0.0025623776, y: -0.049953997, z: -0.3293004}
         m_Name: Bone_position
         m_Overridden: 1
-      - m_Value: {x: 0.99999994, y: 0.99999994, z: 1}
+      - m_Value: {x: 1, y: 0.99999994, z: 0.9999999}
         m_Name: Bone_scale
         m_Overridden: 1
-      - m_Value: {x: 359.9209, y: 218.36658, z: 39.90934}
+      - m_Value: {x: 314.4773, y: 242.36331, z: 346.24402}
         m_Name: Spawn Pos_angles
         m_Overridden: 1
-      - m_Value: {x: -0.26430944, y: -0.53017455, z: -2.0228257}
+      - m_Value: {x: -0.3142583, y: -0.27785283, z: 0.40332258}
         m_Name: Spawn Pos_position
         m_Overridden: 1
-      - m_Value: {x: 1.0000001, y: 0.9999998, z: 0.99999994}
+      - m_Value: {x: 1, y: 0.99999976, z: 0.9999999}
         m_Name: Spawn Pos_scale
         m_Overridden: 1
     m_Vector4f:
@@ -7178,7 +7163,7 @@ VisualEffect:
       m_Array: []
     m_NamedObject:
       m_Array:
-      - m_Value: {fileID: 0}
+      - m_Value: {fileID: 7099111215813360967}
         m_Name: SkinnedMeshRenderer
         m_Overridden: 1
       - m_Value: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
@@ -7257,7 +7242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Bone
-  Target: {fileID: 0}
+  Target: {fileID: 1249182466996044104}
 --- !u!114 &1052486419104518658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7272,7 +7257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Spawn Pos
-  Target: {fileID: 0}
+  Target: {fileID: 6456930025844205537}
 --- !u!114 &987649536578797816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7286,13 +7271,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectPosition: {fileID: 0}
-  shaderEffectPosition: {fileID: 0}
+  shaderEffectPosition: {fileID: 4661038817848417546}
   scale: 0.03
   material: {fileID: 2100000, guid: 7192d46cb5ae9234c8e2e4d3b9911b0a, type: 2}
   noisePower: 0.3
   noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 391173102825737278}
+  isLeftHandEffect: 1
 --- !u!1 &8247089398394230242
 GameObject:
   m_ObjectHideFlags: 0
@@ -7497,16 +7483,16 @@ VisualEffect:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: 0.25, y: 1.5, z: 0.886}
+      - m_Value: {x: 0.31148517, y: -0.22878867, z: 0.4774341}
         m_Name: Pos1
         m_Overridden: 1
-      - m_Value: {x: 0.25, y: 1.621, z: 0.944}
+      - m_Value: {x: 0.20357653, y: -0.10826641, z: 0.52790326}
         m_Name: Pos2
         m_Overridden: 1
-      - m_Value: {x: 0.25, y: 1.502, z: 1.105}
+      - m_Value: {x: 0.2506367, y: -0.14520985, z: 0.61045426}
         m_Name: Pos3
         m_Overridden: 1
-      - m_Value: {x: 0.25, y: 1.53, z: 1.165}
+      - m_Value: {x: 0.22667304, y: -0.11405569, z: 0.57072514}
         m_Name: Pos4
         m_Overridden: 1
     m_Vector4f:
@@ -7601,7 +7587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos1
-  Target: {fileID: 0}
+  Target: {fileID: 3571471758943440529}
 --- !u!114 &6061490896275977004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7616,7 +7602,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos2
-  Target: {fileID: 0}
+  Target: {fileID: 2804628541359464468}
 --- !u!114 &1924178052142193912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7631,7 +7617,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos3
-  Target: {fileID: 0}
+  Target: {fileID: 586378475506528196}
 --- !u!114 &3236508122227596439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7646,7 +7632,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos4
-  Target: {fileID: 0}
+  Target: {fileID: 8643953764386665715}
 --- !u!1 &8599087084802421393
 GameObject:
   m_ObjectHideFlags: 0
@@ -7933,6 +7919,37 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &8759655057835302107
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4661038817848417546}
+  m_Layer: 0
+  m_Name: Burn Position Center
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4661038817848417546
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8759655057835302107}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5006813414370169868}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8773108652042326311
 GameObject:
   m_ObjectHideFlags: 0
@@ -8068,7 +8085,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8942725354981826626}
-  m_LocalRotation: {x: 0.019771874, y: -0.06058981, z: -0.031744562, w: 0.9974619}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.00007266402, y: 0.0009635025, z: 0.0000629168}
   m_LocalScale: {x: 0.9999999, y: 0.99999976, z: 1.0000001}
   m_ConstrainProportionsScale: 0
@@ -8284,10 +8301,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectPosition: {fileID: 0}
-  shaderEffectPosition: {fileID: 0}
+  shaderEffectPosition: {fileID: 4661038817848417546}
   scale: 0.03
   material: {fileID: 2100000, guid: 7192d46cb5ae9234c8e2e4d3b9911b0a, type: 2}
   noisePower: 0.3
   noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 391173102825737278}
+  isLeftHandEffect: 1
