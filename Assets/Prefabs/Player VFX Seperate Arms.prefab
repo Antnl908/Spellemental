@@ -6469,6 +6469,7 @@ MonoBehaviour:
   maxHealth: 1
   heart: {fileID: 0}
   timeUntilDeath: 5
+  player_Look: {fileID: 6962674744487178575}
 --- !u!114 &4012963175711104017
 MonoBehaviour:
   m_ObjectHideFlags: 0

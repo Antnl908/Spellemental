@@ -31,6 +31,9 @@ public class Player_Health : MonoBehaviour, IDamageable
 
     private static bool hasHealthBuff = false;
 
+    [SerializeField]
+    private Player_Look player_Look;
+
     public void KnockBack(float knockBack)
     {
         //throw new System.NotImplementedException();
@@ -57,12 +60,10 @@ public class Player_Health : MonoBehaviour, IDamageable
         return isDying;
     }
 
-
-
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
+        SecondWind();
     }
 
     // Update is called once per frame
@@ -86,6 +87,8 @@ public class Player_Health : MonoBehaviour, IDamageable
 
             if(currentTimeUntilDeath <= 0)
             {
+                player_Look.HideCursor = false;
+
                 SceneManager.LoadScene("Death_Scene");
             }
         }

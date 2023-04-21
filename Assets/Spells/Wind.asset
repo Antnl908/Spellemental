@@ -25,7 +25,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   objectPoolName: Error
-  range: 150
+  range: 20
   layerMask:
     serializedVersion: 2
     m_Bits: 1665
