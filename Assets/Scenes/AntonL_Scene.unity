@@ -1897,6 +1897,7 @@ GameObject:
   - component: {fileID: 674169631}
   - component: {fileID: 674169638}
   - component: {fileID: 674169637}
+  - component: {fileID: 674169639}
   m_Layer: 7
   m_Name: Bloom Cube (7)
   m_TagString: Untagged
@@ -2033,6 +2034,9 @@ MonoBehaviour:
   colorConfig: {fileID: 0}
   particle: {fileID: 0}
   score: 100
+  damage: 1
+  attackPoint: {fileID: 0}
+  attackRadius: 1
 --- !u!114 &674169638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2051,6 +2055,20 @@ MonoBehaviour:
   glow: 1
   renderers: []
   sRenderers: []
+--- !u!114 &674169639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674169630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15029e7f206d466449a271da4e0b0934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookAtCamera: 1
+  contstrainYAxis: 1
 --- !u!1 &679685030
 GameObject:
   m_ObjectHideFlags: 0
@@ -2605,6 +2623,9 @@ MonoBehaviour:
   colorConfig: {fileID: 0}
   particle: {fileID: 0}
   score: 100
+  damage: 1
+  attackPoint: {fileID: 0}
+  attackRadius: 1
 --- !u!114 &1047563519
 MonoBehaviour:
   m_ObjectHideFlags: 0
