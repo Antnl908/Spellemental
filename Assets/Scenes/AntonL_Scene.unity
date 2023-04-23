@@ -231,6 +231,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Basic_Skeleton (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7666328769372760326, guid: ef240b7c4b3d7114bb97b8c27a337756, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666328769372760346, guid: ef240b7c4b3d7114bb97b8c27a337756, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1350,6 +1354,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bat
       objectReference: {fileID: 0}
+    - target: {fileID: 6984397126436156768, guid: 7d67f4d5798894b4e8a24e4689440a6e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7756958339070439386, guid: 7d67f4d5798894b4e8a24e4689440a6e, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1414,6 +1422,10 @@ PrefabInstance:
     - target: {fileID: 7666328769372760326, guid: ef240b7c4b3d7114bb97b8c27a337756, type: 3}
       propertyPath: m_Name
       value: Basic_Skeleton (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7666328769372760326, guid: ef240b7c4b3d7114bb97b8c27a337756, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666328769372760346, guid: ef240b7c4b3d7114bb97b8c27a337756, type: 3}
       propertyPath: m_RootOrder
@@ -1897,6 +1909,7 @@ GameObject:
   - component: {fileID: 674169631}
   - component: {fileID: 674169638}
   - component: {fileID: 674169637}
+  - component: {fileID: 674169639}
   m_Layer: 7
   m_Name: Bloom Cube (7)
   m_TagString: Untagged
@@ -2033,6 +2046,9 @@ MonoBehaviour:
   colorConfig: {fileID: 0}
   particle: {fileID: 0}
   score: 100
+  damage: 1
+  attackPoint: {fileID: 0}
+  attackRadius: 1
 --- !u!114 &674169638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2051,6 +2067,21 @@ MonoBehaviour:
   glow: 1
   renderers: []
   sRenderers: []
+--- !u!114 &674169639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674169630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15029e7f206d466449a271da4e0b0934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookAtCamera: 1
+  contstrainYAxis: 1
+  direction: {x: 0, y: 0, z: 0}
 --- !u!1 &679685030
 GameObject:
   m_ObjectHideFlags: 0
@@ -2605,6 +2636,9 @@ MonoBehaviour:
   colorConfig: {fileID: 0}
   particle: {fileID: 0}
   score: 100
+  damage: 1
+  attackPoint: {fileID: 0}
+  attackRadius: 1
 --- !u!114 &1047563519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4401,6 +4435,10 @@ PrefabInstance:
     - target: {fileID: 7666328769372760326, guid: ef240b7c4b3d7114bb97b8c27a337756, type: 3}
       propertyPath: m_Name
       value: Basic_Skeleton (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7666328769372760326, guid: ef240b7c4b3d7114bb97b8c27a337756, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666328769372760346, guid: ef240b7c4b3d7114bb97b8c27a337756, type: 3}
       propertyPath: m_RootOrder
@@ -6460,6 +6498,10 @@ PrefabInstance:
     - target: {fileID: 7666328769372760326, guid: ef240b7c4b3d7114bb97b8c27a337756, type: 3}
       propertyPath: m_Name
       value: Basic_Skeleton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7666328769372760326, guid: ef240b7c4b3d7114bb97b8c27a337756, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666328769372760346, guid: ef240b7c4b3d7114bb97b8c27a337756, type: 3}
       propertyPath: m_RootOrder
