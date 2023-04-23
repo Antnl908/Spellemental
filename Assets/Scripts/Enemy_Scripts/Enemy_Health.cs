@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(MaterialInstance))]
 public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
@@ -93,6 +94,9 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
     [SerializeField]
     private float attackRadius = 1f;
 
+    [SerializeField] Ragdoll ragdoll;
+    NavMeshAgent navMeshAgent;
+
     public void KnockBack(float knockBack)
     {
         //throw new System.NotImplementedException();
@@ -133,12 +137,27 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 
             Instantiate(particle, new Vector3(transform.position.x, transform.position.y + 0.6f, transform.position.z), Quaternion.identity);
 
-            Destroy(gameObject);
+            if(ragdoll != null)
+            {
+                navMeshAgent.enabled = false;
+                ragdoll.ActiveteRagdoll();
+                Invoke("DestroySelf", 10f);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+            
 
             return true;
         }
 
         return false;
+    }
+
+    void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 
     //Spawns a damage indicator that shows how much damage was dealt to this enemy.
@@ -165,6 +184,8 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
             matInst.SkinMesh = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
             matInst.NewMBP();
         }
+        ragdoll = GetComponent<Ragdoll>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -343,6 +364,7 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 
     private void OnDrawGizmosSelected()
     {
+        if(attackPoint == null) { return; }
         Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }
 
