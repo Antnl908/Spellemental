@@ -61,7 +61,7 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""RightSpell"",
@@ -70,7 +70,7 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""CombineSpell"",
@@ -79,7 +79,7 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""SwapLeftSpell"",
@@ -200,7 +200,7 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
                     ""name"": ""RightAndLeftClick"",
                     ""id"": ""80619524-08cc-4b2a-91a9-5093aa324915"",
                     ""path"": ""OneModifier"",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": ""Hold(duration=0.3,pressPoint=0.4)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""CombineSpell"",
@@ -233,7 +233,7 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""0fc5e297-dc6c-4b0b-8ad4-803c327835f5"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Tap"",
+                    ""interactions"": ""Hold"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""LeftSpell"",
@@ -244,7 +244,7 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""69fce274-de88-4e30-b210-5429fd48fdeb"",
                     ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": ""Tap"",
+                    ""interactions"": ""Hold"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""RightSpell"",

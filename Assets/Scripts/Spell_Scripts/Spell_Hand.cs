@@ -17,19 +17,23 @@ public class Spell_Hand : MonoBehaviour
     [SerializeField]
     private Transform spellSpawn;
 
+    [SerializeField]
+    private Spell_Casting caster;
+
     private Player_Look player_Look;
 
     private int activeSpellIndex = 0;
 
     public Spell ActiveSpell { get => spells[activeSpellIndex]; }
 
-    [SerializeField]
-    private TextMeshProUGUI cooldownText;
-
-    private readonly List<bool> spellsCanBeCast = new();
-    private readonly List<float> spellCooldowns = new();
-
     public event EventHandler OnSwitchedSpell;
+
+    private bool isCasting = false;
+
+    public bool IsCasting { get => isCasting; }
+
+    [SerializeField]
+    private Spell_Hand otherHand;
 
     [Serializable]
     public class Effect
@@ -58,81 +62,49 @@ public class Spell_Hand : MonoBehaviour
         }
 
         SetSpellEffect();
-
-        for(int i = 0; i < Spells.Count; i++)
-        {
-            if (Spells[i].IsBeam)
-            {
-                spellsCanBeCast.Add(false);
-            }
-            else
-            {
-                spellsCanBeCast.Add(true);
-            }
-
-            spellCooldowns.Add(Spells[i].CooldownTime);
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Time.timeScale > 0)
-        {
-            for (int i = 0; i < Spells.Count; i++)
-            {
-                if (Spells[i].IsBeam)
-                {
-                    if(spellsCanBeCast[i] == true)
-                    {
-                        spellCooldowns[i] -= Time.deltaTime;
-
-                        if (spellCooldowns[i] <= 0 && i == activeSpellIndex)
-                        {
-                            spellCooldowns[i] = Spells[i].CooldownTime;
-
-                            ActiveSpell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
-                        }
-                    }
-                }
-                else
-                {
-                    if(spellsCanBeCast[i] == false)
-                    {
-                        spellCooldowns[i] -= Time.deltaTime;
-
-                        if(spellCooldowns[i] <= 0)
-                        {
-                            spellsCanBeCast[i] = true;
-                        }
-                    }
-                }
-            }
-        }
-
-        cooldownText.text = Math.Round(spellCooldowns[activeSpellIndex], 2).ToString();
+        
     }
 
     public void CastActiveSpell(InputAction.CallbackContext context)
     {
         if(Time.timeScale > 0)
         {
-            if (ActiveSpell.IsBeam)
+            if(!otherHand.IsCasting && !caster.IsCasting)
             {
-                spellsCanBeCast[activeSpellIndex] = !spellsCanBeCast[activeSpellIndex];
+                isCasting = true;
+
+                StartCoroutine(UseSpell());
+            }
+        }
+    }
+
+    private IEnumerator UseSpell()
+    {
+        while(isCasting)
+        {
+            if(caster.CurrentMana >= ActiveSpell.ManaCost)
+            {
+                ActiveSpell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+
+                caster.AlterMana(-ActiveSpell.ManaCost);
+
+                yield return new WaitForSeconds(ActiveSpell.TimeBetweenCasts);
             }
             else
             {
-                if (spellsCanBeCast[activeSpellIndex] == true)
-                {
-                    ActiveSpell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
-
-                    spellsCanBeCast[activeSpellIndex] = false;
-
-                    spellCooldowns[activeSpellIndex] = ActiveSpell.CooldownTime;
-                }
+                yield return null;
             }
         }
+    }
+
+    public void QuitCasting(InputAction.CallbackContext context)
+    {
+        isCasting = false;
     }
 
     public void CycleSpell(InputAction.CallbackContext context)
@@ -162,14 +134,6 @@ public class Spell_Hand : MonoBehaviour
         if (activeSpellIndex >= spells.Count)
         {
             activeSpellIndex = 0;
-        }
-    }
-
-    public void SetCastingToFalse()
-    {
-        if (ActiveSpell.IsBeam)
-        {
-            spellsCanBeCast[activeSpellIndex] = false;
         }
     }
 
