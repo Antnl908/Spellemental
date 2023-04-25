@@ -141,7 +141,7 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
             {
                 navMeshAgent.enabled = false;
                 ragdoll.ActiveteRagdoll();
-                Invoke("DestroySelf", 10f);
+                Invoke(nameof(DestroySelf), 3f);
             }
             else
             {

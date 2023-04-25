@@ -4179,8 +4179,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  weakness: 0
-  resistance: 1
+  weakness: 1
+  resistance: 0
   objectPoolName: Damage_Indicator
   damageIndicatorForce: 10
   timeUntilNextHit: 0.1
