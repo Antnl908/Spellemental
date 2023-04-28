@@ -5574,7 +5574,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614690}
   m_ExposedName: Noise Power
   m_Exposed: 1
-  m_Order: 15
+  m_Order: 18
   m_Category: 
   m_Min:
     m_Type:
@@ -5726,7 +5726,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614692}
   m_ExposedName: Twirl Speed
   m_Exposed: 1
-  m_Order: 16
+  m_Order: 19
   m_Category: 
   m_Min:
     m_Type:
@@ -6110,7 +6110,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614701}
   m_ExposedName: Scale
   m_Exposed: 1
-  m_Order: 17
+  m_Order: 20
   m_Category: 
   m_Min:
     m_Type:
@@ -6554,7 +6554,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614710}
   m_ExposedName: ScaleOverLifeX
   m_Exposed: 1
-  m_Order: 18
+  m_Order: 21
   m_Category: 
   m_Min:
     m_Type:
@@ -6706,7 +6706,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614712}
   m_ExposedName: ScaleOverLifeY
   m_Exposed: 1
-  m_Order: 19
+  m_Order: 22
   m_Category: 
   m_Min:
     m_Type:
@@ -6882,7 +6882,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614714}
   m_ExposedName: ScaleOverLifeZ
   m_Exposed: 1
-  m_Order: 20
+  m_Order: 23
   m_Category: 
   m_Min:
     m_Type:
@@ -7162,7 +7162,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614720}
   m_ExposedName: Dissolve Curve
   m_Exposed: 1
-  m_Order: 21
+  m_Order: 24
   m_Category: 
   m_Min:
     m_Type:
@@ -11207,7 +11207,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614844}
   m_ExposedName: Layer 2 Scale
   m_Exposed: 1
-  m_Order: 22
+  m_Order: 25
   m_Category: 
   m_Min:
     m_Type:
@@ -14883,7 +14883,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614960}
   m_ExposedName: Top Ring Pos
   m_Exposed: 1
-  m_Order: 25
+  m_Order: 28
   m_Category: 
   m_Min:
     m_Type:
@@ -22810,7 +22810,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615211}
   m_ExposedName: Layer 3 Scale
   m_Exposed: 1
-  m_Order: 23
+  m_Order: 26
   m_Category: 
   m_Min:
     m_Type:
@@ -22917,7 +22917,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615213}
   m_ExposedName: Layer 4 Scale
   m_Exposed: 1
-  m_Order: 24
+  m_Order: 27
   m_Category: 
   m_Min:
     m_Type:
@@ -41518,7 +41518,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615805}
   m_ExposedName: Twirl Amount 2
   m_Exposed: 1
-  m_Order: 14
+  m_Order: 15
   m_Category: 
   m_Min:
     m_Type:
@@ -41598,7 +41598,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615807}
   m_ExposedName: Twirl Amount 3
   m_Exposed: 1
-  m_Order: 14
+  m_Order: 16
   m_Category: 
   m_Min:
     m_Type:
@@ -41694,7 +41694,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615809}
   m_ExposedName: Twirl Amount 4
   m_Exposed: 1
-  m_Order: 14
+  m_Order: 17
   m_Category: 
   m_Min:
     m_Type:

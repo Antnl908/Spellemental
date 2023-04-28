@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2214659029566309131}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.7}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -131,8 +131,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1.65}
+  m_Center: {x: 0, y: 0, z: 0.28}
 --- !u!114 &217544316131323549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,20 +263,20 @@ VisualEffect:
       - m_Value: 1
         m_Name: Soft Fade Distance
         m_Overridden: 1
-      - m_Value: 1.2
+      - m_Value: 1.1
         m_Name: Smoke Size
         m_Overridden: 1
     m_Vector2f:
       m_Array:
-      - m_Value: {x: 0.1, y: 0.2}
+      - m_Value: {x: 0.15, y: 0.2}
         m_Name: Lifetime Min/Max
         m_Overridden: 1
-      - m_Value: {x: 2, y: 3}
+      - m_Value: {x: 1, y: 1.8}
         m_Name: Size Min/Max
         m_Overridden: 1
     m_Vector3f:
       m_Array:
-      - m_Value: {x: -0.3, y: -0.3, z: 3}
+      - m_Value: {x: -0.3, y: -0.6, z: 3}
         m_Name: Velocity Minimum
         m_Overridden: 1
       - m_Value: {x: 0.3, y: 0.6, z: 6}
@@ -354,11 +354,11 @@ VisualEffect:
       m_Array:
       - m_Value:
           serializedVersion: 2
-          key0: {r: 1, g: 0.030596543, b: 0, a: 1}
-          key1: {r: 1, g: 0, b: 0.03027153, a: 1}
-          key2: {r: 0.735849, g: 0.00981132, b: 0, a: 0.9019608}
-          key3: {r: 0.5283019, g: 0, b: 0.027805509, a: 0}
-          key4: {r: 0, g: 0, b: 0, a: 0}
+          key0: {r: 2, g: 0.1254902, b: 0, a: 1}
+          key1: {r: 2.9960785, g: 0, b: 0.09411765, a: 1}
+          key2: {r: 2.9960785, g: 0.0627451, b: 0, a: 0.9019608}
+          key3: {r: 2.1185474, g: 0, b: 0.110918716, a: 0}
+          key4: {r: 1.0588236, g: 0, b: 0.05490196, a: 0}
           key5: {r: 0, g: 0, b: 0, a: 0}
           key6: {r: 0, g: 0, b: 0, a: 0}
           key7: {r: 0, g: 0, b: 0, a: 0}
@@ -366,7 +366,7 @@ VisualEffect:
           ctime1: 26214
           ctime2: 52428
           ctime3: 62258
-          ctime4: 0
+          ctime4: 62258
           ctime5: 0
           ctime6: 0
           ctime7: 0

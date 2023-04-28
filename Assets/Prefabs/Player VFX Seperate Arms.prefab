@@ -248,7 +248,7 @@ VisualEffect:
       - m_Value: {x: -0.1, y: 0.1, z: -0.1}
         m_Name: Velocity Minimum
         m_Overridden: 1
-      - m_Value: {x: 0.1, y: 0.5, z: 0.1}
+      - m_Value: {x: 0.1, y: 0.3, z: 0.1}
         m_Name: Velocity Maximum
         m_Overridden: 1
       - m_Value: {x: 291.61804, y: 54.497555, z: 208.26021}
@@ -278,7 +278,7 @@ VisualEffect:
       m_Array: []
     m_Int:
       m_Array:
-      - m_Value: 80
+      - m_Value: 50
         m_Name: Spawn Rate
         m_Overridden: 1
     m_Matrix4x4f:
@@ -2030,10 +2030,10 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 0.4
+      - m_Value: 0.2
         m_Name: Y Velocity
         m_Overridden: 1
-      - m_Value: 0.01
+      - m_Value: 0.05
         m_Name: X and Z Velocity Random
         m_Overridden: 1
       - m_Value: 0.3
@@ -2042,7 +2042,7 @@ VisualEffect:
       - m_Value: 1.7
         m_Name: Noise Size
         m_Overridden: 1
-      - m_Value: 1000
+      - m_Value: 800
         m_Name: Spawn Rate
         m_Overridden: 1
       - m_Value: 0.03
@@ -2321,10 +2321,10 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 0.5
+      - m_Value: 0.2
         m_Name: Y Velocity
         m_Overridden: 1
-      - m_Value: 0.1
+      - m_Value: 0.05
         m_Name: X and Z Velocity Random
         m_Overridden: 1
       - m_Value: 0.3
@@ -2333,7 +2333,7 @@ VisualEffect:
       - m_Value: 1.7
         m_Name: Noise Size
         m_Overridden: 1
-      - m_Value: 1000
+      - m_Value: 800
         m_Name: Spawn Rate
         m_Overridden: 1
       - m_Value: 0.03
@@ -2347,7 +2347,7 @@ VisualEffect:
       - m_Value: {x: 3, y: 3}
         m_Name: Flipbook Size
         m_Overridden: 1
-      - m_Value: {x: 0.05, y: 0.5}
+      - m_Value: {x: 0.05, y: 0.4}
         m_Name: Lifetime Min and Max
         m_Overridden: 1
     m_Vector3f:
@@ -2612,10 +2612,10 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 0.4
+      - m_Value: 0.2
         m_Name: Y Velocity
         m_Overridden: 1
-      - m_Value: 0.01
+      - m_Value: 0.05
         m_Name: X and Z Velocity Random
         m_Overridden: 1
       - m_Value: 0.3
@@ -2624,7 +2624,7 @@ VisualEffect:
       - m_Value: 1.7
         m_Name: Noise Size
         m_Overridden: 1
-      - m_Value: 1000
+      - m_Value: 800
         m_Name: Spawn Rate
         m_Overridden: 1
       - m_Value: 0.03
@@ -2903,10 +2903,10 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 0.5
+      - m_Value: 0.2
         m_Name: Y Velocity
         m_Overridden: 1
-      - m_Value: 0.1
+      - m_Value: 0.05
         m_Name: X and Z Velocity Random
         m_Overridden: 1
       - m_Value: 0.3
@@ -2915,7 +2915,7 @@ VisualEffect:
       - m_Value: 1.7
         m_Name: Noise Size
         m_Overridden: 1
-      - m_Value: 1000
+      - m_Value: 800
         m_Name: Spawn Rate
         m_Overridden: 1
       - m_Value: 0.03
@@ -2929,7 +2929,7 @@ VisualEffect:
       - m_Value: {x: 3, y: 3}
         m_Name: Flipbook Size
         m_Overridden: 1
-      - m_Value: {x: 0.05, y: 0.5}
+      - m_Value: {x: 0.05, y: 0.4}
         m_Name: Lifetime Min and Max
         m_Overridden: 1
     m_Vector3f:
@@ -6627,7 +6627,7 @@ MonoBehaviour:
   range: 100
   detectableSurfaces:
     serializedVersion: 2
-    m_Bits: 1601
+    m_Bits: 1600
   indicatorColor: {r: 1, g: 0, b: 0.077310085, a: 1}
 --- !u!114 &7757150459655812431
 MonoBehaviour:
@@ -7329,7 +7329,7 @@ VisualEffect:
       - m_Value: {x: -0.1, y: 0.1, z: -0.1}
         m_Name: Velocity Minimum
         m_Overridden: 1
-      - m_Value: {x: 0.1, y: 0.5, z: 0.1}
+      - m_Value: {x: 0.1, y: 0.3, z: 0.1}
         m_Name: Velocity Maximum
         m_Overridden: 1
       - m_Value: {x: 292.12976, y: 304.8767, z: 148.17058}
@@ -7359,7 +7359,7 @@ VisualEffect:
       m_Array: []
     m_Int:
       m_Array:
-      - m_Value: 80
+      - m_Value: 50
         m_Name: Spawn Rate
         m_Overridden: 1
     m_Matrix4x4f:
