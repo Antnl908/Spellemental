@@ -5,6 +5,8 @@ using UnityEngine.VFX;
 
 public class Play_VFX_On_Start : MonoBehaviour
 {
+    //Made by Daniel.
+
     [SerializeField]
     private VisualEffect visualEffect;
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Tornado_Health : MonoBehaviour, IDamageable
 {
+    //Made by Daniel.
+
     [SerializeField]
     private int fireExplosionDamage = 20;
 
@@ -22,6 +24,15 @@ public class Tornado_Health : MonoBehaviour, IDamageable
     [SerializeField]
     private Spell_Stationary stationary;
 
+    [SerializeField]
+    private int fireDamageThreshold = 4;
+
+    [SerializeField]
+    private int iceDamageThreshold = 4;
+
+    [SerializeField]
+    private int lightningDamageThreshold = 3;
+
     public void KnockBack(float knockBack)
     {
         Debug.Log("No knockback on tornadoes!");
@@ -29,15 +40,15 @@ public class Tornado_Health : MonoBehaviour, IDamageable
 
     public bool TryToDestroyDamageable(int damage, Spell.SpellType? spellType)
     {
-        if(spellType == Spell.SpellType.Fire)
+        if(spellType == Spell.SpellType.Fire && damage >= fireDamageThreshold)
         {
             CheckHits(fireExplosionDamage, (Spell.SpellType)spellType);
         }
-        else if(spellType == Spell.SpellType.Ice)
+        else if(spellType == Spell.SpellType.Ice && damage >= iceDamageThreshold)
         {
             CheckHits(iceExplosionDamage, (Spell.SpellType)spellType);
         }
-        else if(spellType == Spell.SpellType.Lightning)
+        else if(spellType == Spell.SpellType.Lightning && damage >= lightningDamageThreshold)
         {
             CheckHits(lightningExplosionDamage, (Spell.SpellType)spellType);
         }
@@ -53,13 +64,13 @@ public class Tornado_Health : MonoBehaviour, IDamageable
         {
             if (colliders[i].gameObject != gameObject)
             {
-                IDamageable damagable = colliders[i].transform.GetComponent<IDamageable>();
+                IGuaranteedDamage damagable = colliders[i].transform.GetComponent<IGuaranteedDamage>();
 
                 bool gotAKill = false;
 
                 if (damagable != null)
                 {
-                    gotAKill = (bool)(damagable?.TryToDestroyDamageable(damage, spellType));
+                    gotAKill = (bool)(damagable?.GuaranteedDamage(damage, spellType));
                 }
 
                 if (gotAKill)

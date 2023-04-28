@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(MaterialInstance))]
-public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
+public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect, IGuaranteedDamage
 {
     // Made by Daniel, edited by Andreas J
 
@@ -133,21 +133,7 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 
         if(health <= 0)
         {
-            Score_Keeper.AddScore(score);
-
-            Instantiate(particle, new Vector3(transform.position.x, transform.position.y + 0.6f, transform.position.z), Quaternion.identity);
-
-            if(ragdoll != null)
-            {
-                navMeshAgent.enabled = false;
-                ragdoll.ActiveteRagdoll();
-                Invoke(nameof(DestroySelf), 3f);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-            
+            Death();
 
             return true;
         }
@@ -422,6 +408,46 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
         foreach (SkinnedMeshRenderer r in sRenderers)
         {
             r.material = material;
+        }
+    }
+
+    public bool GuaranteedDamage(int damage, Spell.SpellType? spellType)
+    {
+        int appliedDamage = damage;
+
+        ApplyWeaknessOrResistanceToDamage(ref appliedDamage, (Spell.SpellType)spellType);
+
+        health -= appliedDamage;
+
+        isDamageable = false;
+
+        SpawnDamageIndicator(appliedDamage);
+
+        if (health <= 0)
+        {
+            Death();
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private void Death()
+    {
+        Score_Keeper.AddScore(score);
+
+        Instantiate(particle, new Vector3(transform.position.x, transform.position.y + 0.6f, transform.position.z), Quaternion.identity);
+
+        if (ragdoll != null)
+        {
+            navMeshAgent.enabled = false;
+            ragdoll.ActiveteRagdoll();
+            Invoke(nameof(DestroySelf), 3f);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 }
