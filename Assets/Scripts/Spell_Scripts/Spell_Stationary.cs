@@ -22,6 +22,8 @@ public class Spell_Stationary : Pooling_Object
 
     private IObjectPool<Pooling_Object> pool;
 
+    public IObjectPool<Pooling_Object> Pool { get => pool; }
+
     private float destructionTime = 1f;
 
     private float currentDestructionTime;

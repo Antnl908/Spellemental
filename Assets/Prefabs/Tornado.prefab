@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 106121397631457356}
   - component: {fileID: 7649432715610366927}
   - component: {fileID: 730613094173501388}
-  m_Layer: 0
+  - component: {fileID: 6066389659394360613}
+  m_Layer: 10
   m_Name: Tornado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,3 +157,23 @@ MonoBehaviour:
   maxXDistance: 5
   maxZDistance: 5
   switchPositionRadius: 1
+--- !u!114 &6066389659394360613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6282637180282961824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc5604e51b5cbc42ba32ec8ec1ed334, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireExplosionDamage: 20
+  iceExplosionDamage: 20
+  lightningExplosionDamage: 20
+  range: 5
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 128
+  stationary: {fileID: 7649432715610366927}
