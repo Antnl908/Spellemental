@@ -16,10 +16,10 @@ MonoBehaviour:
   damage: 10
   effectDamage: 3
   effectBuildUp: 10
-  destructionTime: 3
+  destructionTime: 0.5
   timeBetweenCasts: 0.3
   manaCost: 10
-  travelDistance: 10
+  travelDistance: 30
   isProjectileNotStationary: 1
   possibleStationarySpawn:
     serializedVersion: 2

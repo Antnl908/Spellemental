@@ -131,7 +131,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1.65}
+  m_Size: {x: 3, y: 3, z: 1.65}
   m_Center: {x: 0, y: 0, z: 0.28}
 --- !u!114 &217544316131323549
 MonoBehaviour:
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   point0: {fileID: 7763819925999232957}
   point1: {fileID: 5566992786154380587}
-  damageRadius: 0.4
+  damageRadius: 1
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1664
@@ -268,10 +268,10 @@ VisualEffect:
         m_Overridden: 1
     m_Vector2f:
       m_Array:
-      - m_Value: {x: 0.15, y: 0.2}
+      - m_Value: {x: 0.2, y: 0.3}
         m_Name: Lifetime Min/Max
         m_Overridden: 1
-      - m_Value: {x: 1, y: 1.8}
+      - m_Value: {x: 1.6, y: 3}
         m_Name: Size Min/Max
         m_Overridden: 1
     m_Vector3f:
@@ -302,22 +302,31 @@ VisualEffect:
           serializedVersion: 2
           m_Curve:
           - serializedVersion: 3
-            time: 0
-            value: 0.4100952
-            inSlope: 2
-            outSlope: 2
+            time: 0.0002450375
+            value: 0.6
+            inSlope: 0.04990379
+            outSlope: 0.04990379
             tangentMode: 0
             weightedMode: 0
             inWeight: 0
-            outWeight: 0
+            outWeight: 0.15868281
+          - serializedVersion: 3
+            time: 0.49981916
+            value: 0.7
+            inSlope: 0.36757773
+            outSlope: 0.36757773
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.14968163
+            outWeight: 0.100456975
           - serializedVersion: 3
             time: 1
             value: 1
-            inSlope: 0
-            outSlope: 0
+            inSlope: 0.7005391
+            outSlope: 0.7005391
             tangentMode: 0
             weightedMode: 0
-            inWeight: 0
+            inWeight: 0.1053901
             outWeight: 0
           m_PreInfinity: 2
           m_PostInfinity: 2
@@ -354,10 +363,10 @@ VisualEffect:
       m_Array:
       - m_Value:
           serializedVersion: 2
-          key0: {r: 2, g: 0.1254902, b: 0, a: 1}
-          key1: {r: 2.9960785, g: 0, b: 0.09411765, a: 1}
-          key2: {r: 2.9960785, g: 0.0627451, b: 0, a: 0.9019608}
-          key3: {r: 2.1185474, g: 0, b: 0.110918716, a: 0}
+          key0: {r: 2, g: 0.72603905, b: 0, a: 1}
+          key1: {r: 2.9960785, g: 0.12089995, b: 0, a: 1}
+          key2: {r: 0.83018863, g: 0, b: 0.008292971, a: 0.9019608}
+          key3: {r: 0.50698227, g: 0, b: 0.026543444, a: 0}
           key4: {r: 1.0588236, g: 0, b: 0.05490196, a: 0}
           key5: {r: 0, g: 0, b: 0, a: 0}
           key6: {r: 0, g: 0, b: 0, a: 0}

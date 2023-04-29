@@ -161,7 +161,7 @@ MonoBehaviour:
   destroyOnHit: 0
   destroyAfterSomeTime: 1
   effectObjectPoolName: Lightning_Hit
-  effectInstanceAmount: 3
+  effectInstanceAmount: 1
 --- !u!54 &-116222772300951813
 Rigidbody:
   m_ObjectHideFlags: 0

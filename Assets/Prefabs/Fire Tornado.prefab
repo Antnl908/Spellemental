@@ -272,13 +272,13 @@ VisualEffect:
         m_Overridden: 1
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 1, y: 0.068372026, z: 0, w: 1}
+      - m_Value: {x: 2, y: 0.20114204, z: 0, w: 1}
         m_Name: Tornado Color
         m_Overridden: 1
-      - m_Value: {x: 2, y: 0, z: 0, w: 1}
+      - m_Value: {x: 1.3490196, y: 0, z: 0.0627451, w: 1}
         m_Name: Tornado Layer 2 Color
         m_Overridden: 1
-      - m_Value: {x: 2.9960785, y: 0, z: 0.14949876, w: 1}
+      - m_Value: {x: 8, y: 0.7024658, z: 0, w: 1}
         m_Name: Tornado Layer 3 Color
         m_Overridden: 1
       - m_Value: {x: 0, y: 0, z: 0, w: 1}
