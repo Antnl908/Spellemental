@@ -8,15 +8,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Magma
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: cbda4d604df2d544e945fef02a273439, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap:
-    RenderType: Opaque
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -43,6 +42,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LavaTexture:
+        m_Texture: {fileID: 2800000, guid: 5571639ef8daca94b82d8c0857e5e050, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -90,26 +93,45 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
+    - _FresnelPower: 8
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Metallic: 0
+    - _LavaBottomPower: 10
+    - _Metallic: 0.1
+    - _NormalStrength: 15
     - _OcclusionStrength: 1
     - _Parallax: 0.005
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.3
+    - _SimpleNoiseAmount: 0.1
+    - _SimpleNoisePower: 0.5
+    - _SimpleNoiseScale: 30
+    - _Smoothness: 0.08
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
+    - _VoronoiAmount: 0.015
+    - _VoronoiOffset: 1
+    - _VoronoiScale: 3
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 0, b: 0, a: 1}
     - _Color: {r: 1, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FresnelColor: {r: 4.9245777, g: 3.862414, b: 0, a: 1}
+    - _LavaBottomRemap: {r: 1, g: 1, b: 0, a: 0}
+    - _LavaColor: {r: 5.656854, g: 0.110918716, b: 0, a: 1}
+    - _LavaNormalSpeed: {r: 0, g: 0.1, b: 0, a: 0}
+    - _LavaScale: {r: 1, g: 1, b: 0, a: 0}
+    - _LavaSpeed: {r: 0, g: 0.1, b: 0, a: 0}
+    - _LavaTextureRemap: {r: 0, g: 1, b: 0, a: 0}
+    - _SimpleNoiseSpeed: {r: 1, g: 1, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _VoronoiSpeed: {r: 0.5, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &1103613586401392291
 MonoBehaviour:
