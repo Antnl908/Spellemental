@@ -109,13 +109,16 @@ public class Spell_Hand : MonoBehaviour
 
     public void CycleSpell(InputAction.CallbackContext context)
     {
-        activeSpellIndex++;
+        if(Time.timeScale > 0)
+        {
+            activeSpellIndex++;
 
-        WrapSpellIndex();
+            WrapSpellIndex();
 
-        SetSpellEffect();
+            SetSpellEffect();
 
-        OnSwitchedSpell?.Invoke(this, EventArgs.Empty);
+            OnSwitchedSpell?.Invoke(this, EventArgs.Empty);
+        }       
     }
 
     public void SetSpellIndex(int index)

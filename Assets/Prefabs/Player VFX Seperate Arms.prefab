@@ -6079,7 +6079,7 @@ MonoBehaviour:
   spellSelects:
   - {fileID: 3830277145482132898}
   - {fileID: 5578119355351077049}
-  rotationAmount: 800
+  rotationAmount: 400
   rangeFromPlayer: 1
 --- !u!1 &6871939735407929266
 GameObject:
