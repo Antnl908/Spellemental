@@ -150,9 +150,12 @@ public class Spell_Projectile : Pooling_Object
     private void CheckHits()
     {
         //modifiera detta senare
-        effectTimer -= Time.deltaTime;
-        if(effectTimer > 0.0f) { return; }
-        effectTimer = effectDelay;
+        if(effectObjectPoolName != "Error")
+        {
+            effectTimer -= Time.deltaTime;
+            if (effectTimer > 0.0f) { return; }
+            effectTimer = effectDelay;
+        }        
 
         Collider[] enemyColliders = Physics.OverlapCapsule(point0.position, point1.position, damageRadius, enemyLayer);
 

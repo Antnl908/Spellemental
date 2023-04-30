@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2214659029566309131}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -131,8 +131,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3, y: 3, z: 1.65}
-  m_Center: {x: 0, y: 0, z: 0.28}
+  m_Size: {x: 3, y: 3, z: 2.22}
+  m_Center: {x: 0, y: 0, z: 0.56}
 --- !u!114 &217544316131323549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   point0: {fileID: 7763819925999232957}
   point1: {fileID: 5566992786154380587}
-  damageRadius: 1
+  damageRadius: 1.5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1664
@@ -203,7 +203,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5514920480361757887}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -276,10 +276,10 @@ VisualEffect:
         m_Overridden: 1
     m_Vector3f:
       m_Array:
-      - m_Value: {x: -0.3, y: -0.6, z: 3}
+      - m_Value: {x: -6, y: -0.3, z: 3}
         m_Name: Velocity Minimum
         m_Overridden: 1
-      - m_Value: {x: 0.3, y: 0.6, z: 6}
+      - m_Value: {x: 6, y: 0.3, z: 6}
         m_Name: Velocity Maximum
         m_Overridden: 1
     m_Vector4f:
