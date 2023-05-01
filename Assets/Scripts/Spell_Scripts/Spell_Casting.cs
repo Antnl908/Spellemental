@@ -68,6 +68,11 @@ public class Spell_Casting : MonoBehaviour
 
     private Player_Controls controls;
 
+    [SerializeField]
+    private Animator animator;
+
+    private Spell spellToCast;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -142,17 +147,35 @@ public class Spell_Casting : MonoBehaviour
         {
             if(currentMana >= spell.ManaCost)
             {
-                spell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+                if (!animator.GetCurrentAnimatorStateInfo(0).IsName("LeftCombo6"))
+                {
+                    animator.SetBool("StartCombo6", true);
 
-                AlterMana(-spell.ManaCost);
+                    //spell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
 
-                yield return new WaitForSeconds(spell.TimeBetweenCasts);
+                    //AlterMana(-spell.ManaCost);
+
+                    spellToCast = spell;
+
+                    yield return new WaitForSeconds(spell.TimeBetweenCasts);
+                }
+                else
+                {
+                    yield return null;
+                }                
             }
             else
             {
                 yield return null;
             }
         }
+    }
+
+    public void Cast()
+    {
+        spellToCast.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+
+        AlterMana(-spellToCast.ManaCost);
     }
 
     private void QuitCasting(InputAction.CallbackContext context)

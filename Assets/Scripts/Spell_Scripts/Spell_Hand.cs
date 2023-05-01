@@ -30,7 +30,7 @@ public class Spell_Hand : MonoBehaviour
 
     private bool isCasting = false;
 
-    public bool IsCasting { get => isCasting; }
+    public bool IsCasting { get => isCasting; set { isCasting = value; } }
 
     [SerializeField]
     private Spell_Hand otherHand;
@@ -53,6 +53,12 @@ public class Spell_Hand : MonoBehaviour
     private List<Effect> effects;
 
     private Dictionary<Spell.SpellType, GameObject> spellEffects = new();
+
+    [SerializeField]
+    private Animator animator;
+
+    [SerializeField]
+    private bool isLeftHand = true;
 
     private void Awake()
     {
@@ -78,6 +84,11 @@ public class Spell_Hand : MonoBehaviour
             {
                 isCasting = true;
 
+                if(isLeftHand)
+                {
+                    animator.SetBool("StartLeftCast", true);
+                }
+
                 StartCoroutine(UseSpell());
             }
         }
@@ -87,24 +98,55 @@ public class Spell_Hand : MonoBehaviour
     {
         while(isCasting)
         {
-            if(caster.CurrentMana >= ActiveSpell.ManaCost)
+            if (isLeftHand)
             {
-                ActiveSpell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+                if (animator.GetCurrentAnimatorStateInfo(0).IsName("LeftHold"))
+                {
+                    if (caster.CurrentMana >= ActiveSpell.ManaCost)
+                    {
+                        ActiveSpell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
 
-                caster.AlterMana(-ActiveSpell.ManaCost);
+                        caster.AlterMana(-ActiveSpell.ManaCost);
 
-                yield return new WaitForSeconds(ActiveSpell.TimeBetweenCasts);
+                        yield return new WaitForSeconds(ActiveSpell.TimeBetweenCasts);
+                    }
+                    else
+                    {
+                        yield return null;
+                    }
+                }
+                else
+                {
+                    yield return null;
+                }
             }
             else
             {
-                yield return null;
-            }
+                if (caster.CurrentMana >= ActiveSpell.ManaCost)
+                {
+                    ActiveSpell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+
+                    caster.AlterMana(-ActiveSpell.ManaCost);
+
+                    yield return new WaitForSeconds(ActiveSpell.TimeBetweenCasts);
+                }
+                else
+                {
+                    yield return null;
+                }
+            }        
+            
         }
     }
 
     public void QuitCasting(InputAction.CallbackContext context)
     {
         isCasting = false;
+
+        if(isLeftHand)
+        {
+            animator.SetBool("StartLeftCast", false);
+        }
     }
 
     public void CycleSpell(InputAction.CallbackContext context)
