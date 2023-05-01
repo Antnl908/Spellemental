@@ -17,15 +17,15 @@ MonoBehaviour:
   effectDamage: 2
   effectBuildUp: 15
   destructionTime: 0.05
-  cooldownTime: 5
+  timeBetweenCasts: 0.5
+  manaCost: 15
   travelDistance: 50
-  isBeam: 0
   isProjectileNotStationary: 1
   possibleStationarySpawn:
     serializedVersion: 2
     m_Bits: 0
   objectPoolName: Error
-  range: 150
+  range: 20
   layerMask:
     serializedVersion: 2
     m_Bits: 1665
