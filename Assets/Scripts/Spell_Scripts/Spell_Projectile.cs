@@ -83,6 +83,9 @@ public class Spell_Projectile : Pooling_Object
 
     public event EventHandler OnInitialisation;
 
+    private float effectTimer;
+    private float effectDelay = 0.25f;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -146,6 +149,11 @@ public class Spell_Projectile : Pooling_Object
 
     private void CheckHits()
     {
+        //modifiera detta senare
+        effectTimer -= Time.deltaTime;
+        if(effectTimer > 0.0f) { return; }
+        effectTimer = effectDelay;
+
         Collider[] enemyColliders = Physics.OverlapCapsule(point0.position, point1.position, damageRadius, enemyLayer);
 
         for (int i = 0; i < enemyColliders.Length; i++)

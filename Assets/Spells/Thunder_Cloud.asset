@@ -17,9 +17,9 @@ MonoBehaviour:
   effectDamage: 3
   effectBuildUp: 10
   destructionTime: 10
-  cooldownTime: 10
+  timeBetweenCasts: 1.5
+  manaCost: 150
   travelDistance: 3
-  isBeam: 0
   isProjectileNotStationary: 1
   possibleStationarySpawn:
     serializedVersion: 2

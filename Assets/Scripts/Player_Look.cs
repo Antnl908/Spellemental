@@ -55,10 +55,15 @@ public class Player_Look : MonoBehaviour
     private Vector3 weaponSway;
     private float weaponSwayMultiplier = 0.5f;
 
+    [SerializeField]
+    private GameObject manaOrb;
+
     // Start is called before the first frame update
     void Start()
     {
         fpsrig.transform.parent = VirtualCamera.transform;
+
+        manaOrb.transform.parent = VirtualCamera.transform;
     }
 
     // Update is called once per frame

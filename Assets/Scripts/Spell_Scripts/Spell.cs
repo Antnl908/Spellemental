@@ -25,17 +25,17 @@ public class Spell : ScriptableObject
     private float destructionTime = 0.01f;
 
     [SerializeField]
-    private float cooldownTime = 0.1f;
+    private float timeBetweenCasts = 0.1f;
 
-    public float CooldownTime { get => cooldownTime; }
+    public float TimeBetweenCasts { get => timeBetweenCasts; }
+
+    [SerializeField]
+    private int manaCost = 10;
+
+    public int ManaCost { get => manaCost; }
 
     [SerializeField]
     private float travelDistance = 1f;
-
-    [SerializeField]
-    private bool isBeam = false;
-
-    public bool IsBeam { get => isBeam; }
 
     [SerializeField]
     private bool isProjectileNotStationary = true;

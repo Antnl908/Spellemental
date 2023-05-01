@@ -150,7 +150,14 @@ public class Spell_Stationary : Pooling_Object
 
                 IDamageable damagable = colliders[i].transform.GetComponent<IDamageable>();
 
-                bool gotAKill = (bool)(damagable?.TryToDestroyDamageable(damage, spellType));
+                bool gotAKill = false;
+
+                if (damagable != null)
+                {
+                    gotAKill = (bool)(damagable?.TryToDestroyDamageable(damage, spellType));
+
+                    gotAHit = true;
+                }
 
                 if (gotAKill)
                 {
