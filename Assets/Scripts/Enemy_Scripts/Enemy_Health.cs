@@ -9,8 +9,12 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 {
     // Made by Daniel, edited by Andreas J
 
+    HealthBar healthBar;
+
     [SerializeField]
     private int health;
+    
+    private int maxHealth;
 
     [SerializeField]
     private Spell.SpellType weakness;
@@ -130,11 +134,11 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 
             SpawnDamageIndicator(damage);
         }
-
+        if(healthBar != null) { healthBar.SetHealthAmount(health / maxHealth); }
         if(health <= 0)
         {
             Score_Keeper.AddScore(score);
-
+            if (healthBar != null) { healthBar.gameObject.SetActive(false); }
             Instantiate(particle, new Vector3(transform.position.x, transform.position.y + 0.6f, transform.position.z), Quaternion.identity);
 
             if(ragdoll != null)
@@ -175,7 +179,8 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
     // Start is called before the first frame update
     void Start()
     {
-        if(matInst == null) { matInst = GetComponent<MaterialInstance>(); }
+        maxHealth = health;
+        if (matInst == null) { matInst = GetComponent<MaterialInstance>(); }
         if(matInst != null) 
         { 
             matInst.albedo = ResColor; 
@@ -186,6 +191,7 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
         }
         ragdoll = GetComponent<Ragdoll>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        healthBar = GetComponentInChildren<HealthBar>();
     }
 
     // Update is called once per frame
