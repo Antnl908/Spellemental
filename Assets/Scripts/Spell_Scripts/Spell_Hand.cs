@@ -88,6 +88,10 @@ public class Spell_Hand : MonoBehaviour
                 {
                     animator.SetBool("StartLeftCast", true);
                 }
+                else
+                {
+                    animator.SetBool("StartRightCast", true);
+                }
 
                 StartCoroutine(UseSpell());
             }
@@ -122,13 +126,20 @@ public class Spell_Hand : MonoBehaviour
             }
             else
             {
-                if (caster.CurrentMana >= ActiveSpell.ManaCost)
+                if (animator.GetCurrentAnimatorStateInfo(1).IsName("RightHold"))
                 {
-                    ActiveSpell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+                    if (caster.CurrentMana >= ActiveSpell.ManaCost)
+                    {
+                        ActiveSpell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
 
-                    caster.AlterMana(-ActiveSpell.ManaCost);
+                        caster.AlterMana(-ActiveSpell.ManaCost);
 
-                    yield return new WaitForSeconds(ActiveSpell.TimeBetweenCasts);
+                        yield return new WaitForSeconds(ActiveSpell.TimeBetweenCasts);
+                    }
+                    else
+                    {
+                        yield return null;
+                    }
                 }
                 else
                 {
@@ -146,6 +157,10 @@ public class Spell_Hand : MonoBehaviour
         if(isLeftHand)
         {
             animator.SetBool("StartLeftCast", false);
+        }
+        else
+        {
+            animator.SetBool("StartRightCast", false);
         }
     }
 
