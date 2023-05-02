@@ -7,18 +7,18 @@ using UnityEngine.UI;
 //this script was made following this tutorial
 public class HealthBar : MonoBehaviour
 {
-    [SerializeField] Transform target;
-    [SerializeField] Vector3 offset;
-    [SerializeField] Image foregroundImage;
-    [SerializeField] Image backgroundImage;
-    float parentWidth;
+    [SerializeField] protected Transform target;
+    [SerializeField] protected Vector3 offset;
+    [SerializeField] protected Image foregroundImage;
+    [SerializeField] protected Image backgroundImage;
+    protected float parentWidth;
     // Start is called before the first frame update
-    private void Start()
+    protected virtual void Start()
     {
         parentWidth = GetComponent<RectTransform>().rect.width;
     }
     // Update is called once per frame
-    void LateUpdate()
+    protected virtual void LateUpdate()
     {
         //convert from world space to screen space
         Vector3 direction = (target.position - Camera.main.transform.position).normalized;
@@ -28,9 +28,10 @@ public class HealthBar : MonoBehaviour
         transform.position = Camera.main.WorldToScreenPoint(target.position + offset);
     }
 
-    public void SetHealthAmount(float percentage)
+    public virtual void SetHealthAmount(float percentage)
     {
         float width = parentWidth * percentage;
         foregroundImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
+        Debug.Log($"percentage:{percentage} parentWidth:{parentWidth} width:{width}");
     }
 }
