@@ -129,3 +129,7 @@ MonoBehaviour:
     poolingObject: {fileID: -6443558069374475209, guid: f61c640ff394daf4fa7bebe0a07999ea, type: 3}
     poolCount: 10
     maxPoolCount: 20
+  - name: Shield_Burst_Effect
+    poolingObject: {fileID: 2988552850748877241, guid: 90c791951516ad242845549826051cb4, type: 3}
+    poolCount: 10
+    maxPoolCount: 20

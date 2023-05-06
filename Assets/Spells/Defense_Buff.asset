@@ -24,4 +24,4 @@ MonoBehaviour:
   possibleStationarySpawn:
     serializedVersion: 2
     m_Bits: 0
-  objectPoolName: Error
+  objectPoolName: Shield_Burst_Effect
