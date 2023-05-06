@@ -16,7 +16,7 @@ MonoBehaviour:
   damage: 10
   effectDamage: 3
   effectBuildUp: 10
-  destructionTime: 0.5
+  destructionTime: 0.8
   timeBetweenCasts: 0.3
   manaCost: 50
   travelDistance: 30

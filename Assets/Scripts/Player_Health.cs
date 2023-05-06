@@ -31,6 +31,8 @@ public class Player_Health : MonoBehaviour, IDamageable
 
     private static bool hasHealthBuff = false;
 
+    private static bool applyHealthBuffEffect = false;
+
     [SerializeField]
     private Player_Look player_Look;
 
@@ -72,6 +74,13 @@ public class Player_Health : MonoBehaviour, IDamageable
         if(hasHealthBuff)
         {
             SecondWind();
+        }
+
+        if(applyHealthBuffEffect)
+        {
+            heart.ActivateHealthBuffEffect();
+
+            applyHealthBuffEffect = false;
         }
 
         if(isDying)
@@ -140,5 +149,7 @@ public class Player_Health : MonoBehaviour, IDamageable
         {
             hasHealthBuff = true;
         }
+
+        applyHealthBuffEffect = true;
     }
 }

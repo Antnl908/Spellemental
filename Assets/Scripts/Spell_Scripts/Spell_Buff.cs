@@ -14,6 +14,13 @@ public class Spell_Buff : Spell
         else if(Type == SpellType.Wind)
         {
             Player_Health.GiveHealthBuff();
+
+            if (objectPoolName != "Error")
+            {
+                Pooled_VFX vfx = (Pooled_VFX)Object_Pooler.Pools[objectPoolName].Get();
+
+                vfx.Initialize(position, rotation, direction, Object_Pooler.Pools[objectPoolName]);
+            }
         }
     }
 }

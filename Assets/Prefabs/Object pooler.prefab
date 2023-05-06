@@ -125,3 +125,7 @@ MonoBehaviour:
     poolingObject: {fileID: 7870963796997098937, guid: 982b6296864ffbf48bde3c5440cf70d4, type: 3}
     poolCount: 20
     maxPoolCount: 50
+  - name: Heal_Effect
+    poolingObject: {fileID: -6443558069374475209, guid: f61c640ff394daf4fa7bebe0a07999ea, type: 3}
+    poolCount: 10
+    maxPoolCount: 20

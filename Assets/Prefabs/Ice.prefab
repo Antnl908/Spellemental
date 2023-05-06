@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319247530394212450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.00000029802322, z: 3.2}
+  m_LocalPosition: {x: 0, y: 0.00000029802322, z: 4.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3796721355216074800}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: -0.15}
+  m_LocalPosition: {x: 0, y: -0, z: -1.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -88,7 +88,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6009368611422595892}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -2.3}
   m_LocalScale: {x: 5, y: 10, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -117,21 +117,21 @@ VisualEffect:
         m_Overridden: 1
     m_Vector2f:
       m_Array:
-      - m_Value: {x: 1, y: 2}
+      - m_Value: {x: 0.6, y: 1}
         m_Name: Lifetime Min/Max
         m_Overridden: 1
       - m_Value: {x: 2, y: 1}
         m_Name: Flipbook Columns/Rows
         m_Overridden: 1
-      - m_Value: {x: 3, y: 3.5}
+      - m_Value: {x: 0.8, y: 1}
         m_Name: Size Min/Max
         m_Overridden: 1
     m_Vector3f:
       m_Array:
-      - m_Value: {x: -0.5, y: 0, z: -1.5}
+      - m_Value: {x: -0.5, y: 0, z: -2}
         m_Name: Velocity Minimum
         m_Overridden: 1
-      - m_Value: {x: 0.5, y: 0, z: -0.8}
+      - m_Value: {x: 0.5, y: 0, z: -1}
         m_Name: Velocity Maximum
         m_Overridden: 1
     m_Vector4f:
@@ -152,21 +152,21 @@ VisualEffect:
           m_Curve:
           - serializedVersion: 3
             time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 0
+            value: 0.5
+            inSlope: 0.00850945
+            outSlope: 0.00850945
             tangentMode: 0
             weightedMode: 0
             inWeight: 0
-            outWeight: 0
+            outWeight: 0.08234518
           - serializedVersion: 3
             time: 1
             value: 1
-            inSlope: 2
-            outSlope: 2
+            inSlope: 1.5843366
+            outSlope: 1.5843366
             tangentMode: 0
             weightedMode: 0
-            inWeight: 0
+            inWeight: 0.046442807
             outWeight: 0
           m_PreInfinity: 2
           m_PostInfinity: 2
@@ -380,8 +380,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 2
-  m_Height: 4
+  m_Radius: 3
+  m_Height: 8
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 1.5}
 --- !u!114 &405336425281659223
@@ -398,7 +398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   point0: {fileID: 7905071709009484334}
   point1: {fileID: 7865987610414132463}
-  damageRadius: 0.2
+  damageRadius: 0.5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1664
@@ -409,7 +409,7 @@ MonoBehaviour:
   stationarySpellPoolName: Error
   spawnStationaryRangeAboveTransform: 0
   spawnStationaryRange: 0
-  spawnOffset: 0.25
+  spawnOffset: 1.2
   destroyOnHit: 1
   destroyAfterSomeTime: 1
   effectObjectPoolName: Error
@@ -456,15 +456,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a760cd3d5a0f88f4498025f9aadbbeac, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a760cd3d5a0f88f4498025f9aadbbeac, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a760cd3d5a0f88f4498025f9aadbbeac, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a760cd3d5a0f88f4498025f9aadbbeac, type: 3}
       propertyPath: m_LocalPosition.x

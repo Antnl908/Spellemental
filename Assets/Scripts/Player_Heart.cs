@@ -29,6 +29,9 @@ public class Player_Heart : MonoBehaviour
     [SerializeField]
     private Image deathIndicator;
 
+    [SerializeField]
+    private GameObject healthBuffEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -77,5 +80,10 @@ public class Player_Heart : MonoBehaviour
         {
             heartFill.color = fullHealthColor;
         }
+    }
+
+    public void ActivateHealthBuffEffect()
+    {
+        healthBuffEffect.SetActive(true);
     }
 }
