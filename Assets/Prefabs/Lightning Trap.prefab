@@ -238,3 +238,5 @@ MonoBehaviour:
   destroyOnHit: 1
   usesRotation: 1
   hitBoxOffset: {x: 0, y: 0, z: 0}
+  visualEffectPoolName: Lightning_Burst
+  vfxSpawnPos: {fileID: 3546529870842638135}

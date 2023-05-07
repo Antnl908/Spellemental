@@ -600,6 +600,8 @@ MonoBehaviour:
   destroyAfterSomeTime: 0
   effectObjectPoolName: Error
   effectInstanceAmount: 3
+  visualEffectPoolName: Ice_Burst
+  vfxSpawnPos: {fileID: 3765345459092856621}
 --- !u!54 &5804288166278722122
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -795,6 +797,8 @@ MonoBehaviour:
   destroyAfterSomeTime: 0
   effectObjectPoolName: Error
   effectInstanceAmount: 3
+  visualEffectPoolName: Ice_Burst
+  vfxSpawnPos: {fileID: 3495474684122249026}
 --- !u!54 &6075254054801234469
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -959,6 +963,8 @@ MonoBehaviour:
   destroyAfterSomeTime: 0
   effectObjectPoolName: Error
   effectInstanceAmount: 3
+  visualEffectPoolName: Ice_Burst
+  vfxSpawnPos: {fileID: 3496637185181783146}
 --- !u!54 &6074023379826473229
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1340,6 +1346,8 @@ MonoBehaviour:
   destroyAfterSomeTime: 0
   effectObjectPoolName: Error
   effectInstanceAmount: 3
+  visualEffectPoolName: Ice_Burst
+  vfxSpawnPos: {fileID: 3396222556944532041}
 --- !u!54 &5470754796456570670
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1504,6 +1512,8 @@ MonoBehaviour:
   destroyAfterSomeTime: 0
   effectObjectPoolName: Error
   effectInstanceAmount: 3
+  visualEffectPoolName: Ice_Burst
+  vfxSpawnPos: {fileID: 2256191885098055832}
 --- !u!54 &8899766504903710207
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1699,6 +1709,8 @@ MonoBehaviour:
   destroyAfterSomeTime: 0
   effectObjectPoolName: Error
   effectInstanceAmount: 3
+  visualEffectPoolName: Ice_Burst
+  vfxSpawnPos: {fileID: 1780988977744458564}
 --- !u!54 &8969640905574178339
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1863,6 +1875,8 @@ MonoBehaviour:
   destroyAfterSomeTime: 0
   effectObjectPoolName: Error
   effectInstanceAmount: 3
+  visualEffectPoolName: Ice_Burst
+  vfxSpawnPos: {fileID: 1650119120617751114}
 --- !u!54 &8226860955705257773
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3123,6 +3137,8 @@ MonoBehaviour:
   destroyAfterSomeTime: 0
   effectObjectPoolName: Error
   effectInstanceAmount: 3
+  visualEffectPoolName: Ice_Burst
+  vfxSpawnPos: {fileID: 8947786887151571209}
 --- !u!54 &1792753912332598382
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3349,6 +3365,8 @@ MonoBehaviour:
   destroyAfterSomeTime: 0
   effectObjectPoolName: Error
   effectInstanceAmount: 3
+  visualEffectPoolName: Ice_Burst
+  vfxSpawnPos: {fileID: 8241736250996184019}
 --- !u!54 &1634049785226968756
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4591,6 +4609,8 @@ MonoBehaviour:
   destroyAfterSomeTime: 1
   effectObjectPoolName: Error
   effectInstanceAmount: 3
+  visualEffectPoolName: Error
+  vfxSpawnPos: {fileID: 0}
 --- !u!114 &6728411876307614600
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -60,6 +60,14 @@ public class Spell_Stationary : Pooling_Object
 
     public event EventHandler OnInitialisation;
 
+    [SerializeField]
+    private string visualEffectPoolName = "Error";
+
+#nullable enable
+    [SerializeField]
+    private Transform? vfxSpawnPos;
+#nullable disable
+
     // Update is called once per frame
     void Update()
     {
@@ -175,6 +183,13 @@ public class Spell_Stationary : Pooling_Object
 
         if(gotAHit && destroyOnHit)
         {
+            if (visualEffectPoolName != "Error")
+            {
+                Pooled_VFX vfx = (Pooled_VFX)Object_Pooler.Pools[visualEffectPoolName].Get();
+
+                vfx.Initialize(vfxSpawnPos.position, transform.rotation, Vector3.zero, Object_Pooler.Pools[visualEffectPoolName]);
+            }
+
             pool.Release(this);
         }
     }

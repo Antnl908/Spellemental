@@ -97,6 +97,17 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect, IGuarantee
     [SerializeField] Ragdoll ragdoll;
     NavMeshAgent navMeshAgent;
 
+    [SerializeField]
+    private string hitEffectPool = "Blood_Splatter";
+
+    [SerializeField]
+    private string deathEffectPool = "Death_Smoke";
+
+    [SerializeField]
+    private Transform visualEffectSpawnPos;
+
+    private bool isDead = false;
+
     public void KnockBack(float knockBack)
     {
         //throw new System.NotImplementedException();
@@ -118,6 +129,8 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect, IGuarantee
             currentTimeUntilNextHit = timeUntilNextHit;
 
             SpawnDamageIndicator(appliedDamage);
+
+            PlayEffect(hitEffectPool);
         }
         
         if(canBeHitByEffect && spellType == null)
@@ -172,6 +185,11 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect, IGuarantee
         }
         ragdoll = GetComponent<Ragdoll>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+    }
+
+    private void OnEnable()
+    {
+        isDead = false;
     }
 
     // Update is called once per frame
@@ -423,6 +441,8 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect, IGuarantee
 
         SpawnDamageIndicator(appliedDamage);
 
+        PlayEffect(hitEffectPool);
+
         if (health <= 0)
         {
             Death();
@@ -435,19 +455,31 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect, IGuarantee
 
     private void Death()
     {
-        Score_Keeper.AddScore(score);
-
-        Instantiate(particle, new Vector3(transform.position.x, transform.position.y + 0.6f, transform.position.z), Quaternion.identity);
-
-        if (ragdoll != null)
+        if (!isDead)
         {
-            navMeshAgent.enabled = false;
-            ragdoll.ActiveteRagdoll();
-            Invoke(nameof(DestroySelf), 3f);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+            isDead = true;
+
+            Score_Keeper.AddScore(score);
+
+            PlayEffect(deathEffectPool);
+
+            if (ragdoll != null)
+            {
+                navMeshAgent.enabled = false;
+                ragdoll.ActiveteRagdoll();
+                Invoke(nameof(DestroySelf), 3f);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }       
+    }
+
+    private void PlayEffect(string poolName)
+    {
+        Pooled_VFX vfx = (Pooled_VFX)Object_Pooler.Pools[poolName].Get();
+
+        vfx.Initialize(visualEffectSpawnPos.position, visualEffectSpawnPos.rotation, Vector3.zero, Object_Pooler.Pools[poolName]);
     }
 }

@@ -414,6 +414,8 @@ MonoBehaviour:
   destroyAfterSomeTime: 1
   effectObjectPoolName: Error
   effectInstanceAmount: 3
+  visualEffectPoolName: Ice_Burst
+  vfxSpawnPos: {fileID: 7865987610414132463}
 --- !u!54 &3334576805258467954
 Rigidbody:
   m_ObjectHideFlags: 0

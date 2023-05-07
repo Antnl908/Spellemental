@@ -3737,7 +3737,7 @@ GameObject:
   - component: {fileID: 1664913863421302598}
   - component: {fileID: 32614776307066473}
   - component: {fileID: 7731249383598060774}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: ImageRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4250,7 +4250,7 @@ GameObject:
   - component: {fileID: 8022146154839243357}
   - component: {fileID: 8664164604548139890}
   - component: {fileID: 1370360241199061501}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: ImageRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4635,7 +4635,7 @@ GameObject:
   - component: {fileID: 7044241825113758187}
   - component: {fileID: 8550932986646063300}
   - component: {fileID: 2130818979341711947}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: ImageRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4711,7 +4711,7 @@ GameObject:
   - component: {fileID: 7006214204064911840}
   - component: {fileID: 8525940900453048527}
   - component: {fileID: 2119804263044330048}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: ImageRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5059,7 +5059,7 @@ GameObject:
   - component: {fileID: 4257067387825712400}
   - component: {fileID: 7040173437454686816}
   - component: {fileID: 8886076136031928824}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: ImageLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5298,7 +5298,7 @@ GameObject:
   - component: {fileID: 3274327952085198459}
   - component: {fileID: 4829552193949285124}
   - component: {fileID: 6137839434702756503}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5498,7 +5498,7 @@ GameObject:
   - component: {fileID: 3281296465592626800}
   - component: {fileID: 4899698748801757967}
   - component: {fileID: 6184781900450140828}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Wind
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6757,7 +6757,7 @@ GameObject:
   - component: {fileID: 1492330361203108629}
   - component: {fileID: 8846029833691412074}
   - component: {fileID: 7847681849352951801}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Lightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7532,7 +7532,7 @@ GameObject:
   - component: {fileID: 6412703453448297614}
   - component: {fileID: 5735148795710893473}
   - component: {fileID: 2643159831770087214}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: ImageRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7886,7 +7886,7 @@ GameObject:
   - component: {fileID: 155505533370919029}
   - component: {fileID: 6381577850437148421}
   - component: {fileID: 4786759489119077533}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: ImageLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7962,7 +7962,7 @@ GameObject:
   - component: {fileID: 203024108724772990}
   - component: {fileID: 6374516599994554126}
   - component: {fileID: 4797673119066311830}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: ImageLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8071,7 +8071,7 @@ GameObject:
   - component: {fileID: 8409576980950036912}
   - component: {fileID: 6044145302058884619}
   - component: {fileID: 6768684813983286014}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spell Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

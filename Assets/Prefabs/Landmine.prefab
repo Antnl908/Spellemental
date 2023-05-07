@@ -141,6 +141,8 @@ MonoBehaviour:
   destroyOnHit: 1
   usesRotation: 1
   hitBoxOffset: {x: 0, y: 0, z: 0}
+  visualEffectPoolName: Landmine_Burst
+  vfxSpawnPos: {fileID: 2282089215470360368}
 --- !u!114 &6767276690004744052
 MonoBehaviour:
   m_ObjectHideFlags: 0

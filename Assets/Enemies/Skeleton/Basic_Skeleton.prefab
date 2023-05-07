@@ -4203,6 +4203,9 @@ MonoBehaviour:
   attackPoint: {fileID: 7666328769070435000}
   attackRadius: 1.3
   ragdoll: {fileID: 0}
+  hitEffectPool: Blood_Splatter
+  deathEffectPool: Death_Smoke
+  visualEffectSpawnPos: {fileID: 7666328767961625143}
 --- !u!195 &7222420314790321881
 NavMeshAgent:
   m_ObjectHideFlags: 0

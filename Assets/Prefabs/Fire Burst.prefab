@@ -464,3 +464,5 @@ MonoBehaviour:
   destroyAfterSomeTime: 1
   effectObjectPoolName: Error
   effectInstanceAmount: 3
+  visualEffectPoolName: Fire_Burst_Effect
+  vfxSpawnPos: {fileID: 5950101454740365691}

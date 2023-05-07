@@ -83,6 +83,14 @@ public class Spell_Projectile : Pooling_Object
 
     public event EventHandler OnInitialisation;
 
+    [SerializeField]
+    private string visualEffectPoolName = "Error";
+
+#nullable enable
+    [SerializeField]
+    private Transform? vfxSpawnPos;
+#nullable disable
+
     private float effectTimer;
     private float effectDelay = 0.25f;
 
@@ -175,7 +183,7 @@ public class Spell_Projectile : Pooling_Object
                 {
                     gotAKill = (bool)(damagable?.TryToDestroyDamageable(damage, spellType));
 
-                    gotAHit = true;
+                    gotAHit = true;                   
                 }
 
                 if (gotAKill)
@@ -221,9 +229,35 @@ public class Spell_Projectile : Pooling_Object
             }
         }
 
-        if (gotAHit && destroyOnHit)
+        if (gotAHit)
         {
-            pool.Release(this);
+            if (visualEffectPoolName != "Error")
+            {
+                if(!destroyOnHit)
+                {
+                    effectTimer -= Time.deltaTime;
+
+                    if (effectTimer <= 0.0f)
+                    {
+                        effectTimer = effectDelay;
+
+                        Pooled_VFX vfx = (Pooled_VFX)Object_Pooler.Pools[visualEffectPoolName].Get();
+
+                        vfx.Initialize(vfxSpawnPos.position, transform.rotation, Vector3.zero, Object_Pooler.Pools[visualEffectPoolName]);
+                    }
+                }
+                else
+                {
+                    Pooled_VFX vfx = (Pooled_VFX)Object_Pooler.Pools[visualEffectPoolName].Get();
+
+                    vfx.Initialize(vfxSpawnPos.position, transform.rotation, Vector3.zero, Object_Pooler.Pools[visualEffectPoolName]);
+                }              
+            }
+
+            if (destroyOnHit)
+            {
+                pool.Release(this);
+            }          
         }       
     }
 

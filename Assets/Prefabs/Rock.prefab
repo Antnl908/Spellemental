@@ -210,6 +210,8 @@ MonoBehaviour:
   destroyAfterSomeTime: 1
   effectObjectPoolName: Error
   effectInstanceAmount: 3
+  visualEffectPoolName: Rock_Burst
+  vfxSpawnPos: {fileID: 2925373408081456816}
 --- !u!1001 &1090211589850159114
 PrefabInstance:
   m_ObjectHideFlags: 0

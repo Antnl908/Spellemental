@@ -133,3 +133,35 @@ MonoBehaviour:
     poolingObject: {fileID: 2988552850748877241, guid: 90c791951516ad242845549826051cb4, type: 3}
     poolCount: 10
     maxPoolCount: 20
+  - name: Fire_Burst_Effect
+    poolingObject: {fileID: 5588834016027789373, guid: 46702f4b4e700a14dac64c0b8ec15a95, type: 3}
+    poolCount: 1000
+    maxPoolCount: 10000
+  - name: Ice_Burst
+    poolingObject: {fileID: 7447358258149517691, guid: e5e2d0a2714e6f44ea5e8de765cf5050, type: 3}
+    poolCount: 500
+    maxPoolCount: 3000
+  - name: Lightning_Burst
+    poolingObject: {fileID: 4292555279949265133, guid: dd1eb6244668cc0468a666040833c87f, type: 3}
+    poolCount: 100
+    maxPoolCount: 1000
+  - name: Rock_Burst
+    poolingObject: {fileID: 7475644276624525645, guid: e8109661141744e479c96444cb3b0bc6, type: 3}
+    poolCount: 100
+    maxPoolCount: 500
+  - name: Landmine_Burst
+    poolingObject: {fileID: 5408216784028764358, guid: e18d39bd0d8173b41bfba42bae800e4d, type: 3}
+    poolCount: 30
+    maxPoolCount: 100
+  - name: Water_Burst
+    poolingObject: {fileID: 2781988224976906788, guid: ba5ca71b19ea8bb4b9174afcd47bfe09, type: 3}
+    poolCount: 50
+    maxPoolCount: 300
+  - name: Death_Smoke
+    poolingObject: {fileID: 3114473188578429942, guid: 5a59d0778cfc818409343c19bae37c34, type: 3}
+    poolCount: 1000
+    maxPoolCount: 10000
+  - name: Blood_Splatter
+    poolingObject: {fileID: 2223336319331969949, guid: 73bce8bc0c4631244ada63d815753647, type: 3}
+    poolCount: 10000
+    maxPoolCount: 50000
