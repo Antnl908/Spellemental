@@ -29,6 +29,12 @@ public class Player_Heart : MonoBehaviour
     [SerializeField]
     private Image deathIndicator;
 
+    [SerializeField]
+    private GameObject healthBuffEffect;
+
+    [SerializeField]
+    private Shield_FadeIn_FadeOut shield;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,10 +78,19 @@ public class Player_Heart : MonoBehaviour
         if(hasDefenseBuff)
         {
             heartFill.color = defenseBuffColor;
+
+            shield.gameObject.SetActive(true);
         }
         else
         {
             heartFill.color = fullHealthColor;
+
+            shield.Deactivate();
         }
+    }
+
+    public void ActivateHealthBuffEffect()
+    {
+        healthBuffEffect.SetActive(true);
     }
 }

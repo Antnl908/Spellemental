@@ -31,8 +31,16 @@ public class Player_Health : MonoBehaviour, IDamageable
 
     private static bool hasHealthBuff = false;
 
+    private static bool applyHealthBuffEffect = false;
+
     [SerializeField]
     private Player_Look player_Look;
+
+    private const float timeBetweenHits = 0.5f;
+
+    private float currentTimeBetweenHits;
+
+    private bool isDamageable = true;
 
     public void KnockBack(float knockBack)
     {
@@ -41,21 +49,28 @@ public class Player_Health : MonoBehaviour, IDamageable
 
     public bool TryToDestroyDamageable(int damage, Spell.SpellType? spellType)
     {
-        if (hasDefenseBuff)
+        if(isDamageable)
         {
-            hasDefenseBuff = false;
-
-            heart.SetColor(false);
-        }
-        else
-        {
-            currentHealth = Math.Clamp(currentHealth - damage, 0, maxHealth);
-
-            if (currentHealth <= 0)
+            if (hasDefenseBuff)
             {
-                Dying();
+                hasDefenseBuff = false;
+
+                heart.SetColor(false);
             }
-        }       
+            else
+            {
+                currentHealth = Math.Clamp(currentHealth - damage, 0, maxHealth);
+
+                if (currentHealth <= 0)
+                {
+                    Dying();
+                }
+            }
+
+            currentTimeBetweenHits = timeBetweenHits;
+
+            isDamageable = false;
+        }              
 
         return isDying;
     }
@@ -72,6 +87,13 @@ public class Player_Health : MonoBehaviour, IDamageable
         if(hasHealthBuff)
         {
             SecondWind();
+        }
+
+        if(applyHealthBuffEffect)
+        {
+            heart.ActivateHealthBuffEffect();
+
+            applyHealthBuffEffect = false;
         }
 
         if(isDying)
@@ -98,6 +120,16 @@ public class Player_Health : MonoBehaviour, IDamageable
             heart.SetColor(true);
 
             giveHeartDefenseBuffColor = false;
+        }
+
+        if(!isDamageable)
+        {
+            currentTimeBetweenHits -= Time.deltaTime;
+
+            if(currentTimeBetweenHits <= 0)
+            {
+                isDamageable = true;
+            }
         }
         
         heart.SetHealth(currentHealth, maxHealth);
@@ -140,5 +172,7 @@ public class Player_Health : MonoBehaviour, IDamageable
         {
             hasHealthBuff = true;
         }
+
+        applyHealthBuffEffect = true;
     }
 }

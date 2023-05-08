@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(MaterialInstance))]
-public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
+public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect, IGuaranteedDamage
 {
     // Made by Daniel, edited by Andreas J
 
@@ -51,7 +51,14 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
     [SerializeField] 
     private float effectDuration = 5;
 
+    [SerializeField]
+    private float slowDownEffectDuration = 5;
+
+    private float timeUntilSlowDownDisappears = 0;
+
     private bool effectIsApplied = false;
+
+    private bool isSlow = false;
 
     private EffectType effectType = EffectType.None;
 
@@ -99,7 +106,25 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
     private float attackRadius = 1f;
 
     [SerializeField] Ragdoll ragdoll;
+
     NavMeshAgent navMeshAgent;
+
+    [SerializeField]
+    private float normalMoveSpeed = 5f;
+
+    [SerializeField]
+    private float slowedMoveSpeed = 1f;
+
+    [SerializeField]
+    private string hitEffectPool = "Blood_Splatter";
+
+    [SerializeField]
+    private string deathEffectPool = "Death_Smoke";
+
+    [SerializeField]
+    private Transform visualEffectSpawnPos;
+
+    private bool isDead = false;
 
     public void KnockBack(float knockBack)
     {
@@ -122,6 +147,11 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
             currentTimeUntilNextHit = timeUntilNextHit;
 
             SpawnDamageIndicator(appliedDamage);
+
+            if(appliedDamage > 0)
+            {
+                PlayEffect(hitEffectPool);
+            }            
         }
         
         if(canBeHitByEffect && spellType == null)
@@ -137,21 +167,7 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
         if(healthBar != null) { healthBar.SetHealthAmount((float)health / maxHealth); Debug.Log($"Enemy health:{health} Enemy maxHealth:{maxHealth} current health:{(float)health / maxHealth}"); }
         if(health <= 0)
         {
-            Score_Keeper.AddScore(score);
-            if (healthBar != null) { healthBar.gameObject.SetActive(false); }
-            Instantiate(particle, new Vector3(transform.position.x, transform.position.y + 0.6f, transform.position.z), Quaternion.identity);
-
-            if(ragdoll != null)
-            {
-                navMeshAgent.enabled = false;
-                ragdoll.ActiveteRagdoll();
-                Invoke(nameof(DestroySelf), 3f);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-            
+            Death();
 
             return true;
         }
@@ -192,6 +208,13 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
         ragdoll = GetComponent<Ragdoll>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         healthBar = GetComponentInChildren<HealthBar>();
+
+        navMeshAgent.speed = normalMoveSpeed;
+    }
+
+    private void OnEnable()
+    {
+        isDead = false;
     }
 
     // Update is called once per frame
@@ -228,6 +251,18 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
                 effectIsApplied = false;
             }
         }
+
+        if(isSlow)
+        {
+            timeUntilSlowDownDisappears -= Time.deltaTime;
+
+            if(timeUntilSlowDownDisappears <= 0)
+            {
+                navMeshAgent.speed = normalMoveSpeed;
+
+                isSlow = false;
+            }
+        }
     }
 
     //Deals fire damage.
@@ -260,16 +295,22 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 
             effectType = EffectType.Ice;
 
+            SlowDownEffect();
+
             Debug.Log("Ice effect");
         }
     }
 
-    //SLows down enemy movement.
-    public void SlowDownEffect(float slowDownAmount)
+    //Slows down enemy movement.
+    public void SlowDownEffect()
     {
-        // Make it later.
+        navMeshAgent.speed = slowedMoveSpeed;
 
-        effectType = EffectType.Slowdown;
+        timeUntilSlowDownDisappears = slowDownEffectDuration;
+
+        isSlow = true;
+
+        //Debug.LogWarning("Slow down effect applied");
     }
 
     //Damage is increased or decreased if enemy is weak or resistant to its type.
@@ -318,6 +359,10 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
             {
                 EarthEffect(effectDamage, effectBuildUp);
             }
+            else if(spellType == Spell.SpellType.Wind)
+            {
+                WindEffect(effectDamage, effectBuildUp);
+            }
         }
     }
 
@@ -349,6 +394,8 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
 
             effectType = EffectType.Earth;
 
+            SlowDownEffect();
+
             Debug.Log("Earth effect");
         }
     }
@@ -379,9 +426,9 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
         None,
         Fire,
         Ice,
-        Slowdown,
         Lightning,
         Earth,
+        Wind,
     }
 
     Color ResColor
@@ -428,6 +475,76 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect
         foreach (SkinnedMeshRenderer r in sRenderers)
         {
             r.material = material;
+        }
+    }
+
+    public bool GuaranteedDamage(int damage, Spell.SpellType? spellType)
+    {
+        int appliedDamage = damage;
+
+        ApplyWeaknessOrResistanceToDamage(ref appliedDamage, (Spell.SpellType)spellType);
+
+        health -= appliedDamage;
+
+        isDamageable = false;
+
+        SpawnDamageIndicator(appliedDamage);
+
+        PlayEffect(hitEffectPool);
+
+        if (health <= 0)
+        {
+            Death();
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private void Death()
+    {
+        if (!isDead)
+        {
+            isDead = true;
+
+            Score_Keeper.AddScore(score);
+
+            PlayEffect(deathEffectPool);
+
+            if (ragdoll != null)
+            {
+                navMeshAgent.enabled = false;
+                ragdoll.ActiveteRagdoll();
+                Invoke(nameof(DestroySelf), 3f);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }       
+    }
+
+    private void PlayEffect(string poolName)
+    {
+        Pooled_VFX vfx = (Pooled_VFX)Object_Pooler.Pools[poolName].Get();
+
+        vfx.Initialize(visualEffectSpawnPos.position, visualEffectSpawnPos.rotation, Vector3.zero, Object_Pooler.Pools[poolName]);
+    }
+
+    public void WindEffect(int windDamage, int effectBuildUp)
+    {
+        this.effectBuildUp += effectBuildUp;
+
+        if (this.effectBuildUp >= 100 && !effectIsApplied)
+        {
+            ApplyWeaknessOrResistanceToDamage(ref windDamage, Spell.SpellType.Wind);
+
+            ApplyEffect(windDamage);
+
+            effectType = EffectType.Wind;
+
+            Debug.Log("Fire effect");
         }
     }
 }
