@@ -116,7 +116,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _Ball_Pos: {r: 0.027144957, g: 1.9226971, b: 0.13542604, a: 0}
+    - _Ball_Pos: {r: 7.4090185, g: -0.38315773, b: -12.930998, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Edge_Color: {r: 1, g: 0, b: 0.13335371, a: 1}

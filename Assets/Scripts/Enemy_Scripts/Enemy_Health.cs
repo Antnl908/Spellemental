@@ -47,7 +47,14 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect, IGuarantee
     [SerializeField] 
     private float effectDuration = 5;
 
+    [SerializeField]
+    private float slowDownEffectDuration = 5;
+
+    private float timeUntilSlowDownDisappears = 0;
+
     private bool effectIsApplied = false;
+
+    private bool isSlow = false;
 
     private EffectType effectType = EffectType.None;
 
@@ -95,7 +102,14 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect, IGuarantee
     private float attackRadius = 1f;
 
     [SerializeField] Ragdoll ragdoll;
+
     NavMeshAgent navMeshAgent;
+
+    [SerializeField]
+    private float normalMoveSpeed = 5f;
+
+    [SerializeField]
+    private float slowedMoveSpeed = 1f;
 
     [SerializeField]
     private string hitEffectPool = "Blood_Splatter";
@@ -130,7 +144,10 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect, IGuarantee
 
             SpawnDamageIndicator(appliedDamage);
 
-            PlayEffect(hitEffectPool);
+            if(appliedDamage > 0)
+            {
+                PlayEffect(hitEffectPool);
+            }            
         }
         
         if(canBeHitByEffect && spellType == null)
@@ -185,6 +202,8 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect, IGuarantee
         }
         ragdoll = GetComponent<Ragdoll>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+
+        navMeshAgent.speed = normalMoveSpeed;
     }
 
     private void OnEnable()
@@ -226,6 +245,18 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect, IGuarantee
                 effectIsApplied = false;
             }
         }
+
+        if(isSlow)
+        {
+            timeUntilSlowDownDisappears -= Time.deltaTime;
+
+            if(timeUntilSlowDownDisappears <= 0)
+            {
+                navMeshAgent.speed = normalMoveSpeed;
+
+                isSlow = false;
+            }
+        }
     }
 
     //Deals fire damage.
@@ -258,16 +289,22 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect, IGuarantee
 
             effectType = EffectType.Ice;
 
+            SlowDownEffect();
+
             Debug.Log("Ice effect");
         }
     }
 
-    //SLows down enemy movement.
-    public void SlowDownEffect(float slowDownAmount)
+    //Slows down enemy movement.
+    public void SlowDownEffect()
     {
-        // Make it later.
+        navMeshAgent.speed = slowedMoveSpeed;
 
-        effectType = EffectType.Slowdown;
+        timeUntilSlowDownDisappears = slowDownEffectDuration;
+
+        isSlow = true;
+
+        //Debug.LogWarning("Slow down effect applied");
     }
 
     //Damage is increased or decreased if enemy is weak or resistant to its type.
@@ -316,6 +353,10 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect, IGuarantee
             {
                 EarthEffect(effectDamage, effectBuildUp);
             }
+            else if(spellType == Spell.SpellType.Wind)
+            {
+                WindEffect(effectDamage, effectBuildUp);
+            }
         }
     }
 
@@ -347,6 +388,8 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect, IGuarantee
 
             effectType = EffectType.Earth;
 
+            SlowDownEffect();
+
             Debug.Log("Earth effect");
         }
     }
@@ -377,9 +420,9 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect, IGuarantee
         None,
         Fire,
         Ice,
-        Slowdown,
         Lightning,
         Earth,
+        Wind,
     }
 
     Color ResColor
@@ -481,5 +524,21 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect, IGuarantee
         Pooled_VFX vfx = (Pooled_VFX)Object_Pooler.Pools[poolName].Get();
 
         vfx.Initialize(visualEffectSpawnPos.position, visualEffectSpawnPos.rotation, Vector3.zero, Object_Pooler.Pools[poolName]);
+    }
+
+    public void WindEffect(int windDamage, int effectBuildUp)
+    {
+        this.effectBuildUp += effectBuildUp;
+
+        if (this.effectBuildUp >= 100 && !effectIsApplied)
+        {
+            ApplyWeaknessOrResistanceToDamage(ref windDamage, Spell.SpellType.Wind);
+
+            ApplyEffect(windDamage);
+
+            effectType = EffectType.Wind;
+
+            Debug.Log("Fire effect");
+        }
     }
 }
