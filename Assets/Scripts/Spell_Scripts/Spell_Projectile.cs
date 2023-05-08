@@ -92,7 +92,7 @@ public class Spell_Projectile : Pooling_Object
 #nullable disable
 
     private float effectTimer;
-    private float effectDelay = 0.25f;
+    private const float effectDelay = 0.1f;
 
     private void Awake()
     {
@@ -158,7 +158,7 @@ public class Spell_Projectile : Pooling_Object
     private void CheckHits()
     {
         //modifiera detta senare
-        if(effectObjectPoolName != "Error")
+        if(effectObjectPoolName != "Error" || !destroyOnHit)
         {
             effectTimer -= Time.deltaTime;
             if (effectTimer > 0.0f) { return; }

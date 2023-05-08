@@ -6588,6 +6588,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: WorldHealthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 9174620421749785982, guid: bf035642341d72e4e9a8c3be839dd46a, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174620422141374697, guid: bf035642341d72e4e9a8c3be839dd46a, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174620423107997434, guid: bf035642341d72e4e9a8c3be839dd46a, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174620423423343653, guid: bf035642341d72e4e9a8c3be839dd46a, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf035642341d72e4e9a8c3be839dd46a, type: 3}
 --- !u!4 &5287625575786577832 stripped

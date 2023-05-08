@@ -68,6 +68,9 @@ public class Spell_Stationary : Pooling_Object
     private Transform? vfxSpawnPos;
 #nullable disable
 
+    private float effectTimer;
+    private const float effectDelay = 0.1f;
+
     // Update is called once per frame
     void Update()
     {
@@ -149,6 +152,14 @@ public class Spell_Stationary : Pooling_Object
         if (!isActiveAndEnabled)
         {
             return;
+        }
+
+        //Detta kan förbättras senare.
+        if (!destroyOnHit)
+        {
+            effectTimer -= Time.deltaTime;
+            if (effectTimer > 0.0f) { return; }
+            effectTimer = effectDelay;
         }
 
         Collider[] colliders = Physics.OverlapBox(transform.position + hitBoxOffset, new Vector3(width / 2, height / 2, depth / 2), transform.rotation, enemyLayer);

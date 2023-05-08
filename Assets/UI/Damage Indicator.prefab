@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1259279348052700875}
   - component: {fileID: 8738584662176951532}
   - component: {fileID: 6401808505425616463}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 3870471609316743396}
   - component: {fileID: -4284638386547729326}
   - component: {fileID: 4444212317933895042}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Damage Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &3870471609316743396
 MonoBehaviour:
   m_ObjectHideFlags: 0
