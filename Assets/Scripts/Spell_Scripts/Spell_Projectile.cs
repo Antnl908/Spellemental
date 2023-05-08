@@ -135,7 +135,7 @@ public class Spell_Projectile : Pooling_Object
     {
         if(destroyOnHit)
         {
-            CheckHits();
+            InstantCheckHits(other);
         }       
     }
 
@@ -216,6 +216,64 @@ public class Spell_Projectile : Pooling_Object
             {
                 gotAHit = true;
             }
+        }
+
+        if (gotAHit && destroyOnHit)
+        {
+            pool.Release(this);
+        }       
+    }
+    private void InstantCheckHits(Collider other)
+    {
+        IMagicEffect magicEffect = other.transform.GetComponent<IMagicEffect>();
+
+        magicEffect?.ApplyMagicEffect(effectDamage, effectBuildUp, spellType);
+
+        IDamageable damagable = other.transform.GetComponent<IDamageable>();
+
+        bool gotAKill = false;
+
+        if (damagable != null)
+        {
+            gotAKill = (bool)(damagable?.TryToDestroyDamageable(damage, spellType));
+
+            gotAHit = true;
+        }
+
+        if (gotAKill)
+        {
+            Player_Health.killCount++;
+        }
+
+        if (effectObjectPoolName != "Error")
+        {
+            for (int x = 0; x < effectInstanceAmount; x++)
+            {
+                Pooling_Object pooling_Object = Object_Pooler.Pools[effectObjectPoolName].Get();
+
+                pooling_Object.Initialize(transform.position, Quaternion.identity,
+                                             other.transform.position, Object_Pooler.Pools[effectObjectPoolName]);
+            }
+        }
+
+        if (stationarySpellPoolName != "Error")
+        {
+            if (Physics.Raycast(transform.position + Vector3.up * spawnStationaryRangeAboveTransform, 
+                                                            Vector3.down, out RaycastHit hitInfo, spawnStationaryRange, terrainLayer))
+            {
+                Spell_Stationary stationary = (Spell_Stationary)stationarySpellPool.Get();
+
+                //Rotates it along the ground.
+                Quaternion rotation = Quaternion.FromToRotation(transform.up, hitInfo.normal) * transform.rotation;
+
+
+                stationary.Initialize(hitInfo.point, rotation, stationarySpellPool);
+            }
+        }
+        
+        if(other.gameObject.layer == terrainLayer)
+        {
+            gotAHit = true;
         }
 
         if (gotAHit && destroyOnHit)

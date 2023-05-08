@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 28dda6c31077ee74c969f59510860e7c, type: 2}
+  - {fileID: 2100000, guid: 4a364d610c35dc7488ab4b45890b98f4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
   damageRadius: 0.5
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1152
   terrainLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -130,6 +130,10 @@ MonoBehaviour:
   spawnStationaryRangeAboveTransform: 0.4
   spawnStationaryRange: 5
   spawnOffset: 0.5
+  destroyOnHit: 1
+  destroyAfterSomeTime: 1
+  effectObjectPoolName: Error
+  effectInstanceAmount: 3
 --- !u!136 &7079626230065009859
 CapsuleCollider:
   m_ObjectHideFlags: 0
