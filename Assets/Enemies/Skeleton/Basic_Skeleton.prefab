@@ -4184,9 +4184,10 @@ MonoBehaviour:
   resistance: 0
   objectPoolName: Damage_Indicator
   damageIndicatorForce: 10
-  timeUntilNextHit: 0.1
+  timeUntilNextHit: 0.5
   timeUntilNextEffectDamage: 0.5
   effectDuration: 5
+  slowDownEffectDuration: 5
   damageIndicatorDestructiontime: 1
   weaknessMultiplier: 2
   strengthMultiplier: 2
@@ -4204,6 +4205,11 @@ MonoBehaviour:
   attackPoint: {fileID: 7666328769070435000}
   attackRadius: 1.3
   ragdoll: {fileID: 0}
+  normalMoveSpeed: 5
+  slowedMoveSpeed: 1
+  hitEffectPool: Blood_Splatter
+  deathEffectPool: Death_Smoke
+  visualEffectSpawnPos: {fileID: 7666328767961625143}
 --- !u!195 &7222420314790321881
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4215,7 +4221,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.4
   m_Speed: 1.5
-  m_Acceleration: 8
+  m_Acceleration: 1000
   avoidancePriority: 50
   m_AngularSpeed: 100
   m_StoppingDistance: 0

@@ -1,5 +1,411 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5538316737042940615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6695568821170021625}
+  - component: {fileID: 8041248596860660336}
+  - component: {fileID: 1266093555631971654}
+  m_Layer: 0
+  m_Name: Tornado_Effect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6695568821170021625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5538316737042940615}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2249195671985056984}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!2083052967 &8041248596860660336
+VisualEffect:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5538316737042940615}
+  m_Enabled: 1
+  m_Asset: {fileID: 8926484042661614526, guid: 70b56289ba3e0e14ea25c0b0e98ec12b, type: 3}
+  m_InitialEventName: OnPlay
+  m_InitialEventNameOverriden: 0
+  m_StartSeed: 0
+  m_ResetSeedOnPlay: 1
+  m_ResourceVersion: 1
+  m_PropertySheet:
+    m_Float:
+      m_Array:
+      - m_Value: 0.25
+        m_Name: Size
+        m_Overridden: 1
+      - m_Value: 6
+        m_Name: Duration
+        m_Overridden: 1
+      - m_Value: 20
+        m_Name: Noise Scale
+        m_Overridden: 1
+      - m_Value: 0.6
+        m_Name: Dissolve
+        m_Overridden: 1
+      - m_Value: 0.85
+        m_Name: Layer 2 Dissolve
+        m_Overridden: 1
+      - m_Value: 0.9
+        m_Name: Layer 3 Dissolve
+        m_Overridden: 1
+      - m_Value: 0.97
+        m_Name: Layer 4 Dissolve
+        m_Overridden: 1
+      - m_Value: 8
+        m_Name: Twirl Amount
+        m_Overridden: 1
+      - m_Value: 6
+        m_Name: Twirl Amount 2
+        m_Overridden: 1
+      - m_Value: 1
+        m_Name: Noise Power
+        m_Overridden: 1
+      - m_Value: 1.15
+        m_Name: Layer 2 Scale
+        m_Overridden: 1
+      - m_Value: 1.2
+        m_Name: Layer 4 Scale
+        m_Overridden: 1
+      - m_Value: 1.2
+        m_Name: Layer 3 Scale
+        m_Overridden: 1
+      - m_Value: 4
+        m_Name: Twirl Amount 4
+        m_Overridden: 1
+      - m_Value: 5
+        m_Name: Twirl Amount 3
+        m_Overridden: 1
+    m_Vector2f:
+      m_Array:
+      - m_Value: {x: -1, y: 0.5}
+        m_Name: Noise Speed
+        m_Overridden: 1
+      - m_Value: {x: 0.5, y: -0.52}
+        m_Name: Twirl Center
+        m_Overridden: 1
+      - m_Value: {x: -1, y: -0.5}
+        m_Name: Twirl Speed
+        m_Overridden: 1
+    m_Vector3f:
+      m_Array:
+      - m_Value: {x: 0, y: 1.5, z: 0}
+        m_Name: Top Ring Pos
+        m_Overridden: 1
+      - m_Value: {x: -90, y: 0, z: 0}
+        m_Name: Angle
+        m_Overridden: 1
+      - m_Value: {x: 1.5, y: 1.5, z: 0.6}
+        m_Name: Scale
+        m_Overridden: 1
+    m_Vector4f:
+      m_Array:
+      - m_Value: {x: 0.6798265, y: 2, z: 0, w: 1}
+        m_Name: Tornado Color
+        m_Overridden: 1
+      - m_Value: {x: 0.28678867, y: 5.3403134, z: 0, w: 1}
+        m_Name: Tornado Layer 2 Color
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 1.8880861, z: 0.12405591, w: 1}
+        m_Name: Tornado Layer 3 Color
+        m_Overridden: 1
+      - m_Value: {x: 0.2735849, y: 0.09488733, z: 0.0139373215, w: 1}
+        m_Name: Tornado Layer 4 Color
+        m_Overridden: 1
+    m_Uint:
+      m_Array: []
+    m_Int:
+      m_Array: []
+    m_Matrix4x4f:
+      m_Array: []
+    m_AnimationCurve:
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.8018017
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1.5012207
+            inSlope: 2.5288846
+            outSlope: 2.5288846
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        m_Name: Dissolve Curve
+        m_Overridden: 1
+      - m_Value:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0.00028324407
+            value: 0.000015201047
+            inSlope: 5.0611978
+            outSlope: 5.0611978
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.19786192
+            value: 1
+            inSlope: -0.00011410487
+            outSlope: -0.00011410487
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.34955323
+            value: 0.949981
+            inSlope: -0.000040051586
+            outSlope: -0.000040051586
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.4998775
+            value: 1.0245867
+            inSlope: 0.0000034821858
+            outSlope: 0.0000034821858
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.6006567
+            value: 0.99998736
+            inSlope: 0.000020296606
+            outSlope: 0.000020296606
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0.00003164241
+            outSlope: 0.00003164241
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        m_Name: ScaleOverLifeX
+        m_Overridden: 1
+      - m_Value:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0.00028324407
+            value: 0.000015201047
+            inSlope: 5.0611978
+            outSlope: 5.0611978
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.19786192
+            value: 1
+            inSlope: -0.00011410487
+            outSlope: -0.00011410487
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.34955323
+            value: 0.949981
+            inSlope: -0.000040051586
+            outSlope: -0.000040051586
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.4998775
+            value: 1.0245867
+            inSlope: 0.0000034821858
+            outSlope: 0.0000034821858
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.6006567
+            value: 0.99998736
+            inSlope: 0.000020296606
+            outSlope: 0.000020296606
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0.00003164241
+            outSlope: 0.00003164241
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        m_Name: ScaleOverLifeZ
+        m_Overridden: 1
+      - m_Value:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0.00028324407
+            value: 0.000015201047
+            inSlope: 5.0611978
+            outSlope: 5.0611978
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.19786192
+            value: 1
+            inSlope: -0.00011410487
+            outSlope: -0.00011410487
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.34955323
+            value: 0.949981
+            inSlope: -0.000040051586
+            outSlope: -0.000040051586
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.4998775
+            value: 1.0245867
+            inSlope: 0.0000034821858
+            outSlope: 0.0000034821858
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.6006567
+            value: 0.99998736
+            inSlope: 0.000020296606
+            outSlope: 0.000020296606
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0.00003164241
+            outSlope: 0.00003164241
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        m_Name: ScaleOverLifeY
+        m_Overridden: 1
+    m_Gradient:
+      m_Array: []
+    m_NamedObject:
+      m_Array: []
+    m_Bool:
+      m_Array: []
+--- !u!73398921 &1266093555631971654
+VFXRenderer:
+  serializedVersion: 1
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5538316737042940615}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &6282637180282961824
 GameObject:
   m_ObjectHideFlags: 0
@@ -15,7 +421,9 @@ GameObject:
   - component: {fileID: 106121397631457356}
   - component: {fileID: 7649432715610366927}
   - component: {fileID: 730613094173501388}
-  m_Layer: 0
+  - component: {fileID: 6066389659394360613}
+  - component: {fileID: 5562348180853608300}
+  m_Layer: 10
   m_Name: Tornado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,7 +441,8 @@ Transform:
   m_LocalPosition: {x: 1.281321, y: 3.66, z: 3.8100927}
   m_LocalScale: {x: 1, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6695568821170021625}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -52,7 +461,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6282637180282961824}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -98,8 +507,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 5, y: 1.6, z: 5}
+  m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!54 &106121397631457356
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -129,15 +538,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyedAfterSomeTime: 1
-  height: 10
-  width: 2
-  depth: 2
+  height: 18
+  width: 10
+  depth: 10
   heightOffset: 2.5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1664
   destroyOnHit: 0
   usesRotation: 1
+  hitBoxOffset: {x: 0, y: 1, z: 0}
 --- !u!114 &730613094173501388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +563,39 @@ MonoBehaviour:
   stationary: {fileID: 7649432715610366927}
   positionAmount: 30
   speed: 10
-  maxXDistance: 5
-  maxZDistance: 5
+  maxXDistance: 6
+  maxZDistance: 6
   switchPositionRadius: 1
+--- !u!114 &6066389659394360613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6282637180282961824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc5604e51b5cbc42ba32ec8ec1ed334, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireExplosionDamage: 20
+  iceExplosionDamage: 20
+  lightningExplosionDamage: 20
+  range: 5
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 128
+  stationary: {fileID: 7649432715610366927}
+--- !u!114 &5562348180853608300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6282637180282961824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c69b6fca14c3140a5c12ee5c85fbf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualEffect: {fileID: 8041248596860660336}

@@ -44,7 +44,7 @@ public class Spell : ScriptableObject
     private LayerMask possibleStationarySpawn;
 
     [SerializeField]
-    private string objectPoolName = "Error";
+    protected string objectPoolName = "Error";
 
     public SpellType Type { get => type; }
 

@@ -11,6 +11,9 @@ public class Menu_Interactions : MonoBehaviour
     private string levelName = "Colosseum_URP_Scene";
 
     [SerializeField]
+    private string tutorialName = "Tutorial_Scene";
+
+    [SerializeField]
     private GameObject loadingScreen;
 
     [SerializeField]
@@ -30,6 +33,13 @@ public class Menu_Interactions : MonoBehaviour
         Score_Keeper.ResetScore();
 
         StartCoroutine(LoadLevelAsynchronously(levelName));
+    }
+
+    public void StartTutorial()
+    {
+        Score_Keeper.ResetScore();
+
+        StartCoroutine(LoadLevelAsynchronously(tutorialName));
     }
 
     public void Quit()

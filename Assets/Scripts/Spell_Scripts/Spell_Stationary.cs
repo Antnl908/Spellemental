@@ -22,6 +22,8 @@ public class Spell_Stationary : Pooling_Object
 
     private IObjectPool<Pooling_Object> pool;
 
+    public IObjectPool<Pooling_Object> Pool { get => pool; }
+
     private float destructionTime = 1f;
 
     private float currentDestructionTime;
@@ -53,7 +55,18 @@ public class Spell_Stationary : Pooling_Object
     [SerializeField]
     private bool usesRotation = true;
 
+    [SerializeField]
+    private Vector3 hitBoxOffset = new(0, 0, 0);
+
     public event EventHandler OnInitialisation;
+
+    [SerializeField]
+    private string visualEffectPoolName = "Error";
+
+#nullable enable
+    [SerializeField]
+    private Transform? vfxSpawnPos;
+#nullable disable
 
     // Update is called once per frame
     void Update()
@@ -138,7 +151,7 @@ public class Spell_Stationary : Pooling_Object
             return;
         }
 
-        Collider[] colliders = Physics.OverlapBox(transform.position, new Vector3(width / 2, height / 2, depth / 2), transform.rotation, enemyLayer);
+        Collider[] colliders = Physics.OverlapBox(transform.position + hitBoxOffset, new Vector3(width / 2, height / 2, depth / 2), transform.rotation, enemyLayer);
 
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -170,6 +183,13 @@ public class Spell_Stationary : Pooling_Object
 
         if(gotAHit && destroyOnHit)
         {
+            if (visualEffectPoolName != "Error")
+            {
+                Pooled_VFX vfx = (Pooled_VFX)Object_Pooler.Pools[visualEffectPoolName].Get();
+
+                vfx.Initialize(vfxSpawnPos.position, transform.rotation, Vector3.zero, Object_Pooler.Pools[visualEffectPoolName]);
+            }
+
             pool.Release(this);
         }
     }
@@ -181,7 +201,7 @@ public class Spell_Stationary : Pooling_Object
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireCube(transform.position, new Vector3(width / 2, height / 2, depth / 2));
+        Gizmos.DrawWireCube(transform.position + hitBoxOffset, new Vector3(width / 2, height / 2, depth / 2));
 
         Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y + heightOffset, 
                                                                                                       transform.position.z));
