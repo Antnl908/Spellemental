@@ -197,6 +197,9 @@ MonoBehaviour:
   effectInstanceAmount: 3
   visualEffectPoolName: Error
   vfxSpawnPos: {fileID: 7735959140653119013}
+  range: 0
+  useOverlapSphere: 0
+  checkTime: 0.25
 --- !u!54 &5143407315807038287
 Rigidbody:
   m_ObjectHideFlags: 0

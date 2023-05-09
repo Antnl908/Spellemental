@@ -8,7 +8,7 @@ public class Interactable : MonoBehaviour, IDamageable
 {
     [SerializeField] private bool repeatable;
     [SerializeField] private float radius;
-    readonly Collider[] colliders = new Collider[20];
+    readonly Collider[] colliders = new Collider[10];
     [SerializeField] LayerMask layerMask;
     [SerializeField] protected Spell.SpellType localSpellType;
     int count;
