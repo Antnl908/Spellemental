@@ -162,7 +162,7 @@ public class Spell_Projectile : Pooling_Object
 
     private void OnTriggerStay(Collider other)
     {
-        if(!destroyOnHit && !useOverlapSphere)
+        if(!useOverlapSphere)
         {
             CheckHits();
         }

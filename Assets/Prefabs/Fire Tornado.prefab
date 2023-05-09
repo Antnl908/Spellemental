@@ -124,6 +124,11 @@ MonoBehaviour:
   destroyOnHit: 0
   usesRotation: 1
   hitBoxOffset: {x: 0, y: 2.5, z: 0}
+  visualEffectPoolName: Error
+  vfxSpawnPos: {fileID: 0}
+  range: 8
+  useOverlapSphere: 1
+  checkTime: 0.25
 --- !u!54 &160970336082883956
 Rigidbody:
   m_ObjectHideFlags: 0

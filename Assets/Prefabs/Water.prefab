@@ -136,6 +136,9 @@ MonoBehaviour:
   effectInstanceAmount: 3
   visualEffectPoolName: Water_Burst
   vfxSpawnPos: {fileID: 8379155686124696796}
+  range: 0
+  useOverlapSphere: 0
+  checkTime: 0.25
 --- !u!136 &7079626230065009859
 CapsuleCollider:
   m_ObjectHideFlags: 0

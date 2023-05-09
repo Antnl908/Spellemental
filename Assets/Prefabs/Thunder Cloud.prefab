@@ -412,6 +412,11 @@ MonoBehaviour:
   destroyAfterSomeTime: 1
   effectObjectPoolName: Lightning_Hit
   effectInstanceAmount: 1
+  visualEffectPoolName: Error
+  vfxSpawnPos: {fileID: 0}
+  range: 8
+  useOverlapSphere: 1
+  checkTime: 0.1
 --- !u!54 &8394024060365742322
 Rigidbody:
   m_ObjectHideFlags: 0
