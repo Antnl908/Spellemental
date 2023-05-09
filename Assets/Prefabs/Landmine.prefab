@@ -143,6 +143,9 @@ MonoBehaviour:
   hitBoxOffset: {x: 0, y: 0, z: 0}
   visualEffectPoolName: Landmine_Burst
   vfxSpawnPos: {fileID: 2282089215470360368}
+  range: 4
+  useOverlapSphere: 0
+  checkTime: 0.1
 --- !u!114 &6767276690004744052
 MonoBehaviour:
   m_ObjectHideFlags: 0

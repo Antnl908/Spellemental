@@ -229,8 +229,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyedAfterSomeTime: 1
   height: 2
-  width: 1
-  depth: 1
+  width: 2
+  depth: 2
   heightOffset: 1
   enemyLayer:
     serializedVersion: 2
@@ -240,3 +240,6 @@ MonoBehaviour:
   hitBoxOffset: {x: 0, y: 0, z: 0}
   visualEffectPoolName: Lightning_Burst
   vfxSpawnPos: {fileID: 3546529870842638135}
+  range: 1
+  useOverlapSphere: 0
+  checkTime: 0.1

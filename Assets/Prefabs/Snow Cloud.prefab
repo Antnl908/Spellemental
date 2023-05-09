@@ -179,6 +179,12 @@ MonoBehaviour:
   destroyAfterSomeTime: 1
   effectObjectPoolName: Error
   effectInstanceAmount: 3
+  visualEffectPoolName: Error
+  vfxSpawnPos: {fileID: 0}
+  range: 5.5
+  useOverlapSphere: 1
+  checkTime: 0.25
+  spherePosition: {fileID: 1630200976103616866}
 --- !u!1 &3983997658240651652
 GameObject:
   m_ObjectHideFlags: 0

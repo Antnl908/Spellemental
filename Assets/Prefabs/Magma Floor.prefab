@@ -126,6 +126,9 @@ MonoBehaviour:
   hitBoxOffset: {x: 0, y: 0, z: 0}
   visualEffectPoolName: Error
   vfxSpawnPos: {fileID: 0}
+  range: 4
+  useOverlapSphere: 1
+  checkTime: 0.1
 --- !u!54 &4796922313675355072
 Rigidbody:
   m_ObjectHideFlags: 0

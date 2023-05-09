@@ -168,6 +168,7 @@ MonoBehaviour:
   range: 5
   useOverlapSphere: 1
   checkTime: 0.1
+  spherePosition: {fileID: 7619166150957293780}
 --- !u!54 &-116222772300951813
 Rigidbody:
   m_ObjectHideFlags: 0

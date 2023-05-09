@@ -105,6 +105,11 @@ public class Spell_Projectile : Pooling_Object
     [SerializeField] private bool useOverlapSphere = false;
     private float checkTimer;
     [SerializeField] private float checkTime = 0.25f;
+
+# nullable enable
+    [SerializeField]
+    private Transform spherePosition;
+# nullable disable
     #endregion
 
     private void Awake()
@@ -154,7 +159,7 @@ public class Spell_Projectile : Pooling_Object
 
     private void OnTriggerEnter(Collider other)
     {
-        if(destroyOnHit)
+        if(useOverlapSphere)
         {
             InstantCheckHits(other);
         }       
@@ -340,7 +345,7 @@ public class Spell_Projectile : Pooling_Object
         if (checkTimer > 0.0f) { return; }
         checkTimer = checkTime;
 
-        count = Physics.OverlapSphereNonAlloc(transform.position, range, colliders, enemyLayer, QueryTriggerInteraction.Collide);
+        count = Physics.OverlapSphereNonAlloc(spherePosition.position, range, colliders, enemyLayer, QueryTriggerInteraction.Collide);
         if (count > 0)
         {
             for (int i = 0; i < count; i++)
@@ -400,9 +405,11 @@ public class Spell_Projectile : Pooling_Object
 
         Gizmos.color = Color.yellow;
 
-
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, range);
+        if(useOverlapSphere)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(spherePosition.position, range);
+        }       
     }
 
 }

@@ -99,6 +99,7 @@ Transform:
   - {fileID: 5566992786154380587}
   - {fileID: 2436591895406410415}
   - {fileID: 7735959140653119013}
+  - {fileID: 4147315316292712805}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -197,9 +198,10 @@ MonoBehaviour:
   effectInstanceAmount: 3
   visualEffectPoolName: Error
   vfxSpawnPos: {fileID: 7735959140653119013}
-  range: 0
-  useOverlapSphere: 0
-  checkTime: 0.25
+  range: 4
+  useOverlapSphere: 1
+  checkTime: 0.1
+  spherePosition: {fileID: 4147315316292712805}
 --- !u!54 &5143407315807038287
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -246,6 +248,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3316345869647926929}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8089068906150520832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4147315316292712805}
+  m_Layer: 0
+  m_Name: Sphere Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4147315316292712805
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8089068906150520832}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3316345869647926929}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8713595130303067469
 GameObject:

@@ -143,15 +143,19 @@ public class Spell_Stationary : Pooling_Object
 
     private void OnTriggerEnter(Collider other)
     {
-        if (destroyOnHit)
+        if (useOverlapSphere)
         {
             InstantCheckHits(other);
+        }
+        else if(destroyOnHit)
+        {
+            CheckHits();
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (!useOverlapSphere)
+        if (!useOverlapSphere && !destroyOnHit)
         {
             CheckHits();
         }
