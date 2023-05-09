@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 5326741514645057177}
   - component: {fileID: 2230529825281270848}
   - component: {fileID: 4796922313675355072}
-  m_Layer: 0
+  - component: {fileID: 3572922502690790261}
+  m_Layer: 10
   m_Name: Magma Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,6 +124,8 @@ MonoBehaviour:
   destroyOnHit: 0
   usesRotation: 1
   hitBoxOffset: {x: 0, y: 0, z: 0}
+  visualEffectPoolName: Error
+  vfxSpawnPos: {fileID: 0}
 --- !u!54 &4796922313675355072
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -139,6 +142,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &3572922502690790261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799133600938385202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bef0ac852c3bf944bbd14addcab57aee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  repeatable: 0
+  radius: 4
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1153
+  localSpellType: 0
 --- !u!1 &1410361252462998524
 GameObject:
   m_ObjectHideFlags: 0

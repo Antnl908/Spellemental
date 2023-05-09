@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1043521862343659384}
   - component: {fileID: 8531197407105351829}
   - component: {fileID: 6217144266577506524}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Puddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,6 +124,8 @@ MonoBehaviour:
   destroyOnHit: 0
   usesRotation: 1
   hitBoxOffset: {x: 0, y: 0, z: 0}
+  visualEffectPoolName: Error
+  vfxSpawnPos: {fileID: 0}
 --- !u!54 &8531197407105351829
 Rigidbody:
   m_ObjectHideFlags: 0
