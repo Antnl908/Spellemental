@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Tornado
   m_EditorClassIdentifier: 
   type: 5
-  damage: 2
-  effectDamage: 8
-  effectBuildUp: 10
+  damage: 8
+  effectDamage: 20
+  effectBuildUp: 20
   destructionTime: 6
   timeBetweenCasts: 1
   manaCost: 300

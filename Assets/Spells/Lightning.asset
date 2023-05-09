@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Lightning
   m_EditorClassIdentifier: 
   type: 4
-  damage: 3
-  effectDamage: 5
+  damage: 13
+  effectDamage: 2
   effectBuildUp: 15
   destructionTime: 0.05
   timeBetweenCasts: 0.2

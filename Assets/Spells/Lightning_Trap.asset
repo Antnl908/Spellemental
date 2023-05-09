@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 4
   damage: 30
-  effectDamage: 10
+  effectDamage: 60
   effectBuildUp: 100
   destructionTime: 5
   timeBetweenCasts: 1.5
-  manaCost: 500
+  manaCost: 600
   travelDistance: 100
   isProjectileNotStationary: 0
   possibleStationarySpawn:

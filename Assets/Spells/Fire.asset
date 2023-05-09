@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Fire
   m_EditorClassIdentifier: 
   type: 0
-  damage: 8
-  effectDamage: 2
+  damage: 10
+  effectDamage: 5
   effectBuildUp: 10
   destructionTime: 0.25
   timeBetweenCasts: 0.2

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   damage: 10
-  effectDamage: 3
+  effectDamage: 5
   effectBuildUp: 10
   destructionTime: 0.8
   timeBetweenCasts: 0.3
