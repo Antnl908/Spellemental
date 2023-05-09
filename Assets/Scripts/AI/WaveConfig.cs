@@ -11,8 +11,10 @@ public class WaveConfig : ScriptableObject
     public int nbrOfIceSkeletons = 1;
     public int nbrOfLightningSkeletons = 1;
     public int nbrOfEarthSkeletons = 1;
+    public int nbrOfWindSkeletons = 1;
 
     [Header("Wave Configurations")]
     public float spawnDelay = 5f;
+    public float initialSpawnDelay = 5f;
     public float spawnArea = 1f;
 }

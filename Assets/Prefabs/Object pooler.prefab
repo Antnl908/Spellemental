@@ -165,3 +165,7 @@ MonoBehaviour:
     poolingObject: {fileID: 2223336319331969949, guid: 73bce8bc0c4631244ada63d815753647, type: 3}
     poolCount: 10000
     maxPoolCount: 50000
+  - name: Skeleton_Pool
+    poolingObject: {fileID: 7666328769372760347, guid: ef240b7c4b3d7114bb97b8c27a337756, type: 3}
+    poolCount: 10000
+    maxPoolCount: 50000

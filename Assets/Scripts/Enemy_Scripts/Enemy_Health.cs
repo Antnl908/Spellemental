@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Pool;
 
 [RequireComponent(typeof(MaterialInstance))]
-public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect, IGuaranteedDamage
+public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuaranteedDamage
 {
     // Made by Daniel, edited by Andreas J
 
@@ -126,6 +127,8 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect, IGuarantee
 
     private bool isDead = false;
 
+    private IObjectPool<Pooling_Object> pool;
+
     public void KnockBack(float knockBack)
     {
         //throw new System.NotImplementedException();
@@ -177,7 +180,9 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect, IGuarantee
 
     void DestroySelf()
     {
-        Destroy(gameObject);
+        Spawner.CurrentEnemyCount--;
+
+        pool.Release(this);
     }
 
     //Spawns a damage indicator that shows how much damage was dealt to this enemy.
@@ -215,6 +220,26 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect, IGuarantee
     private void OnEnable()
     {
         isDead = false;
+
+        if(maxHealth > health)
+        {
+            health = maxHealth;
+        }
+
+        healthBar.SetHealthAmount((float)health / maxHealth);
+
+        if (ragdoll != null)
+        {
+            navMeshAgent.enabled = true;
+
+            ragdoll.DeactiveteRagdoll();
+        }
+
+        effectBuildUp = 0;
+
+        timeUntilEffectDisappears = 0;
+
+        effectIsApplied = false;
     }
 
     // Update is called once per frame
@@ -520,7 +545,9 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect, IGuarantee
             }
             else
             {
-                Destroy(gameObject);
+                Spawner.CurrentEnemyCount--;
+
+                pool.Release(this);
             }
         }       
     }
@@ -545,6 +572,26 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect, IGuarantee
             effectType = EffectType.Wind;
 
             Debug.Log("Fire effect");
+        }
+    }
+
+    public override void Initialize(Vector3 position, Quaternion rotation, Vector3 direction, IObjectPool<Pooling_Object> pool)
+    {
+        transform.SetPositionAndRotation(position, rotation);
+
+        this.pool = pool;
+    }
+
+    public void SetWeaknessAndResistance(Spell.SpellType weakness, Spell.SpellType resistance)
+    {
+        this.weakness = weakness;
+
+        this.resistance = resistance;
+
+        if(matInst != null)
+        {
+            matInst.albedo = ResColor;
+            matInst.color = ResColor * (colorConfig ? colorConfig.amount : 1f);
         }
     }
 }
