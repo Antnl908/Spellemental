@@ -25,5 +25,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1600
   objectPoolName: Tornado
-  animationBoolName: StartCombo6
-  leftAnimationName: LeftCombo6
+  animationBoolName: StartCombo1
+  leftAnimationName: LeftCombo1
