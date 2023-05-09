@@ -93,17 +93,17 @@ public class NoiseGeneration : MonoBehaviour
 
     private void CaptureScreenShot(InputAction.CallbackContext context)
     {
-        byte[] bytes = currentTex.EncodeToPNG();
+        //byte[] bytes = currentTex.EncodeToPNG();
 
-        var directionPath = Application.dataPath + "/Images/NoiseImages/";
+        //var directionPath = Application.dataPath + "/Images/NoiseImages/";
 
-        if(!Directory.Exists(directionPath))
-        {
-            Directory.CreateDirectory(directionPath);
-        }
+        //if(!Directory.Exists(directionPath))
+        //{
+        //    Directory.CreateDirectory(directionPath);
+        //}
 
-        File.WriteAllBytes(directionPath + imageName + ".png", bytes);
+        //File.WriteAllBytes(directionPath + imageName + ".png", bytes);
 
-        Debug.Log("Done with saving png!");
+        //Debug.Log("Done with saving png!");
     }
 }

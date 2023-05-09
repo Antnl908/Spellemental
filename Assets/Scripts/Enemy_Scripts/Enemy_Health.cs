@@ -226,7 +226,8 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
             health = maxHealth;
         }
 
-        healthBar.SetHealthAmount((float)health / maxHealth);
+        if (healthBar != null) { healthBar.SetHealthAmount((float)health / maxHealth); }
+
 
         if (ragdoll != null)
         {

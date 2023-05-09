@@ -25,11 +25,13 @@ public class MaterialInstance : MonoBehaviour
         //rend = GetComponentInChildren<Renderer>();
         //renderers = transform.GetComponentsInChildren<MeshRenderer>();
         //sRenderers = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
+        ChangeMatColor();
     }
 
     public void NewMBP()
     {
         mpb = new MaterialPropertyBlock();
+        ChangeMatColor();
     }
 
     public void InitializeMaterial()
@@ -50,16 +52,18 @@ public class MaterialInstance : MonoBehaviour
                 
             }
         }
+
+        ChangeMatColor();
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        amount -=  0.5f * Time.deltaTime;
-        if(amount > 0) { glow = true; } else { glow = false; }
-        //SetGlow();
-        ChangeMatColor();
-    }
+    //void Update()
+    //{
+    //    amount -=  0.5f * Time.deltaTime;
+    //    if(amount > 0) { glow = true; } else { glow = false; }
+    //    //SetGlow();
+    //    ChangeMatColor();
+    //}
 
     public void SetGlow(bool g)
     {
