@@ -161,7 +161,7 @@ MonoBehaviour:
   radius: 4
   layerMask:
     serializedVersion: 2
-    m_Bits: 1153
+    m_Bits: 1152
   localSpellType: 0
 --- !u!1 &1410361252462998524
 GameObject:
