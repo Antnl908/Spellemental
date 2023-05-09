@@ -25,3 +25,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   objectPoolName: Thunder_Cloud
+  animationBoolName: StartCombo6
+  leftAnimationName: LeftCombo6

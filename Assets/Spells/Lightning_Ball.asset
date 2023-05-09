@@ -25,3 +25,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   objectPoolName: Lightning_Ball
+  animationBoolName: StartCombo6
+  leftAnimationName: LeftCombo6

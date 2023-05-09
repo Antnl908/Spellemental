@@ -25,6 +25,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   objectPoolName: Error
+  animationBoolName: StartCombo6
+  leftAnimationName: LeftCombo6
   range: 20
   layerMask:
     serializedVersion: 2

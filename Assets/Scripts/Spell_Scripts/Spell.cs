@@ -48,6 +48,16 @@ public class Spell : ScriptableObject
 
     public SpellType Type { get => type; }
 
+    [SerializeField]
+    private string animationBoolName = "NULL";
+
+    [SerializeField]
+    private string leftAnimationName = "NULL";
+
+    public string AnimationBoolName { get => animationBoolName; }
+
+    public string LeftAnimationName { get => leftAnimationName; }
+
     //If the spell is a projectile then a projectile is taken from the object pool and shot forward.
     //If the spell is a stationary then it is spawned where the player is looking.
     public virtual void CastSpell(Player_Look player_Look, Vector3 position, Quaternion rotation, Vector3 direction)

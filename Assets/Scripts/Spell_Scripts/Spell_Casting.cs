@@ -147,9 +147,9 @@ public class Spell_Casting : MonoBehaviour
         {
             if(currentMana >= spell.ManaCost)
             {
-                if (!animator.GetCurrentAnimatorStateInfo(0).IsName("LeftCombo6"))
+                if (!animator.GetCurrentAnimatorStateInfo(0).IsName(spell.LeftAnimationName))
                 {
-                    animator.SetBool("StartCombo6", true);
+                    animator.SetBool(spell.AnimationBoolName, true);
 
                     //spell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
 
