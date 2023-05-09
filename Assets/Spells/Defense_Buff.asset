@@ -25,5 +25,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   objectPoolName: Shield_Burst_Effect
-  animationBoolName: StartCombo6
-  leftAnimationName: LeftCombo6
+  animationBoolName: StartCombo5
+  leftAnimationName: LeftCombo5

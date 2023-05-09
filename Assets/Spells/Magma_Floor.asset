@@ -25,5 +25,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1600
   objectPoolName: Magma_Floor
-  animationBoolName: StartCombo6
-  leftAnimationName: LeftCombo6
+  animationBoolName: StartCombo3
+  leftAnimationName: LeftCombo3

@@ -25,5 +25,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   objectPoolName: Fire_Burst
-  animationBoolName: StartCombo6
-  leftAnimationName: LeftCombo6
+  animationBoolName: StartCombo2
+  leftAnimationName: LeftCombo2

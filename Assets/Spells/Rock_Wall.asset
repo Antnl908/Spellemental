@@ -25,5 +25,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   objectPoolName: Rock_Wall
-  animationBoolName: StartCombo6
-  leftAnimationName: LeftCombo6
+  animationBoolName: StartCombo5
+  leftAnimationName: LeftCombo5
