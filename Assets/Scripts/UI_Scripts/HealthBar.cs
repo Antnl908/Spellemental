@@ -32,6 +32,6 @@ public class HealthBar : MonoBehaviour
     {
         float width = parentWidth * percentage;
         foregroundImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
-        Debug.Log($"percentage:{percentage} parentWidth:{parentWidth} width:{width}");
+        //Debug.Log($"percentage:{percentage} parentWidth:{parentWidth} width:{width}");
     }
 }

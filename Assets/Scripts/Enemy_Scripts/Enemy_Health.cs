@@ -164,7 +164,7 @@ public class Enemy_Health : MonoBehaviour, IDamageable, IMagicEffect, IGuarantee
 
             SpawnDamageIndicator(damage);
         }
-        if(healthBar != null) { healthBar.SetHealthAmount((float)health / maxHealth); Debug.Log($"Enemy health:{health} Enemy maxHealth:{maxHealth} current health:{(float)health / maxHealth}"); }
+        if(healthBar != null) { healthBar.SetHealthAmount((float)health / maxHealth); /*Debug.Log($"Enemy health:{health} Enemy maxHealth:{maxHealth} current health:{(float)health / maxHealth}");*/ }
         if(health <= 0)
         {
             Death();
