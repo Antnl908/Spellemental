@@ -150,7 +150,7 @@ MonoBehaviour:
   damageRadius: 5
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1152
   terrainLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -163,6 +163,11 @@ MonoBehaviour:
   destroyAfterSomeTime: 1
   effectObjectPoolName: Lightning_Hit
   effectInstanceAmount: 1
+  visualEffectPoolName: Error
+  vfxSpawnPos: {fileID: 0}
+  range: 5
+  useOverlapSphere: 1
+  checkTime: 0.1
 --- !u!54 &-116222772300951813
 Rigidbody:
   m_ObjectHideFlags: 0

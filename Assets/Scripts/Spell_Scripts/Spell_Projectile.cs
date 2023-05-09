@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.LowLevel;
 using UnityEngine.Pool;
+using UnityEngine.SocialPlatforms;
 using UnityEngine.UIElements;
 
 public class Spell_Projectile : Pooling_Object
@@ -75,6 +77,7 @@ public class Spell_Projectile : Pooling_Object
     [SerializeField]
     private bool destroyAfterSomeTime = true;
 
+    [Header("Effects")]
     [SerializeField]
     private string effectObjectPoolName = "Error";
 
@@ -93,6 +96,16 @@ public class Spell_Projectile : Pooling_Object
 
     private float effectTimer;
     private const float effectDelay = 0.1f;
+
+    #region OverlapSphere
+    [Header("OverlapSphere")]
+    [SerializeField] float range;
+    int count;
+    readonly Collider[] colliders = new Collider[10];
+    [SerializeField] private bool useOverlapSphere = false;
+    private float checkTimer;
+    [SerializeField] private float checkTime = 0.25f;
+    #endregion
 
     private void Awake()
     {
@@ -131,7 +144,7 @@ public class Spell_Projectile : Pooling_Object
         if (destroyAfterSomeTime)
         {
             destructionTime -= Time.deltaTime;
-
+            if (useOverlapSphere) { OverlapHit(); }
             if (destructionTime <= 0 && enabled)
             {
                 pool.Release(this);
@@ -149,7 +162,7 @@ public class Spell_Projectile : Pooling_Object
 
     private void OnTriggerStay(Collider other)
     {
-        if(!destroyOnHit)
+        if(!destroyOnHit && !useOverlapSphere)
         {
             CheckHits();
         }
@@ -158,12 +171,12 @@ public class Spell_Projectile : Pooling_Object
     private void CheckHits()
     {
         //modifiera detta senare
-        if(effectObjectPoolName != "Error" || !destroyOnHit)
+        if (effectObjectPoolName != "Error" || !destroyOnHit)
         {
             effectTimer -= Time.deltaTime;
             if (effectTimer > 0.0f) { return; }
             effectTimer = effectDelay;
-        }        
+        }
 
         Collider[] enemyColliders = Physics.OverlapCapsule(point0.position, point1.position, damageRadius, enemyLayer);
 
@@ -316,7 +329,57 @@ public class Spell_Projectile : Pooling_Object
         if (gotAHit && destroyOnHit)
         {
             pool.Release(this);
-        }       
+        }
+    }
+
+    private void OverlapHit()
+    {
+        //potential lag fix
+
+        checkTimer -= Time.deltaTime;
+        if (checkTimer > 0.0f) { return; }
+        checkTimer = checkTime;
+
+        count = Physics.OverlapSphereNonAlloc(transform.position, range, colliders, enemyLayer, QueryTriggerInteraction.Collide);
+        if (count > 0)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                if (colliders[i].gameObject != gameObject)
+                {
+                    IMagicEffect magicEffect = colliders[i].transform.GetComponent<IMagicEffect>();
+
+                    magicEffect?.ApplyMagicEffect(effectDamage, effectBuildUp, spellType);
+
+                    IDamageable damagable = colliders[i].transform.GetComponent<IDamageable>();
+
+                    bool gotAKill = false;
+
+                    if (damagable != null)
+                    {
+                        gotAKill = (bool)(damagable?.TryToDestroyDamageable(damage, spellType));
+
+                        gotAHit = true;
+                    }
+
+                    if (gotAKill)
+                    {
+                        Player_Health.killCount++;
+                    }
+
+                    if (effectObjectPoolName != "Error")
+                    {
+                        for (int x = 0; x < effectInstanceAmount; x++)
+                        {
+                            Pooling_Object pooling_Object = Object_Pooler.Pools[effectObjectPoolName].Get();
+
+                            pooling_Object.Initialize(transform.position, Quaternion.identity,
+                                                         colliders[i].transform.position, Object_Pooler.Pools[effectObjectPoolName]);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public override void Initialize(Vector3 position, Quaternion rotation, Vector3 direction, IObjectPool<Pooling_Object> pool)
@@ -336,5 +399,10 @@ public class Spell_Projectile : Pooling_Object
                                                                                                                  + Vector3.right * 2);
 
         Gizmos.color = Color.yellow;
+
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, range);
     }
+
 }
