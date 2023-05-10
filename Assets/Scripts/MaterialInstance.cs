@@ -56,14 +56,14 @@ public class MaterialInstance : MonoBehaviour
         ChangeMatColor();
     }
 
-    // Update is called once per frame
-    //void Update()
-    //{
-    //    amount -=  0.5f * Time.deltaTime;
-    //    if(amount > 0) { glow = true; } else { glow = false; }
-    //    //SetGlow();
-    //    ChangeMatColor();
-    //}
+    //Update is called once per frame
+    void Update()
+    {
+        amount -= 0.5f * Time.deltaTime;
+        if (amount > 0) { glow = true; } else { glow = false; }
+        //SetGlow();
+        ChangeMatColor();
+    }
 
     public void SetGlow(bool g)
     {
