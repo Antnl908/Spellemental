@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Fire_Tornado
   m_EditorClassIdentifier: 
   type: 0
-  damage: 15
-  effectDamage: 8
+  damage: 30
+  effectDamage: 10
   effectBuildUp: 15
   destructionTime: 8
   timeBetweenCasts: 1
-  manaCost: 300
+  manaCost: 400
   travelDistance: 100
   isProjectileNotStationary: 0
   possibleStationarySpawn:

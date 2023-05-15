@@ -111,9 +111,6 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
     NavMeshAgent navMeshAgent;
 
     [SerializeField]
-    private float normalMoveSpeed = 5f;
-
-    [SerializeField]
     private float slowedMoveSpeed = 1f;
 
     [SerializeField]
@@ -124,6 +121,12 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
     [SerializeField]
     private Transform visualEffectSpawnPos;
+
+    [SerializeField] 
+    private AIConfig config;
+
+    [SerializeField]
+    private GameObject speedDownIcon;
 
     private bool isDead = false;
 
@@ -214,7 +217,9 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         navMeshAgent = GetComponent<NavMeshAgent>();
         healthBar = GetComponentInChildren<HealthBar>();
 
-        navMeshAgent.speed = normalMoveSpeed;
+        navMeshAgent.speed = config.speed;
+
+        speedDownIcon.SetActive(false);
     }
 
     private void OnEnable()
@@ -284,7 +289,9 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
             if(timeUntilSlowDownDisappears <= 0)
             {
-                navMeshAgent.speed = normalMoveSpeed;
+                navMeshAgent.speed = config.speed;
+
+                speedDownIcon.SetActive(false);
 
                 isSlow = false;
             }
@@ -333,6 +340,8 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         navMeshAgent.speed = slowedMoveSpeed;
 
         timeUntilSlowDownDisappears = slowDownEffectDuration;
+
+        speedDownIcon.SetActive(true);
 
         isSlow = true;
 
@@ -541,6 +550,7 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
             if (ragdoll != null)
             {
                 navMeshAgent.enabled = false;
+                speedDownIcon.SetActive(false);
                 ragdoll.ActiveteRagdoll();
                 Invoke(nameof(DestroySelf), 3f);
             }

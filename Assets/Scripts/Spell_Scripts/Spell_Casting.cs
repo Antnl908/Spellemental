@@ -71,6 +71,9 @@ public class Spell_Casting : MonoBehaviour
     [SerializeField]
     private Animator animator;
 
+    [SerializeField]
+    private TextMeshProUGUI spellCostText;
+
     private Spell spellToCast;
 
     // Start is called before the first frame update
@@ -96,8 +99,13 @@ public class Spell_Casting : MonoBehaviour
 
         SetHandColor(this, EventArgs.Empty);
 
+        DisplaySpellCost(this, EventArgs.Empty);
+
         leftHand.OnSwitchedSpell += SetHandColor;
+        leftHand.OnSwitchedSpell += DisplaySpellCost;
+
         rightHand.OnSwitchedSpell += SetHandColor;
+        rightHand.OnSwitchedSpell += DisplaySpellCost;
 
         currentMana = maxMana;
     }
@@ -208,6 +216,18 @@ public class Spell_Casting : MonoBehaviour
             if (handSpellTypes[0] == leftHandColors[i].Spell)
             {
                 colorOnLeftHand = leftHandColors[i].HandColor;
+            }
+        }
+    }
+
+    private void DisplaySpellCost(object sender, EventArgs e)
+    {
+        foreach(var recipe in recipes)
+        {
+            if(recipe.SpellMatchesRecipe(leftHand.ActiveSpell, rightHand.ActiveSpell) ||
+                                                               recipe.SpellMatchesRecipe(rightHand.ActiveSpell, leftHand.ActiveSpell))
+            {
+                spellCostText.text = recipe.ReturnedSpell.ManaCost.ToString();
             }
         }
     }

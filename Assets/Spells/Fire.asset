@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Fire
   m_EditorClassIdentifier: 
   type: 0
-  damage: 10
+  damage: 5
   effectDamage: 5
   effectBuildUp: 10
   destructionTime: 0.25
   timeBetweenCasts: 0.2
-  manaCost: 30
+  manaCost: 0
   travelDistance: 2
   isProjectileNotStationary: 1
   possibleStationarySpawn:

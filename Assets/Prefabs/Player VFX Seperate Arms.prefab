@@ -532,6 +532,7 @@ MonoBehaviour:
   - spell: 5
     handColor: {r: 0.06666667, g: 1, b: 0, a: 1}
   animator: {fileID: 4823776557343015250}
+  spellCostText: {fileID: 0}
 --- !u!1 &500051618232473216
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,13 +861,13 @@ VisualEffect:
       - m_Value: {x: 0.6, y: 2, z: 1}
         m_Name: Outer Scale
         m_Overridden: 1
-      - m_Value: {x: 322.0608, y: 93.492165, z: 53.99833}
+      - m_Value: {x: 315.2042, y: 98.96094, z: 31.962677}
         m_Name: Spawn Pos_angles
         m_Overridden: 1
-      - m_Value: {x: 0.46606612, y: -0.45887703, z: 0.065726876}
+      - m_Value: {x: 0.27648517, y: -0.34778863, z: 0.4774341}
         m_Name: Spawn Pos_position
         m_Overridden: 1
-      - m_Value: {x: 1.0000004, y: 0.99999994, z: 1.0000001}
+      - m_Value: {x: 0.9999999, y: 1, z: 0.9999999}
         m_Name: Spawn Pos_scale
         m_Overridden: 1
       - m_Value: {x: 90, y: 0, z: 0}
@@ -874,10 +875,10 @@ VisualEffect:
         m_Overridden: 1
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 0.4509804, y: 0.98039216, z: 0.25490198, w: 1}
+      - m_Value: {x: 0.5411765, y: 2, z: 0, w: 1}
         m_Name: Inner Color
         m_Overridden: 1
-      - m_Value: {x: 0.7882353, y: 1, z: 0.70980394, w: 1}
+      - m_Value: {x: 0.039215688, y: 1.137255, z: 0, w: 1}
         m_Name: Outer Color
         m_Overridden: 1
       - m_Value: {x: 0.055459358, y: 0.35493988, z: 0.011091871, w: 1}
@@ -967,7 +968,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Spawn Pos
-  Target: {fileID: 6119133742515899048}
+  Target: {fileID: 3571471758943440529}
 --- !u!114 &7652368115290916147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1713,13 +1714,13 @@ VisualEffect:
       - m_Value: {x: 0.6, y: 2, z: 1}
         m_Name: Outer Scale
         m_Overridden: 1
-      - m_Value: {x: 320.02612, y: 254.651, z: 304.9858}
+      - m_Value: {x: 314.4773, y: 242.36331, z: 346.24402}
         m_Name: Spawn Pos_angles
         m_Overridden: 1
-      - m_Value: {x: -0.38292632, y: -0.4959374, z: -0.037203193}
+      - m_Value: {x: -0.3492583, y: -0.3968528, z: 0.40332258}
         m_Name: Spawn Pos_position
         m_Overridden: 1
-      - m_Value: {x: 0.9999998, y: 0.99999994, z: 0.99999976}
+      - m_Value: {x: 1, y: 0.99999976, z: 0.9999999}
         m_Name: Spawn Pos_scale
         m_Overridden: 1
       - m_Value: {x: 90, y: 0, z: 0}
@@ -1727,10 +1728,10 @@ VisualEffect:
         m_Overridden: 1
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 0.4509804, y: 0.98039216, z: 0.25490198, w: 1}
+      - m_Value: {x: 0.5411765, y: 2, z: 0, w: 1}
         m_Name: Inner Color
         m_Overridden: 1
-      - m_Value: {x: 0.7882353, y: 1, z: 0.70980394, w: 1}
+      - m_Value: {x: 0.039215688, y: 1.137255, z: 0, w: 1}
         m_Name: Outer Color
         m_Overridden: 1
       - m_Value: {x: 0.055459358, y: 0.35493988, z: 0.011091871, w: 1}
@@ -1820,7 +1821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Spawn Pos
-  Target: {fileID: 9202718773468266642}
+  Target: {fileID: 6456930025844205537}
 --- !u!114 &2291588463915610888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6577,6 +6578,7 @@ MonoBehaviour:
   downwardAcceleration: -1
   maxDownwardAcceleration: -9.82
   jumpHeight: 1.5
+  bounceHeight: 2.5
   OnLanding:
     m_PersistentCalls:
       m_Calls:
@@ -6605,7 +6607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 0.5
-  Xmin: -75
+  Xmin: -28.5
   Xmax: 75
   t: 50
   bobbingSpeed: 1
