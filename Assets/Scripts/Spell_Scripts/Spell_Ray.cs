@@ -12,7 +12,7 @@ public class Spell_Ray : Spell
 
     [SerializeField] float range;
     int count;
-    readonly Collider[] colliders = new Collider[20]; //Used for overlap sphere
+    readonly Collider[] colliders = new Collider[30]; //Used for overlap sphere
     readonly List<GameObject> targets = new(); //Objects that are within the bounds set by the spell settings
     [SerializeField] LayerMask layerMask;
     [SerializeField] bool cone;
@@ -35,7 +35,7 @@ public class Spell_Ray : Spell
 
         //Destroy(spawnedProjectile, destructionTime);
 
-        count = Physics.OverlapSphereNonAlloc(position, range, colliders, layerMask, QueryTriggerInteraction.Collide);
+        count = Physics.OverlapSphereNonAlloc(player_Look.VirtualCamera.transform.position, range, colliders, layerMask, QueryTriggerInteraction.Collide);
         targets.Clear();
         if(count > 0)
         {
@@ -49,6 +49,7 @@ public class Spell_Ray : Spell
                 //if (CheckTarget(go, position, direction))
                 //if (CheckTarget(go, ((CapsuleCollider)colliders[i]).height * 0.5f ,player_Look.VirtualCamera.transform.position, player_Look.VirtualCamera.transform.forward))
                 if (CheckTarget(go, colliders[i].bounds.size.y * 0.5f ,player_Look.VirtualCamera.transform.position, player_Look.VirtualCamera.transform.forward))
+                //if (CheckTarget(go, 0, player_Look.VirtualCamera.transform.position, player_Look.VirtualCamera.transform.forward))
                 {
                     targets.Add(go);
                 }
@@ -127,11 +128,11 @@ public class Spell_Ray : Spell
         
         if (Vector3.Dot(sightDir.normalized, dir.normalized) >= radius)
         {
-            Debug.DrawRay(pos, sightDir, Color.blue, 10f);
+            //Debug.DrawRay(pos, sightDir, Color.blue, 10f);
             //Debug.Log("Dot: " + Vector3.Dot(sightDir, dir));
             return true;
         }
-        Debug.DrawRay(pos, sightDir, Color.yellow, 10f);
+        //Debug.DrawRay(pos, sightDir, Color.yellow, 10f);
         return false;
     }
     bool IsVisible(GameObject obj, float offset, Vector3 pos)
@@ -142,7 +143,7 @@ public class Spell_Ray : Spell
         //if(Physics.Raycast(ray, out hit, range, layerMask))
         if(Physics.Raycast(ray, out hit, range, layerMask))
         {
-            Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.green, 10f);
+            //Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.green, 10f);
             //Debug.Log("Object name: " + hit.collider.gameObject.name);
             if (hit.collider.gameObject == obj)
             {
@@ -153,18 +154,18 @@ public class Spell_Ray : Spell
                 return false;
             }
         }
-        Debug.DrawRay(ray.origin, ray.direction * 100f, Color.red, 10f);
+        //Debug.DrawRay(ray.origin, ray.direction * 100f, Color.red, 10f);
         return false;
     }
 
     //Debug
-    void OnDrawGizmos()
-    {
-        foreach(GameObject go in targets)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(go.transform.position, 5f);
+    //void OnDrawGizmos()
+    //{
+    //    foreach(GameObject go in targets)
+    //    {
+    //        Gizmos.color = Color.green;
+    //        Gizmos.DrawWireSphere(go.transform.position, 5f);
 
-        }
-    }
+    //    }
+    //}
 }

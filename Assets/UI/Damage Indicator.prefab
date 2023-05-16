@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1259279348052700875}
   - component: {fileID: 8738584662176951532}
   - component: {fileID: 6401808505425616463}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,8 @@ GameObject:
   - component: {fileID: 575112341763233969}
   - component: {fileID: 3870471609316743396}
   - component: {fileID: -4284638386547729326}
-  m_Layer: 5
+  - component: {fileID: 4444212317933895042}
+  m_Layer: 0
   m_Name: Damage Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +237,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &3870471609316743396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,3 +268,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   child: {fileID: 6054942504231831553}
+--- !u!114 &4444212317933895042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6915552866366894602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15029e7f206d466449a271da4e0b0934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookAtCamera: 1
+  contstrainYAxis: 1

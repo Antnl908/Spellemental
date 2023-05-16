@@ -13,20 +13,25 @@ MonoBehaviour:
   m_Name: Wind
   m_EditorClassIdentifier: 
   type: 5
-  damage: 10
-  effectDamage: 5
-  effectBuildUp: 10
+  damage: 15
+  effectDamage: 2
+  effectBuildUp: 15
   destructionTime: 0.05
-  travelDistance: 10
-  isBeam: 0
+  timeBetweenCasts: 0.3
+  manaCost: 40
+  travelDistance: 50
   isProjectileNotStationary: 1
   possibleStationarySpawn:
     serializedVersion: 2
     m_Bits: 0
-  objectPoolName: Wind
-  range: 150
+  objectPoolName: Error
+  animationBoolName: StartCombo6
+  leftAnimationName: LeftCombo6
+  range: 20
   layerMask:
     serializedVersion: 2
-    m_Bits: 129
+    m_Bits: 1665
   cone: 1
-  radius: 0.85
+  radius: 0.888
+  effectObjectPoolName: Wind_Hit
+  effectInstanceAmount: 1

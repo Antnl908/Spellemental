@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 28dda6c31077ee74c969f59510860e7c, type: 2}
+  - {fileID: 2100000, guid: 4a364d610c35dc7488ab4b45890b98f4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -103,7 +103,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &3066938846416666655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,15 +121,25 @@ MonoBehaviour:
   damageRadius: 0.5
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 5248
   terrainLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 576
   capsuleColor: {r: 1, g: 0, b: 0, a: 1}
   stationarySpellPoolName: Water_Puddle
   spawnStationaryRangeAboveTransform: 0.4
   spawnStationaryRange: 5
   spawnOffset: 0.5
+  destroyOnHit: 1
+  destroyAfterSomeTime: 1
+  effectObjectPoolName: Error
+  effectInstanceAmount: 3
+  visualEffectPoolName: Water_Burst
+  vfxSpawnPos: {fileID: 8379155686124696796}
+  range: 0
+  useOverlapSphere: 0
+  checkTime: 0.25
+  spherePosition: {fileID: 0}
 --- !u!136 &7079626230065009859
 CapsuleCollider:
   m_ObjectHideFlags: 0

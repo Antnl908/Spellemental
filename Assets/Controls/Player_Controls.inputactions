@@ -39,7 +39,7 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "RightSpell",
@@ -48,7 +48,7 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "CombineSpell",
@@ -57,7 +57,7 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "SwapLeftSpell",
@@ -81,6 +81,15 @@
                     "name": "SpellWheel",
                     "type": "Button",
                     "id": "6649e949-0d5b-4f0e-abc6-9dceb5b510e0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "9c38e0a0-ac9e-401f-bc9f-263078485f57",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -169,7 +178,7 @@
                     "name": "RightAndLeftClick",
                     "id": "80619524-08cc-4b2a-91a9-5093aa324915",
                     "path": "OneModifier",
-                    "interactions": "Hold",
+                    "interactions": "Hold(duration=0.3,pressPoint=0.4)",
                     "processors": "",
                     "groups": "",
                     "action": "CombineSpell",
@@ -202,7 +211,7 @@
                     "name": "",
                     "id": "0fc5e297-dc6c-4b0b-8ad4-803c327835f5",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "Tap",
+                    "interactions": "Hold",
                     "processors": "",
                     "groups": "",
                     "action": "LeftSpell",
@@ -213,7 +222,7 @@
                     "name": "",
                     "id": "69fce274-de88-4e30-b210-5429fd48fdeb",
                     "path": "<Mouse>/rightButton",
-                    "interactions": "Tap",
+                    "interactions": "Hold",
                     "processors": "",
                     "groups": "",
                     "action": "RightSpell",
@@ -250,6 +259,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "SpellWheel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "480bfc54-0bb9-4551-b654-8b95808f6af6",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

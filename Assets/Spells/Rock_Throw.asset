@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be037755cc5ac141a32e5c210f385fa, type: 3}
+  m_Name: Rock_Throw
+  m_EditorClassIdentifier: 
+  type: 2
+  damage: 20
+  effectDamage: 1
+  effectBuildUp: 8
+  destructionTime: 3
+  timeBetweenCasts: 0.5
+  manaCost: 40
+  travelDistance: 15
+  isProjectileNotStationary: 1
+  possibleStationarySpawn:
+    serializedVersion: 2
+    m_Bits: 0
+  objectPoolName: Rock_Throw
+  animationBoolName: StartCombo6
+  leftAnimationName: LeftCombo6

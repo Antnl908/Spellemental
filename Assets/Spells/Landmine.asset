@@ -17,11 +17,13 @@ MonoBehaviour:
   effectDamage: 10
   effectBuildUp: 50
   destructionTime: 30
-  cooldownTime: 15
+  timeBetweenCasts: 1.5
+  manaCost: 600
   travelDistance: 100
-  isBeam: 0
   isProjectileNotStationary: 0
   possibleStationarySpawn:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 1600
   objectPoolName: Landmine
+  animationBoolName: StartCombo3
+  leftAnimationName: LeftCombo3

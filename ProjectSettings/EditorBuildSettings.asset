@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Start_Scene.unity
+    guid: cbb0d537e4f78f64b870e3883baa8ae6
+  - enabled: 1
+    path: Assets/Scenes/Colosseum_URP_Scene.unity
+    guid: b8c2823ffa4ea0f42afdcade6ada418a
+  - enabled: 1
     path: Assets/Scenes/Death_Scene.unity
     guid: f58e58303a13557469d46e1ea9898563
+  - enabled: 1
+    path: Assets/Scenes/Tutorial_Scene.unity
+    guid: e0498ce40a2e3cf4a9e667296036a803
   m_configObjects: {}

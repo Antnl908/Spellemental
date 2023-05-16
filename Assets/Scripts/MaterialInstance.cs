@@ -7,11 +7,14 @@ public class MaterialInstance : MonoBehaviour
     //Made by AntonL, edited by Andreas J
 
     public Color albedo = Color.white;
-    public Color color;
-    public float amount;
-    public bool glow;
+    public Color color = Color.white;
+    public float amount = 0f;
+    public bool glow = false;
     private MaterialPropertyBlock mpb;
+    
     private Renderer rend;
+    [SerializeField] MeshRenderer[] renderers;
+    [SerializeField] SkinnedMeshRenderer[] sRenderers;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,13 +23,46 @@ public class MaterialInstance : MonoBehaviour
             mpb = new MaterialPropertyBlock();
         }
         //rend = GetComponentInChildren<Renderer>();
+        //renderers = transform.GetComponentsInChildren<MeshRenderer>();
+        //sRenderers = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
+        ChangeMatColor();
     }
 
-    // Update is called once per frame
+    public void NewMBP()
+    {
+        mpb = new MaterialPropertyBlock();
+        ChangeMatColor();
+    }
+
+    public void InitializeMaterial()
+    {
+
+        if (renderers.Length > 0)
+        {
+            for (int i = 0; i < renderers.Length; i++)
+            {
+
+            }
+        }
+
+        if (sRenderers.Length > 0)
+        {
+            foreach (SkinnedMeshRenderer r in sRenderers)
+            {
+                
+            }
+        }
+
+        ChangeMatColor();
+    }
+
+    //Update is called once per frame
     void Update()
     {
-        amount -=  0.5f * Time.deltaTime;
-        SetGlow();
+        amount -= 0.5f * Time.deltaTime;
+        if (amount > 0) { glow = true; } else { glow = false; }
+        //SetGlow();
+        ChangeMatColor();
     }
 
     public void SetGlow(bool g)
@@ -64,38 +100,61 @@ public class MaterialInstance : MonoBehaviour
         ChangeMatColor();
     }
 
-    private void OnValidate()
-    {
-        if (mpb == null)
-        {
-            mpb = new MaterialPropertyBlock();
-        }
+    //private void OnValidate()
+    //{
+    //    if (mpb == null)
+    //    {
+    //        mpb = new MaterialPropertyBlock();
+    //    }
 
-        ChangeMatColor();
-    }
+    //    ChangeMatColor();
+    //}
 
     private void ChangeMatColor()
     {
-        MeshRenderer[] renderers = transform.GetComponentsInChildren<MeshRenderer>();
 
-        foreach (MeshRenderer r in renderers)
+        mpb.SetFloat("_Amount", amount);
+        mpb.SetFloat("_Glow", glow ? 1f : 0f);
+        //mpb.SetColor("_Color", color);
+        mpb.SetColor("_GlowColor", color);
+        mpb.SetColor("_Albedo", albedo);
+
+        //MeshRenderer[] renderers = transform.GetComponentsInChildren<MeshRenderer>();
+        if (renderers.Length > 0)
         {
-            mpb.SetFloat("_Amount", amount);
-            mpb.SetFloat("_Glow", glow ? 1f : 0f);
-            mpb.SetColor("_Color", color);
-            mpb.SetColor("_Albedo", albedo);
-            r.SetPropertyBlock(mpb);
+            foreach (MeshRenderer r in renderers)
+            {
+                //Debug.Log("Set block");
+                //mpb.SetFloat("_Amount", amount);
+                //mpb.SetFloat("_Glow", glow ? 1f : 0f);
+                //mpb.SetColor("_Color", color);
+                //mpb.SetColor("_Albedo", albedo);
+                r.SetPropertyBlock(mpb);
+            }
         }
+        
 
-        SkinnedMeshRenderer[] sRenderers = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
-
-        foreach (SkinnedMeshRenderer r in sRenderers)
+        //SkinnedMeshRenderer[] sRenderers = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
+        if(sRenderers.Length > 0)
         {
-            mpb.SetFloat("_Amount", amount);
-            mpb.SetFloat("_Glow", glow ? 1f : 0f);
-            mpb.SetColor("_Color", color);
-            mpb.SetColor("_Albedo", albedo);
-            r.SetPropertyBlock(mpb);
+            foreach (SkinnedMeshRenderer r in sRenderers)
+            {
+                //mpb.SetFloat("_Amount", amount);
+                //mpb.SetFloat("_Glow", glow ? 1f : 0f);
+                //mpb.SetColor("_Color", color);
+                //mpb.SetColor("_Albedo", albedo);
+                r.SetPropertyBlock(mpb);
+            }
         }
+        
+    }
+    public SkinnedMeshRenderer[] SkinMesh
+    {
+        set { sRenderers = value; }
+    }
+
+    public MeshRenderer[] MeshRenderer
+    {
+        set { renderers = value; }
     }
 }

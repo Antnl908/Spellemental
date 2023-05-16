@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: Fire_Tornado
   m_EditorClassIdentifier: 
   type: 0
-  damage: 3
-  effectDamage: 6
-  effectBuildUp: 8
+  damage: 15
+  effectDamage: 8
+  effectBuildUp: 15
   destructionTime: 8
-  cooldownTime: 10
+  timeBetweenCasts: 1
+  manaCost: 300
   travelDistance: 100
-  isBeam: 0
   isProjectileNotStationary: 0
   possibleStationarySpawn:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 1600
   objectPoolName: Fire_Tornado
+  animationBoolName: StartCombo1
+  leftAnimationName: LeftCombo1

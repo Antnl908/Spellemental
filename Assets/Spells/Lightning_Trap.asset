@@ -14,14 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 4
   damage: 30
-  effectDamage: 10
+  effectDamage: 60
   effectBuildUp: 100
   destructionTime: 5
-  cooldownTime: 8
+  timeBetweenCasts: 1.5
+  manaCost: 600
   travelDistance: 100
-  isBeam: 0
   isProjectileNotStationary: 0
   possibleStationarySpawn:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 1600
   objectPoolName: Lightning_Trap
+  animationBoolName: StartCombo3
+  leftAnimationName: LeftCombo3

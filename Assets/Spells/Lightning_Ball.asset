@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: Lightning_Ball
   m_EditorClassIdentifier: 
   type: 4
-  damage: 5
-  effectDamage: 10
-  effectBuildUp: 6
+  damage: 6
+  effectDamage: 12
+  effectBuildUp: 20
   destructionTime: 5
-  cooldownTime: 8
+  timeBetweenCasts: 1.5
+  manaCost: 500
   travelDistance: 2
-  isBeam: 0
   isProjectileNotStationary: 1
   possibleStationarySpawn:
     serializedVersion: 2
     m_Bits: 0
   objectPoolName: Lightning_Ball
+  animationBoolName: StartCombo4
+  leftAnimationName: LeftCombo4

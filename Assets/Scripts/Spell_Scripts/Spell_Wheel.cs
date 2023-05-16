@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
+//using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -47,8 +47,8 @@ public class Spell_Wheel : MonoBehaviour
         controls.Player1.SpellWheel.performed += ActivateWheel;
         controls.Player1.SpellWheel.canceled += DeactivateWheel;
 
-        controls.Player1.LeftSpell.performed += ActivateLeftHandSpell;
-        controls.Player1.RightSpell.performed += ActivateRightHandSpell;
+        controls.Player1.SwapLeftSpell.performed += ActivateLeftHandSpell;
+        controls.Player1.SwapRightSpell.performed += ActivateRightHandSpell;
 
         controls.Player1.Enable();
 

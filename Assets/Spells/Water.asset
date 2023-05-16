@@ -17,11 +17,13 @@ MonoBehaviour:
   effectDamage: 0
   effectBuildUp: 10
   destructionTime: 3
-  cooldownTime: 5
+  timeBetweenCasts: 1
+  manaCost: 50
   travelDistance: 10
-  isBeam: 0
   isProjectileNotStationary: 1
   possibleStationarySpawn:
     serializedVersion: 2
     m_Bits: 0
   objectPoolName: Water
+  animationBoolName: StartCombo6
+  leftAnimationName: LeftCombo6

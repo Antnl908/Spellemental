@@ -14,5 +14,9 @@ public interface IMagicEffect
 
     public void LightningEffect(int lightningDamage, int effectBuildUp);
 
-    public void SlowDownEffect(float slowDownAmount);
+    public void EarthEffect(int earthDamage, int effectBuildUp);
+
+    public void WindEffect(int windDamage, int effectBuildUp);
+
+    public void SlowDownEffect();
 }

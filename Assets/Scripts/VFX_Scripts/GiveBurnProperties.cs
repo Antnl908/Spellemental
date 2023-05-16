@@ -42,6 +42,9 @@ public class GiveBurnProperties : MonoBehaviour
 
     private Color defaultColor;
 
+    [SerializeField]
+    private bool isLeftHandEffect = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,10 +71,20 @@ public class GiveBurnProperties : MonoBehaviour
             material.SetFloat("_Noise_Power", noisePower);
             material.SetFloat("_Noise_Size", noiseSize);
 
-            if(spellCaster.HandColor() != defaultColor)
+            if (isLeftHandEffect)
             {
-                material.SetColor("_Edge_Color", spellCaster.HandColor());
-            }          
+                if (spellCaster.LeftHandColor() != defaultColor)
+                {
+                    material.SetColor("_Edge_Color", spellCaster.LeftHandColor());
+                }
+            }
+            else
+            {
+                if (spellCaster.RightHandColor() != defaultColor)
+                {
+                    material.SetColor("_Edge_Color", spellCaster.RightHandColor());
+                }
+            }        
         }
         
         if (effectPosition)
@@ -88,7 +101,11 @@ public class GiveBurnProperties : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = gizmoColor;
-        Gizmos.DrawSphere(effectPosition.position, scale);
+
+        if (effectPosition)
+        {
+            Gizmos.DrawSphere(effectPosition.position, scale);
+        }      
 
         if(shaderEffectPosition)
         {

@@ -25,22 +25,24 @@ public class Spell_Casting : MonoBehaviour
     [SerializeField]
     private List<Spell_Recipe> recipes;
 
-    private int spellIndex;
+    [SerializeField]
+    private int maxMana = 1000;
+
+    private int currentMana;
+
+    public int MaxMana { get => maxMana; }
+
+    public int CurrentMana { get => currentMana; }
 
     [SerializeField]
-    private TextMeshProUGUI cooldownText;
+    private int manaRegeneration = 10;
 
     [Serializable]
     public class HandColorsForSpells
     {
         [SerializeField]
-        private Spell.SpellType leftHandSpell;
-        [SerializeField]
-        private Spell.SpellType rightHandSpell;
-
-        public Spell.SpellType Left { get => leftHandSpell; }
-
-        public Spell.SpellType Right { get => rightHandSpell; }
+        private Spell.SpellType spell;
+        public Spell.SpellType Spell { get => spell; }
 
         [SerializeField]
         private Color handColor;
@@ -49,18 +51,27 @@ public class Spell_Casting : MonoBehaviour
     }
 
     [SerializeField]
-    private List<HandColorsForSpells> handColors;
+    private List<HandColorsForSpells> rightHandColors;
 
-    private Color colorOnHands;
+    [SerializeField]
+    private List<HandColorsForSpells> leftHandColors;
+
+    private Color colorOnLeftHand;
+
+    private Color colorOnRightHand;
 
     private Spell.SpellType[] handSpellTypes = null;
 
-    private Spell beamSpell;
+    private bool isCasting = false;
 
-    private readonly List<bool> spellsCanBeCast = new();
-    private readonly List<float> spellCooldowns = new();
+    public bool IsCasting { get => isCasting; }
 
     private Player_Controls controls;
+
+    [SerializeField]
+    private Animator animator;
+
+    private Spell spellToCast;
 
     // Start is called before the first frame update
     void Start()
@@ -68,14 +79,15 @@ public class Spell_Casting : MonoBehaviour
         controls = new();
 
         controls.Player1.LeftSpell.performed += leftHand.CastActiveSpell;
-        controls.Player1.LeftSpell.performed += SetCastingToFalse;
+        controls.Player1.LeftSpell.canceled += leftHand.QuitCasting;
         controls.Player1.SwapLeftSpell.performed += leftHand.CycleSpell;
 
         controls.Player1.RightSpell.performed += rightHand.CastActiveSpell;
-        controls.Player1.RightSpell.performed += SetCastingToFalse;
+        controls.Player1.RightSpell.canceled += rightHand.QuitCasting;
         controls.Player1.SwapRightSpell.performed += rightHand.CycleSpell;
 
         controls.Player1.CombineSpell.performed += CastCombinationSpell;
+        controls.Player1.CombineSpell.canceled += QuitCasting;
 
         controls.Player1.Enable();
 
@@ -87,58 +99,24 @@ public class Spell_Casting : MonoBehaviour
         leftHand.OnSwitchedSpell += SetHandColor;
         rightHand.OnSwitchedSpell += SetHandColor;
 
-        for(int i = 0; i < recipes.Count; i++)
-        {
-            if (recipes[i].ReturnedSpell.IsBeam)
-            {
-                spellsCanBeCast.Add(false);
-            }
-            else
-            {
-                spellsCanBeCast.Add(true);
-            }
-
-            spellCooldowns.Add(recipes[i].ReturnedSpell.CooldownTime);
-        }
+        currentMana = maxMana;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeScale > 0)
+        
+    }
+
+    private void FixedUpdate()
+    {
+        if(Time.timeScale > 0)
         {
-            for (int i = 0; i < recipes.Count; i++)
+            if(currentMana < maxMana)
             {
-                if (recipes[i].ReturnedSpell.IsBeam)
-                {
-                    if (spellsCanBeCast[i] == true)
-                    {
-                        spellCooldowns[i] -= Time.deltaTime;
-
-                        if (spellCooldowns[i] <= 0 && recipes[i].ReturnedSpell == beamSpell)
-                        {
-                            spellCooldowns[i] = beamSpell.CooldownTime;
-
-                            beamSpell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
-                        }
-                    }
-                }
-                else
-                {
-                    if (spellsCanBeCast[i] == false)
-                    {
-                        spellCooldowns[i] -= Time.deltaTime;
-
-                        if (spellCooldowns[i] <= 0)
-                        {
-                            spellsCanBeCast[i] = true;
-                        }
-                    }
-                }
-            }
+                AlterMana((int)(manaRegeneration * Time.fixedDeltaTime));
+            }            
         }
-
-        cooldownText.text = Math.Round(spellCooldowns[spellIndex], 2).ToString();
     }
 
     private void LateUpdate()
@@ -155,43 +133,54 @@ public class Spell_Casting : MonoBehaviour
                 if (recipe.SpellMatchesRecipe(leftHand.ActiveSpell, rightHand.ActiveSpell) ||
                                                                recipe.SpellMatchesRecipe(rightHand.ActiveSpell, leftHand.ActiveSpell))
                 {
-                    int index = recipes.IndexOf(recipe);
+                    isCasting = true;
 
-                    if (recipe.ReturnedSpell.IsBeam)
-                    {
-                        spellsCanBeCast[index] = !spellsCanBeCast[index];
-                        beamSpell = recipe.ReturnedSpell;
-                    }
-                    else
-                    {
-                        if (spellsCanBeCast[index])
-                        {
-                            recipe.ReturnedSpell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), 
-                                                                                                                    transform.forward);
-
-                            spellsCanBeCast[index] = false;
-
-                            spellCooldowns[index] = recipe.ReturnedSpell.CooldownTime;
-                        }
-                    }
-
-                    spellIndex = index;
-
-                    leftHand.SetCastingToFalse();
-                    rightHand.SetCastingToFalse();
-
-                    return;
+                    StartCoroutine(UseSpell(recipe.ReturnedSpell));
                 }
             }
         }
     }
 
-    private void SetCastingToFalse(InputAction.CallbackContext context)
+    private IEnumerator UseSpell(Spell spell)
     {
-        if (recipes[spellIndex].ReturnedSpell.IsBeam)
+        while (isCasting)
         {
-            spellsCanBeCast[spellIndex] = false;
+            if(currentMana >= spell.ManaCost)
+            {
+                if (!animator.GetCurrentAnimatorStateInfo(0).IsName(spell.LeftAnimationName))
+                {
+                    animator.SetBool(spell.AnimationBoolName, true);
+
+                    //spell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+
+                    //AlterMana(-spell.ManaCost);
+
+                    spellToCast = spell;
+
+                    yield return new WaitForSeconds(spell.TimeBetweenCasts);
+                }
+                else
+                {
+                    yield return null;
+                }                
+            }
+            else
+            {
+                yield return null;
+            }
         }
+    }
+
+    public void Cast()
+    {
+        spellToCast.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+
+        AlterMana(-spellToCast.ManaCost);
+    }
+
+    private void QuitCasting(InputAction.CallbackContext context)
+    {
+        isCasting = false;
     }
 
     public void SetHandColor(object sender, EventArgs e)
@@ -206,18 +195,35 @@ public class Spell_Casting : MonoBehaviour
             handSpellTypes[1] = rightHand.ActiveSpell.Type;
         }
 
-        for (int i = 0; i < handColors.Count; i++)
+        for (int i = 0; i < rightHandColors.Count; i++)
         {
-            if ((handSpellTypes[0] == handColors[i].Left && handSpellTypes[1] == handColors[i].Right) ||
-                (handSpellTypes[1] == handColors[i].Left && handSpellTypes[0] == handColors[i].Right))
+            if (handSpellTypes[1] == rightHandColors[i].Spell)
             {
-                colorOnHands = handColors[i].HandColor;
+                colorOnRightHand = rightHandColors[i].HandColor;
+            }
+        }
+
+        for (int i = 0; i < leftHandColors.Count; i++)
+        {
+            if (handSpellTypes[0] == leftHandColors[i].Spell)
+            {
+                colorOnLeftHand = leftHandColors[i].HandColor;
             }
         }
     }
 
-    public Color HandColor()
+    public void AlterMana(int amount)
     {
-        return colorOnHands;
+        currentMana = Mathf.Clamp(currentMana + amount, 0, maxMana);
+    }
+
+    public Color LeftHandColor()
+    {
+        return colorOnLeftHand;
+    }
+
+    public Color RightHandColor()
+    {
+        return colorOnRightHand;
     }
 }

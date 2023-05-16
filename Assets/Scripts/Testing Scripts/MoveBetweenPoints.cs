@@ -15,10 +15,15 @@ public class MoveBetweenPoints : MonoBehaviour
 
     private bool isMovingRight = true;
 
+    [SerializeField]
+    private bool isUsingForce = false;
+
+    private Rigidbody rb;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -28,7 +33,14 @@ public class MoveBetweenPoints : MonoBehaviour
         {
             if (transform.position.x < pointA.position.x)
             {
-                transform.position += Vector3.right * Time.deltaTime * speed;
+                if(isUsingForce)
+                {
+                    rb.AddForce(speed * Time.deltaTime * Vector3.right);
+                }
+                else
+                {
+                    transform.position += speed * Time.deltaTime * Vector3.right;
+                }               
             }
             else
             {
@@ -39,7 +51,14 @@ public class MoveBetweenPoints : MonoBehaviour
         {
             if (transform.position.x > pointB.position.x)
             {
-                transform.position -= Vector3.right * Time.deltaTime * speed;
+                if (isUsingForce)
+                {
+                    rb.AddForce(-speed * Time.deltaTime * Vector3.right);
+                }
+                else
+                {
+                    transform.position -= speed * Time.deltaTime * Vector3.right;
+                }
             }
             else
             {

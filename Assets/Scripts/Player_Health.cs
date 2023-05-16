@@ -18,12 +18,29 @@ public class Player_Health : MonoBehaviour, IDamageable
     [SerializeField]
     private Player_Heart heart;
 
-    private bool isDying = false;
+    private static bool isDying = false;
 
     [SerializeField]
     private float timeUntilDeath = 10f;
 
     private float currentTimeUntilDeath;
+
+    private static bool hasDefenseBuff = false;
+
+    private static bool giveHeartDefenseBuffColor = false;
+
+    private static bool hasHealthBuff = false;
+
+    private static bool applyHealthBuffEffect = false;
+
+    [SerializeField]
+    private Player_Look player_Look;
+
+    private const float timeBetweenHits = 0.5f;
+
+    private float currentTimeBetweenHits;
+
+    private bool isDamageable = true;
 
     public void KnockBack(float knockBack)
     {
@@ -32,27 +49,53 @@ public class Player_Health : MonoBehaviour, IDamageable
 
     public bool TryToDestroyDamageable(int damage, Spell.SpellType? spellType)
     {
-        currentHealth = Math.Clamp(currentHealth - damage, 0, maxHealth);
-
-        if(currentHealth <= 0)
+        if(isDamageable)
         {
-            Dying();
-        }
+            if (hasDefenseBuff)
+            {
+                hasDefenseBuff = false;
+
+                heart.SetColor(false);
+            }
+            else
+            {
+                currentHealth = Math.Clamp(currentHealth - damage, 0, maxHealth);
+
+                if (currentHealth <= 0)
+                {
+                    Dying();
+                }
+            }
+
+            currentTimeBetweenHits = timeBetweenHits;
+
+            isDamageable = false;
+        }              
 
         return isDying;
     }
 
-
-
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
+        SecondWind();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(hasHealthBuff)
+        {
+            SecondWind();
+        }
+
+        if(applyHealthBuffEffect)
+        {
+            heart.ActivateHealthBuffEffect();
+
+            applyHealthBuffEffect = false;
+        }
+
         if(isDying)
         {
             if(killCount > 0)
@@ -66,7 +109,26 @@ public class Player_Health : MonoBehaviour, IDamageable
 
             if(currentTimeUntilDeath <= 0)
             {
+                player_Look.HideCursor = false;
+
                 SceneManager.LoadScene("Death_Scene");
+            }
+        }
+
+        if (giveHeartDefenseBuffColor)
+        {
+            heart.SetColor(true);
+
+            giveHeartDefenseBuffColor = false;
+        }
+
+        if(!isDamageable)
+        {
+            currentTimeBetweenHits -= Time.deltaTime;
+
+            if(currentTimeBetweenHits <= 0)
+            {
+                isDamageable = true;
             }
         }
         
@@ -93,5 +155,24 @@ public class Player_Health : MonoBehaviour, IDamageable
         currentTimeUntilDeath = timeUntilDeath;
 
         heart.SetIfIsDying(true);
+    }
+
+    public static void GiveDefenseBuff()
+    {
+        if (!isDying)
+        {
+            hasDefenseBuff = true;
+            giveHeartDefenseBuffColor = true;
+        }
+    }
+
+    public static void GiveHealthBuff()
+    {
+        if(isDying)
+        {
+            hasHealthBuff = true;
+        }
+
+        applyHealthBuffEffect = true;
     }
 }

@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8e6ce6b065ee940a876086bc880993, type: 3}
   m_Name: TestWave
   m_EditorClassIdentifier: 
-  nbrOfBasicSkeletons: 5
-  nbrOfFireSkeletons: 1
-  nbrOfIceSkeletons: 1
-  nbrOfLightningSkeletons: 1
-  nbrOfEarthSkeletons: 1
-  spawnDelay: 5
-  spawnArea: 1
+  nbrOfBasicSkeletons: 1000
+  nbrOfFireSkeletons: 1000
+  nbrOfIceSkeletons: 1000
+  nbrOfLightningSkeletons: 1000
+  nbrOfEarthSkeletons: 1000
+  nbrOfWindSkeletons: 1000
+  spawnDelay: 60
+  initialSpawnDelay: 5
+  spawnArea: 2

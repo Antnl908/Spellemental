@@ -22,9 +22,10 @@ public class AttackState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, animator.GetComponent<Transform>().position) > 1f)
+        //if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, animator.GetComponent<Transform>().position) > 1f)  //sparar denna
+        if (Vector3.Distance(player.position, enemy.transform.position) > 1f)
         {
-            Debug.Log("Set Chase to Attack State");
+            //Debug.Log("Set Chase to Attack State");
             animator.SetTrigger("Chase");
         }
         else

@@ -21,14 +21,15 @@ public class IdleState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
-        Debug.Log(Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, animator.GetComponent<Transform>().position));
+        //Debug.Log(Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, animator.GetComponent<Transform>().position));
 
         timer += Time.deltaTime;
         if (timer > enemy.Config.idleUpdateTime)
         {
-            if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, animator.GetComponent<Transform>().position) < enemy.Config.aggroMinRange)
+            //if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, animator.GetComponent<Transform>().position) < enemy.Config.aggroMinRange)  //sparar denna till vidare
+            if (Vector3.Distance(player.position, enemy.transform.position) < enemy.Config.aggroMinRange)
             {
-                Debug.Log("Set Idle to Chase State");
+                //Debug.Log("Set Idle to Chase State");
                 animator.SetTrigger("Chase");
             }
         }
