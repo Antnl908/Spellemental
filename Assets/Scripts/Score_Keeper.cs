@@ -5,6 +5,8 @@ using UnityEngine;
 
 public static class Score_Keeper
 {
+    //Made by Daniel.
+
     private static int score = 0;
 
     public static int Score { get => score; }
@@ -14,6 +16,7 @@ public static class Score_Keeper
     [Serializable]
     public class HighScoreList
     {
+        //Does not serialize if it is not public.
         public int[] highScores = new int[10];
 
         public int[] HighScores { get => highScores; }

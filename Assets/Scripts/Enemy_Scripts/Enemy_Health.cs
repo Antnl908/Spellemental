@@ -12,10 +12,10 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
     HealthBar healthBar;
 
-    [SerializeField]
     private int health;
-    
-    private int maxHealth;
+
+    [SerializeField]
+    private int maxHealth = 100;
 
     [SerializeField]
     private Spell.SpellType weakness;
@@ -132,6 +132,8 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
     private IObjectPool<Pooling_Object> pool;
 
+    private Spawner_With_Increasing_Difficulty spawner;
+
     public void KnockBack(float knockBack)
     {
         //throw new System.NotImplementedException();
@@ -203,7 +205,6 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
     // Start is called before the first frame update
     void Start()
     {
-        maxHealth = health;
         if (matInst == null) { matInst = GetComponent<MaterialInstance>(); }
         if(matInst != null) 
         { 
@@ -226,10 +227,10 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
     {
         isDead = false;
 
-        if(maxHealth > health)
-        {
-            health = maxHealth;
-        }
+        //if(maxHealth > health)
+        //{
+        //    health = maxHealth;
+        //}
 
         if (healthBar != null) { healthBar.SetHealthAmount((float)health / maxHealth); }
 
@@ -550,6 +551,8 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
             if (ragdoll != null)
             {
+                spawner.MinusOneEnemy();
+
                 navMeshAgent.enabled = false;
                 speedDownIcon.SetActive(false);
                 ragdoll.ActiveteRagdoll();
@@ -557,7 +560,7 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
             }
             else
             {
-                Spawner.CurrentEnemyCount--;
+                spawner.MinusOneEnemy();
 
                 pool.Release(this);
             }
@@ -605,5 +608,25 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
             matInst.albedo = ResColor;
             matInst.color = ResColor * (colorConfig ? colorConfig.amount : 1f);
         }
+    }
+
+    public void SetSizeAndSpawner(bool isLarge, int sizeMultiplier, int extraHealth, Spawner_With_Increasing_Difficulty spawner)
+    {
+        this.spawner = spawner;
+
+        if(isLarge)
+        {
+            transform.localScale = new Vector3(sizeMultiplier, sizeMultiplier, sizeMultiplier);
+
+            health = maxHealth * sizeMultiplier + extraHealth;
+        }
+        else
+        {
+            transform.localScale = Vector3.one;
+
+            health = maxHealth + extraHealth;
+        }
+
+        if (healthBar != null) { healthBar.SetHealthAmount((float)health / maxHealth); }
     }
 }
