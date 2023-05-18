@@ -30,25 +30,10 @@ public class Chase_State : StateMachineBehaviour
             animator.SetTrigger("Attack");
         }
 
-        //if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, animator.GetComponent<Transform>().position) > enemy.Config.aggroMaxRange)
-        //{
-        //    Debug.Log("Set Chase to Idle State");
-        //    animator.SetTrigger("Idle");
-
-        //}
-
-        //if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, animator.GetComponent<Transform>().position) < 1.5f)
-        //{
-        //    Debug.Log("Set Chase to Attack State");
-        //    animator.SetTrigger("Attack");
-
-        //}
-
         timer += Time.deltaTime;
         if (timer > enemy.Config.chaseUpdateTime)
         {
             //Debug.Log("Update Chase State");
-            //animator.GetComponent<Enemy>().NavAgent.SetDestination(GameObject.FindGameObjectWithTag("Player").transform.position);
             enemy.NavAgent.SetDestination(player.position);
             timer = 0f;
         }

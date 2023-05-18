@@ -2,50 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArcherChaseState : StateMachineBehaviour
+public class ArcherAttackState : StateMachineBehaviour
 {
-    private float timer;
-    private Enemy enemy;
+    private Animator bowAnimator;
 
     private Transform player;
+    private Enemy enemy;
     private FieldOfView fov;
 
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        bowAnimator = FindFirstObjectByType<Animator>();
+        bowAnimator.SetTrigger("DrawString");
+
         player = GameObject.FindGameObjectWithTag("Player").transform;
         enemy = animator.GetComponent<Enemy>();
         fov = animator.GetComponent<FieldOfView>();
 
+        enemy.NavAgent.SetDestination(GameObject.FindGameObjectWithTag("Player").transform.position);
+        enemy.transform.LookAt(player);
+        enemy.NavAgent.speed = 0f;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        float dist = Vector3.Distance(player.position, enemy.transform.position);
-
-        if (dist > enemy.Config.aggroMaxRange)
+        if (!fov.canSeePlayer)
         {
-            animator.SetTrigger("Idle");
-        }
-        else if (fov.canSeePlayer)
-        {
-            animator.SetTrigger("Attack");
-        }
-
-        timer += Time.deltaTime;
-        if (timer > enemy.Config.chaseUpdateTime)
-        {
-            enemy.NavAgent.SetDestination(player.position);
-            timer = 0f;
+            animator.SetTrigger("Chase");
         }
     }
 
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.ResetTrigger("Idle");
-        animator.ResetTrigger("Attack");
+        bowAnimator.ResetTrigger("DrawString");
+        animator.ResetTrigger("Chase");
+
+        if (!fov.canSeePlayer)
+        {
+            enemy.NavAgent.speed = enemy.Config.speed;
+        }
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
