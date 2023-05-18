@@ -13,7 +13,11 @@ public class ArcherAttackState : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        bowAnimator = FindFirstObjectByType<Animator>();
+        /*
+        foreach(Animator childAnimator in animator.gameObject.GetComponentsInChildren<Animator>())
+            bowAnimator = childAnimator;
+        */
+        bowAnimator = animator.gameObject.GetComponentsInChildren<Animator>()[1];
         bowAnimator.SetTrigger("DrawString");
 
         player = GameObject.FindGameObjectWithTag("Player").transform;

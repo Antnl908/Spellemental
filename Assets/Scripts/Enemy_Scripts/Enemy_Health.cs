@@ -493,7 +493,8 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
         foreach (MeshRenderer r in renderers)
         {
-            r.material = material;
+            if(r.GameObject().tag != "Ignore")
+                r.material = material;
         }
 
         SkinnedMeshRenderer[] sRenderers = transform.GetComponentsInChildren<SkinnedMeshRenderer>();

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
@@ -63,5 +64,31 @@ public class FieldOfView : MonoBehaviour
         }
         else if (canSeePlayer)
             canSeePlayer = false;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Handles.color = Color.white;
+        Handles.DrawWireArc(transform.position, Vector3.up, Vector3.forward, 360, radius);
+
+        Vector3 viewAngle1 = DirectionFromAngle(transform.eulerAngles.y, -angle / 2);
+        Vector3 viewAngle2 = DirectionFromAngle(transform.eulerAngles.y, angle / 2);
+
+        Handles.color = Color.yellow;
+        Handles.DrawLine(transform.position, transform.position + viewAngle1 * radius);
+        Handles.DrawLine(transform.position, transform.position + viewAngle2 * radius);
+
+        if (canSeePlayer)
+        {
+            Handles.color = Color.green;
+            Handles.DrawLine(transform.position, player.transform.position);
+        }
+    }
+
+    private Vector3 DirectionFromAngle(float eulerY, float angleInDegrees)
+    {
+        angleInDegrees += eulerY;
+
+        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 [CustomEditor(typeof(FieldOfView))]
 public class FOVEditor : Editor
 {
+    /*
     private void OnSceneGUI()
     {
         FieldOfView fov = (FieldOfView)target;
@@ -33,4 +34,5 @@ public class FOVEditor : Editor
 
         return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
+    */
 }
