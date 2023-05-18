@@ -233,11 +233,10 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
         if (healthBar != null) { healthBar.SetHealthAmount((float)health / maxHealth); }
 
+        navMeshAgent.enabled = true;
 
         if (ragdoll != null)
         {
-            navMeshAgent.enabled = true;
-
             ragdoll.DeactiveteRagdoll();
         }
 
@@ -354,6 +353,8 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         if(type == weakness)
         {
             damage *= weaknessMultiplier;
+
+            Score_Keeper.AddScore(damage);
         }
         else if(type == resistance)
         {
