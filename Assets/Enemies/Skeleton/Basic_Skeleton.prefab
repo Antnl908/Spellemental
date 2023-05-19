@@ -3077,7 +3077,7 @@ GameObject:
   - component: {fileID: 7666328769026616155}
   m_Layer: 12
   m_Name: Eyes.001
-  m_TagString: Untagged
+  m_TagString: Ignore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3125,7 +3125,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d3e48aa17caccd048a22a54b9b790bcc, type: 2}
+  - {fileID: 2100000, guid: 29978c5d9e282b94b93de791e7f5c74f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
