@@ -92,9 +92,6 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
     private ColorConfig colorConfig;
 
     [SerializeField]
-    private ParticleSystem particle;
-
-    [SerializeField]
     private int score = 100;
 
     [SerializeField]

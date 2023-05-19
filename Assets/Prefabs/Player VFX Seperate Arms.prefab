@@ -508,7 +508,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cfd51a4e8ecfc034eabdff9d6fff8f69, type: 2}
   - {fileID: 11400000, guid: 7019b96f6bec6424b80c4662ed209b0a, type: 2}
   maxMana: 1000
-  manaRegeneration: 60
+  manaRegeneration: 3
+  manaRegenerationRate: 0.1
   rightHandColors:
   - spell: 0
     handColor: {r: 1, g: 0, b: 0.13335371, a: 1}
