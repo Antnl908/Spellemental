@@ -4167,8 +4167,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 2e45cea69e01faf40ab0252ebc2dd015, type: 2}
   navAgent: {fileID: 7222420314790321881}
-  arrow: {fileID: 0}
-  arrowRefPos: {fileID: 0}
 --- !u!114 &7666328769372760347
 MonoBehaviour:
   m_ObjectHideFlags: 0
