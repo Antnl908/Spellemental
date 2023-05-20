@@ -19,7 +19,7 @@ public class Patrol : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.transform.Translate(Vector3.forward * 5f/*enemy.Config.speed*/ * Time.deltaTime);
+        //animator.transform.Translate(Vector3.forward * 5f/*enemy.Config.speed*/ * Time.deltaTime);
 
         timer += Time.deltaTime;
         if (timer > enemy.Config.chaseUpdateTime)

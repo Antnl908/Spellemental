@@ -3808,6 +3808,7 @@ MonoBehaviour:
   obstructions:
     serializedVersion: 2
     m_Bits: 1088
+  angledDown: 0
   canSeePlayer: 0
 --- !u!1 &9052825565097315394
 GameObject:

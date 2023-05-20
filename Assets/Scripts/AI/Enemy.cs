@@ -9,16 +9,20 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private UnityEngine.AI.NavMeshAgent navAgent;
 
-    //[SerializeField] private Material material; 
+    [SerializeField]
+    private int damage = 1;
 
-    private Component[] meshes;
+    [SerializeField]
+    private Transform attackPoint;
+
+    [SerializeField]
+    private float attackRadius = 1f;
 
     /*
     [Header("Target Temporary/Debug")]
     [SerializeField] private Transform target;
     */
 
-    // Start is called before the first frame update
     void Start()
     {
         NavAgent.speed = Config.speed;
@@ -37,12 +41,6 @@ public class Enemy : MonoBehaviour
         */
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public NavMeshAgent NavAgent
     {
         get
@@ -55,5 +53,26 @@ public class Enemy : MonoBehaviour
     public AIConfig Config
     {
         get { return config; }
+    }
+
+    public void Attack()
+    {
+        Collider[] colliders = Physics.OverlapSphere(attackPoint.position, attackRadius);
+
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].gameObject != gameObject)
+            {
+                IDamageable damagable = colliders[i].transform.GetComponent<IDamageable>();
+
+                damagable?.TryToDestroyDamageable(damage, null);
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null) { return; }
+        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }
 }

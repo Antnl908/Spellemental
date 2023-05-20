@@ -97,15 +97,6 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
     [SerializeField]
     private int score = 100;
 
-    [SerializeField]
-    private int damage = 1;
-
-    [SerializeField]
-    private Transform attackPoint;
-
-    [SerializeField]
-    private float attackRadius = 1f;
-
     [SerializeField] Ragdoll ragdoll;
 
     NavMeshAgent navMeshAgent;
@@ -125,7 +116,7 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
     [SerializeField]
     private Transform visualEffectSpawnPos;
 
-    private bool isDead = false;
+    public bool isDead = false;
 
     private IObjectPool<Pooling_Object> pool;
 
@@ -424,27 +415,6 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
             Debug.Log("Earth effect");
         }
-    }
-
-    public void Attack()
-    {
-        Collider[] colliders = Physics.OverlapSphere(attackPoint.position, attackRadius);
-
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            if (colliders[i].gameObject != gameObject)
-            {
-                IDamageable damagable = colliders[i].transform.GetComponent<IDamageable>();
-
-                damagable?.TryToDestroyDamageable(damage, null);
-            }
-        }
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        if(attackPoint == null) { return; }
-        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }
 
     public enum EffectType

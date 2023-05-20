@@ -13,9 +13,11 @@ public class FindWaypoint : StateMachineBehaviour
         bat = animator.GetComponent<Bat>();
 
         Transform[] positions = bat.WayPoints.GetComponentsInChildren<Transform>();
+
         int randomWaypoint = Random.Range(0, positions.Length);
+        //bat.SetNewWaypoint(positions[randomWaypoint].transform.position);
         bat.ActiveWaypoint = positions[randomWaypoint].transform.position;
-        animator.transform.LookAt(bat.ActiveWaypoint);
+        //animator.transform.LookAt(bat.ActiveWaypoint);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

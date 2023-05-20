@@ -16,19 +16,19 @@ public class BatChase : StateMachineBehaviour
         bat = animator.GetComponent<Bat>();
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        animator.transform.LookAt(player.position);
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.transform.Translate(Vector3.forward * 5f/*enemy.Config.speed*/ * Time.deltaTime);
+        //animator.transform.Translate(bat.ActiveWaypoint * 5f/*enemy.Config.speed*/ * Time.deltaTime);
 
         timer += Time.deltaTime;
         if (timer > enemy.Config.chaseUpdateTime)
         {
             Vector3 followPosition = new Vector3(player.position.x, player.position.y + -1f, player.position.z);
 
-            animator.transform.LookAt(followPosition);
+            bat.ActiveWaypoint = followPosition;
+            //animator.transform.LookAt(followPosition);
 
             if (Vector3.Distance(animator.transform.position, followPosition) < 4f)
             {
