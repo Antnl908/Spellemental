@@ -30,7 +30,7 @@ public class BatChase : StateMachineBehaviour
 
             animator.transform.LookAt(followPosition);
 
-            if (Vector3.Distance(animator.transform.position, followPosition) < 6f)
+            if (Vector3.Distance(animator.transform.position, followPosition) < 4f)
             {
                 bat.ActiveWaypoint = followPosition;
 

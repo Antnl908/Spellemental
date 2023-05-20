@@ -1621,8 +1621,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 713c5e7b222084b43ac0bce621c3281a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 20
-  angle: 64
+  radius: 25
+  angle: 75
   routineDelay: 0.5
   player: {fileID: 0}
   target:
@@ -1631,6 +1631,7 @@ MonoBehaviour:
   obstructions:
     serializedVersion: 2
     m_Bits: 1088
+  angledDown: 1
   canSeePlayer: 0
 --- !u!114 &8185309119563579481
 MonoBehaviour:
