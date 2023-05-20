@@ -34,7 +34,12 @@ public class Chase_State : StateMachineBehaviour
         if (timer > enemy.Config.chaseUpdateTime)
         {
             //Debug.Log("Update Chase State");
-            enemy.NavAgent.SetDestination(player.position);
+            //animator.GetComponent<Enemy>().NavAgent.SetDestination(GameObject.FindGameObjectWithTag("Player").transform.position);
+            if(enemy.NavAgent.isActiveAndEnabled)
+            {
+                enemy.NavAgent.SetDestination(player.position);
+            }
+            
             timer = 0f;
         }
 

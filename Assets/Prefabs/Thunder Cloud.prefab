@@ -399,7 +399,7 @@ MonoBehaviour:
   damageRadius: 7.8
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1168
   terrainLayer:
     serializedVersion: 2
     m_Bits: 64

@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Lightning
   m_EditorClassIdentifier: 
   type: 4
-  damage: 13
+  damage: 6
   effectDamage: 2
   effectBuildUp: 15
   destructionTime: 0.05
   timeBetweenCasts: 0.2
-  manaCost: 30
+  manaCost: 0
   travelDistance: 20
   isProjectileNotStationary: 1
   possibleStationarySpawn:
@@ -27,11 +27,11 @@ MonoBehaviour:
   objectPoolName: Error
   animationBoolName: StartCombo6
   leftAnimationName: LeftCombo6
-  range: 15
+  range: 20
   layerMask:
     serializedVersion: 2
-    m_Bits: 1665
+    m_Bits: 1680
   cone: 1
-  radius: 0.855
+  radius: 0.8
   effectObjectPoolName: Lightning_Hit
   effectInstanceAmount: 3
