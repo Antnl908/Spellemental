@@ -44,6 +44,9 @@ public class Spawner_With_Increasing_Difficulty : MonoBehaviour
     [SerializeField]
     private int enemyCountBeforeNextWave = 10;
 
+    [SerializeField]
+    private bool usesNavMesh = true;
+
     private int currentWave = 0;
 
     private int currentEnemyCount = 0;
@@ -128,25 +131,34 @@ public class Spawner_With_Increasing_Difficulty : MonoBehaviour
 
     private void SpawnEnemy(string poolName, Spell.SpellType weakness, Spell.SpellType resistance)
     {
-        if(Spawner.PointCheck(transform.position, spawnRadius, out Vector3 point))
+        if(usesNavMesh && Spawner.PointCheck(transform.position, spawnRadius, out Vector3 point))
         {
-            Enemy_Health enemy = (Enemy_Health)Object_Pooler.Pools[poolName].Get();
-
-            enemy.Initialize(point, Quaternion.identity, Vector3.zero, Object_Pooler.Pools[poolName]);
-
-            enemy.SetWeaknessAndResistance(weakness, resistance);
-
-            bool isLarge = false;
-
-            if(largeEnemyChance >= Random.Range(1, 101))
-            {
-                isLarge = true;
-            }
-
-            enemy.SetSizeAndSpawner(isLarge, largeEnemySizeMultiplier, currentWave * extraHealthPerWave, this);
-
-            currentEnemyCount++;
+            GetEnemy(point, poolName, weakness, resistance);
         }
+        else if (!usesNavMesh)
+        {
+            GetEnemy(transform.position, poolName, weakness, resistance);
+        }
+    }
+
+    private void GetEnemy(Vector3 spawnPoint, string poolName, Spell.SpellType weakness, Spell.SpellType resistance)
+    {
+        Enemy_Health enemy = (Enemy_Health)Object_Pooler.Pools[poolName].Get();
+
+        enemy.Initialize(spawnPoint, Quaternion.identity, Vector3.zero, Object_Pooler.Pools[poolName]);
+
+        enemy.SetWeaknessAndResistance(weakness, resistance);
+
+        bool isLarge = false;
+
+        if (largeEnemyChance >= Random.Range(1, 101))
+        {
+            isLarge = true;
+        }
+
+        enemy.SetSizeAndSpawner(isLarge, largeEnemySizeMultiplier, currentWave * extraHealthPerWave, this);
+
+        currentEnemyCount++;
     }
 
     public void MinusOneEnemy()

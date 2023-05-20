@@ -184,8 +184,6 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
     void DestroySelf()
     {
-        Spawner.CurrentEnemyCount--;
-
         pool.Release(this);
     }
 
@@ -554,7 +552,14 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
             if (ragdoll != null)
             {
-                spawner.MinusOneEnemy();
+                if(spawner != null)
+                {
+                    spawner.MinusOneEnemy();
+                }
+                else
+                {
+                    Debug.LogWarning(gameObject.name + " had no spawner.");
+                }
 
                 navMeshAgent.enabled = false;
                 speedDownIcon.SetActive(false);
@@ -563,7 +568,14 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
             }
             else
             {
-                spawner.MinusOneEnemy();
+                if (spawner != null)
+                {
+                    spawner.MinusOneEnemy();
+                }
+                else
+                {
+                    Debug.LogWarning(gameObject.name + " had no spawner.");
+                }
 
                 pool.Release(this);
             }
