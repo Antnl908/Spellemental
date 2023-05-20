@@ -116,7 +116,11 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+<<<<<<< Updated upstream
     - _Ball_Pos: {r: 4.792827, g: -0.61173034, b: 13.412271, a: 0}
+=======
+    - _Ball_Pos: {r: 6.015999, g: -0.48178732, b: 13.559341, a: 0}
+>>>>>>> Stashed changes
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Edge_Color: {r: 1, g: 0, b: 0.13335371, a: 1}

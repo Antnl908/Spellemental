@@ -2,48 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chase_State : StateMachineBehaviour
+public class BatChase : StateMachineBehaviour
 {
-    private float timer;
     private Enemy enemy;
+    private Bat bat;
 
+    private float timer;
     private Transform player;
 
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
         enemy = animator.GetComponent<Enemy>();
+        bat = animator.GetComponent<Bat>();
+
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        animator.transform.LookAt(player.position);
     }
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        float dist = Vector3.Distance(player.position, enemy.transform.position);
-
-        if (dist > enemy.Config.aggroMaxRange)
-        {
-            animator.SetTrigger("Idle");
-        }
-        else if (dist < 1.5f)
-        {
-            animator.SetTrigger("Attack");
-        }
+        animator.transform.Translate(Vector3.forward * 5f/*enemy.Config.speed*/ * Time.deltaTime);
 
         timer += Time.deltaTime;
         if (timer > enemy.Config.chaseUpdateTime)
         {
-            //Debug.Log("Update Chase State");
-            enemy.NavAgent.SetDestination(player.position);
-            timer = 0f;
-        }
+            Vector3 followPosition = new Vector3(player.position.x, player.position.y + -1f, player.position.z);
 
+            animator.transform.LookAt(followPosition);
+
+            if(Vector3.Distance(animator.transform.position, followPosition) < 6f)
+            {
+                bat.ActiveWaypoint = followPosition;
+
+                animator.SetTrigger("Attack");
+            }
+        }
     }
 
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.ResetTrigger("Idle");
         animator.ResetTrigger("Attack");
     }
 

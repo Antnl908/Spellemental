@@ -1,50 +1,48 @@
+using Mono.Cecil;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chase_State : StateMachineBehaviour
+public class Patrol : StateMachineBehaviour
 {
-    private float timer;
     private Enemy enemy;
+    private Bat bat;
+    private FieldOfView fov;
 
-    private Transform player;
+    private float timer;
 
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
         enemy = animator.GetComponent<Enemy>();
+        bat = animator.GetComponent<Bat>();
+        fov = animator.GetComponent<FieldOfView>();
     }
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        float dist = Vector3.Distance(player.position, enemy.transform.position);
-
-        if (dist > enemy.Config.aggroMaxRange)
-        {
-            animator.SetTrigger("Idle");
-        }
-        else if (dist < 1.5f)
-        {
-            animator.SetTrigger("Attack");
-        }
+        animator.transform.Translate(Vector3.forward *  5f/*enemy.Config.speed*/ * Time.deltaTime);
 
         timer += Time.deltaTime;
         if (timer > enemy.Config.chaseUpdateTime)
         {
-            //Debug.Log("Update Chase State");
-            enemy.NavAgent.SetDestination(player.position);
-            timer = 0f;
-        }
+            if (fov.canSeePlayer)
+            {
+                animator.SetTrigger("Chase");
+            }
 
+            if (Vector3.Distance(bat.ActiveWaypoint, animator.transform.position) < 10f)
+            {
+                animator.SetTrigger("FindNewWaypoint");
+            }
+        }
+            
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.ResetTrigger("Idle");
-        animator.ResetTrigger("Attack");
+        animator.ResetTrigger("Chase");
+        animator.ResetTrigger("FindNewWaypoint");
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

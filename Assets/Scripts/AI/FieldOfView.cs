@@ -20,6 +20,8 @@ public class FieldOfView : MonoBehaviour
 
     public bool canSeePlayer;
 
+    public bool angledDown;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -48,7 +50,14 @@ public class FieldOfView : MonoBehaviour
 
             Vector3 directionToTarget = (target.position - transform.position).normalized;
 
-            if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
+            float castAngle;
+
+            if (!angledDown)
+                castAngle = Vector3.Angle(transform.forward, directionToTarget);
+            else
+                castAngle = Vector3.Angle(-transform.up, directionToTarget);
+
+            if (castAngle < angle / 2)
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
@@ -69,10 +78,15 @@ public class FieldOfView : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Handles.color = Color.white;
-        Handles.DrawWireArc(transform.position, Vector3.up, Vector3.forward, 360, radius);
 
-        Vector3 viewAngle1 = DirectionFromAngle(transform.eulerAngles.y, -angle / 2);
-        Vector3 viewAngle2 = DirectionFromAngle(transform.eulerAngles.y, angle / 2);
+        if (!angledDown)
+            Handles.DrawWireArc(transform.position, Vector3.up, Vector3.forward, 360, radius);
+        else
+            Handles.DrawWireArc(transform.position, Vector3.forward, Vector3.left, 360, radius);
+
+
+        Vector3 viewAngle1 = DirectionFromAngle(transform.eulerAngles.x, -angle / 2);
+        Vector3 viewAngle2 = DirectionFromAngle(transform.eulerAngles.x, angle / 2);
 
         Handles.color = Color.yellow;
         Handles.DrawLine(transform.position, transform.position + viewAngle1 * radius);
@@ -89,6 +103,9 @@ public class FieldOfView : MonoBehaviour
     {
         angleInDegrees += eulerY;
 
-        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
+        if(!angledDown)
+            return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
+        else
+            return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), -Mathf.Cos(angleInDegrees * Mathf.Deg2Rad), 0);
     }
 }
