@@ -1935,6 +1935,7 @@ MonoBehaviour:
   visualEffectSpawnPos: {fileID: 2368261004258071635}
   config: {fileID: 11400000, guid: 2e45cea69e01faf40ab0252ebc2dd015, type: 2}
   speedDownIcon: {fileID: 8494815865956840268}
+  usesNavMeshAgent: 0
 --- !u!114 &8185309119563579476
 MonoBehaviour:
   m_ObjectHideFlags: 0

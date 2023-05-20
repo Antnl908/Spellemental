@@ -125,6 +125,9 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
     [SerializeField]
     private GameObject speedDownIcon;
 
+    [SerializeField]
+    private bool usesNavMeshAgent = true;
+
     private bool isDead = false;
 
     private IObjectPool<Pooling_Object> pool;
@@ -202,15 +205,15 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
     // Start is called before the first frame update
     void Start()
     {
-        if (matInst == null) { matInst = GetComponent<MaterialInstance>(); }
-        if(matInst != null) 
-        { 
-            matInst.albedo = ResColor; 
-            matInst.color = ResColor * (colorConfig ? colorConfig.amount : 1f);
-            matInst.MeshRenderer = transform.GetComponentsInChildren<MeshRenderer>();
-            matInst.SkinMesh = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
-            matInst.NewMBP();
-        }
+        //if (matInst == null) { matInst = GetComponent<MaterialInstance>(); }
+        //if(matInst != null) 
+        //{ 
+        //    matInst.albedo = ResColor; 
+        //    matInst.color = ResColor * (colorConfig ? colorConfig.amount : 1f);
+        //    matInst.MeshRenderer = transform.GetComponentsInChildren<MeshRenderer>();
+        //    matInst.SkinMesh = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
+        //    matInst.NewMBP();
+        //}
 
         //ragdoll = GetComponent<Ragdoll>();
         //navMeshAgent = GetComponent<NavMeshAgent>();
@@ -287,7 +290,8 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
             if(timeUntilSlowDownDisappears <= 0)
             {
-                navMeshAgent.speed = config.speed;
+                if( usesNavMeshAgent)
+                    navMeshAgent.speed = config.speed;
 
                 speedDownIcon.SetActive(false);
 
@@ -335,7 +339,8 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
     //Slows down enemy movement.
     public void SlowDownEffect()
     {
-        navMeshAgent.speed = slowedMoveSpeed;
+        if (usesNavMeshAgent)
+            navMeshAgent.speed = slowedMoveSpeed;
 
         timeUntilSlowDownDisappears = slowDownEffectDuration;
 
@@ -502,7 +507,7 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
         foreach (MeshRenderer r in renderers)
         {
-            if(r.GameObject().tag != "Ignore")
+            if(!r.GameObject().CompareTag("Ignore"))
                 r.material = material;
         }
 
@@ -561,7 +566,8 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
                     Debug.LogWarning(gameObject.name + " had no spawner.");
                 }
 
-                navMeshAgent.enabled = false;
+                if (usesNavMeshAgent)
+                    navMeshAgent.enabled = false;
                 speedDownIcon.SetActive(false);
                 ragdoll.ActiveteRagdoll();
                 Invoke(nameof(DestroySelf), 3f);
@@ -607,10 +613,28 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
     public override void Initialize(Vector3 position, Quaternion rotation, Vector3 direction, IObjectPool<Pooling_Object> pool)
     {
-        ragdoll = GetComponent<Ragdoll>();
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        if (!killedOnceOrMore)
+        {
+            if (matInst == null) { matInst = GetComponent<MaterialInstance>(); }
+            if (matInst != null)
+            {
+                matInst.albedo = ResColor;
+                matInst.color = ResColor * (colorConfig ? colorConfig.amount : 1f);
+                matInst.MeshRenderer = transform.GetComponentsInChildren<MeshRenderer>();
+                matInst.SkinMesh = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
+                matInst.NewMBP();
+            }
+        }
 
-        navMeshAgent.speed = config.speed;
+        ragdoll = GetComponent<Ragdoll>();
+
+        if (usesNavMeshAgent)
+        {
+            navMeshAgent = GetComponent<NavMeshAgent>();
+
+
+            navMeshAgent.speed = config.speed;
+        }      
 
         transform.SetPositionAndRotation(position, rotation);
 
@@ -639,7 +663,8 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
             ragdoll.DeactiveteRagdoll();
         }
 
-        navMeshAgent.enabled = true;
+        if (usesNavMeshAgent)
+            navMeshAgent.enabled = true;
 
         if (isLarge)
         {
