@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lightning_Trap
   m_EditorClassIdentifier: 
   type: 4
-  damage: 30
+  damage: 80
   effectDamage: 60
   effectBuildUp: 100
   destructionTime: 30
