@@ -15,7 +15,7 @@ public class Bat : MonoBehaviour
 
     [SerializeField]
     private float speed;
-    [Range(0.0f, 2.0f)]
+    [Range(0.0f, 4.0f)]
     public float turnSpeed;
     private float angleTurnDegree;
 

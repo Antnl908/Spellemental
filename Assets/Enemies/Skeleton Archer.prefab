@@ -3644,6 +3644,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 2e45cea69e01faf40ab0252ebc2dd015, type: 2}
   navAgent: {fileID: 8357955798736530981}
+  damage: 1
+  attackPoint: {fileID: 0}
+  attackRadius: 1
 --- !u!114 &9052825565084326375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3678,15 +3681,13 @@ MonoBehaviour:
   colorConfig: {fileID: 11400000, guid: 4a37f45f486ed464b9c89752781ce43b, type: 2}
   particle: {fileID: 1728005529349570728, guid: bcc285c92c7d20d4eb5ba9fe38a356fd, type: 3}
   score: 100
-  damage: 1
-  attackPoint: {fileID: 9052825564782672452}
-  attackRadius: 1.3
   ragdoll: {fileID: 0}
   normalMoveSpeed: 5
   slowedMoveSpeed: 1
   hitEffectPool: Blood_Splatter
   deathEffectPool: Death_Smoke
   visualEffectSpawnPos: {fileID: 9052825565816079051}
+  isDead: 0
 --- !u!195 &8357955798736530981
 NavMeshAgent:
   m_ObjectHideFlags: 0

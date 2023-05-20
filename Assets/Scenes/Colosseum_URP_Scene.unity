@@ -20837,6 +20837,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8185309119563579475, guid: 9d78a5b004f4d0a4e97873a90121d367, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8508063012823888793, guid: 9d78a5b004f4d0a4e97873a90121d367, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -23711,15 +23715,13 @@ MonoBehaviour:
   colorConfig: {fileID: 0}
   particle: {fileID: 0}
   score: 100
-  damage: 1
-  attackPoint: {fileID: 0}
-  attackRadius: 1
   ragdoll: {fileID: 0}
   normalMoveSpeed: 5
   slowedMoveSpeed: 1
   hitEffectPool: Blood_Splatter
   deathEffectPool: Death_Smoke
   visualEffectSpawnPos: {fileID: 0}
+  isDead: 0
 --- !u!135 &1666992095
 SphereCollider:
   m_ObjectHideFlags: 0
