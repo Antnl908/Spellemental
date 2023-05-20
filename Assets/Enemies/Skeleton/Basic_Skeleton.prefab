@@ -4308,7 +4308,6 @@ MonoBehaviour:
   earthRes: {r: 0.6415094, g: 0.358659, b: 0.2269491, a: 1}
   matInst: {fileID: 7468934283145908092}
   colorConfig: {fileID: 11400000, guid: 4a37f45f486ed464b9c89752781ce43b, type: 2}
-  particle: {fileID: 1728005529349570728, guid: bcc285c92c7d20d4eb5ba9fe38a356fd, type: 3}
   score: 100
   damage: 1
   attackPoint: {fileID: 7666328769070435000}

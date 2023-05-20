@@ -131,6 +131,8 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
     private Spawner_With_Increasing_Difficulty spawner;
 
+    private bool killedOnceOrMore = false;
+
     public void KnockBack(float knockBack)
     {
         //throw new System.NotImplementedException();
@@ -211,11 +213,12 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
             matInst.SkinMesh = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
             matInst.NewMBP();
         }
-        ragdoll = GetComponent<Ragdoll>();
-        navMeshAgent = GetComponent<NavMeshAgent>();
+
+        //ragdoll = GetComponent<Ragdoll>();
+        //navMeshAgent = GetComponent<NavMeshAgent>();
         healthBar = GetComponentInChildren<HealthBar>();
 
-        navMeshAgent.speed = config.speed;
+        //navMeshAgent.speed = config.speed;
 
         speedDownIcon.SetActive(false);
     }
@@ -229,14 +232,14 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         //    health = maxHealth;
         //}
 
-        if (healthBar != null) { healthBar.SetHealthAmount((float)health / maxHealth); }
+        //if (healthBar != null) { healthBar.SetHealthAmount((float)health / maxHealth); }       
 
-        navMeshAgent.enabled = true;
+        //if (ragdoll != null)
+        //{
+        //    ragdoll.DeactiveteRagdoll();
+        //}
 
-        if (ragdoll != null)
-        {
-            ragdoll.DeactiveteRagdoll();
-        }
+        //navMeshAgent.enabled = true;
 
         effectBuildUp = 0;
 
@@ -542,6 +545,8 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         {
             isDead = true;
 
+            killedOnceOrMore = true;
+
             Score_Keeper.AddScore(score);
 
             PlayEffect(deathEffectPool);
@@ -589,6 +594,11 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
     public override void Initialize(Vector3 position, Quaternion rotation, Vector3 direction, IObjectPool<Pooling_Object> pool)
     {
+        ragdoll = GetComponent<Ragdoll>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
+
+        navMeshAgent.speed = config.speed;
+
         transform.SetPositionAndRotation(position, rotation);
 
         this.pool = pool;
@@ -611,17 +621,24 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
     {
         this.spawner = spawner;
 
-        if(isLarge)
+        if (ragdoll != null && killedOnceOrMore)
         {
-            transform.localScale = new Vector3(sizeMultiplier, sizeMultiplier, sizeMultiplier);
+            ragdoll.DeactiveteRagdoll();
+        }
 
+        navMeshAgent.enabled = true;
+
+        if (isLarge)
+        {
             health = maxHealth * sizeMultiplier + extraHealth;
+
+            transform.localScale = new Vector3(sizeMultiplier, sizeMultiplier, sizeMultiplier);
         }
         else
         {
-            transform.localScale = Vector3.one;
-
             health = maxHealth + extraHealth;
+
+            transform.localScale = Vector3.one;
         }
 
         if (healthBar != null) { healthBar.SetHealthAmount((float)health / maxHealth); }
