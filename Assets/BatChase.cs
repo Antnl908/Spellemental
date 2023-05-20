@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Patrol : StateMachineBehaviour
+public class BatChase : StateMachineBehaviour
 {
     private Enemy enemy;
     private Bat bat;
-    private FieldOfView fov;
 
     private float timer;
+    private Transform player;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         enemy = animator.GetComponent<Enemy>();
         bat = animator.GetComponent<Bat>();
-        fov = animator.GetComponent<FieldOfView>();
+
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        animator.transform.LookAt(player.position);
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -24,25 +26,24 @@ public class Patrol : StateMachineBehaviour
         timer += Time.deltaTime;
         if (timer > enemy.Config.chaseUpdateTime)
         {
-            if (fov.canSeePlayer)
-            {
-                animator.SetTrigger("Chase");
-            }
+            Vector3 followPosition = new Vector3(player.position.x, player.position.y + -1f, player.position.z);
 
-            if (Vector3.Distance(bat.ActiveWaypoint, animator.transform.position) < 10f)
+            animator.transform.LookAt(followPosition);
+
+            if (Vector3.Distance(animator.transform.position, followPosition) < 6f)
             {
-                animator.SetTrigger("FindNewWaypoint");
+                bat.ActiveWaypoint = followPosition;
+
+                animator.SetTrigger("Attack");
             }
         }
-
     }
 
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.ResetTrigger("Chase");
-        animator.ResetTrigger("FindNewWaypoint");
+        animator.ResetTrigger("Attack");
     }
+
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
