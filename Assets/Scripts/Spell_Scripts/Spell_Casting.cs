@@ -37,6 +37,11 @@ public class Spell_Casting : MonoBehaviour
     [SerializeField]
     private int manaRegeneration = 10;
 
+    [SerializeField]
+    private float manaRegenerationRate = 0.1f;
+
+    private bool isRegeneratingMana = false;
+
     [Serializable]
     public class HandColorsForSpells
     {
@@ -71,6 +76,9 @@ public class Spell_Casting : MonoBehaviour
     [SerializeField]
     private Animator animator;
 
+    [SerializeField]
+    private TextMeshProUGUI spellCostText;
+
     private Spell spellToCast;
 
     // Start is called before the first frame update
@@ -96,8 +104,13 @@ public class Spell_Casting : MonoBehaviour
 
         SetHandColor(this, EventArgs.Empty);
 
+        DisplaySpellCost(this, EventArgs.Empty);
+
         leftHand.OnSwitchedSpell += SetHandColor;
+        leftHand.OnSwitchedSpell += DisplaySpellCost;
+
         rightHand.OnSwitchedSpell += SetHandColor;
+        rightHand.OnSwitchedSpell += DisplaySpellCost;
 
         currentMana = maxMana;
     }
@@ -105,18 +118,13 @@ public class Spell_Casting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    private void FixedUpdate()
-    {
-        if(Time.timeScale > 0)
+        if (!isRegeneratingMana)
         {
-            if(currentMana < maxMana)
+            if (currentMana < maxMana)
             {
-                AlterMana((int)(manaRegeneration * Time.fixedDeltaTime));
-            }            
-        }
+                StartCoroutine(RegenerateMana());
+            }
+        }       
     }
 
     private void LateUpdate()
@@ -212,9 +220,38 @@ public class Spell_Casting : MonoBehaviour
         }
     }
 
+    private void DisplaySpellCost(object sender, EventArgs e)
+    {
+        foreach(var recipe in recipes)
+        {
+            if(recipe.SpellMatchesRecipe(leftHand.ActiveSpell, rightHand.ActiveSpell) ||
+                                                               recipe.SpellMatchesRecipe(rightHand.ActiveSpell, leftHand.ActiveSpell))
+            {
+                spellCostText.text = recipe.ReturnedSpell.ManaCost.ToString();
+            }
+        }
+    }
+
     public void AlterMana(int amount)
     {
         currentMana = Mathf.Clamp(currentMana + amount, 0, maxMana);
+    }
+
+    private IEnumerator RegenerateMana()
+    {
+        isRegeneratingMana = true;
+
+        while(currentMana < maxMana)
+        {
+            if(Time.timeScale > 0)
+            {
+                AlterMana(manaRegeneration);
+            }           
+
+            yield return new WaitForSeconds(manaRegenerationRate);
+        }
+
+        isRegeneratingMana = false;
     }
 
     public Color LeftHandColor()

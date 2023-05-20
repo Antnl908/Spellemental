@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Ice_Cloud
   m_EditorClassIdentifier: 
   type: 0
-  damage: 5
+  damage: 10
   effectDamage: 15
-  effectBuildUp: 10
+  effectBuildUp: 20
   destructionTime: 15
   timeBetweenCasts: 1.5
   manaCost: 400
