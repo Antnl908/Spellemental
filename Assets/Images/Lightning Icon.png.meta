@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 54467a01ae52e9246973cfdbffee284e
+guid: 3751461fb9a15e74999532a50974f12f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Wind Icon Highlighted_0
+      name: Lightning Icon_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3174c34daf6ab348bef86ebe8b7401f
-      internalID: 39092705
+      spriteID: 1c987679225c8c044b2bfe1199c9229b
+      internalID: -1021525582
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wind Icon Highlighted_1
+      name: Lightning Icon_1
       rect:
         serializedVersion: 2
         x: 256
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ede1c8dd634c10f4ab56cd6784fb9cca
-      internalID: 560291530
+      spriteID: 18abcc6c2a3ea0c49853932165b5528b
+      internalID: -1975956300
       vertices: []
       indices: 
       edges: []
@@ -149,7 +149,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 771c45d2a1863c3488b6580e818a4d7c
+    spriteID: 48a29a1cd6be18549a37bd54ea444e28
     internalID: 0
     vertices: []
     indices: 
@@ -157,8 +157,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Wind Icon Highlighted_0: 39092705
-      Wind Icon Highlighted_1: 560291530
+      Lightning Icon_0: -1021525582
+      Lightning Icon_1: -1975956300
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

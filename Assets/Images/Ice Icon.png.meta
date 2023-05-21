@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 401514e46c6789a4eb24b3076912be85
+guid: db8a08dadf1de5f4da295ffb894df4f8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Wind Icon_0
+      name: Ice Icon_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63c74fdaca2d71d44b1ed2acc2b49a65
-      internalID: -439518742
+      spriteID: 22c5bee1cf77a354287c9abb5462060f
+      internalID: -1277688615
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wind Icon_1
+      name: Ice Icon_1
       rect:
         serializedVersion: 2
         x: 256
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bca55f2a112cfc640bd27b23d32740f2
-      internalID: -909003197
+      spriteID: ae97b1e6ee9e74847afcc8f7be893ef0
+      internalID: 943261332
       vertices: []
       indices: 
       edges: []
@@ -149,7 +149,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 77df6d5323531404a90a2dd9d4b17c07
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -157,8 +157,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Wind Icon_0: -439518742
-      Wind Icon_1: -909003197
+      Ice Icon_0: -1277688615
+      Ice Icon_1: 943261332
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

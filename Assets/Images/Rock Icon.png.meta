@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4e60890f002dab14a860fd75c363f501
+guid: 41d6adaf47ddac949bf1b6356fd1644a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 2
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -105,28 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fire Icon_1
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 256
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2bc2de64e5f801f4aa18ab5fa023a482
-      internalID: -271186148
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fire Icon_0
+      name: Rock Icon_0
       rect:
         serializedVersion: 2
         x: 0
@@ -140,8 +119,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98e56fa58cd9fb441a345c4c9046ce1d
-      internalID: -488153007
+      spriteID: 37e5741b64b3d764b8a4b12bd37449e3
+      internalID: -68624925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rock Icon_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71983ce4c59a37e41b5cf559be9f41f4
+      internalID: -1730741095
       vertices: []
       indices: 
       edges: []
@@ -149,20 +149,16 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 2ed4095882942a6449a40fd0089d3e96
+    spriteID: 93baaa7971adfa74ea2e974d7ee76972
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
-    secondaryTextures:
-    - texture: {instanceID: 0}
-      name: Icon2
-    - texture: {instanceID: 0}
-      name: Icon1
+    secondaryTextures: []
     nameFileIdTable:
-      Fire Icon_0: -488153007
-      Fire Icon_1: -271186148
+      Rock Icon_0: -68624925
+      Rock Icon_1: -1730741095
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ef95f1121051c3e43a462b498ffb0e5d
+guid: 11c7e22dc2228b145a68353a2ccfd65c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 2
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fire IconHighlighted_0
+      name: Lightning IconHighlighted_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c32cb6eab2da194696fbc64f2421289
-      internalID: 56731089
+      spriteID: 1a0b20aa12346fb4488cb51f533e5de0
+      internalID: 1111318925
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire IconHighlighted_1
+      name: Lightning IconHighlighted_1
       rect:
         serializedVersion: 2
         x: 256
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8230dc4a9a76ddb4d8fa7b066e205de3
-      internalID: 1255358278
+      spriteID: 926a2cf743f19344ebb75ada4c39e142
+      internalID: -1547524429
       vertices: []
       indices: 
       edges: []
@@ -149,7 +149,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 04c9ac9bb07ee4944a7d338563c43970
     internalID: 0
     vertices: []
     indices: 
@@ -157,8 +157,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Fire IconHighlighted_0: 56731089
-      Fire IconHighlighted_1: 1255358278
+      Lightning IconHighlighted_0: 1111318925
+      Lightning IconHighlighted_1: -1547524429
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
