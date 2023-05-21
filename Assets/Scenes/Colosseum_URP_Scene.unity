@@ -4882,7 +4882,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &322063876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4905,7 +4905,7 @@ MonoBehaviour:
   windPerWave: 20
   spawnDelay: 3
   largeEnemyChance: 5
-  largeEnemySizeMultiplier: 3
+  largeEnemySizeMultiplier: 1.5
   extraHealthPerWave: 30
   spawnRadius: 3
   enemyCountBeforeNextWave: 5
@@ -8559,7 +8559,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &504448730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8582,7 +8582,7 @@ MonoBehaviour:
   windPerWave: 0
   spawnDelay: 3
   largeEnemyChance: 5
-  largeEnemySizeMultiplier: 3
+  largeEnemySizeMultiplier: 1.5
   extraHealthPerWave: 30
   spawnRadius: 3
   enemyCountBeforeNextWave: 5
@@ -8744,7 +8744,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &533877071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8767,7 +8767,7 @@ MonoBehaviour:
   windPerWave: 0
   spawnDelay: 3
   largeEnemyChance: 5
-  largeEnemySizeMultiplier: 3
+  largeEnemySizeMultiplier: 1.5
   extraHealthPerWave: 30
   spawnRadius: 3
   enemyCountBeforeNextWave: 5
@@ -12195,7 +12195,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &861690607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12218,7 +12218,7 @@ MonoBehaviour:
   windPerWave: 0
   spawnDelay: 3
   largeEnemyChance: 5
-  largeEnemySizeMultiplier: 3
+  largeEnemySizeMultiplier: 1.5
   extraHealthPerWave: 30
   spawnRadius: 3
   enemyCountBeforeNextWave: 5
@@ -15232,7 +15232,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1067019305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15255,7 +15255,7 @@ MonoBehaviour:
   windPerWave: 5
   spawnDelay: 3
   largeEnemyChance: 5
-  largeEnemySizeMultiplier: 3
+  largeEnemySizeMultiplier: 1.5
   extraHealthPerWave: 30
   spawnRadius: 3
   enemyCountBeforeNextWave: 5
@@ -19128,7 +19128,7 @@ MonoBehaviour:
   windPerWave: 0
   spawnDelay: 3
   largeEnemyChance: 5
-  largeEnemySizeMultiplier: 3
+  largeEnemySizeMultiplier: 1.5
   extraHealthPerWave: 30
   spawnRadius: 3
   enemyCountBeforeNextWave: 5
@@ -21893,7 +21893,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1479208791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21916,7 +21916,7 @@ MonoBehaviour:
   windPerWave: 0
   spawnDelay: 3
   largeEnemyChance: 5
-  largeEnemySizeMultiplier: 3
+  largeEnemySizeMultiplier: 1.5
   extraHealthPerWave: 30
   spawnRadius: 3
   enemyCountBeforeNextWave: 5
@@ -26319,7 +26319,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1788714895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26342,7 +26342,7 @@ MonoBehaviour:
   windPerWave: 0
   spawnDelay: 3
   largeEnemyChance: 5
-  largeEnemySizeMultiplier: 3
+  largeEnemySizeMultiplier: 1.5
   extraHealthPerWave: 30
   spawnRadius: 3
   enemyCountBeforeNextWave: 5
@@ -28197,7 +28197,7 @@ MonoBehaviour:
   windPerWave: 0
   spawnDelay: 3
   largeEnemyChance: 5
-  largeEnemySizeMultiplier: 3
+  largeEnemySizeMultiplier: 1.5
   extraHealthPerWave: 30
   spawnRadius: 3
   enemyCountBeforeNextWave: 5
