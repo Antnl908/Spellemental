@@ -787,6 +787,7 @@ GameObject:
   - component: {fileID: 321965158}
   - component: {fileID: 321965160}
   - component: {fileID: 321965159}
+  - component: {fileID: 321965161}
   m_Layer: 5
   m_Name: BackStory
   m_TagString: Untagged
@@ -810,9 +811,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 540.5}
+  m_SizeDelta: {x: 0, y: 1081}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &321965159
 MonoBehaviour:
@@ -835,22 +836,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "The game takes place in the continent of Arkanos, a land of proud kingdoms
-    and mythological creatures. The main character that the player will play as is
-    a native of the realm of the Magus, a conclave of powerful wizards that study
-    the various natural energies of the arcane. Commonly known as \u201Cmagic\u201D,
+    and mythological creatures.\n\nThe main character that the player will play as
+    is a native of the realm of the Magus, a conclave of powerful wizards that study
+    the various natural energies of the arcane.\n\nCommonly known as \u201Cmagic\u201D,
     this mystical force can be guided into manifesting fantastical feats of power
-    if the wielder has honed their skills sufficiently. The main character is one
-    such skilled magician, having attained the rank of \u2018master\u2019 for their
-    diligence. \r\nThough while some in the land study the powers of the world and
-    learn to live with it, others seek to dominate and control it. One such individual
-    is \u2018the emperor\u2019, a mysterious figure that supposedly controls a vast
-    underground empire of monsters and curiosities that are rarely seen on the surface.
-    The emperor has recently taken an interest in learning the ways of magic, likely
-    for a future invasion of the overworld, and the main character has the misfortune
-    of being the one the emperor has chosen to capture. How the emperor managed this
-    is unknown, but what is known is that his power must be immense to have captured
-    a powerful sorcerer like the main character. Will the emperor break the wizard\u2019s
-    will or will the wizard prove triumphant? Only time will tell.\r\n"
+    if the wielder has honed their skills sufficiently.\n\nThe main character is
+    one such skilled magician, having attained the rank of \u2018master\u2019 for
+    their diligence. \n\nThough while some in the land study the powers of the world
+    and learn to live with it, others seek to dominate and control it.\n\nOne such
+    individual is \u2018the emperor\u2019, a mysterious figure that supposedly controls
+    a vast underground empire of monsters and curiosities that are rarely seen on
+    the surface.\n\nThe emperor has recently taken an interest in learning the ways
+    of magic, likely for a future invasion of the overworld, and the main character
+    has the misfortune of being the one the emperor has chosen to capture.\n\nHow
+    the emperor managed this is unknown, but what is known is that his power must
+    be immense to have captured a powerful sorcerer like the main character.\n\nWill
+    the emperor break the wizard\u2019s will or will the wizard prove triumphant?
+    Only time will tell.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -859,8 +861,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294902528
-  m_fontColor: {r: 1, g: 0, b: 0.010097504, a: 1}
+    rgba: 4278232319
+  m_fontColor: {r: 1, g: 0.6412373, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -877,21 +879,21 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_wordSpacing: 25
+  m_lineSpacing: 50
   m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
+  m_paragraphSpacing: 100
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
@@ -913,7 +915,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 100, y: 0, z: 100, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -927,6 +929,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321965157}
   m_CullTransparentMesh: 1
+--- !u!114 &321965161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321965157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85346e7bd15db6341b5071541a1d23f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 50
+  debug: 0
+  debugPosition: 0
 --- !u!1 &362909588
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,9 +996,9 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 1
+  m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
