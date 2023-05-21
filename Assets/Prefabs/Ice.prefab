@@ -416,10 +416,11 @@ MonoBehaviour:
   effectInstanceAmount: 3
   visualEffectPoolName: Ice_Burst
   vfxSpawnPos: {fileID: 7865987610414132463}
-  range: 0
-  useOverlapSphere: 0
-  checkTime: 0.25
-  spherePosition: {fileID: 0}
+  effectDelay: 0.1
+  range: 2
+  useOverlapSphere: 1
+  checkTime: 0.01
+  spherePosition: {fileID: 7865987610414132463}
 --- !u!54 &3334576805258467954
 Rigidbody:
   m_ObjectHideFlags: 0
