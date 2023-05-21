@@ -5619,10 +5619,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imageLeft: {fileID: 4786759489119077533}
   imageRight: {fileID: 2130818979341711947}
-  selectedLeftSprite: {fileID: 1691595657, guid: f040b8f699d5fa34e925b18a38c991a3, type: 3}
-  unselectedLeftSprite: {fileID: -2125557499, guid: f040b8f699d5fa34e925b18a38c991a3, type: 3}
-  selectedRightSprite: {fileID: -473954935, guid: 4623c661f313a294c97e90767d5b14bb, type: 3}
-  unselectedRightSprite: {fileID: 2115231000, guid: 4623c661f313a294c97e90767d5b14bb, type: 3}
+  selectedLeftSprite: {fileID: 39092705, guid: 54467a01ae52e9246973cfdbffee284e, type: 3}
+  unselectedLeftSprite: {fileID: -439518742, guid: 401514e46c6789a4eb24b3076912be85, type: 3}
+  selectedRightSprite: {fileID: 560291530, guid: 54467a01ae52e9246973cfdbffee284e, type: 3}
+  unselectedRightSprite: {fileID: -909003197, guid: 401514e46c6789a4eb24b3076912be85, type: 3}
   spell: {fileID: 11400000, guid: 537681fdb059f004c91f755fb3607034, type: 2}
 --- !u!65 &6184781900450140828
 BoxCollider:
@@ -6248,10 +6248,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imageLeft: {fileID: 5547224824348403499}
   imageRight: {fileID: 1370360241199061501}
-  selectedLeftSprite: {fileID: 983415035, guid: 52640407f652b1742896d1499337f3f0, type: 3}
-  unselectedLeftSprite: {fileID: -878679370, guid: 52640407f652b1742896d1499337f3f0, type: 3}
-  selectedRightSprite: {fileID: -1917346264, guid: ac351da1a8b4ab547961428b073f3c3a, type: 3}
-  unselectedRightSprite: {fileID: 1035557656, guid: ac351da1a8b4ab547961428b073f3c3a, type: 3}
+  selectedLeftSprite: {fileID: 56731089, guid: ef95f1121051c3e43a462b498ffb0e5d, type: 3}
+  unselectedLeftSprite: {fileID: -488153007, guid: 4e60890f002dab14a860fd75c363f501, type: 3}
+  selectedRightSprite: {fileID: 1255358278, guid: ef95f1121051c3e43a462b498ffb0e5d, type: 3}
+  unselectedRightSprite: {fileID: -271186148, guid: 4e60890f002dab14a860fd75c363f501, type: 3}
   spell: {fileID: 11400000, guid: af7c4f4063df1bd4c856cbbe2c7fe10f, type: 2}
 --- !u!65 &6575974176781709610
 BoxCollider:
