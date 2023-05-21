@@ -3901,7 +3901,7 @@ MonoBehaviour:
   earthRes: {r: 0.6415094, g: 0.358659, b: 0.2269491, a: 1}
   matInst: {fileID: 8097649900522127232}
   colorConfig: {fileID: 11400000, guid: 4a37f45f486ed464b9c89752781ce43b, type: 2}
-  score: 100
+  score: 200
   damage: 1
   attackPoint: {fileID: 9052825564782672452}
   attackRadius: 1.3

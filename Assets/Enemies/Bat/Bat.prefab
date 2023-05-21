@@ -1904,7 +1904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b399d4016ced12442a2fb6f993fd72ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 10
   weakness: 6
   resistance: 6
   objectPoolName: Damage_Indicator
@@ -1924,10 +1924,10 @@ MonoBehaviour:
   earthRes: {r: 0.6415094, g: 0.358659, b: 0.2269491, a: 1}
   matInst: {fileID: 8185309119563579481}
   colorConfig: {fileID: 11400000, guid: 4a37f45f486ed464b9c89752781ce43b, type: 2}
-  score: 100
+  score: 50
   damage: 1
   attackPoint: {fileID: 1388707197367656142}
-  attackRadius: 1.3
+  attackRadius: 0.14
   ragdoll: {fileID: 8185309119563579483}
   slowedMoveSpeed: 1
   hitEffectPool: Blood_Splatter
