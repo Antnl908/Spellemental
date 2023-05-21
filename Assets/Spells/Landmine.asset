@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Landmine
   m_EditorClassIdentifier: 
   type: 0
-  damage: 50
-  effectDamage: 15
+  damage: 100
+  effectDamage: 10
   effectBuildUp: 50
   destructionTime: 30
   timeBetweenCasts: 1.5
-  manaCost: 300
+  manaCost: 600
   travelDistance: 100
   isProjectileNotStationary: 0
   possibleStationarySpawn:

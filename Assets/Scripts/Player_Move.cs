@@ -40,12 +40,7 @@ public class Player_Move : MonoBehaviour
     [SerializeField]
     private float jumpHeight = 10;
 
-    [SerializeField]
-    private float bounceHeight = 30;
-
     private float currentGravitation = 0;
-
-    private readonly Collider[] groundCheckColliders = new Collider[30];
 
     [Header("Movement events")]
     [Space]
@@ -74,10 +69,12 @@ public class Player_Move : MonoBehaviour
 
         Vector2 direction = controls.Player1.Move.ReadValue<Vector2>();
         Vector2 lookDirection = controls.Player1.Look.ReadValue<Vector2>();
+
+        //Vector3 moveVector = speed * Time.deltaTime * new Vector3(direction.x, gravitation, direction.y);
         
         //Anton L 20/2/2023 edit: trying out camera based movement
         Vector3 moveVector = speed * Time.deltaTime * (look.Forward * direction.y + look.Right * -direction.x + 
-                                                  Vector3.up * Mathf.Clamp(currentGravitation, maxDownwardAcceleration, bounceHeight));
+                                                               Vector3.up * Mathf.Clamp(currentGravitation, maxDownwardAcceleration, int.MaxValue));
 
         characterController.Move(moveVector);
 
@@ -111,19 +108,12 @@ public class Player_Move : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext context)
     {
-        if(isGrounded && currentGravitation <= 0)
+        if(isGrounded)
         {
             currentGravitation += jumpHeight;
 
             isGrounded = false;
         }
-    }
-
-    public void Bounce()
-    {
-        currentGravitation = Mathf.Clamp(currentGravitation + bounceHeight, maxDownwardAcceleration, bounceHeight);
-
-        isGrounded = false;
     }
 
     private void CheckIfGrounded()
@@ -132,12 +122,11 @@ public class Player_Move : MonoBehaviour
 
         isGrounded = false;
 
-        int colliderCount = Physics.OverlapSphereNonAlloc(groundCheck.position, groundCheckRadius, groundCheckColliders, groundMask, 
-                                                                                                     QueryTriggerInteraction.Collide);
+        Collider[] colliders = Physics.OverlapSphere(groundCheck.position, groundCheckRadius, groundMask);
 
-        for(int i = 0; i < colliderCount; i++)
+        for(int i = 0; i < colliders.Length; i++)
         {
-            if (groundCheckColliders[i].gameObject != gameObject)
+            if (colliders[i].gameObject != gameObject)
             {
                 isGrounded = true;
 

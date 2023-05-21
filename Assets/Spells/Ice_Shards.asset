@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Ice_Shards
   m_EditorClassIdentifier: 
   type: 1
-  damage: 20
-  effectDamage: 5
-  effectBuildUp: 100
+  damage: 5
+  effectDamage: 3
+  effectBuildUp: 15
   destructionTime: 1
   timeBetweenCasts: 0.6
-  manaCost: 100
+  manaCost: 50
   travelDistance: 1
   isProjectileNotStationary: 1
   possibleStationarySpawn:

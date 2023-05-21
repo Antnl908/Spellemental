@@ -25,7 +25,7 @@ public class Puddle : Interactable
         ExecuteInteraction(damage, spellType);
         //activated = true;
         //Debug.Log("Activated");
-        //Debug.Log("Activated: " + $"{spellType}");
+        Debug.Log("Activated: " + $"{spellType}");
         return false;
     }
 

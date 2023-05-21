@@ -148,16 +148,13 @@ public class Player_Health : MonoBehaviour, IDamageable
 
     private void Dying()
     {
-        if(!isDying)
-        {
-            killCount = 0;
+        killCount = 0;
 
-            isDying = true;
+        isDying = true;
 
-            currentTimeUntilDeath = timeUntilDeath;
+        currentTimeUntilDeath = timeUntilDeath;
 
-            heart.SetIfIsDying(true);
-        }       
+        heart.SetIfIsDying(true);
     }
 
     public static void GiveDefenseBuff()

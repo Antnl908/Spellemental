@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Rock_Throw
   m_EditorClassIdentifier: 
   type: 2
-  damage: 15
+  damage: 20
   effectDamage: 1
   effectBuildUp: 8
   destructionTime: 3
   timeBetweenCasts: 0.5
-  manaCost: 0
+  manaCost: 40
   travelDistance: 15
   isProjectileNotStationary: 1
   possibleStationarySpawn:

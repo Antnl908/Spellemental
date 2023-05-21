@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lightning_Ball
   m_EditorClassIdentifier: 
   type: 4
-  damage: 12
+  damage: 6
   effectDamage: 12
   effectBuildUp: 20
   destructionTime: 5

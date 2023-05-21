@@ -169,11 +169,3 @@ MonoBehaviour:
     poolingObject: {fileID: 7666328769372760347, guid: ef240b7c4b3d7114bb97b8c27a337756, type: 3}
     poolCount: 10000
     maxPoolCount: 50000
-  - name: Skeleton_Archer_Pool
-    poolingObject: {fileID: 9052825565084326375, guid: f0f9b08baa2d91b47ab3642ef195b61f, type: 3}
-    poolCount: 10000
-    maxPoolCount: 50000
-  - name: Bat_Pool
-    poolingObject: {fileID: 8185309119563579478, guid: 9d78a5b004f4d0a4e97873a90121d367, type: 3}
-    poolCount: 10000
-    maxPoolCount: 50000

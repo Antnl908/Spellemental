@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1043521862343659384}
   - component: {fileID: 8531197407105351829}
   - component: {fileID: 6217144266577506524}
-  m_Layer: 4
+  m_Layer: 10
   m_Name: Puddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,8 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 160ca1a3955a0b148a4600248a0b662c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyedAfterSomeTime: 1
-  destructionTime: 30
+  destroyedAfterSomeTime: 0
   height: 0.4
   width: 2
   depth: 2
@@ -127,9 +126,8 @@ MonoBehaviour:
   hitBoxOffset: {x: 0, y: 0, z: 0}
   visualEffectPoolName: Error
   vfxSpawnPos: {fileID: 0}
-  bouncesPlayer: 0
-  range: 2
-  useOverlapSphere: 1
+  range: 0
+  useOverlapSphere: 0
   checkTime: 0.25
 --- !u!54 &8531197407105351829
 Rigidbody:

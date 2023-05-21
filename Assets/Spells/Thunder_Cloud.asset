@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Thunder_Cloud
   m_EditorClassIdentifier: 
   type: 4
-  damage: 15
-  effectDamage: 15
-  effectBuildUp: 15
+  damage: 4
+  effectDamage: 3
+  effectBuildUp: 10
   destructionTime: 10
   timeBetweenCasts: 1.5
   manaCost: 400

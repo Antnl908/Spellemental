@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
-using UnityEngine.UIElements;
 
 public class Spell_Stationary : Pooling_Object
 {
@@ -25,7 +24,6 @@ public class Spell_Stationary : Pooling_Object
 
     public IObjectPool<Pooling_Object> Pool { get => pool; }
 
-    [SerializeField]
     private float destructionTime = 1f;
 
     private float currentDestructionTime;
@@ -72,9 +70,6 @@ public class Spell_Stationary : Pooling_Object
 
     private float effectTimer;
     private const float effectDelay = 0.1f;
-
-    [SerializeField]
-    private bool bouncesPlayer = false;
 
     #region OverlapSphere
     [Header("OverlapSphere")]
@@ -153,14 +148,7 @@ public class Spell_Stationary : Pooling_Object
             InstantCheckHits(other);
         }
         else if(destroyOnHit)
-        {           
-            if (other.gameObject.TryGetComponent<Player_Move>(out var player))
-            {
-                player.Bounce();
-
-                SetGotHitToTrue();
-            }
-
+        {
             CheckHits();
         }
     }

@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Wind
   m_EditorClassIdentifier: 
   type: 5
-  damage: 8
+  damage: 15
   effectDamage: 2
   effectBuildUp: 15
   destructionTime: 0.05
   timeBetweenCasts: 0.3
-  manaCost: 0
+  manaCost: 40
   travelDistance: 50
   isProjectileNotStationary: 1
   possibleStationarySpawn:
@@ -30,8 +30,8 @@ MonoBehaviour:
   range: 20
   layerMask:
     serializedVersion: 2
-    m_Bits: 1680
+    m_Bits: 1665
   cone: 1
-  radius: 0.8
+  radius: 0.888
   effectObjectPoolName: Wind_Hit
   effectInstanceAmount: 1

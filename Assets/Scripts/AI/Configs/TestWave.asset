@@ -18,6 +18,6 @@ MonoBehaviour:
   nbrOfLightningSkeletons: 1000
   nbrOfEarthSkeletons: 1000
   nbrOfWindSkeletons: 1000
-  spawnDelay: 20
+  spawnDelay: 60
   initialSpawnDelay: 5
   spawnArea: 2

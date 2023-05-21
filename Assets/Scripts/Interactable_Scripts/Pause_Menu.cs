@@ -33,10 +33,6 @@ public class Pause_Menu : MonoBehaviour
 
     public void BackToMainMenu()
     {
-        Time.timeScale = 1;
-
-        Score_Keeper.SaveHighScores();
-
         SceneManager.LoadScene(startMenu);
     }
 

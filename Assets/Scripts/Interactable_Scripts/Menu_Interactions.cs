@@ -49,23 +49,6 @@ public class Menu_Interactions : MonoBehaviour
         Debug.Log("Quit!");
     }
 
-    public void DisplayHighScores(TextMeshProUGUI text)
-    {
-        Score_Keeper.LoadHighScores();
-
-        text.text = string.Empty;
-
-        for(int i = 0; i < Score_Keeper.ScoreList.HighScores.Length; i++)
-        {
-            text.text += Score_Keeper.ScoreList.HighScores[i] + "\r\n";
-        }
-    }
-
-    public void DeleteAllScores()
-    {
-        Score_Keeper.DeleteAllScores();
-    }
-
     private IEnumerator LoadLevelAsynchronously(string name)
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(name);
