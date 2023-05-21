@@ -18,9 +18,9 @@ public class FieldOfView : MonoBehaviour
     public LayerMask target;
     public LayerMask obstructions;
 
-    public bool canSeePlayer;
-
     public bool angledDown;
+
+    public bool canSeePlayer;
 
     private void Start()
     {
@@ -78,7 +78,6 @@ public class FieldOfView : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Handles.color = Color.white;
-
         if (!angledDown)
             Handles.DrawWireArc(transform.position, Vector3.up, Vector3.forward, 360, radius);
         else
@@ -103,9 +102,10 @@ public class FieldOfView : MonoBehaviour
     {
         angleInDegrees += eulerY;
 
-        if(!angledDown)
+        if (!angledDown)
             return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
         else
             return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), -Mathf.Cos(angleInDegrees * Mathf.Deg2Rad), 0);
+
     }
 }

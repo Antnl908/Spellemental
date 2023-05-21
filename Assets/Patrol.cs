@@ -1,4 +1,3 @@
-using Mono.Cecil;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,7 +19,7 @@ public class Patrol : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.transform.Translate(Vector3.forward *  5f/*enemy.Config.speed*/ * Time.deltaTime);
+        animator.transform.Translate(Vector3.forward * 5f/*enemy.Config.speed*/ * Time.deltaTime);
 
         timer += Time.deltaTime;
         if (timer > enemy.Config.chaseUpdateTime)
@@ -35,7 +34,7 @@ public class Patrol : StateMachineBehaviour
                 animator.SetTrigger("FindNewWaypoint");
             }
         }
-            
+
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

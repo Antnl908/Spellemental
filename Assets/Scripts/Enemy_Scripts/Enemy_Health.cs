@@ -12,10 +12,10 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
     HealthBar healthBar;
 
-    [SerializeField]
     private int health;
-    
-    private int maxHealth;
+
+    [SerializeField]
+    private int maxHealth = 100;
 
     [SerializeField]
     private Spell.SpellType weakness;
@@ -92,9 +92,6 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
     private ColorConfig colorConfig;
 
     [SerializeField]
-    private ParticleSystem particle;
-
-    [SerializeField]
     private int score = 100;
 
     [SerializeField]
@@ -111,9 +108,6 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
     NavMeshAgent navMeshAgent;
 
     [SerializeField]
-    private float normalMoveSpeed = 5f;
-
-    [SerializeField]
     private float slowedMoveSpeed = 1f;
 
     [SerializeField]
@@ -125,9 +119,22 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
     [SerializeField]
     private Transform visualEffectSpawnPos;
 
+    [SerializeField] 
+    private AIConfig config;
+
+    [SerializeField]
+    private GameObject speedDownIcon;
+
+    [SerializeField]
+    private bool usesNavMeshAgent = true;
+
     private bool isDead = false;
 
     private IObjectPool<Pooling_Object> pool;
+
+    private Spawner_With_Increasing_Difficulty spawner;
+
+    private bool killedOnceOrMore = false;
 
     public void KnockBack(float knockBack)
     {
@@ -180,8 +187,6 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
     void DestroySelf()
     {
-        Spawner.CurrentEnemyCount--;
-
         pool.Release(this);
     }
 
@@ -200,41 +205,42 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
     // Start is called before the first frame update
     void Start()
     {
-        maxHealth = health;
-        if (matInst == null) { matInst = GetComponent<MaterialInstance>(); }
-        if(matInst != null) 
-        { 
-            matInst.albedo = ResColor; 
-            matInst.color = ResColor * (colorConfig ? colorConfig.amount : 1f);
-            matInst.MeshRenderer = transform.GetComponentsInChildren<MeshRenderer>();
-            matInst.SkinMesh = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
-            matInst.NewMBP();
-        }
-        ragdoll = GetComponent<Ragdoll>();
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        //if (matInst == null) { matInst = GetComponent<MaterialInstance>(); }
+        //if(matInst != null) 
+        //{ 
+        //    matInst.albedo = ResColor; 
+        //    matInst.color = ResColor * (colorConfig ? colorConfig.amount : 1f);
+        //    matInst.MeshRenderer = transform.GetComponentsInChildren<MeshRenderer>();
+        //    matInst.SkinMesh = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
+        //    matInst.NewMBP();
+        //}
+
+        //ragdoll = GetComponent<Ragdoll>();
+        //navMeshAgent = GetComponent<NavMeshAgent>();
         healthBar = GetComponentInChildren<HealthBar>();
 
-        navMeshAgent.speed = normalMoveSpeed;
+        //navMeshAgent.speed = config.speed;
+
+        speedDownIcon.SetActive(false);
     }
 
     private void OnEnable()
     {
         isDead = false;
 
-        if(maxHealth > health)
-        {
-            health = maxHealth;
-        }
+        //if(maxHealth > health)
+        //{
+        //    health = maxHealth;
+        //}
 
-        if (healthBar != null) { healthBar.SetHealthAmount((float)health / maxHealth); }
+        //if (healthBar != null) { healthBar.SetHealthAmount((float)health / maxHealth); }       
 
+        //if (ragdoll != null)
+        //{
+        //    ragdoll.DeactiveteRagdoll();
+        //}
 
-        if (ragdoll != null)
-        {
-            navMeshAgent.enabled = true;
-
-            ragdoll.DeactiveteRagdoll();
-        }
+        //navMeshAgent.enabled = true;
 
         effectBuildUp = 0;
 
@@ -284,7 +290,10 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
             if(timeUntilSlowDownDisappears <= 0)
             {
-                navMeshAgent.speed = normalMoveSpeed;
+                if( usesNavMeshAgent)
+                    navMeshAgent.speed = config.speed;
+
+                speedDownIcon.SetActive(false);
 
                 isSlow = false;
             }
@@ -330,9 +339,12 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
     //Slows down enemy movement.
     public void SlowDownEffect()
     {
-        navMeshAgent.speed = slowedMoveSpeed;
+        if (usesNavMeshAgent)
+            navMeshAgent.speed = slowedMoveSpeed;
 
         timeUntilSlowDownDisappears = slowDownEffectDuration;
+
+        speedDownIcon.SetActive(true);
 
         isSlow = true;
 
@@ -345,6 +357,8 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         if(type == weakness)
         {
             damage *= weaknessMultiplier;
+
+            Score_Keeper.AddScore(damage);
         }
         else if(type == resistance)
         {
@@ -493,7 +507,7 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
         foreach (MeshRenderer r in renderers)
         {
-            if(r.GameObject().tag != "Ignore")
+            if(!r.GameObject().CompareTag("Ignore"))
                 r.material = material;
         }
 
@@ -535,19 +549,39 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         {
             isDead = true;
 
+            killedOnceOrMore = true;
+
             Score_Keeper.AddScore(score);
 
             PlayEffect(deathEffectPool);
 
             if (ragdoll != null)
             {
-                navMeshAgent.enabled = false;
+                if(spawner != null)
+                {
+                    spawner.MinusOneEnemy();
+                }
+                else
+                {
+                    Debug.LogWarning(gameObject.name + " had no spawner.");
+                }
+
+                if (usesNavMeshAgent)
+                    navMeshAgent.enabled = false;
+                speedDownIcon.SetActive(false);
                 ragdoll.ActiveteRagdoll();
                 Invoke(nameof(DestroySelf), 3f);
             }
             else
             {
-                Spawner.CurrentEnemyCount--;
+                if (spawner != null)
+                {
+                    spawner.MinusOneEnemy();
+                }
+                else
+                {
+                    Debug.LogWarning(gameObject.name + " had no spawner.");
+                }
 
                 pool.Release(this);
             }
@@ -579,6 +613,29 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
     public override void Initialize(Vector3 position, Quaternion rotation, Vector3 direction, IObjectPool<Pooling_Object> pool)
     {
+        if (!killedOnceOrMore)
+        {
+            if (matInst == null) { matInst = GetComponent<MaterialInstance>(); }
+            if (matInst != null)
+            {
+                matInst.albedo = ResColor;
+                matInst.color = ResColor * (colorConfig ? colorConfig.amount : 1f);
+                matInst.MeshRenderer = transform.GetComponentsInChildren<MeshRenderer>();
+                matInst.SkinMesh = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
+                matInst.NewMBP();
+            }
+        }
+
+        ragdoll = GetComponent<Ragdoll>();
+
+        if (usesNavMeshAgent)
+        {
+            navMeshAgent = GetComponent<NavMeshAgent>();
+
+
+            navMeshAgent.speed = config.speed;
+        }      
+
         transform.SetPositionAndRotation(position, rotation);
 
         this.pool = pool;
@@ -595,5 +652,33 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
             matInst.albedo = ResColor;
             matInst.color = ResColor * (colorConfig ? colorConfig.amount : 1f);
         }
+    }
+
+    public void SetSizeAndSpawner(bool isLarge, int sizeMultiplier, int extraHealth, Spawner_With_Increasing_Difficulty spawner)
+    {
+        this.spawner = spawner;
+
+        if (ragdoll != null && killedOnceOrMore)
+        {
+            ragdoll.DeactiveteRagdoll();
+        }
+
+        if (usesNavMeshAgent)
+            navMeshAgent.enabled = true;
+
+        if (isLarge)
+        {
+            health = maxHealth * sizeMultiplier + extraHealth;
+
+            transform.localScale = new Vector3(sizeMultiplier, sizeMultiplier, sizeMultiplier);
+        }
+        else
+        {
+            health = maxHealth + extraHealth;
+
+            transform.localScale = Vector3.one;
+        }
+
+        if (healthBar != null) { healthBar.SetHealthAmount((float)health / maxHealth); }
     }
 }
