@@ -4310,8 +4310,8 @@ MonoBehaviour:
   colorConfig: {fileID: 11400000, guid: 4a37f45f486ed464b9c89752781ce43b, type: 2}
   score: 100
   damage: 1
-  attackPoint: {fileID: 7666328769070435000}
-  attackRadius: 1.3
+  attackPoint: {fileID: 7666328769211274110}
+  attackRadius: 0.3
   ragdoll: {fileID: 0}
   slowedMoveSpeed: 1.5
   hitEffectPool: Blood_Splatter
@@ -4320,6 +4320,7 @@ MonoBehaviour:
   config: {fileID: 11400000, guid: 2e45cea69e01faf40ab0252ebc2dd015, type: 2}
   speedDownIcon: {fileID: 1168977119791811276}
   usesNavMeshAgent: 1
+  isDead: 0
 --- !u!195 &7222420314790321881
 NavMeshAgent:
   m_ObjectHideFlags: 0

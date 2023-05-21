@@ -1936,6 +1936,7 @@ MonoBehaviour:
   config: {fileID: 11400000, guid: 2e45cea69e01faf40ab0252ebc2dd015, type: 2}
   speedDownIcon: {fileID: 8494815865956840268}
   usesNavMeshAgent: 0
+  isDead: 0
 --- !u!114 &8185309119563579476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1985,3 +1986,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints: {fileID: 4505899731751797833, guid: 21a688d9c2c524746b328427ada6e812, type: 3}
+  speed: 5
+  turnSpeed: 2

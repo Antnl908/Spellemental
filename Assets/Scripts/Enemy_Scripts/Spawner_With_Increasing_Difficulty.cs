@@ -33,7 +33,7 @@ public class Spawner_With_Increasing_Difficulty : MonoBehaviour
     private int largeEnemyChance = 5;
 
     [SerializeField]
-    private int largeEnemySizeMultiplier = 3;
+    private float largeEnemySizeMultiplier = 1.1f;
 
     [SerializeField]
     private int extraHealthPerWave = 10;

@@ -128,7 +128,7 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
     [SerializeField]
     private bool usesNavMeshAgent = true;
 
-    private bool isDead = false;
+    public bool isDead = false;
 
     private IObjectPool<Pooling_Object> pool;
 
@@ -654,7 +654,7 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         }
     }
 
-    public void SetSizeAndSpawner(bool isLarge, int sizeMultiplier, int extraHealth, Spawner_With_Increasing_Difficulty spawner)
+    public void SetSizeAndSpawner(bool isLarge, float sizeMultiplier, int extraHealth, Spawner_With_Increasing_Difficulty spawner)
     {
         this.spawner = spawner;
 
@@ -668,7 +668,7 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
         if (isLarge)
         {
-            health = maxHealth * sizeMultiplier + extraHealth;
+            health = maxHealth * 2 + extraHealth;
 
             transform.localScale = new Vector3(sizeMultiplier, sizeMultiplier, sizeMultiplier);
         }

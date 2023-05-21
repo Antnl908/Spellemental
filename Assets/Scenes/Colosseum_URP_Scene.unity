@@ -4878,7 +4878,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &322063876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8555,7 +8555,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &504448730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8740,7 +8740,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &533877071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12191,7 +12191,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &861690607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15228,7 +15228,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1067019305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19101,7 +19101,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1309205361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21889,7 +21889,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1479208791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24897,6 +24897,8 @@ MonoBehaviour:
   visualEffectSpawnPos: {fileID: 0}
   config: {fileID: 0}
   speedDownIcon: {fileID: 0}
+  usesNavMeshAgent: 1
+  isDead: 0
 --- !u!135 &1666992095
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -26313,7 +26315,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1788714895
 MonoBehaviour:
   m_ObjectHideFlags: 0
