@@ -1733,7 +1733,7 @@ GameObject:
   - component: {fileID: 8185309119563579476}
   - component: {fileID: 8185309119563579477}
   - component: {fileID: 8185309119563579472}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
