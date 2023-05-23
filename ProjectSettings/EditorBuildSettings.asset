@@ -7,6 +7,9 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Start_Scene.unity
+    guid: aaf4dd295350f8e4a9c65d1bd82b6095
+  - enabled: 1
+    path: Assets/Scenes/Old_Start_Scene.unity
     guid: cbb0d537e4f78f64b870e3883baa8ae6
   - enabled: 1
     path: Assets/Scenes/Colosseum_URP_Scene.unity

@@ -35,6 +35,9 @@ public class Player_Heart : MonoBehaviour
     [SerializeField]
     private Shield_FadeIn_FadeOut shield;
 
+    [SerializeField]
+    private int scale;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +53,7 @@ public class Player_Heart : MonoBehaviour
     {
         currentScale += scaleChangeRate * Time.deltaTime;
 
-        transform.localScale = Vector3.one * Mathf.Clamp(Mathf.Sin(currentScale), 0.8f, 1.2f);
+        transform.localScale = Mathf.Clamp(Mathf.Sin(currentScale), 0.8f, 1.2f) * scale * Vector3.one;
     }
 
     public void SetHealth(float currentHealth, float maxHealth)
