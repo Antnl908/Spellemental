@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SpellBook : MonoBehaviour
 {
+    [SerializeField] private Color textColor;
     [SerializeField] private List<SpellPage> pages;
+    [SerializeField] private TextMeshProUGUI tmpPage;
     private SpellPage currentPage;
     private int currentIndex;
 
@@ -31,10 +34,12 @@ public class SpellBook : MonoBehaviour
         for(int i = 0; i < pages.Count; i++)
         {
             if(i == index) 
-            { 
-                pages[i].OpenPage(); 
+            {
+                pages[i].OpenPage(textColor); 
                 currentIndex = i; 
                 currentPage = pages[i];
+                Debug.Log("Opening page");
+
             }
             else 
             { 
@@ -43,6 +48,8 @@ public class SpellBook : MonoBehaviour
         }
 
         Debug.Log($"Page: {index + 1} at index: {currentIndex}.");
+        tmpPage.color = textColor;
+        tmpPage.text = $"{index + 1}/{pages.Count}";
     }
 
     public void NextPage()
