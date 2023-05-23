@@ -150,7 +150,7 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    bool PointCheck(Vector3 center, float radius, out Vector3 spawnPoint)
+    public static bool PointCheck(Vector3 center, float radius, out Vector3 spawnPoint)
     {
         for(int i = 0; i < 30; i++)
         {

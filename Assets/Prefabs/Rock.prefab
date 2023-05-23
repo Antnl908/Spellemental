@@ -212,6 +212,11 @@ MonoBehaviour:
   effectInstanceAmount: 3
   visualEffectPoolName: Rock_Burst
   vfxSpawnPos: {fileID: 2925373408081456816}
+  effectDelay: 0.1
+  range: 0.8
+  useOverlapSphere: 1
+  checkTime: 0.01
+  spherePosition: {fileID: 2925373408081456816}
 --- !u!1001 &1090211589850159114
 PrefabInstance:
   m_ObjectHideFlags: 0

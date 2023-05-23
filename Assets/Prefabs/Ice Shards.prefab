@@ -494,8 +494,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 729688108371365768}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.03264061, y: -0.043596122, z: -0.0014251202, w: 0.9985149}
+  m_LocalPosition: {x: -1.5, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -505,7 +505,7 @@ Transform:
   - {fileID: 4387473705911987521}
   m_Father: {fileID: 2544306896045493116}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 3.73, y: -5.011, z: -0.327}
 --- !u!33 &6633332535904794246
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -566,7 +566,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 2
+  m_Radius: 3
   m_Height: 4
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 1.5}
@@ -584,7 +584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   point0: {fileID: 1404637565457003030}
   point1: {fileID: 1433174597932434647}
-  damageRadius: 0.25
+  damageRadius: 0.85
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1664
@@ -602,6 +602,11 @@ MonoBehaviour:
   effectInstanceAmount: 3
   visualEffectPoolName: Ice_Burst
   vfxSpawnPos: {fileID: 3765345459092856621}
+  effectDelay: 0.05
+  range: 0.8
+  useOverlapSphere: 0
+  checkTime: 0
+  spherePosition: {fileID: 1433174597932434647}
 --- !u!54 &5804288166278722122
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -691,8 +696,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072707173725464551}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 1.75, z: 0}
+  m_LocalRotation: {x: 0.032547377, y: 0.087109275, z: 0.0028475283, w: 0.99566287}
+  m_LocalPosition: {x: 3, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -702,7 +707,7 @@ Transform:
   - {fileID: 4044278768144352558}
   m_Father: {fileID: 2544306896045493116}
   m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 3.688, y: 10.021, z: 0.651}
 --- !u!33 &6398786870372949737
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -763,7 +768,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 2
+  m_Radius: 3
   m_Height: 4
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 1.5}
@@ -781,7 +786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   point0: {fileID: 1710554658732104313}
   point1: {fileID: 1666598761583242424}
-  damageRadius: 0.25
+  damageRadius: 0.85
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1664
@@ -799,6 +804,11 @@ MonoBehaviour:
   effectInstanceAmount: 3
   visualEffectPoolName: Ice_Burst
   vfxSpawnPos: {fileID: 3495474684122249026}
+  effectDelay: 0.05
+  range: 0.8
+  useOverlapSphere: 0
+  checkTime: 0
+  spherePosition: {fileID: 1666598761583242424}
 --- !u!54 &6075254054801234469
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -857,8 +867,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1074075763390530767}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3, z: 0}
+  m_LocalRotation: {x: 0.03264061, y: 0.043596122, z: 0.0014251202, w: 0.9985149}
+  m_LocalPosition: {x: 1.5, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -868,7 +878,7 @@ Transform:
   - {fileID: 4045584135957423622}
   m_Father: {fileID: 2544306896045493116}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 3.73, y: 5.011, z: 0.327}
 --- !u!33 &6397901530029620673
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -929,7 +939,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 2
+  m_Radius: 3
   m_Height: 4
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 1.5}
@@ -947,7 +957,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   point0: {fileID: 1709673703547697489}
   point1: {fileID: 1667481902838370192}
-  damageRadius: 0.25
+  damageRadius: 0.85
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1664
@@ -965,6 +975,11 @@ MonoBehaviour:
   effectInstanceAmount: 3
   visualEffectPoolName: Ice_Burst
   vfxSpawnPos: {fileID: 3496637185181783146}
+  effectDelay: 0.05
+  range: 0.8
+  useOverlapSphere: 0
+  checkTime: 0
+  spherePosition: {fileID: 1667481902838370192}
 --- !u!54 &6074023379826473229
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1240,8 +1255,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243170118243472108}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: -2, z: 0}
+  m_LocalRotation: {x: 0.03155844, y: 0.25868103, z: 0.0084560625, w: 0.9654101}
+  m_LocalPosition: {x: 6, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1251,7 +1266,7 @@ Transform:
   - {fileID: 2847277460519989285}
   m_Father: {fileID: 2544306896045493116}
   m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 3.242, y: 30.053, z: 1.874}
 --- !u!33 &5147239573136370658
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1312,7 +1327,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 2
+  m_Radius: 3
   m_Height: 4
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 1.5}
@@ -1330,7 +1345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   point0: {fileID: 585109207070470002}
   point1: {fileID: 613430049045305779}
-  damageRadius: 0.25
+  damageRadius: 0.85
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1664
@@ -1348,6 +1363,11 @@ MonoBehaviour:
   effectInstanceAmount: 3
   visualEffectPoolName: Ice_Burst
   vfxSpawnPos: {fileID: 3396222556944532041}
+  effectDelay: 0.05
+  range: 0.8
+  useOverlapSphere: 0
+  checkTime: 0
+  spherePosition: {fileID: 613430049045305779}
 --- !u!54 &5470754796456570670
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1406,7 +1426,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2391117119328757821}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.032671705, y: -0, z: -0, w: 0.9994662}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.1, z: 0.5}
   m_ConstrainProportionsScale: 0
@@ -1417,7 +1437,7 @@ Transform:
   - {fileID: 1724275270078122740}
   m_Father: {fileID: 2544306896045493116}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 3.745, y: 0, z: 0}
 --- !u!33 &8575135053386486067
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1478,7 +1498,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 2
+  m_Radius: 3
   m_Height: 4
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 1.5}
@@ -1496,7 +1516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   point0: {fileID: 4067011333227582883}
   point1: {fileID: 4101938796023456610}
-  damageRadius: 0.25
+  damageRadius: 0.85
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1664
@@ -1514,6 +1534,11 @@ MonoBehaviour:
   effectInstanceAmount: 3
   visualEffectPoolName: Ice_Burst
   vfxSpawnPos: {fileID: 2256191885098055832}
+  effectDelay: 0.05
+  range: 0.8
+  useOverlapSphere: 0
+  checkTime: 0
+  spherePosition: {fileID: 4101938796023456610}
 --- !u!54 &8899766504903710207
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1603,8 +1628,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2798484430254597089}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: -2, z: 0}
+  m_LocalRotation: {x: 0.032547377, y: -0.087109275, z: -0.0028475283, w: 0.99566287}
+  m_LocalPosition: {x: -3, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1614,7 +1639,7 @@ Transform:
   - {fileID: 1158860663242883368}
   m_Father: {fileID: 2544306896045493116}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 3.688, y: -10.021, z: -0.651}
 --- !u!33 &8140323942966581999
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1675,7 +1700,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 2
+  m_Radius: 3
   m_Height: 4
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 1.5}
@@ -1693,7 +1718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   point0: {fileID: 4577961628695256703}
   point1: {fileID: 4545751608073676990}
-  damageRadius: 0.25
+  damageRadius: 0.85
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1664
@@ -1711,6 +1736,11 @@ MonoBehaviour:
   effectInstanceAmount: 3
   visualEffectPoolName: Ice_Burst
   vfxSpawnPos: {fileID: 1780988977744458564}
+  effectDelay: 0.05
+  range: 0.8
+  useOverlapSphere: 0
+  checkTime: 0
+  spherePosition: {fileID: 4545751608073676990}
 --- !u!54 &8969640905574178339
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1769,8 +1799,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2920312030916317935}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: 0}
+  m_LocalRotation: {x: 0.032175347, y: -0.17355555, z: -0.0056733843, w: 0.984282}
+  m_LocalPosition: {x: -4.5, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1780,7 +1810,7 @@ Transform:
   - {fileID: 2180911210191155238}
   m_Father: {fileID: 2544306896045493116}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 3.518, y: -20.039, z: -1.282}
 --- !u!33 &9126830439573040097
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1841,7 +1871,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 2
+  m_Radius: 3
   m_Height: 4
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 1.5}
@@ -1859,7 +1889,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   point0: {fileID: 3591921188729237361}
   point1: {fileID: 3550243409857616304}
-  damageRadius: 0.25
+  damageRadius: 0.85
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1664
@@ -1877,6 +1907,11 @@ MonoBehaviour:
   effectInstanceAmount: 3
   visualEffectPoolName: Ice_Burst
   vfxSpawnPos: {fileID: 1650119120617751114}
+  effectDelay: 0.05
+  range: 0.8
+  useOverlapSphere: 0
+  checkTime: 0
+  spherePosition: {fileID: 3550243409857616304}
 --- !u!54 &8226860955705257773
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3031,8 +3066,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4777617772442026412}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 0, z: 0}
+  m_LocalRotation: {x: 0.032175347, y: 0.17355546, z: 0.0056733815, w: 0.984282}
+  m_LocalPosition: {x: 4.5, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3042,7 +3077,7 @@ Transform:
   - {fileID: 8398841034746717029}
   m_Father: {fileID: 2544306896045493116}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 3.518, y: 20.039, z: 1.282}
 --- !u!33 &1469169296770349218
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3103,7 +3138,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 2
+  m_Radius: 3
   m_Height: 4
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 1.5}
@@ -3121,7 +3156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   point0: {fileID: 6562759603224230962}
   point1: {fileID: 6597340036024044275}
-  damageRadius: 0.25
+  damageRadius: 0.85
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1664
@@ -3139,6 +3174,11 @@ MonoBehaviour:
   effectInstanceAmount: 3
   visualEffectPoolName: Ice_Burst
   vfxSpawnPos: {fileID: 8947786887151571209}
+  effectDelay: 0.05
+  range: 0.8
+  useOverlapSphere: 0
+  checkTime: 0
+  spherePosition: {fileID: 6597340036024044275}
 --- !u!54 &1792753912332598382
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3259,8 +3299,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5476915619893281654}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 2, z: 0}
+  m_LocalRotation: {x: 0.031558443, y: -0.25868094, z: -0.008456059, w: 0.9654102}
+  m_LocalPosition: {x: -6, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3270,7 +3310,7 @@ Transform:
   - {fileID: 8845851266346803647}
   m_Father: {fileID: 2544306896045493116}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 3.242, y: -30.053, z: -1.874}
 --- !u!33 &1886975263140428408
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3331,7 +3371,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 2
+  m_Radius: 3
   m_Height: 4
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 1.5}
@@ -3349,7 +3389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   point0: {fileID: 6151900213980282600}
   point1: {fileID: 6179535169216186409}
-  damageRadius: 0.25
+  damageRadius: 0.85
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1664
@@ -3367,6 +3407,11 @@ MonoBehaviour:
   effectInstanceAmount: 3
   visualEffectPoolName: Ice_Burst
   vfxSpawnPos: {fileID: 8241736250996184019}
+  effectDelay: 0.05
+  range: 0.8
+  useOverlapSphere: 0
+  checkTime: 0
+  spherePosition: {fileID: 6179535169216186409}
 --- !u!54 &1634049785226968756
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4611,6 +4656,11 @@ MonoBehaviour:
   effectInstanceAmount: 3
   visualEffectPoolName: Error
   vfxSpawnPos: {fileID: 0}
+  effectDelay: 0.1
+  range: 0
+  useOverlapSphere: 0
+  checkTime: 0.25
+  spherePosition: {fileID: 0}
 --- !u!114 &6728411876307614600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4636,14 +4686,14 @@ MonoBehaviour:
   - {fileID: 6920561736844989451}
   localPositions:
   - {x: 0, y: 0, z: 0}
+  - {x: -4.5, y: 0, z: 0}
+  - {x: 4.5, y: 0, z: 0}
+  - {x: -1.5, y: 0, z: 0}
+  - {x: 1.5, y: 0, z: 0}
   - {x: -3, y: 0, z: 0}
+  - {x: -6, y: 0, z: 0}
   - {x: 3, y: 0, z: 0}
-  - {x: 0, y: 3, z: 0}
-  - {x: 0, y: -3, z: 0}
-  - {x: 2, y: -2, z: 0}
-  - {x: -2, y: 2, z: 0}
-  - {x: 2, y: 2, z: 0}
-  - {x: 2, y: -2, z: 0}
+  - {x: 6, y: 0, z: 0}
   force: 30
 --- !u!54 &3762162440971989374
 Rigidbody:

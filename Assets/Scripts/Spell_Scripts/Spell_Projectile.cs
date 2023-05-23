@@ -95,7 +95,9 @@ public class Spell_Projectile : Pooling_Object
 #nullable disable
 
     private float effectTimer;
-    private const float effectDelay = 0.1f;
+
+    [SerializeField]
+    private float effectDelay = 0.1f;
 
     #region OverlapSphere
     [Header("OverlapSphere")]
@@ -175,7 +177,6 @@ public class Spell_Projectile : Pooling_Object
 
     private void CheckHits()
     {
-        //modifiera detta senare
         if (effectObjectPoolName != "Error" || !destroyOnHit)
         {
             effectTimer -= Time.deltaTime;

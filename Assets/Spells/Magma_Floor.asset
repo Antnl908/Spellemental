@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Magma_Floor
   m_EditorClassIdentifier: 
   type: 2
-  damage: 5
-  effectDamage: 10
-  effectBuildUp: 15
+  damage: 30
+  effectDamage: 5
+  effectBuildUp: 100
   destructionTime: 15
   timeBetweenCasts: 1
-  manaCost: 300
+  manaCost: 600
   travelDistance: 100
   isProjectileNotStationary: 0
   possibleStationarySpawn:

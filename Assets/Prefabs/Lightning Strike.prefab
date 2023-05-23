@@ -335,12 +335,15 @@ MonoBehaviour:
   heightOffset: 30
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 1664
+    m_Bits: 1680
   destroyOnHit: 1
   usesRotation: 0
   hitBoxOffset: {x: 0, y: 0, z: 0}
   visualEffectPoolName: Lightning_Burst
   vfxSpawnPos: {fileID: 834332874608166178}
+  range: 0
+  useOverlapSphere: 0
+  checkTime: 0.25
 --- !u!65 &6264658207711525185
 BoxCollider:
   m_ObjectHideFlags: 0

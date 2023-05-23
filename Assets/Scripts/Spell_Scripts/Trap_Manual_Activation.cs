@@ -26,4 +26,17 @@ public class Trap_Manual_Activation : MonoBehaviour, IDamageable
 
         return false;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(isActiveAndEnabled)
+        {
+            if (other.gameObject.TryGetComponent<Player_Move>(out var player))
+            {
+                player.Bounce();
+
+                TryToDestroyDamageable(1, spellActivatingThisTrap);
+            }
+        }        
+    }
 }

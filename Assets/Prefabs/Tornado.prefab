@@ -544,10 +544,15 @@ MonoBehaviour:
   heightOffset: 2.5
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 1664
+    m_Bits: 1680
   destroyOnHit: 0
   usesRotation: 1
   hitBoxOffset: {x: 0, y: 1, z: 0}
+  visualEffectPoolName: Error
+  vfxSpawnPos: {fileID: 0}
+  range: 0
+  useOverlapSphere: 0
+  checkTime: 0.25
 --- !u!114 &730613094173501388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -586,6 +591,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   stationary: {fileID: 7649432715610366927}
+  fireDamageThreshold: 4
+  iceDamageThreshold: 4
+  lightningDamageThreshold: 3
 --- !u!114 &5562348180853608300
 MonoBehaviour:
   m_ObjectHideFlags: 0

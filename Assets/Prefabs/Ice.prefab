@@ -398,10 +398,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   point0: {fileID: 7905071709009484334}
   point1: {fileID: 7865987610414132463}
-  damageRadius: 0.5
+  damageRadius: 0.45
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 1664
+    m_Bits: 1680
   terrainLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -416,6 +416,11 @@ MonoBehaviour:
   effectInstanceAmount: 3
   visualEffectPoolName: Ice_Burst
   vfxSpawnPos: {fileID: 7865987610414132463}
+  effectDelay: 0.1
+  range: 2
+  useOverlapSphere: 1
+  checkTime: 0.01
+  spherePosition: {fileID: 7865987610414132463}
 --- !u!54 &3334576805258467954
 Rigidbody:
   m_ObjectHideFlags: 0

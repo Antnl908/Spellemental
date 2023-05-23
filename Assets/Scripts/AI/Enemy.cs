@@ -22,7 +22,6 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         NavAgent.speed = Config.speed;
-
         /*
         meshes = gameObject.GetComponentsInChildren(typeof(SkinnedMeshRenderer));
         foreach (SkinnedMeshRenderer component in meshes)
@@ -57,6 +56,4 @@ public class Enemy : MonoBehaviour
     {
         get { return config; }
     }
-
-    
 }

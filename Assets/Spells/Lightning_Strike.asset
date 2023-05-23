@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lightning_Strike
   m_EditorClassIdentifier: 
   type: 4
-  damage: 300
+  damage: 200
   effectDamage: 30
   effectBuildUp: 50
   destructionTime: 3
