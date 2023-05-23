@@ -116,10 +116,10 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _Ball_Pos: {r: 38.332363, g: -0.50128603, b: 36.025787, a: 0}
+    - _Ball_Pos: {r: 1.545, g: 1.2750847, b: 36.236, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Edge_Color: {r: 0.43137255, g: 0.20738441, b: 0, a: 1}
+    - _Edge_Color: {r: 1, g: 0, b: 0.13335371, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

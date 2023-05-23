@@ -423,6 +423,7 @@ GameObject:
   - component: {fileID: 730613094173501388}
   - component: {fileID: 6066389659394360613}
   - component: {fileID: 5562348180853608300}
+  - component: {fileID: 1726309038666724097}
   m_Layer: 10
   m_Name: Tornado
   m_TagString: Untagged
@@ -538,6 +539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyedAfterSomeTime: 1
+  destructionTime: 1
   height: 18
   width: 10
   depth: 10
@@ -550,6 +552,7 @@ MonoBehaviour:
   hitBoxOffset: {x: 0, y: 1, z: 0}
   visualEffectPoolName: Error
   vfxSpawnPos: {fileID: 0}
+  bouncesPlayer: 0
   range: 0
   useOverlapSphere: 0
   checkTime: 0.25
@@ -607,3 +610,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualEffect: {fileID: 8041248596860660336}
+--- !u!114 &1726309038666724097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6282637180282961824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca99f6a30394b74a9509e7e27e26990, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 5
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 128
+  delay: 1
+  force: 50

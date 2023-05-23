@@ -141,6 +141,9 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         //throw new System.NotImplementedException();
     }
 
+    float ragdollTimer;
+    float ragdollDelay = 7f;
+
     //Deals damage to object. Regular damage and effect damage is handled seperately. Destroys object if health reaches 0.
     public bool TryToDestroyDamageable(int damage, Spell.SpellType? spellType)
     {
@@ -216,7 +219,7 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         //}
 
         //ragdoll = GetComponent<Ragdoll>();
-        //navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
         healthBar = GetComponentInChildren<HealthBar>();
 
         //navMeshAgent.speed = config.speed;
@@ -227,6 +230,8 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
     private void OnEnable()
     {
         isDead = false;
+
+        ragdollTimer = ragdollDelay;
 
         //if(maxHealth > health)
         //{
@@ -297,6 +302,19 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
                 isSlow = false;
             }
+        }
+
+        if(ragdoll.IsActivated && !isDead)
+        {
+            ragdollTimer -= Time.deltaTime;
+            navMeshAgent.enabled = false;
+            if(ragdollTimer < 0)
+            {
+                ragdoll.DeactivateRagdoll();
+                ragdollTimer = ragdollDelay;
+                navMeshAgent.enabled = true;
+            }
+            
         }
     }
 
@@ -569,7 +587,7 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
                 if (usesNavMeshAgent)
                     navMeshAgent.enabled = false;
                 speedDownIcon.SetActive(false);
-                ragdoll.ActiveteRagdoll();
+                ragdoll.ActivateRagdoll();
                 Invoke(nameof(DestroySelf), 3f);
             }
             else
@@ -630,7 +648,7 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
         if (ragdoll != null && killedOnceOrMore)
         {
-            ragdoll.DeactiveteRagdoll();
+            ragdoll.DeactivateRagdoll();
         }
 
         if (usesNavMeshAgent)
