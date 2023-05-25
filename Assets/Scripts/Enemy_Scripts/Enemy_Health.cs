@@ -310,6 +310,11 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
             navMeshAgent.enabled = false;
             if(ragdollTimer < 0)
             {
+                if(!ragdoll.AdjustPosition())
+                {
+                    Death();
+                    return;
+                }
                 ragdoll.DeactivateRagdoll();
                 ragdollTimer = ragdollDelay;
                 navMeshAgent.enabled = true;
