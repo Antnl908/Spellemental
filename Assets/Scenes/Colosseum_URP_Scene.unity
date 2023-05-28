@@ -4891,14 +4891,15 @@ MonoBehaviour:
   icePerWave: 0
   lightningPerWave: 0
   earthPerWave: 0
-  windPerWave: 20
+  windPerWave: 5
   spawnDelay: 3
   largeEnemyChance: 5
   largeEnemySizeMultiplier: 1.5
-  extraHealthPerWave: 30
+  extraHealthPerWave: 0
+  extraEnemiesPerWave: 5
   spawnRadius: 3
-  enemyCountBeforeNextWave: 5
   usesNavMesh: 1
+  countsTowardEnemyCount: 1
 --- !u!4 &322063877
 Transform:
   m_ObjectHideFlags: 0
@@ -8565,17 +8566,18 @@ MonoBehaviour:
   - Skeleton_Pool
   normalPerWave: 0
   firePerWave: 0
-  icePerWave: 20
+  icePerWave: 5
   lightningPerWave: 0
   earthPerWave: 0
   windPerWave: 0
   spawnDelay: 3
   largeEnemyChance: 5
   largeEnemySizeMultiplier: 1.5
-  extraHealthPerWave: 30
+  extraHealthPerWave: 0
+  extraEnemiesPerWave: 5
   spawnRadius: 3
-  enemyCountBeforeNextWave: 5
   usesNavMesh: 1
+  countsTowardEnemyCount: 1
 --- !u!4 &504448731
 Transform:
   m_ObjectHideFlags: 0
@@ -8749,7 +8751,7 @@ MonoBehaviour:
   enemyPoolNames:
   - Skeleton_Pool
   normalPerWave: 0
-  firePerWave: 20
+  firePerWave: 5
   icePerWave: 0
   lightningPerWave: 0
   earthPerWave: 0
@@ -8757,10 +8759,11 @@ MonoBehaviour:
   spawnDelay: 3
   largeEnemyChance: 5
   largeEnemySizeMultiplier: 1.5
-  extraHealthPerWave: 30
+  extraHealthPerWave: 0
+  extraEnemiesPerWave: 5
   spawnRadius: 3
-  enemyCountBeforeNextWave: 5
   usesNavMesh: 1
+  countsTowardEnemyCount: 1
 --- !u!4 &533877072
 Transform:
   m_ObjectHideFlags: 0
@@ -12203,15 +12206,16 @@ MonoBehaviour:
   firePerWave: 0
   icePerWave: 0
   lightningPerWave: 0
-  earthPerWave: 20
+  earthPerWave: 5
   windPerWave: 0
   spawnDelay: 3
   largeEnemyChance: 5
   largeEnemySizeMultiplier: 1.5
-  extraHealthPerWave: 30
+  extraHealthPerWave: 0
+  extraEnemiesPerWave: 5
   spawnRadius: 3
-  enemyCountBeforeNextWave: 5
   usesNavMesh: 1
+  countsTowardEnemyCount: 1
 --- !u!4 &861690608
 Transform:
   m_ObjectHideFlags: 0
@@ -15245,10 +15249,11 @@ MonoBehaviour:
   spawnDelay: 3
   largeEnemyChance: 5
   largeEnemySizeMultiplier: 1.5
-  extraHealthPerWave: 30
+  extraHealthPerWave: 0
+  extraEnemiesPerWave: 5
   spawnRadius: 3
-  enemyCountBeforeNextWave: 5
   usesNavMesh: 1
+  countsTowardEnemyCount: 1
 --- !u!4 &1067019306
 Transform:
   m_ObjectHideFlags: 0
@@ -19109,7 +19114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPoolNames:
   - Skeleton_Pool
-  normalPerWave: 20
+  normalPerWave: 5
   firePerWave: 0
   icePerWave: 0
   lightningPerWave: 0
@@ -19118,10 +19123,11 @@ MonoBehaviour:
   spawnDelay: 3
   largeEnemyChance: 5
   largeEnemySizeMultiplier: 1.5
-  extraHealthPerWave: 30
+  extraHealthPerWave: 0
+  extraEnemiesPerWave: 5
   spawnRadius: 3
-  enemyCountBeforeNextWave: 5
   usesNavMesh: 1
+  countsTowardEnemyCount: 1
 --- !u!4 &1309205362
 Transform:
   m_ObjectHideFlags: 0
@@ -21897,7 +21903,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPoolNames:
   - Skeleton_Archer_Pool
-  normalPerWave: 10
+  normalPerWave: 5
   firePerWave: 0
   icePerWave: 0
   lightningPerWave: 0
@@ -21906,10 +21912,11 @@ MonoBehaviour:
   spawnDelay: 3
   largeEnemyChance: 5
   largeEnemySizeMultiplier: 1.5
-  extraHealthPerWave: 30
+  extraHealthPerWave: 0
+  extraEnemiesPerWave: 5
   spawnRadius: 3
-  enemyCountBeforeNextWave: 5
   usesNavMesh: 1
+  countsTowardEnemyCount: 1
 --- !u!4 &1479208792
 Transform:
   m_ObjectHideFlags: 0
@@ -26337,16 +26344,17 @@ MonoBehaviour:
   normalPerWave: 0
   firePerWave: 0
   icePerWave: 0
-  lightningPerWave: 20
+  lightningPerWave: 5
   earthPerWave: 0
   windPerWave: 0
   spawnDelay: 3
   largeEnemyChance: 5
   largeEnemySizeMultiplier: 1.5
-  extraHealthPerWave: 30
+  extraHealthPerWave: 0
+  extraEnemiesPerWave: 5
   spawnRadius: 3
-  enemyCountBeforeNextWave: 5
   usesNavMesh: 1
+  countsTowardEnemyCount: 1
 --- !u!4 &1788714896
 Transform:
   m_ObjectHideFlags: 0
@@ -28189,7 +28197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPoolNames:
   - Bat_Pool
-  normalPerWave: 10
+  normalPerWave: 5
   firePerWave: 0
   icePerWave: 0
   lightningPerWave: 0
@@ -28198,10 +28206,11 @@ MonoBehaviour:
   spawnDelay: 3
   largeEnemyChance: 5
   largeEnemySizeMultiplier: 1.5
-  extraHealthPerWave: 30
+  extraHealthPerWave: 0
+  extraEnemiesPerWave: 5
   spawnRadius: 3
-  enemyCountBeforeNextWave: 5
   usesNavMesh: 0
+  countsTowardEnemyCount: 0
 --- !u!4 &1955864668
 Transform:
   m_ObjectHideFlags: 0

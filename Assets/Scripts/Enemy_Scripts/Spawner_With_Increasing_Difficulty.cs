@@ -39,26 +39,70 @@ public class Spawner_With_Increasing_Difficulty : MonoBehaviour
     private int extraHealthPerWave = 10;
 
     [SerializeField]
-    private float spawnRadius = 2f;
+    private int extraEnemiesPerWave = 10;
+
+    private static int currentEnemyHorde = 0;
+
+    private static int totalSpawners = 0;
+
+    private const int maximumExtraEnemies = 30;
+
+    private const int enemyHordeCountBeforeDifficultyIncrease = 2;
 
     [SerializeField]
-    private int enemyCountBeforeNextWave = 10;
+    private float spawnRadius = 2f;
 
     [SerializeField]
     private bool usesNavMesh = true;
 
-    private int currentWave = 0;
+    [SerializeField]
+    private bool countsTowardEnemyCount = true;
 
-    private int currentEnemyCount = 0;
+    private static int currentWave = 0;
+
+    public static int CurrentWave { get => currentWave; }
+
+    private static int currentEnemyCount = 0;
 
     private bool hasBegunWave = false;
 
     private bool hasFinishedWave = false;
 
+    private static readonly object lockObject = new object();
+
+    private void Awake()
+    {
+        currentWave = 0;
+
+        currentEnemyHorde = 0;
+
+        totalSpawners = 0;
+
+        currentEnemyCount = 0;
+    }
+
+    private void Start()
+    {
+        if(countsTowardEnemyCount)
+        {
+            totalSpawners++;
+        }       
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(!hasBegunWave)
+        if ((currentEnemyHorde + 1) >= enemyHordeCountBeforeDifficultyIncrease * totalSpawners)
+        {
+            if(currentEnemyCount <= 0)
+            {
+                currentWave = Mathf.Clamp(currentWave + 1, 0, int.MaxValue);
+
+                currentEnemyHorde = 0;
+            }            
+        }
+
+        if (!hasBegunWave)
         {
             hasBegunWave = true;
 
@@ -68,7 +112,7 @@ public class Spawner_With_Increasing_Difficulty : MonoBehaviour
         }
         else
         {
-            if(hasFinishedWave && currentEnemyCount <= enemyCountBeforeNextWave)
+            if (hasFinishedWave && currentEnemyCount <= 0)
             {
                 hasBegunWave = false;
             }
@@ -77,44 +121,51 @@ public class Spawner_With_Increasing_Difficulty : MonoBehaviour
 
     private IEnumerator SpawnWave()
     {
-        foreach(string name in enemyPoolNames)
+        int currentNormalPerWave = CurrentSpawnAmount(normalPerWave);
+        int currentFirePerWave = CurrentSpawnAmount(firePerWave);
+        int currentIcePerWave = CurrentSpawnAmount(icePerWave);
+        int currentLightningPerWave = CurrentSpawnAmount(lightningPerWave);
+        int currentEarthPerWave = CurrentSpawnAmount(earthPerWave);
+        int currentWindPerWave = CurrentSpawnAmount(windPerWave);
+
+        foreach (string name in enemyPoolNames)
         {
-            for(int i = 0; i < normalPerWave; i++)
+            for(int i = 0; i < currentNormalPerWave; i++)
             {
                 SpawnEnemy(name, Spell.SpellType.None, Spell.SpellType.None);
 
                 yield return new WaitForSeconds(spawnDelay);
             }
 
-            for (int i = 0; i < firePerWave; i++)
+            for (int i = 0; i < currentFirePerWave; i++)
             {
                 SpawnEnemy(name, Spell.SpellType.Ice, Spell.SpellType.Fire);
 
                 yield return new WaitForSeconds(spawnDelay);
             }
 
-            for (int i = 0; i < icePerWave; i++)
+            for (int i = 0; i < currentIcePerWave; i++)
             {
                 SpawnEnemy(name, Spell.SpellType.Fire, Spell.SpellType.Ice);
 
                 yield return new WaitForSeconds(spawnDelay);
             }
 
-            for (int i = 0; i < lightningPerWave; i++)
+            for (int i = 0; i < currentLightningPerWave; i++)
             {
                 SpawnEnemy(name, Spell.SpellType.Earth, Spell.SpellType.Lightning);
 
                 yield return new WaitForSeconds(spawnDelay);
             }
 
-            for (int i = 0; i < earthPerWave; i++)
+            for (int i = 0; i < currentEarthPerWave; i++)
             {
                 SpawnEnemy(name, Spell.SpellType.Wind, Spell.SpellType.Earth);
 
                 yield return new WaitForSeconds(spawnDelay);
             }
 
-            for (int i = 0; i < windPerWave; i++)
+            for (int i = 0; i < currentWindPerWave; i++)
             {
                 SpawnEnemy(name, Spell.SpellType.Lightning, Spell.SpellType.Wind);
 
@@ -126,7 +177,22 @@ public class Spawner_With_Increasing_Difficulty : MonoBehaviour
 
         hasFinishedWave = true;
 
-        currentWave = Mathf.Clamp(currentWave++, 0, int.MaxValue);
+        if(countsTowardEnemyCount)
+        {
+            currentEnemyHorde = Mathf.Clamp(currentEnemyHorde + 1, 0, int.MaxValue);
+        }        
+    }
+
+    private int CurrentSpawnAmount(int baseSpawnAmount)
+    {
+        if(baseSpawnAmount <= 0)
+        {
+            return 0;
+        }
+
+        int returnedAmount = Mathf.Clamp(baseSpawnAmount + extraEnemiesPerWave * currentWave, 0, maximumExtraEnemies);
+
+        return returnedAmount;
     }
 
     private void SpawnEnemy(string poolName, Spell.SpellType weakness, Spell.SpellType resistance)
@@ -158,12 +224,18 @@ public class Spawner_With_Increasing_Difficulty : MonoBehaviour
 
         enemy.SetSizeAndSpawner(isLarge, largeEnemySizeMultiplier, currentWave * extraHealthPerWave, this);
 
-        currentEnemyCount++;
+        if (countsTowardEnemyCount)
+        {
+            currentEnemyCount++;
+        }
     }
 
     public void MinusOneEnemy()
     {
-        currentEnemyCount--;
+        if (countsTowardEnemyCount)
+        {
+            currentEnemyCount--;
+        }
     }
 
     private void OnDrawGizmosSelected()
