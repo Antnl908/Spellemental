@@ -83,9 +83,20 @@ public class FieldOfView : MonoBehaviour
         else
             Handles.DrawWireArc(transform.position, Vector3.forward, Vector3.left, 360, radius);
 
+        Vector3 viewAngle1;
+        Vector3 viewAngle2;
 
-        Vector3 viewAngle1 = DirectionFromAngle(transform.eulerAngles.x, -angle / 2);
-        Vector3 viewAngle2 = DirectionFromAngle(transform.eulerAngles.x, angle / 2);
+        if (!angledDown)
+        {
+            viewAngle1 = DirectionFromAngle(transform.eulerAngles.y, -angle / 2);
+            viewAngle2 = DirectionFromAngle(transform.eulerAngles.y, angle / 2);
+        }
+        else
+        {
+            viewAngle1 = DirectionFromAngle(transform.eulerAngles.x, -angle / 2);
+            viewAngle2 = DirectionFromAngle(transform.eulerAngles.x, angle / 2);
+        }
+            
 
         Handles.color = Color.yellow;
         Handles.DrawLine(transform.position, transform.position + viewAngle1 * radius);
