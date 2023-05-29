@@ -5870,18 +5870,119 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 473333199798255256, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+      propertyPath: m_text
+      value: Concentrated fury manifests as fire, spewing forth a torrent of fire
+        in the direction. Be sure to not burn your eyebrows off!
+      objectReference: {fileID: 0}
+    - target: {fileID: 877410247056318748, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+      propertyPath: m_text
+      value: 'Though the dead rarely feel warm or cold, these shards of ice are guaranteed
+        to make them shiver. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052265873110425364, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+      propertyPath: m_text
+      value: Arcane winds spew forth towards your enemies, bending the air around
+        you to turn it into a weapon. Be sure to take a deep breath before using.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1639397118414201894, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+      propertyPath: m_text
+      value: A concentrated lightning strike focused on a specific point, ensuring
+        that anyone caught in that zone will get properly zapped!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1640913082991565986, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+      propertyPath: m_text
+      value: 'Crackling energy shoots from your hand, striking your enemies with
+        lightning. '
+      objectReference: {fileID: 0}
     - target: {fileID: 1721783360692902605, guid: dd8daed611489de4fb5750d034525aad, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2451622546926291484, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+      propertyPath: m_text
+      value: Binding the destructive power of fire and lightning, this trap will
+        trigger upon an enemy walking across it, exploding into a a torrent of destructive
+        arcane power. Watch your step!
       objectReference: {fileID: 0}
     - target: {fileID: 3129935540697645884, guid: dd8daed611489de4fb5750d034525aad, type: 3}
       propertyPath: look
       value: 
       objectReference: {fileID: 1865104703}
+    - target: {fileID: 3828070128687449563, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+      propertyPath: m_text
+      value: Raise a wall made of stone to protect yourself from projectiles or block
+        enemy paths. Because sometimes you just need some personal space!
+      objectReference: {fileID: 0}
+    - target: {fileID: 3948779369568123940, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+      propertyPath: m_text
+      value: Using rocks and ice particles to form a shield, giving you an extra
+        level of defense. In case you didn't know, dying is bad.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085420264227277112, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+      propertyPath: m_text
+      value: Releasing a mighty force of air in the shape of a tornado, this spell
+        throws enemies around the map as it deals damage and ragdolls them for a
+        time.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424098824924543560, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+      propertyPath: m_text
+      value: Using magic you summon a storm cloud that strikes anyone within it's
+        range with lightning damage. Be sure to not wear anything made of metal when
+        inside the field.
+      objectReference: {fileID: 0}
     - target: {fileID: 4691924466662992701, guid: dd8daed611489de4fb5750d034525aad, type: 3}
       propertyPath: caster
       value: 
       objectReference: {fileID: 1865104704}
+    - target: {fileID: 5594870283736164759, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+      propertyPath: m_text
+      value: 'Whats more dangerous than a fire? A bigger fire. Forming this fire
+        tornado is guaranteed to make anyone caught in it extra crispy. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080382476164439896, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+      propertyPath: m_text
+      value: Hydration is important!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6125051257209961350, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+      propertyPath: m_text
+      value: Raising earth from the ground before heating it to its melting point,
+        this spell causes a targeted area to be covered in molten magma. Useful for
+        scorching enemies that are chasing you, as well as quite handy for roasting
+        marshmallows!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6785122816098827233, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+      propertyPath: m_text
+      value: 'Concentrating a solid ice crystal and shattering it with a gust of
+        wind, causing a number of ice projectiles to shoot out and impale anything
+        hit by them. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983676249925356311, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+      propertyPath: m_text
+      value: Used in case of emergency, such as severe skeleton-related damage. This
+        cannot heal you beyond the one life you have, don't be greedy.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7488412911618553583, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+      propertyPath: m_text
+      value: A strengthened spray of fire that shoots forward, extremely useful for
+        when you need ot burn someone further away!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987603745097985715, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+      propertyPath: m_text
+      value: Launch a heavy boulder towards your foes with this slow but hard-hitting
+        attack. Who would have thought that dirt could do so much damage?
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987603745425000856, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+      propertyPath: m_text
+      value: A concentration of pure lightning essence, this orb of energy floats
+        in a target direction and smites any enemies that are close to it with high
+        voltage lightning.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546878726958718084, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+      propertyPath: m_text
+      value: Bound with arcane power, this trap binds lightning within an ice crystal.
+        When triggered, the trap explodes with murderous intent.
+      objectReference: {fileID: 0}
     - target: {fileID: 8677477181337144944, guid: dd8daed611489de4fb5750d034525aad, type: 3}
       propertyPath: m_Camera
       value: 
@@ -5973,6 +6074,12 @@ PrefabInstance:
     - target: {fileID: 8677477181337144959, guid: dd8daed611489de4fb5750d034525aad, type: 3}
       propertyPath: m_Name
       value: Player_UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 9059496389700141996, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+      propertyPath: m_text
+      value: A cloud of frosted wind storms forward, slowing anyone who is caught
+        in it and ensuring some unpleasently cold fingers. Weak against foes with
+        gloves and winter coats!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd8daed611489de4fb5750d034525aad, type: 3}
