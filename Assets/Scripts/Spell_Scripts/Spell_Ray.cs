@@ -48,8 +48,11 @@ public class Spell_Ray : Spell
                 //}
                 //if (CheckTarget(go, position, direction))
                 //if (CheckTarget(go, ((CapsuleCollider)colliders[i]).height * 0.5f ,player_Look.VirtualCamera.transform.position, player_Look.VirtualCamera.transform.forward))
-                if (CheckTarget(go, colliders[i].bounds.size.y * 0.5f ,player_Look.VirtualCamera.transform.position, player_Look.VirtualCamera.transform.forward))
+
                 //if (CheckTarget(go, 0, player_Look.VirtualCamera.transform.position, player_Look.VirtualCamera.transform.forward))
+
+                //if (CheckTarget(go, colliders[i].bounds.size.y * 0.5f, player_Look.VirtualCamera.transform.position, player_Look.VirtualCamera.transform.forward))
+                if (CheckTarget(go, colliders[i].bounds.center, player_Look.VirtualCamera.transform.position, player_Look.VirtualCamera.transform.forward))
                 {
                     targets.Add(go);
                 }
@@ -121,6 +124,25 @@ public class Spell_Ray : Spell
         }
         return false;
     }
+    bool CheckTarget(GameObject go, Vector3 offset, Vector3 pos, Vector3 dir)
+    {
+        //pos += Vector3.up * 1.5f;
+        if(cone)
+        {
+            if(IsInSight(go, offset, pos, dir) && IsVisible(go, offset, pos))
+            {
+                return true;
+            }
+        }
+        else
+        {
+            if (IsVisible(go, offset, pos))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
     bool IsInSight(GameObject obj, float offset, Vector3 pos, Vector3 dir)
     {
@@ -139,6 +161,41 @@ public class Spell_Ray : Spell
     {
         ray.origin = pos;
         ray.direction = (obj.transform.position + (Vector3.up * offset) - pos).normalized;
+        //Debug.DrawRay(ray.origin, ray.direction, Color.green, 10f);
+        //if(Physics.Raycast(ray, out hit, range, layerMask))
+        if(Physics.Raycast(ray, out hit, range, layerMask))
+        {
+            //Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.green, 10f);
+            //Debug.Log("Object name: " + hit.collider.gameObject.name);
+            if (hit.collider.gameObject == obj)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        //Debug.DrawRay(ray.origin, ray.direction * 100f, Color.red, 10f);
+        return false;
+    }
+    bool IsInSight(GameObject obj, Vector3 offset, Vector3 pos, Vector3 dir)
+    {
+        Vector3 sightDir = offset - pos;
+        
+        if (Vector3.Dot(sightDir.normalized, dir.normalized) >= radius)
+        {
+            //Debug.DrawRay(pos, sightDir, Color.blue, 10f);
+            //Debug.Log("Dot: " + Vector3.Dot(sightDir, dir));
+            return true;
+        }
+        //Debug.DrawRay(pos, sightDir, Color.yellow, 10f);
+        return false;
+    }
+    bool IsVisible(GameObject obj, Vector3 offset, Vector3 pos)
+    {
+        ray.origin = pos;
+        ray.direction = (offset - pos).normalized;
         //Debug.DrawRay(ray.origin, ray.direction, Color.green, 10f);
         //if(Physics.Raycast(ray, out hit, range, layerMask))
         if(Physics.Raycast(ray, out hit, range, layerMask))

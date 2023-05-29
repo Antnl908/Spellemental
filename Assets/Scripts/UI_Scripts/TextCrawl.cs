@@ -7,7 +7,9 @@ using TMPro;
 public class TextCrawl : MonoBehaviour
 {
     [SerializeField] float speed = 5f;
+    [SerializeField]
     float beginPosition = -580f; //-1100; //-2935;
+    [SerializeField]
     float endPosition = 5600f; //2935;
 
     [SerializeField] bool debug;
