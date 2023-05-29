@@ -128,7 +128,9 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
     [SerializeField]
     private bool usesNavMeshAgent = true;
 
-    public bool isDead = false;
+    private bool isDead = false;
+
+    public bool IsDead { get => isDead; }
 
     private IObjectPool<Pooling_Object> pool;
 
@@ -304,23 +306,26 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
             }
         }
 
-        if(ragdoll.IsActivated && !isDead)
+        if(ragdoll != null)
         {
-            ragdollTimer -= Time.deltaTime;
-            navMeshAgent.enabled = false;
-            if(ragdollTimer < 0)
+            if (ragdoll.IsActivated && !isDead)
             {
-                if(!ragdoll.AdjustPosition())
+                ragdollTimer -= Time.deltaTime;
+                navMeshAgent.enabled = false;
+                if (ragdollTimer < 0)
                 {
-                    Death();
-                    return;
+                    if (!ragdoll.AdjustPosition())
+                    {
+                        Death();
+                        return;
+                    }
+                    ragdoll.DeactivateRagdoll();
+                    ragdollTimer = ragdollDelay;
+                    navMeshAgent.enabled = true;
                 }
-                ragdoll.DeactivateRagdoll();
-                ragdollTimer = ragdollDelay;
-                navMeshAgent.enabled = true;
+
             }
-            
-        }
+        }       
     }
 
     //Deals fire damage.

@@ -6096,6 +6096,9 @@ MonoBehaviour:
   spellSelects:
   - {fileID: 3830277145482132898}
   - {fileID: 5578119355351077049}
+  - {fileID: 8846029833691412074}
+  - {fileID: 4829552193949285124}
+  - {fileID: 4899698748801757967}
   rotationAmount: 400
   rangeFromPlayer: 1
 --- !u!1 &6871939735407929266

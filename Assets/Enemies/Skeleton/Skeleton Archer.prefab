@@ -3913,7 +3913,6 @@ MonoBehaviour:
   config: {fileID: 11400000, guid: 2e45cea69e01faf40ab0252ebc2dd015, type: 2}
   speedDownIcon: {fileID: 6344781404571347145}
   usesNavMeshAgent: 1
-  isDead: 0
 --- !u!195 &8357955798736530981
 NavMeshAgent:
   m_ObjectHideFlags: 0

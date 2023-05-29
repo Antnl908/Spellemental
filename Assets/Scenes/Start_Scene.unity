@@ -3575,7 +3575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f87d726e9e67f54da692e1c604244e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelName: Colosseum_URP_Scene
+  levelName: Colosseum_V2
   tutorialName: Tutorial_Scene
   loadingScreen: {fileID: 1038448832}
   progressBar: {fileID: 690378226}
@@ -8814,6 +8814,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab74dda7b2f51244a8ab3334a45e13c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  body: {fileID: 0}
+  range: 5
 --- !u!54 &1305310378
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8926,7 +8928,6 @@ MonoBehaviour:
   config: {fileID: 11400000, guid: 2e45cea69e01faf40ab0252ebc2dd015, type: 2}
   speedDownIcon: {fileID: 2088700353}
   usesNavMeshAgent: 1
-  isDead: 0
 --- !u!114 &1305310382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13817,7 +13818,7 @@ RectTransform:
   m_GameObject: {fileID: 2075413912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1422919529}
@@ -13826,7 +13827,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -15, y: -15}
+  m_AnchoredPosition: {x: -68, y: -68}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2075413914
@@ -13884,6 +13885,30 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3523004798998835243}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1305310375}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &2075413915
 MonoBehaviour:
@@ -19647,7 +19672,6 @@ MonoBehaviour:
   config: {fileID: 11400000, guid: 2e45cea69e01faf40ab0252ebc2dd015, type: 2}
   speedDownIcon: {fileID: 3661314822018969438}
   usesNavMeshAgent: 1
-  isDead: 0
 --- !u!4 &3523004799011005842
 Transform:
   m_ObjectHideFlags: 0
@@ -20644,6 +20668,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab74dda7b2f51244a8ab3334a45e13c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  body: {fileID: 0}
+  range: 5
 --- !u!224 &7034067446427461310
 RectTransform:
   m_ObjectHideFlags: 0

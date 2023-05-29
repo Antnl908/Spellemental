@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Colosseum_URP_Scene.unity
     guid: b8c2823ffa4ea0f42afdcade6ada418a
   - enabled: 1
+    path: Assets/Scenes/Colosseum_V2.unity
+    guid: bef8e594d086c4940afb525f560f2cc1
+  - enabled: 1
     path: Assets/Scenes/Death_Scene.unity
     guid: f58e58303a13557469d46e1ea9898563
   - enabled: 1

@@ -40,13 +40,13 @@ public class Bat : MonoBehaviour
 
     private void Update()
     {
-        if (!enemy.isDead)
+        if (!enemy.IsDead)
         {
             direction = (activeWaypoint - transform.position).normalized;
             lookRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
 
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            transform.Translate(speed * Time.deltaTime * Vector3.forward);
         }
     }
 }
