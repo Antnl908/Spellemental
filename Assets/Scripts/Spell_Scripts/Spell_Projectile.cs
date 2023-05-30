@@ -235,6 +235,8 @@ public class Spell_Projectile : Pooling_Object
 
 
                 stationary.Initialize(hitInfo.point, rotation, stationarySpellPool);
+
+                gotAHit = true;
             }
         }
         

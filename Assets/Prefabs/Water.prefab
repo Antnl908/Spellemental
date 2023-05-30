@@ -121,10 +121,10 @@ MonoBehaviour:
   damageRadius: 0.5
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 5248
+    m_Bits: 1088
   terrainLayer:
     serializedVersion: 2
-    m_Bits: 576
+    m_Bits: 1088
   capsuleColor: {r: 1, g: 0, b: 0, a: 1}
   stationarySpellPoolName: Water_Puddle
   spawnStationaryRangeAboveTransform: 0.4
@@ -136,6 +136,7 @@ MonoBehaviour:
   effectInstanceAmount: 3
   visualEffectPoolName: Water_Burst
   vfxSpawnPos: {fileID: 8379155686124696796}
+  effectDelay: 0.1
   range: 0
   useOverlapSphere: 0
   checkTime: 0.25

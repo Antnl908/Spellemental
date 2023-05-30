@@ -13,6 +13,10 @@ public class Interactable : MonoBehaviour, IDamageable
     [SerializeField] protected Spell.SpellType localSpellType;
     int count;
     protected bool activated;
+
+    private readonly Collider[] guaranteedColliders = new Collider[150];
+    private int guaranteedCount;
+
     public virtual void KnockBack(float knockBack)
     {
 
@@ -46,6 +50,20 @@ public class Interactable : MonoBehaviour, IDamageable
         }
 
         activated = true;
+    }
+
+    protected void GuaranteedExecuteInteraction(int damage, Spell.SpellType? spellType)
+    {
+        guaranteedCount = Physics.OverlapSphereNonAlloc(transform.position, radius, guaranteedColliders, layerMask, QueryTriggerInteraction.Collide);
+        if (guaranteedCount > 0)
+        {
+            for (int i = 0; i < guaranteedCount; i++)
+            {
+                IGuaranteedDamage damagable = guaranteedColliders[i].transform.GetComponent<IGuaranteedDamage>();
+                damagable?.GuaranteedDamage(damage, spellType);
+
+            }
+        }
     }
 
     private void OnDrawGizmos()

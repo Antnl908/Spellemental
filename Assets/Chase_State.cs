@@ -35,10 +35,13 @@ public class Chase_State : StateMachineBehaviour
         {
             //Debug.Log("Update Chase State");
             //animator.GetComponent<Enemy>().NavAgent.SetDestination(GameObject.FindGameObjectWithTag("Player").transform.position);
-            if(enemy.NavAgent.isActiveAndEnabled)
+            if(enemy.NavAgent != null)
             {
-                enemy.NavAgent.SetDestination(player.position);
-            }
+                if (enemy.NavAgent.isActiveAndEnabled && enemy.NavAgent.isOnNavMesh)
+                {
+                    enemy.NavAgent.SetDestination(player.position);
+                }
+            }           
             
             timer = 0f;
         }
