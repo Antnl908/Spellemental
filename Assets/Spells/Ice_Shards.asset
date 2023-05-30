@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ice_Shards
   m_EditorClassIdentifier: 
   type: 1
-  damage: 20
+  damage: 25
   effectDamage: 5
   effectBuildUp: 100
   destructionTime: 1

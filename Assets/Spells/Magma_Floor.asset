@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Magma_Floor
   m_EditorClassIdentifier: 
   type: 2
-  damage: 30
-  effectDamage: 5
+  damage: 4
+  effectDamage: 0
   effectBuildUp: 100
   destructionTime: 15
   timeBetweenCasts: 1

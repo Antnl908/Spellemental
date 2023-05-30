@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Fire_Burst
   m_EditorClassIdentifier: 
   type: 0
-  damage: 20
+  damage: 30
   effectDamage: 10
   effectBuildUp: 25
   destructionTime: 2
   timeBetweenCasts: 0.6
-  manaCost: 100
+  manaCost: 75
   travelDistance: 20
   isProjectileNotStationary: 1
   possibleStationarySpawn:

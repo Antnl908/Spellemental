@@ -18,7 +18,7 @@ MonoBehaviour:
   effectBuildUp: 25
   destructionTime: 5
   timeBetweenCasts: 1.5
-  manaCost: 500
+  manaCost: 450
   travelDistance: 2
   isProjectileNotStationary: 1
   possibleStationarySpawn:

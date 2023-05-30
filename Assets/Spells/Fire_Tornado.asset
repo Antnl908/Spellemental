@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Fire_Tornado
   m_EditorClassIdentifier: 
   type: 0
-  damage: 30
-  effectDamage: 10
-  effectBuildUp: 15
+  damage: 15
+  effectDamage: 8
+  effectBuildUp: 10
   destructionTime: 8
   timeBetweenCasts: 1
   manaCost: 400

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be037755cc5ac141a32e5c210f385fa, type: 3}
   m_Name: Ice_Cloud
   m_EditorClassIdentifier: 
-  type: 0
-  damage: 10
+  type: 1
+  damage: 15
   effectDamage: 15
   effectBuildUp: 20
-  destructionTime: 15
+  destructionTime: 12
   timeBetweenCasts: 1.5
   manaCost: 400
   travelDistance: 1

@@ -17,5 +17,5 @@ MonoBehaviour:
   startHealth: 100
   chaseUpdateTime: 0.5
   idleUpdateTime: 0.5
-  aggroMinRange: 50
-  aggroMaxRange: 100
+  aggroMinRange: 150
+  aggroMaxRange: 300

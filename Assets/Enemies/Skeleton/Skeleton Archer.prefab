@@ -4027,7 +4027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 20
-  angle: 64
+  angle: 45
   routineDelay: 0.5
   player: {fileID: 0}
   target:
