@@ -15,6 +15,13 @@ public class Ragdoll : MonoBehaviour
 
     [SerializeField]
     float range = 5f;
+    
+    [SerializeField]
+    bool useOverrideRagdol = false;
+    [SerializeField]
+    Rigidbody overrideBody;
+    [SerializeField]
+    Collider overrideCollider;
 
 
     // Start is called before the first frame update
@@ -28,6 +35,16 @@ public class Ragdoll : MonoBehaviour
 
     public void ActivateRagdoll()
     {
+        if(useOverrideRagdol)
+        {
+            rigidBody.isKinematic = true;
+            overrideBody.isKinematic = false;
+            overrideCollider.enabled = true;
+            anim.enabled = false;
+            isActivated = true;
+            return;
+        }
+
         foreach (var rigidbody in rigidbodies)
         {
             rigidbody.isKinematic = false;
@@ -40,7 +57,17 @@ public class Ragdoll : MonoBehaviour
 
     public void DeactivateRagdoll()
     {
-        foreach(var rigidbody in rigidbodies)
+        if (useOverrideRagdol)
+        {
+            rigidBody.isKinematic = true;
+            overrideBody.isKinematic = true;
+            overrideCollider.enabled = false;
+            anim.enabled = true;
+            isActivated = false;
+            return;
+        }
+
+        foreach (var rigidbody in rigidbodies)
         {
             rigidbody.isKinematic = true;
         }

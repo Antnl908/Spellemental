@@ -1819,6 +1819,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 2368261004258071635}
   range: 10
+  useOverrideRagdol: 1
+  overrideBody: {fileID: 8185309119563579474}
+  overrideCollider: {fileID: 8185309119563579482}
 --- !u!114 &8185309119563579480
 MonoBehaviour:
   m_ObjectHideFlags: 0
