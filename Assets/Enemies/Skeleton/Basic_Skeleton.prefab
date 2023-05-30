@@ -4406,6 +4406,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 7666328769116493492}
   range: 10
+  useOverrideRagdol: 0
+  overrideBody: {fileID: 0}
+  overrideCollider: {fileID: 0}
 --- !u!1 &7666328769398538602
 GameObject:
   m_ObjectHideFlags: 0
