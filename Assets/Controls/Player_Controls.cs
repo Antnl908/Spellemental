@@ -116,6 +116,24 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftTap"",
+                    ""type"": ""Button"",
+                    ""id"": ""339a1c12-f60e-4d9c-9c54-ab503e9a941d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightTap"",
+                    ""type"": ""Button"",
+                    ""id"": ""328817e0-eb65-463a-8350-f676d8dfa78d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -264,31 +282,9 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""16355f2d-dc59-4bc5-9bf5-606949570255"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Tap"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SwapLeftSpell"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""a5b993a1-1ce4-4000-82b5-62bf668522f0"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SwapRightSpell"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1a1731e4-a2ab-4827-a42e-10db378ec041"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SwapRightSpell"",
@@ -327,6 +323,28 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4ceb2966-c96f-464b-87ed-663ea4e9cdc6"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Tap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftTap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""668fb14c-6bde-4c6a-86f3-1b3e8be6b0fa"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Tap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightTap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -351,6 +369,8 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
         m_Player1_SwapRightSpell = m_Player1.FindAction("SwapRightSpell", throwIfNotFound: true);
         m_Player1_SpellWheel = m_Player1.FindAction("SpellWheel", throwIfNotFound: true);
         m_Player1_Pause = m_Player1.FindAction("Pause", throwIfNotFound: true);
+        m_Player1_LeftTap = m_Player1.FindAction("LeftTap", throwIfNotFound: true);
+        m_Player1_RightTap = m_Player1.FindAction("RightTap", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -422,6 +442,8 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player1_SwapRightSpell;
     private readonly InputAction m_Player1_SpellWheel;
     private readonly InputAction m_Player1_Pause;
+    private readonly InputAction m_Player1_LeftTap;
+    private readonly InputAction m_Player1_RightTap;
     public struct Player1Actions
     {
         private @Player_Controls m_Wrapper;
@@ -436,6 +458,8 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
         public InputAction @SwapRightSpell => m_Wrapper.m_Player1_SwapRightSpell;
         public InputAction @SpellWheel => m_Wrapper.m_Player1_SpellWheel;
         public InputAction @Pause => m_Wrapper.m_Player1_Pause;
+        public InputAction @LeftTap => m_Wrapper.m_Player1_LeftTap;
+        public InputAction @RightTap => m_Wrapper.m_Player1_RightTap;
         public InputActionMap Get() { return m_Wrapper.m_Player1; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -475,6 +499,12 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @LeftTap.started += instance.OnLeftTap;
+            @LeftTap.performed += instance.OnLeftTap;
+            @LeftTap.canceled += instance.OnLeftTap;
+            @RightTap.started += instance.OnRightTap;
+            @RightTap.performed += instance.OnRightTap;
+            @RightTap.canceled += instance.OnRightTap;
         }
 
         private void UnregisterCallbacks(IPlayer1Actions instance)
@@ -509,6 +539,12 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @LeftTap.started -= instance.OnLeftTap;
+            @LeftTap.performed -= instance.OnLeftTap;
+            @LeftTap.canceled -= instance.OnLeftTap;
+            @RightTap.started -= instance.OnRightTap;
+            @RightTap.performed -= instance.OnRightTap;
+            @RightTap.canceled -= instance.OnRightTap;
         }
 
         public void RemoveCallbacks(IPlayer1Actions instance)
@@ -547,5 +583,7 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
         void OnSwapRightSpell(InputAction.CallbackContext context);
         void OnSpellWheel(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnLeftTap(InputAction.CallbackContext context);
+        void OnRightTap(InputAction.CallbackContext context);
     }
 }

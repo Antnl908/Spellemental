@@ -94,6 +94,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "LeftTap",
+                    "type": "Button",
+                    "id": "339a1c12-f60e-4d9c-9c54-ab503e9a941d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightTap",
+                    "type": "Button",
+                    "id": "328817e0-eb65-463a-8350-f676d8dfa78d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -242,31 +260,9 @@
                 },
                 {
                     "name": "",
-                    "id": "16355f2d-dc59-4bc5-9bf5-606949570255",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "Tap",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SwapLeftSpell",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "a5b993a1-1ce4-4000-82b5-62bf668522f0",
                     "path": "<Keyboard>/e",
                     "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SwapRightSpell",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1a1731e4-a2ab-4827-a42e-10db378ec041",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "Tap",
                     "processors": "",
                     "groups": "",
                     "action": "SwapRightSpell",
@@ -303,6 +299,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ceb2966-c96f-464b-87ed-663ea4e9cdc6",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftTap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "668fb14c-6bde-4c6a-86f3-1b3e8be6b0fa",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightTap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

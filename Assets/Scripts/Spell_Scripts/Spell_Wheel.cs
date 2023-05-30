@@ -48,7 +48,10 @@ public class Spell_Wheel : MonoBehaviour
         controls.Player1.SpellWheel.canceled += DeactivateWheel;
 
         controls.Player1.SwapLeftSpell.performed += ActivateLeftHandSpell;
+        controls.Player1.LeftTap.performed += ActivateLeftHandSpell;
+
         controls.Player1.SwapRightSpell.performed += ActivateRightHandSpell;
+        controls.Player1.RightTap.performed += ActivateRightHandSpell;
 
         controls.Player1.Enable();
 

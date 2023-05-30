@@ -143,6 +143,8 @@ public class Player_Health : MonoBehaviour, IDamageable
 
         currentHealth = maxHealth;
 
+        hasHealthBuff = false;
+
         heart.SetIfIsDying(false);
     }
 
