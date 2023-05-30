@@ -1969,6 +1969,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 693c86616fcb05747b86bd5a284f103b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: {fileID: 4505899731751797833, guid: 21a688d9c2c524746b328427ada6e812, type: 3}
+  waypoints: {fileID: 8696065516596167655, guid: 0f9d70d61b1848b438cf08b7f9e6c596, type: 3}
   speed: 5
   turnSpeed: 2
