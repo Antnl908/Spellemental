@@ -114,6 +114,26 @@ public class Spell_Casting : MonoBehaviour
         currentMana = maxMana;
     }
 
+    private void OnDisable()
+    {
+        controls.Player1.LeftSpell.performed -= leftHand.CastActiveSpell;
+        controls.Player1.LeftSpell.canceled -= leftHand.QuitCasting;
+        controls.Player1.SwapLeftSpell.performed -= leftHand.CycleSpell;
+
+        controls.Player1.RightSpell.performed -= rightHand.CastActiveSpell;
+        controls.Player1.RightSpell.canceled -= rightHand.QuitCasting;
+        controls.Player1.SwapRightSpell.performed -= rightHand.CycleSpell;
+
+        controls.Player1.CombineSpell.performed -= CastCombinationSpell;
+        controls.Player1.CombineSpell.canceled -= QuitCasting;
+
+        leftHand.OnSwitchedSpell -= SetHandColor;
+        leftHand.OnSwitchedSpell -= DisplaySpellCost;
+
+        rightHand.OnSwitchedSpell -= SetHandColor;
+        rightHand.OnSwitchedSpell -= DisplaySpellCost;
+    }
+
     // Update is called once per frame
     void Update()
     {

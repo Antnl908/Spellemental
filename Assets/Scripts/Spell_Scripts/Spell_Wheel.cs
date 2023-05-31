@@ -61,6 +61,18 @@ public class Spell_Wheel : MonoBehaviour
         wheel.SetActive(false);
     }
 
+    private void OnDisable()
+    {
+        controls.Player1.SpellWheel.performed -= ActivateWheel;
+        controls.Player1.SpellWheel.canceled -= DeactivateWheel;
+
+        controls.Player1.SwapLeftSpell.performed -= ActivateLeftHandSpell;
+        controls.Player1.LeftTap.performed -= ActivateLeftHandSpell;
+
+        controls.Player1.SwapRightSpell.performed -= ActivateRightHandSpell;
+        controls.Player1.RightTap.performed -= ActivateRightHandSpell;
+    }
+
     // Update is called once per frame
     void Update()
     {

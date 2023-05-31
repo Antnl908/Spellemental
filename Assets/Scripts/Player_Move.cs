@@ -67,6 +67,11 @@ public class Player_Move : MonoBehaviour
         OnLanding ??= new();
     }
 
+    private void OnDisable()
+    {
+        controls.Player1.Jump.performed -= Jump;
+    }
+
     // Update is called once per frame
     void Update()
     {

@@ -18,10 +18,7 @@ public class MaterialInstance : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (mpb == null)
-        {
-            mpb = new MaterialPropertyBlock();
-        }
+        mpb ??= new MaterialPropertyBlock();
         //rend = GetComponentInChildren<Renderer>();
         //renderers = transform.GetComponentsInChildren<MeshRenderer>();
         //sRenderers = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
