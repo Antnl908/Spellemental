@@ -6768,6 +6768,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookAtCamera: 1
   contstrainYAxis: 1
+  usesLookAt: 0
+  lookAtExtraRotation: {x: 0, y: 0, z: 0}
 --- !u!1001 &5701201834852742395
 PrefabInstance:
   m_ObjectHideFlags: 0

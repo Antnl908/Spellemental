@@ -73,10 +73,13 @@ public class GiveBurnProperties : MonoBehaviour
 
             if (isLeftHandEffect)
             {
-                if (spellCaster.LeftHandColor() != defaultColor)
+                if(spellCaster != null)
                 {
-                    material.SetColor("_Edge_Color", spellCaster.LeftHandColor());
-                }
+                    if (spellCaster.LeftHandColor() != defaultColor)
+                    {
+                        material.SetColor("_Edge_Color", spellCaster.LeftHandColor());
+                    }
+                }                
             }
             else
             {

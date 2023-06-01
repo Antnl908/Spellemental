@@ -1133,6 +1133,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookAtCamera: 1
   contstrainYAxis: 1
+  usesLookAt: 0
+  lookAtExtraRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &9052825564223169486
 GameObject:
   m_ObjectHideFlags: 0
