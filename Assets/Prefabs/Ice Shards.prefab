@@ -480,6 +480,7 @@ GameObject:
   - component: {fileID: 8892984111242365295}
   - component: {fileID: 5804288166278722122}
   - component: {fileID: 5660715877838753383}
+  - component: {fileID: 772852800459489343}
   m_Layer: 0
   m_Name: Ice (3)
   m_TagString: Untagged
@@ -565,7 +566,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 729688108371365768}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 3
   m_Height: 4
   m_Direction: 2
@@ -636,6 +637,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualEffect: {fileID: 2534640027459265516}
+--- !u!65 &772852800459489343
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729688108371365768}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 30, z: 5}
+  m_Center: {x: 0, y: 0, z: 1.5}
 --- !u!1 &890355397514927350
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,6 +696,7 @@ GameObject:
   - component: {fileID: 9198993548449243392}
   - component: {fileID: 6075254054801234469}
   - component: {fileID: 5354143421941949960}
+  - component: {fileID: 7481764243053028890}
   m_Layer: 0
   m_Name: Ice (7)
   m_TagString: Untagged
@@ -767,7 +782,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1072707173725464551}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 3
   m_Height: 4
   m_Direction: 2
@@ -838,6 +853,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualEffect: {fileID: 2877663441329589123}
+--- !u!65 &7481764243053028890
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072707173725464551}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 30, z: 5}
+  m_Center: {x: 0, y: 0, z: 1.5}
 --- !u!1 &1074075763390530767
 GameObject:
   m_ObjectHideFlags: 0
@@ -853,6 +881,7 @@ GameObject:
   - component: {fileID: 9200155497674162728}
   - component: {fileID: 6074023379826473229}
   - component: {fileID: 5352908973660734752}
+  - component: {fileID: 3969375971655363826}
   m_Layer: 0
   m_Name: Ice (4)
   m_TagString: Untagged
@@ -938,7 +967,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1074075763390530767}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 3
   m_Height: 4
   m_Direction: 2
@@ -1009,6 +1038,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualEffect: {fileID: 2876503758840309931}
+--- !u!65 &3969375971655363826
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074075763390530767}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 30, z: 5}
+  m_Center: {x: 0, y: 0, z: 1.5}
 --- !u!1 &1083385596209946219
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,6 +1283,7 @@ GameObject:
   - component: {fileID: 6920561736844989451}
   - component: {fileID: 5470754796456570670}
   - component: {fileID: 6191913803710141187}
+  - component: {fileID: 8199302804137263335}
   m_Layer: 0
   m_Name: Ice (8)
   m_TagString: Untagged
@@ -1326,7 +1369,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1243170118243472108}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 3
   m_Height: 4
   m_Direction: 2
@@ -1397,6 +1440,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualEffect: {fileID: 4056659662185381512}
+--- !u!65 &8199302804137263335
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243170118243472108}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 30, z: 5}
+  m_Center: {x: 0, y: 0, z: 1.5}
 --- !u!1 &2391117119328757821
 GameObject:
   m_ObjectHideFlags: 0
@@ -1412,6 +1468,7 @@ GameObject:
   - component: {fileID: 5792916376695090906}
   - component: {fileID: 8899766504903710207}
   - component: {fileID: 7313929595588274642}
+  - component: {fileID: 8927655102536402179}
   m_Layer: 0
   m_Name: Ice
   m_TagString: Untagged
@@ -1497,7 +1554,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2391117119328757821}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 3
   m_Height: 4
   m_Direction: 2
@@ -1568,6 +1625,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualEffect: {fileID: 586156808604566617}
+--- !u!65 &8927655102536402179
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2391117119328757821}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 30, z: 5}
+  m_Center: {x: 0, y: 0, z: 1.5}
 --- !u!1 &2659665176990842494
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,6 +1684,7 @@ GameObject:
   - component: {fileID: 6313009126373811462}
   - component: {fileID: 8969640905574178339}
   - component: {fileID: 7095578089664160270}
+  - component: {fileID: 2688610162592640028}
   m_Layer: 0
   m_Name: Ice (5)
   m_TagString: Untagged
@@ -1699,7 +1770,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2798484430254597089}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 3
   m_Height: 4
   m_Direction: 2
@@ -1770,6 +1841,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualEffect: {fileID: 1142419080414105477}
+--- !u!65 &2688610162592640028
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2798484430254597089}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 30, z: 5}
+  m_Center: {x: 0, y: 0, z: 1.5}
 --- !u!1 &2920312030916317935
 GameObject:
   m_ObjectHideFlags: 0
@@ -1785,6 +1869,7 @@ GameObject:
   - component: {fileID: 6470950048021025800}
   - component: {fileID: 8226860955705257773}
   - component: {fileID: 7793954415922270976}
+  - component: {fileID: 7169316280077366595}
   m_Layer: 0
   m_Name: Ice (1)
   m_TagString: Untagged
@@ -1870,7 +1955,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2920312030916317935}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 3
   m_Height: 4
   m_Direction: 2
@@ -1941,6 +2026,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualEffect: {fileID: 111339344029974155}
+--- !u!65 &7169316280077366595
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2920312030916317935}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 30, z: 5}
+  m_Center: {x: 0, y: 0, z: 1.5}
 --- !u!1 &2983668920511137867
 GameObject:
   m_ObjectHideFlags: 0
@@ -3052,6 +3150,7 @@ GameObject:
   - component: {fileID: 3677158947099641675}
   - component: {fileID: 1792753912332598382}
   - component: {fileID: 496304583093731395}
+  - component: {fileID: 6692936952635263728}
   m_Layer: 0
   m_Name: Ice (2)
   m_TagString: Untagged
@@ -3137,7 +3236,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 4777617772442026412}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 3
   m_Height: 4
   m_Direction: 2
@@ -3208,6 +3307,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualEffect: {fileID: 7728463760792186312}
+--- !u!65 &6692936952635263728
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4777617772442026412}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 30, z: 5}
+  m_Center: {x: 0, y: 0, z: 1.5}
 --- !u!1 &5155057208659138543
 GameObject:
   m_ObjectHideFlags: 0
@@ -3285,6 +3397,7 @@ GameObject:
   - component: {fileID: 4416781246143726993}
   - component: {fileID: 1634049785226968756}
   - component: {fileID: 625808842394190489}
+  - component: {fileID: 4014045589395566986}
   m_Layer: 0
   m_Name: Ice (6)
   m_TagString: Untagged
@@ -3370,7 +3483,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 5476915619893281654}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 3
   m_Height: 4
   m_Direction: 2
@@ -3441,6 +3554,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualEffect: {fileID: 7281598664776642322}
+--- !u!65 &4014045589395566986
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5476915619893281654}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 30, z: 5}
+  m_Center: {x: 0, y: 0, z: 1.5}
 --- !u!1 &5630499264406940989
 GameObject:
   m_ObjectHideFlags: 0
