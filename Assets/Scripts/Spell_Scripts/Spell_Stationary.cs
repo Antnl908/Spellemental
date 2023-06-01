@@ -45,6 +45,10 @@ public class Spell_Stationary : Pooling_Object
     [SerializeField]
     private LayerMask enemyLayer;
 
+    private readonly Collider[] enemyColliders = new Collider[100];
+
+    private int hitCount;
+
     [SerializeField]
     private bool destroyOnHit = false;
 
@@ -188,25 +192,24 @@ public class Spell_Stationary : Pooling_Object
             effectTimer = effectDelay;
         }
 
-        Collider[] colliders = Physics.OverlapBox(transform.position + hitBoxOffset, new Vector3(width / 2, height / 2, depth / 2), transform.rotation, enemyLayer);
+        hitCount = Physics.OverlapBoxNonAlloc(transform.position + hitBoxOffset, new Vector3(width / 2, height / 2, depth / 2),
+                                                   enemyColliders, transform.rotation, enemyLayer, QueryTriggerInteraction.Collide);
 
-        for (int i = 0; i < colliders.Length; i++)
+        for (int i = 0; i < hitCount; i++)
         {
-            if (colliders[i].gameObject != gameObject && hitDelay <= 0)
+            if (enemyColliders[i].gameObject != gameObject && hitDelay <= 0)
             {
-                IMagicEffect magicEffect = colliders[i].transform.GetComponent<IMagicEffect>();
+                IMagicEffect magicEffect = enemyColliders[i].transform.GetComponent<IMagicEffect>();
 
                 magicEffect?.ApplyMagicEffect(effectDamage, effectBuildUp, spellType);
 
-                IDamageable damagable = colliders[i].transform.GetComponent<IDamageable>();
+                IDamageable damagable = enemyColliders[i].transform.GetComponent<IDamageable>();
 
                 bool gotAKill = false;
 
                 if (damagable != null)
                 {
                     gotAKill = (bool)(damagable?.TryToDestroyDamageable(damage, spellType));
-
-                    gotAHit = true;
                 }
 
                 if (gotAKill)

@@ -31,6 +31,11 @@ public class Pause_Menu : MonoBehaviour
         UnPause();
     }
 
+    private void OnDisable()
+    {
+        controls.Player1.Pause.performed -= SwapPauseState;
+    }
+
     public void BackToMainMenu()
     {
         Time.timeScale = 1;

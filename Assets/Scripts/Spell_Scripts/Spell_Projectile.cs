@@ -44,6 +44,11 @@ public class Spell_Projectile : Pooling_Object
     [SerializeField]
     private LayerMask terrainLayer;
 
+    private readonly Collider[] enemyColliders = new Collider[100];
+    private readonly Collider[] terrainColliders = new Collider[100];
+
+    private int hitCount;
+
     [SerializeField]
     private Color capsuleColor = Color.red;
 
@@ -184,9 +189,10 @@ public class Spell_Projectile : Pooling_Object
             effectTimer = effectDelay;
         }
 
-        Collider[] enemyColliders = Physics.OverlapCapsule(point0.position, point1.position, damageRadius, enemyLayer);
+        hitCount = Physics.OverlapCapsuleNonAlloc(point0.position, point1.position, 
+                                                   damageRadius, enemyColliders, enemyLayer, QueryTriggerInteraction.Collide);
 
-        for (int i = 0; i < enemyColliders.Length; i++)
+        for (int i = 0; i < hitCount; i++)
         {
             if (enemyColliders[i].gameObject != gameObject)
             {
@@ -200,9 +206,7 @@ public class Spell_Projectile : Pooling_Object
 
                 if (damagable != null)
                 {
-                    gotAKill = (bool)(damagable?.TryToDestroyDamageable(damage, spellType));
-
-                    gotAHit = true;                   
+                    gotAKill = (bool)(damagable?.TryToDestroyDamageable(damage, spellType));                   
                 }
 
                 if (gotAKill)
@@ -220,6 +224,8 @@ public class Spell_Projectile : Pooling_Object
                                                      enemyColliders[i].transform.position, Object_Pooler.Pools[effectObjectPoolName]);
                     }
                 }
+
+                gotAHit = true;
             }
         }
 
@@ -240,11 +246,12 @@ public class Spell_Projectile : Pooling_Object
             }
         }
         
-        if(enemyColliders.Length <= 0)
+        if(hitCount <= 0)
         {
-            Collider[] terrainColliders = Physics.OverlapCapsule(point0.position, point1.position, damageRadius * 2, terrainLayer);
+            hitCount = Physics.OverlapCapsuleNonAlloc(point0.position, point1.position, damageRadius * 2, 
+                                                                     terrainColliders, terrainLayer, QueryTriggerInteraction.Collide);
 
-            if (terrainColliders.Length > 0)
+            if (hitCount > 0)
             {
                 gotAHit = true;
             }
