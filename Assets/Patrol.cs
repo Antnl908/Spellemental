@@ -17,6 +17,9 @@ public class Patrol : StateMachineBehaviour
         fov = animator.GetComponent<FieldOfView>();
     }
 
+    /// <summary>
+    /// If the enemy can see the player enter "Chase" state else if within distance of a waypoint find a new one
+    /// </summary>
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //animator.transform.Translate(Vector3.forward * 5f/*enemy.Config.speed*/ * Time.deltaTime);
@@ -43,16 +46,4 @@ public class Patrol : StateMachineBehaviour
         animator.ResetTrigger("Chase");
         animator.ResetTrigger("FindNewWaypoint");
     }
-
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
 }

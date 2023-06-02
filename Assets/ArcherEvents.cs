@@ -35,6 +35,9 @@ public class ArcherEvents : MonoBehaviour
         targetPosition = playerPos.position;
     }
 
+    /// <summary>
+    /// Creates an arrow based on a reference position and gives it a direction
+    /// </summary>
     public void FireArrow()
     {
         Vector3 direction = targetPosition - arrowRefPos.position;

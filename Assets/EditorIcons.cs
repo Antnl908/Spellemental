@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class EditorIcons : MonoBehaviour
 {
+    /// <summary>
+    /// Draws a sphere where the waypoints are located in editor
+    /// </summary>
     private void OnDrawGizmosSelected()
     {
         Transform[] waypoints = GetComponentsInChildren<Transform>();

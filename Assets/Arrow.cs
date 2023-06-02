@@ -22,6 +22,9 @@ public class Arrow : MonoBehaviour
 
     private SphereCollider col;
 
+    /// <summary>
+    /// Upon creation sets the velocity and rotation of the projectile, along with what layers should be ignored
+    /// </summary>
     private void Start()
     {
         Destroy(gameObject, lifeTime);
@@ -50,12 +53,6 @@ public class Arrow : MonoBehaviour
     }
     */
 
-    private void Update()
-    {
-        
-
-    }
-
     /*
     private void CollisionCheck()
     {
@@ -75,7 +72,9 @@ public class Arrow : MonoBehaviour
     }
     */
 
-    
+    /// <summary>
+    /// When colliding, try to deal damage then destroy
+    /// </summary>
     private void OnCollisionEnter(Collision col)
     {
         Collider[] collidersCheck = Physics.OverlapSphere(gameObject.transform.position, radius, destroyOnContactLayer);
@@ -98,7 +97,9 @@ public class Arrow : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (gameObject == null) { return; }
+        if (gameObject == null) 
+            return;
+
         Gizmos.DrawWireSphere(gameObject.transform.position, radius);
     }
 }

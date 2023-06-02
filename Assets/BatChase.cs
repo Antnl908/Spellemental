@@ -18,6 +18,9 @@ public class BatChase : StateMachineBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
+    /// <summary>
+    /// Sets the players position as the new position and switches to attack state if close enough
+    /// </summary>
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //animator.transform.Translate(bat.ActiveWaypoint * 5f/*enemy.Config.speed*/ * Time.deltaTime);

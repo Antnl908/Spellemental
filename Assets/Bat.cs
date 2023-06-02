@@ -42,11 +42,19 @@ public class Bat : MonoBehaviour
     {
         if (!enemy.IsDead)
         {
-            direction = (activeWaypoint - transform.position).normalized;
-            lookRotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
-
-            transform.Translate(speed * Time.deltaTime * Vector3.forward);
+            MoveTowardsPosition();
         }
+    }
+
+    /// <summary>
+    /// Moves the gameobject towards a set position
+    /// </summary>
+    private void MoveTowardsPosition()
+    {
+        direction = (activeWaypoint - transform.position).normalized;
+        lookRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
+
+        transform.Translate(speed * Time.deltaTime * Vector3.forward);
     }
 }

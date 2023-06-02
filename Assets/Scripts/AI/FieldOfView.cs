@@ -5,6 +5,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 
+
 public class FieldOfView : MonoBehaviour
 {
     public float radius;
@@ -28,6 +29,9 @@ public class FieldOfView : MonoBehaviour
         StartCoroutine(FOVRoutine());
     }
 
+    /// <summary>
+    /// A routine for how often the gameobject should run the method
+    /// </summary>
     private IEnumerator FOVRoutine()
     {
         WaitForSeconds waitTimer = new WaitForSeconds(routineDelay);
@@ -40,6 +44,9 @@ public class FieldOfView : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Uses raycasts to determine if the target is infront or below the gameobject
+    /// </summary> 
     private void FielOfViewCheck()
     {
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, target);
@@ -75,6 +82,9 @@ public class FieldOfView : MonoBehaviour
             canSeePlayer = false;
     }
 
+    /// <summary>
+    /// Creates a gizmo in the editor to visualize the line of sight of the gameobject, including angle and if the gameobject has visual on the target
+    /// </summary>
     private void OnDrawGizmosSelected()
     {
         Handles.color = Color.white;
@@ -109,9 +119,15 @@ public class FieldOfView : MonoBehaviour
         }
     }
 
-    private Vector3 DirectionFromAngle(float eulerY, float angleInDegrees)
+    /// <summary>
+    /// Retrives the direction from the viewing angle and rotation of the gameobject
+    /// </summary>
+    /// <param name="euler">Rotation</param>
+    /// <param name="angleInDegrees">Angle</param>
+    /// <returns>A direction represented by a Vector3</returns>
+    private Vector3 DirectionFromAngle(float euler, float angleInDegrees)
     {
-        angleInDegrees += eulerY;
+        angleInDegrees += euler;
 
         if (!angledDown)
             return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));

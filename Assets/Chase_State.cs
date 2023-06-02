@@ -16,7 +16,9 @@ public class Chase_State : StateMachineBehaviour
         enemy = animator.GetComponent<Enemy>();
     }
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
+    /// <summary>
+    /// Changes to different states depending on distance. 
+    /// </summary>
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         float dist = Vector3.Distance(player.position, enemy.transform.position);
@@ -35,17 +37,25 @@ public class Chase_State : StateMachineBehaviour
         {
             //Debug.Log("Update Chase State");
             //animator.GetComponent<Enemy>().NavAgent.SetDestination(GameObject.FindGameObjectWithTag("Player").transform.position);
-            if(enemy.NavAgent != null)
-            {
-                if (enemy.NavAgent.isActiveAndEnabled && enemy.NavAgent.isOnNavMesh)
-                {
-                    enemy.NavAgent.SetDestination(player.position);
-                }
-            }           
-            
+            SetTargetPosition();
+
             timer = 0f;
         }
 
+    }
+
+    /// <summary>
+    /// Sets the target position for the enemy navagent
+    /// </summary>
+    private void SetTargetPosition()
+    {
+        if (enemy.NavAgent != null)
+        {
+            if (enemy.NavAgent.isActiveAndEnabled && enemy.NavAgent.isOnNavMesh)
+            {
+                enemy.NavAgent.SetDestination(player.position);
+            }
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

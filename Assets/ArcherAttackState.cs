@@ -10,17 +10,15 @@ public class ArcherAttackState : StateMachineBehaviour
     private Enemy enemy;
     private FieldOfView fov;
 
-
+    /// <summary>
+    /// Upon entering the state: the bow draw animation is triggered, the enemy is set to look at the player and speed is stopped.
+    /// </summary>
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        /*
-        foreach(Animator childAnimator in animator.gameObject.GetComponentsInChildren<Animator>())
-            bowAnimator = childAnimator;
-        */
         bowAnimator = animator.gameObject.GetComponentsInChildren<Animator>()[1];
         bowAnimator.SetTrigger("DrawString");
 
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        //player = GameObject.FindGameObjectWithTag("Player").transform;
         enemy = animator.GetComponent<Enemy>();
         fov = animator.GetComponent<FieldOfView>();
 
@@ -29,7 +27,9 @@ public class ArcherAttackState : StateMachineBehaviour
         enemy.NavAgent.speed = 0f;
     }
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
+    /// <summary>
+    /// Checks if the enemy can no longer see the player
+    /// </summary>
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (!fov.canSeePlayer)
@@ -38,6 +38,9 @@ public class ArcherAttackState : StateMachineBehaviour
         }
     }
 
+    /// <summary>
+    /// Upon exit set normal speed
+    /// </summary>
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         bowAnimator.ResetTrigger("DrawString");
@@ -48,16 +51,4 @@ public class ArcherAttackState : StateMachineBehaviour
             enemy.NavAgent.speed = enemy.Config.speed;
         }
     }
-
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
 }
