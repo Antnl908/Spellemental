@@ -85,6 +85,8 @@ public class FieldOfView : MonoBehaviour
     /// <summary>
     /// Creates a gizmo in the editor to visualize the line of sight of the gameobject, including angle and if the gameobject has visual on the target
     /// </summary>
+    
+    /*
     private void OnDrawGizmosSelected()
     {
         Handles.color = Color.white;
@@ -118,6 +120,7 @@ public class FieldOfView : MonoBehaviour
             Handles.DrawLine(transform.position, player.transform.position);
         }
     }
+    */
 
     /// <summary>
     /// Retrives the direction from the viewing angle and rotation of the gameobject

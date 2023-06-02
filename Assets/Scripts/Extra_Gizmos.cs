@@ -14,6 +14,8 @@ public static class Extra_Gizmos
     /// <param name="position2">The second position of the capsule</param>
     /// <param name="radius">Radius of the capsule</param>
     /// <param name="color">The color that the capsule is drawn in</param>
+    
+    /*
     public static void DrawCapsule(Vector3 position1, Vector3 position2, float radius, Color color = default)
     {
         if (color != default) Handles.color = color;
@@ -45,6 +47,7 @@ public static class Extra_Gizmos
             MakeLine(0f, -radius, length);
         }
     }
+    */
 
     /// <summary>
     /// Draws a line. Needs to be commented out when making a release build.

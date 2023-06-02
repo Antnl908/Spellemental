@@ -326,6 +326,8 @@ public class Spell_Projectile : Pooling_Object
     /// <summary>
     /// Draws the areas where the spell can deal damage and where it can spawn a stationary spell.
     /// </summary>
+    
+    /*
     private void OnDrawGizmosSelected()
     {
         Extra_Gizmos.DrawCapsule(point0.position, point1.position, damageRadius, capsuleColor);
@@ -345,6 +347,7 @@ public class Spell_Projectile : Pooling_Object
             Gizmos.DrawWireSphere(spherePosition.position, range);
         }       
     }
+    */
 
     /// <summary>
     /// Hits an enemy.
