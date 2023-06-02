@@ -5,6 +5,10 @@ using UnityEngine;
 //Anton L
 //Based a tutorial by KiwiCoder
 //https://www.youtube.com/watch?v=1H9jrKyWKs0&t=974s
+
+/// <summary>
+/// Unused StateMachine
+/// </summary>
 public class StateMachine
 {
     public State[] states;

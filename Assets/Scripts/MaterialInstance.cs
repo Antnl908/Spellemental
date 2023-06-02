@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Allows for instancing of materials while also making it possible to batch them for draw calls 
+/// </summary>
 public class MaterialInstance : MonoBehaviour
 {
     //Made by AntonL, edited by Andreas J
@@ -19,12 +22,13 @@ public class MaterialInstance : MonoBehaviour
     void Start()
     {
         mpb ??= new MaterialPropertyBlock();
-        //rend = GetComponentInChildren<Renderer>();
-        //renderers = transform.GetComponentsInChildren<MeshRenderer>();
-        //sRenderers = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
+        
         ChangeMatColor();
     }
 
+    /// <summary>
+    /// Create new material property block
+    /// </summary>
     public void NewMBP()
     {
         mpb = new MaterialPropertyBlock();
@@ -58,88 +62,48 @@ public class MaterialInstance : MonoBehaviour
     {
         amount -= 0.5f * Time.deltaTime;
         if (amount > 0) { glow = true; } else { glow = false; }
-        //SetGlow();
         ChangeMatColor();
     }
 
     public void SetGlow(bool g)
     {
-        //if (mpb == null)
-        //{
-        //    mpb = new MaterialPropertyBlock();
-        //}
-
-        //Renderer rend = GetComponentInChildren<Renderer>();
         glow = g;
         ChangeMatColor();
     }
     public void SetGlow(float a)
     {
-        //if (mpb == null)
-        //{
-        //    mpb = new MaterialPropertyBlock();
-        //}
-
-        //Renderer rend = GetComponentInChildren<Renderer>();
-        //glow = g;
         amount = a;
         ChangeMatColor();
     }
     public void SetGlow()
     {
-        //if (mpb == null)
-        //{
-        //    mpb = new MaterialPropertyBlock();
-        //}
-
-        //Renderer rend = GetComponentInChildren<Renderer>();
-        //glow = g;
         ChangeMatColor();
     }
 
-    //private void OnValidate()
-    //{
-    //    if (mpb == null)
-    //    {
-    //        mpb = new MaterialPropertyBlock();
-    //    }
-
-    //    ChangeMatColor();
-    //}
-
+    /// <summary>
+    /// Sets the values for the material
+    /// </summary>
     private void ChangeMatColor()
     {
 
         mpb.SetFloat("_Amount", amount);
         mpb.SetFloat("_Glow", glow ? 1f : 0f);
-        //mpb.SetColor("_Color", color);
         mpb.SetColor("_GlowColor", color);
         mpb.SetColor("_Albedo", albedo);
 
-        //MeshRenderer[] renderers = transform.GetComponentsInChildren<MeshRenderer>();
         if (renderers.Length > 0)
         {
             foreach (MeshRenderer r in renderers)
             {
-                //Debug.Log("Set block");
-                //mpb.SetFloat("_Amount", amount);
-                //mpb.SetFloat("_Glow", glow ? 1f : 0f);
-                //mpb.SetColor("_Color", color);
-                //mpb.SetColor("_Albedo", albedo);
                 r.SetPropertyBlock(mpb);
             }
         }
         
 
-        //SkinnedMeshRenderer[] sRenderers = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
         if(sRenderers.Length > 0)
         {
             foreach (SkinnedMeshRenderer r in sRenderers)
             {
-                //mpb.SetFloat("_Amount", amount);
-                //mpb.SetFloat("_Glow", glow ? 1f : 0f);
-                //mpb.SetColor("_Color", color);
-                //mpb.SetColor("_Albedo", albedo);
                 r.SetPropertyBlock(mpb);
             }
         }

@@ -22,6 +22,12 @@ public class Interactable : MonoBehaviour, IDamageable
 
     }
 
+    /// <summary>
+    /// Returns if hit by an attack with the same element
+    /// </summary>
+    /// <param name="damage"></param>
+    /// <param name="spellType"></param>
+    /// <returns></returns>
     public virtual bool TryToDestroyDamageable(int damage, Spell.SpellType? spellType)
     {
         if (activated) { return false; }

@@ -1,7 +1,11 @@
 using UnityEngine.Audio;
 using UnityEngine;
 
-
+/// <summary>
+/// Made following Brackeys tutorial
+/// https://www.youtube.com/watch?v=6OT43pvUyfY
+/// Handles audioclip and relevent values
+/// </summary>
 [System.Serializable]
 public class Sound 
 {

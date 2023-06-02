@@ -22,10 +22,10 @@ public class WorldHealthBar : HealthBar
         {
             parentWidth = healthBar.GetComponent<RectTransform>().rect.width;
         }
-        //parentWidth = healthBar.GetComponent<RectTransform>().rect.width;
     }
     protected override void LateUpdate()
     {
+        //Create a billboard effect, can be constrained on the Y-axis
         Direction = Camera.main.transform.position - transform.position;
         transform.rotation = Quaternion.LookRotation(Direction, Vector3.up);
         if (useTarget) { transform.position = target.position + offset; }

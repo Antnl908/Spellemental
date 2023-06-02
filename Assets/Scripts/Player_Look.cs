@@ -33,22 +33,17 @@ public class Player_Look : MonoBehaviour
 
     private float swayingValue;
     private float sway;
-    //[SerializeField]
-    //private float swayingSpeed = 1f;
+    
     [SerializeField]
     private float swayingAmount = 0.03f;
     private bool isSwaying = true;
     
     private float leaningValue;
     private float lean;
-    //[SerializeField]
-    //private float swayingSpeed = 1f;
-    //[SerializeField]
-    //private float leaningAmount = 0f;
+    
     private bool isLeaning = true;
 
     private bool interp = false;
-    //private bool interpFOV = false; //implement FOV lerp later   
 
     [SerializeField]
     private GameObject fpsrig; //Turned into Gameobject - 31/3 - 2023 by Daniel Svensson.
@@ -72,8 +67,8 @@ public class Player_Look : MonoBehaviour
         //Update rotation
         if(Time.timeScale > 0)
         {
+            //Rotate camera
             VirtualCamera.transform.rotation = Quaternion.Slerp(VirtualCamera.transform.rotation, Quaternion.Euler(-LookVector.y, LookVector.x, LeaningValue), TAmount);
-            //fpsrig.transform.localRotation = Quaternion.Slerp(fpsrig.transform.localRotation, WeaponSway, 8f * Time.deltaTime);
         }        
         
         //Update headbobbing/leaning
@@ -88,7 +83,6 @@ public class Player_Look : MonoBehaviour
     {
         //Update position
         VirtualCamera.transform.position = transform.position + Vector3.up * BobbingValue + Right * SwayingValue;
-        //fpsrig.transform.position = transform.position + -VirtualCamera.transform.up * 0.25f;
     }
 
     public CinemachineVirtualCamera VirtualCamera
@@ -115,7 +109,6 @@ public class Player_Look : MonoBehaviour
     }
     public Vector3 Right
     {
-        //get { return Vector3.Cross(VirtualCamera.transform.forward, Vector3.up); }
         get { return Vector3.Cross(Forward, Vector3.up); }
     }
 
@@ -157,7 +150,6 @@ public class Player_Look : MonoBehaviour
     public float OTAmount
     {
         get { if (Vector3.Dot(fpsrig.transform.forward, VirtualCamera.transform.forward) > 0.45f) { return Time.deltaTime * 15f; } else { return 1f; } }
-        //set { t = value; }
     }
 
     //Should camera rotation be lerped?
@@ -214,12 +206,7 @@ public class Player_Look : MonoBehaviour
     {
         get { return BobbingSpeed * 0.5f; }
     }
-    //public float LeaningSpeed
-    //{
-    //    get { return swayingSpeed; }
-    //    set { swayingSpeed = value; }
-    //}
-
+    
     //How high/low 
     public float BobbingAmount
     {
@@ -234,15 +221,11 @@ public class Player_Look : MonoBehaviour
     public float LeaningAmount
     {
         get { return Vector3.Dot(Forward * InputDirection.y + Right * -InputDirection.x, Right); }
-        //get { return leaningAmount; }
-        //set { leaningAmount = value; }
     }
     public float MoveMagnitude
     {
         get { return moveMagnitude; }
         set { moveMagnitude = value; }
-        //get { return leaningAmount; }
-        //set { leaningAmount = value; }
     }
 
     public Quaternion WeaponSway

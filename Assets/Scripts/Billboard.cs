@@ -12,6 +12,7 @@ public class Billboard : MonoBehaviour
     [SerializeField]
     private Vector3 lookAtExtraRotation = Vector3.zero;
 
+    //Works with sprites but doesn't seem to work with some meshes
     //private void OnWillRenderObject()
     //{
     //    //Direction = Camera.current.transform.position - transform.position;
@@ -19,6 +20,10 @@ public class Billboard : MonoBehaviour
     //    transform.rotation = Quaternion.LookRotation(Direction, Vector3.up);
     //}
     
+
+    /// <summary>
+    /// Rotate object towards camera
+    /// </summary>
     private void Update()
     {
         if(usesLookAt)

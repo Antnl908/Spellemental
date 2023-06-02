@@ -9,12 +9,10 @@ public class SpellPage : MonoBehaviour
     [SerializeField] private List<GameObject> elements;
     [SerializeField] private TextMeshProUGUI[] texts;
 
-    //private void Awake()
-    //{
-    //    //texts = GetComponentsInChildren<TextMeshProUGUI>();
-    //    Debug.Log($"Texts found: {texts.Length}");
-    //}
-
+    /// <summary>
+    /// Activates all the objects related to a page
+    /// </summary>
+    /// <param name="color"></param>
     public void OpenPage(Color color)
     {
         Debug.Log("Open page.");
@@ -29,6 +27,9 @@ public class SpellPage : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Deactivates all the objects related to a page
+    /// </summary>
     public void ClosePage()
     {
         gameObject.SetActive(false);

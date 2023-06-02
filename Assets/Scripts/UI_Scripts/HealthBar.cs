@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 //Check out Kiwicoder: https://www.youtube.com/watch?v=oLT4k-lrnwg&t=1195s
 //this script was made following this tutorial
+
+/// <summary>
+/// Unused UI script, replaced by WorldHealthBar
+/// </summary>
 public class HealthBar : MonoBehaviour
 {
     [SerializeField] protected Transform target;
@@ -28,10 +32,13 @@ public class HealthBar : MonoBehaviour
         transform.position = Camera.main.WorldToScreenPoint(target.position + offset);
     }
 
+    /// <summary>
+    /// Set current amount of health and update UI
+    /// </summary>
+    /// <param name="percentage"></param>
     public virtual void SetHealthAmount(float percentage)
     {
         float width = parentWidth * percentage;
         foregroundImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
-        //Debug.Log($"percentage:{percentage} parentWidth:{parentWidth} width:{width}");
     }
 }

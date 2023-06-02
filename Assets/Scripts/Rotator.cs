@@ -7,7 +7,7 @@ public class Rotator : MonoBehaviour
     [SerializeField] Vector3 rotationAxis;
     void Update()
     {
-        //transform.Rotate(rotationAxis.x * Time.deltaTime, rotationAxis.y * Time.deltaTime, rotationAxis.z * Time.deltaTime);
+        //Rotates object using a Vector3
         transform.rotation *= Quaternion.Euler(rotationAxis.x * Time.unscaledDeltaTime, rotationAxis.y * Time.unscaledDeltaTime, rotationAxis.z * Time.unscaledDeltaTime);
     }
 }

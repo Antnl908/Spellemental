@@ -8,9 +8,9 @@ public class TextCrawl : MonoBehaviour
 {
     [SerializeField] float speed = 5f;
     [SerializeField]
-    float beginPosition = -580f; //-1100; //-2935;
+    float beginPosition = -580f;
     [SerializeField]
-    float endPosition = 5600f; //2935;
+    float endPosition = 5600f;
 
     [SerializeField] bool debug;
     [SerializeField] float debugPosition;
@@ -27,9 +27,8 @@ public class TextCrawl : MonoBehaviour
     {
         if(!debug)
         {
-            //text.localPosition += Vector3.up * speed * Time.deltaTime;
+            //Update the position of the text and resets if it has scrolled past the screen
             text.anchoredPosition3D += Vector3.up * speed * Time.deltaTime;
-            //text.anchoredPosition3D = Vector3.up * beginPosition;
             if (text.anchoredPosition3D.y > endPosition) { SetStartPosition(); }
         }
         else
@@ -41,13 +40,12 @@ public class TextCrawl : MonoBehaviour
 
     private void OnEnable()
     {
-        //text.localPosition = Vector3.up * beginPosition;
-        //text.localPosition = Vector3.up * -beginPosition;
-        //text.anchoredPosition = Vector3.up * beginPosition;
-        //text.localPosition = Vector3.up * beginPosition;
         SetStartPosition();
     }
 
+    /// <summary>
+    /// Sets the default position at the bottom of the screen
+    /// </summary>
     void SetStartPosition()
     {
         text.anchoredPosition3D = Vector3.up * beginPosition;

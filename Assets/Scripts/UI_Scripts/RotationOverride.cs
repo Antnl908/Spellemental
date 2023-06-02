@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class RotationOverride : MonoBehaviour
 {
-    // Update is called once per frame
+    /// <summary>
+    /// Debug/unused
+    /// </summary>
     void Update()
     {
-        //transform.rotation = Quaternion.FromToRotation(transform.up, Vector3.up);
+        //Force rotation
         transform.up = Vector3.up;
     }
 }

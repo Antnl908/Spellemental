@@ -10,7 +10,7 @@ using static UnityEngine.EventSystems.EventTrigger;
 
 public class Spell_Projectile : Pooling_Object
 {
-    // Made by Daniel.
+    // Made by Daniel, edited by Anton L
 
     private Rigidbody rb;
 
@@ -261,7 +261,6 @@ public class Spell_Projectile : Pooling_Object
     }
 
     /// <summary>
-    /// Made by Anton L.
     /// Damages the first object the spell hits if it has the  or the IMagicEffect interfaces.
     /// </summary>
     /// <param name="other">The object the spell hit</param>
@@ -289,7 +288,6 @@ public class Spell_Projectile : Pooling_Object
 
     /// <summary>
     /// Uses an Overlap Sphere to deal damage to any objects it hits and that implement the IDamageable or the IMagicEffect interfaces.
-    /// Made by Anton L.
     /// </summary>
     private void OverlapHit()
     {

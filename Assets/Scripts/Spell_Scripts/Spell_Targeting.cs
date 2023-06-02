@@ -33,7 +33,10 @@ public class Spell_Targeting : MonoBehaviour
         CheckTargets();
         timer = targetCheckTimer;
     }
-
+    /// <summary>
+    /// Built like Spell_Ray but handles applying emission to the materials of enemies in sight
+    /// Use OverlapSphere to check for enemies
+    /// </summary>
     public void CheckTargets()
     {
         count = Physics.OverlapSphereNonAlloc(transform.position, range, colliders, layerMask, QueryTriggerInteraction.Collide);
@@ -60,6 +63,14 @@ public class Spell_Targeting : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Checks if target is valid
+    /// </summary>
+    /// <param name="go"></param>
+    /// <param name="offset"></param>
+    /// <param name="pos"></param>
+    /// <param name="dir"></param>
+    /// <returns></returns>
     bool CheckTarget(GameObject go, float offset, Vector3 pos, Vector3 dir)
     {
         if (cone)
@@ -79,6 +90,14 @@ public class Spell_Targeting : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Comapre direction vectors between camera and enemy
+    /// </summary>
+    /// <param name="obj"></param>
+    /// <param name="offset"></param>
+    /// <param name="pos"></param>
+    /// <param name="dir"></param>
+    /// <returns></returns>
     bool IsInSight(GameObject obj, float offset, Vector3 pos, Vector3 dir)
     {
         Vector3 sightDir = obj.transform.position + (Vector3.up * offset) - pos;
@@ -90,6 +109,14 @@ public class Spell_Targeting : MonoBehaviour
 
         return false;
     }
+
+    /// <summary>
+    /// Raycast check to test if there's any obstructions
+    /// </summary>
+    /// <param name="obj"></param>
+    /// <param name="offset"></param>
+    /// <param name="pos"></param>
+    /// <returns></returns>
     bool IsVisible(GameObject obj, float offset, Vector3 pos)
     {
         ray.origin = pos;

@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Made following tutorial by MinionsArt
+/// https://www.youtube.com/watch?v=DKSpgFuKeb4
+/// Unused in game as it made it difficult to see the amount of mana in the flask
+/// </summary>
+
 [ExecuteInEditMode]
 public class Liquid : MonoBehaviour
 {
@@ -61,7 +67,9 @@ public class Liquid : MonoBehaviour
         MeshAndRend();
     }
 
-    //Update is called once per frame
+    /// <summary>
+    /// Update shader values and calculate amount of movement/velocity
+    /// </summary>
     void Update()
     {
         float deltaTime = 0;
@@ -105,6 +113,10 @@ public class Liquid : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Update shader fill-amount and position
+    /// </summary>
+    /// <param name="deltaTime"></param>
     void UpdatePos(float deltaTime)
     {
         Vector3 worldPos = transform.TransformPoint(new Vector3(mesh.bounds.center.x, mesh.bounds.center.y, mesh.bounds.center.z));
@@ -136,6 +148,12 @@ public class Liquid : MonoBehaviour
         if (rend == null) { rend = GetComponent<Renderer>(); }
     }
 
+    /// <summary>
+    /// Calculate difference in rotation from frame to frame
+    /// </summary>
+    /// <param name="foreLastFrameRotation"></param>
+    /// <param name="lastFrameRotation"></param>
+    /// <returns></returns>
     Vector3 GetAngularVelocity(Quaternion foreLastFrameRotation, Quaternion lastFrameRotation)
     {
         var q = lastFrameRotation * Quaternion.Inverse(foreLastFrameRotation);
@@ -170,6 +188,10 @@ public class Liquid : MonoBehaviour
         return angularVelocity;
     }
 
+    /// <summary>
+    /// Gets the lowest point using the vertices of the mesh
+    /// </summary>
+    /// <returns></returns>
     float GetLowestPoint()
     {
         float lowestY = float.MaxValue;

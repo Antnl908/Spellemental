@@ -9,19 +9,13 @@ public class SetTime : MonoBehaviour
     //Material mat;
     void Awake()
     {
-        //mat = GetComponent<Material>();
-        //mat = rend.material;
+        
     }
-
+    /// <summary>
+    /// Update shader with unscaled time
+    /// </summary>
     void Update()
     {
-        //mat.SetFloat("_UnscaledTime", Time.unscaledTime);
-        //Debug.Log("_UnscaledTime is set");
-        //if (mat != null) { mat.SetFloat("_UnscaledTime", Time.unscaledTime); } 
-        //else
-        //{
-        //    Debug.Log("Material is null");
-        //}
         if(useUnscaledTime)
         {
             for (int i = 0; i < rend.Length; i++)

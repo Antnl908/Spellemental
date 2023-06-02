@@ -27,6 +27,17 @@ public class Spell_Ray : Spell
     [SerializeField]
     private int effectInstanceAmount = 3;
 
+    /// <summary>
+    /// A override version of the CastSpell method found in the Spell script
+    /// This version uses a OverlapSphere to check for nearby objects to target
+    /// There's a check using Vector3.Dot to see if the targets are within an acceptable radius
+    /// A final check is made using a raycast to see if there's any object between the camera and the target
+    /// Finally damage is applied to the target
+    /// </summary>
+    /// <param name="player_Look"></param>
+    /// <param name="position"></param>
+    /// <param name="rotation"></param>
+    /// <param name="direction"></param>
     public override void CastSpell(Player_Look player_Look, Vector3 position, Quaternion rotation, Vector3 direction)
     {
         count = Physics.OverlapSphereNonAlloc(player_Look.VirtualCamera.transform.position, range, colliders, layerMask, QueryTriggerInteraction.Collide);
@@ -80,6 +91,15 @@ public class Spell_Ray : Spell
 
     }
 
+    /// <summary>
+    /// Checks if a target is valid
+    /// Cone determines if there's need for a Vector3.Dot check or if a sphere is enough
+    /// </summary>
+    /// <param name="go"></param>
+    /// <param name="offset"></param>
+    /// <param name="pos"></param>
+    /// <param name="dir"></param>
+    /// <returns></returns>
     private bool CheckTarget(GameObject go, Vector3 offset, Vector3 pos, Vector3 dir)
     {
         if(cone)
@@ -99,6 +119,14 @@ public class Spell_Ray : Spell
         return false;
     }
 
+    /// <summary>
+    /// Compare the direction vector of the camera forward with the direction of the enemy
+    /// </summary>
+    /// <param name="obj"></param>
+    /// <param name="offset"></param>
+    /// <param name="pos"></param>
+    /// <param name="dir"></param>
+    /// <returns></returns>
     private bool IsInSight(GameObject obj, Vector3 offset, Vector3 pos, Vector3 dir)
     {
         Vector3 sightDir = offset - pos;
@@ -111,6 +139,13 @@ public class Spell_Ray : Spell
         return false;
     }
 
+    /// <summary>
+    /// Checks if there's any object in the way of the attack
+    /// </summary>
+    /// <param name="obj"></param>
+    /// <param name="offset"></param>
+    /// <param name="pos"></param>
+    /// <returns></returns>
     private bool IsVisible(GameObject obj, Vector3 offset, Vector3 pos)
     {
         ray.origin = pos;

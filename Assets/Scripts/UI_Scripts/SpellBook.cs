@@ -22,6 +22,10 @@ public class SpellBook : MonoBehaviour
 
     }
     
+    /// <summary>
+    /// Opens a page in the spellbook
+    /// </summary>
+    /// <param name="index"></param>
     public void GoToPage(int index)
     {
         index--;
@@ -52,11 +56,18 @@ public class SpellBook : MonoBehaviour
         tmpPage.text = $"{index + 1}/{pages.Count}";
     }
 
+    /// <summary>
+    /// Update index and opens the next page
+    /// </summary>
     public void NextPage()
     {
         if(currentIndex + 1 >= pages.Count) { GoToPage(1); return; }
         GoToPage(currentIndex + 2);
     }
+
+    /// <summary>
+    /// Update the index and opens the previous page
+    /// </summary>
     public void PreviousPage()
     {
         if (currentIndex  <= 0) { GoToPage(pages.Count); return; }
