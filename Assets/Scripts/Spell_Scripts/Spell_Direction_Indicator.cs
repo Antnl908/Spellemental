@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,13 +38,7 @@ public class Spell_Direction_Indicator : MonoBehaviour
             if (Physics.Raycast(look.VirtualCamera.transform.position, look.VirtualCamera.transform.forward.normalized,
                                                                                    out RaycastHit hitInfo, range, detectableSurfaces))
             {
-                directionIndicator.SetActive(true);
-
-                Vector3 position = hitInfo.point + hitInfo.normal.normalized / 10;
-
-                Quaternion rotation = Quaternion.LookRotation(hitInfo.normal);
-
-                directionIndicator.transform.SetPositionAndRotation(position, rotation);
+                PlaceIndicator(hitInfo);
             }
             else
             {
@@ -59,6 +51,24 @@ public class Spell_Direction_Indicator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Places the indicator on the surface the player is looking at.
+    /// </summary>
+    /// <param name="hitInfo"></param>
+    private void PlaceIndicator(RaycastHit hitInfo)
+    {
+        directionIndicator.SetActive(true);
+
+        Vector3 position = hitInfo.point + hitInfo.normal.normalized / 10;
+
+        Quaternion rotation = Quaternion.LookRotation(hitInfo.normal);
+
+        directionIndicator.transform.SetPositionAndRotation(position, rotation);
+    }
+
+    /// <summary>
+    /// Deactivates the indicator
+    /// </summary>
     private void Deactivate()
     {
         if (directionIndicator.activeInHierarchy)
@@ -67,6 +77,9 @@ public class Spell_Direction_Indicator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Draws a line which shows the reach if the indicator.
+    /// </summary>
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawLine(transform.position, Vector3.forward * range);

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -28,20 +27,29 @@ public class Menu_Interactions : MonoBehaviour
         loadingScreen.SetActive(false);
     }
 
+    /// <summary>
+    /// Loads the colosseum.
+    /// </summary>
     public void StartLevel()
     {
         Score_Keeper.ResetScore();
 
-        StartCoroutine(LoadLevelAsynchronously(levelName));
+        StartCoroutine(LoadLevelAsync(levelName));
     }
 
+    /// <summary>
+    /// Loads the tutorial.
+    /// </summary>
     public void StartTutorial()
     {
         Score_Keeper.ResetScore();
 
-        StartCoroutine(LoadLevelAsynchronously(tutorialName));
+        StartCoroutine(LoadLevelAsync(tutorialName));
     }
 
+    /// <summary>
+    /// Closes the application.
+    /// </summary>
     public void Quit()
     {
         Application.Quit();
@@ -49,6 +57,10 @@ public class Menu_Interactions : MonoBehaviour
         Debug.Log("Quit!");
     }
 
+    /// <summary>
+    /// Displays the player's high scores on a UI element.
+    /// </summary>
+    /// <param name="text"></param>
     public void DisplayHighScores(TextMeshProUGUI text)
     {
         Score_Keeper.LoadHighScores();
@@ -61,12 +73,20 @@ public class Menu_Interactions : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Deletes all of the player's scores.
+    /// </summary>
     public void DeleteAllScores()
     {
         Score_Keeper.DeleteAllScores();
     }
 
-    private IEnumerator LoadLevelAsynchronously(string name)
+    /// <summary>
+    /// Loads a scene asynchronously.
+    /// </summary>
+    /// <param name="name">Name of the scene that will be loaded</param>
+    /// <returns></returns>
+    private IEnumerator LoadLevelAsync(string name)
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(name);
 

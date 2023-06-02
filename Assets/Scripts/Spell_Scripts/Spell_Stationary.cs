@@ -1,10 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
-using UnityEngine.UIElements;
 
 public class Spell_Stationary : Pooling_Object
 {
@@ -96,7 +92,12 @@ public class Spell_Stationary : Pooling_Object
         if (destroyedAfterSomeTime && enabled)
         {
             currentDestructionTime -= Time.deltaTime;
-            if (useOverlapSphere) { OverlapHit(); }
+
+            if (useOverlapSphere) 
+            { 
+                OverlapHit(); 
+            }
+
             if (currentDestructionTime <= 0)
             {
                 pool.Release(this);
@@ -109,6 +110,17 @@ public class Spell_Stationary : Pooling_Object
         }
     }
 
+    /// <summary>
+    /// Initializes the spells starting values.
+    /// </summary>
+    /// <param name="position">The position where it is placed</param>
+    /// <param name="rotation">The starting rotation</param>
+    /// <param name="pool">The pool the spell came from</param>
+    /// <param name="damage">How much damage it will deal</param>
+    /// <param name="effectDamage">How much effect damage it will deal</param>
+    /// <param name="effectBuildUp">How many percentages of effect build up the spell will give</param>
+    /// <param name="spellType">The spells spell type</param>
+    /// <param name="destructionTime">How long it is until the spell is returned to the pool</param>
     public void Initialize(Vector3 position, Quaternion rotation, IObjectPool<Pooling_Object> pool, 
                  int damage, int effectDamage, int effectBuildUp, Spell.SpellType spellType, float destructionTime)
     {
@@ -132,6 +144,12 @@ public class Spell_Stationary : Pooling_Object
         }
     }
 
+    /// <summary>
+    /// Sets the position, roation and pool of the spell.
+    /// </summary>
+    /// <param name="position">The position of the spell</param>
+    /// <param name="rotation">The rotation of the spell</param>
+    /// <param name="pool">The pool the spell came from</param>
     public void Initialize(Vector3 position, Quaternion rotation, IObjectPool<Pooling_Object> pool)
     {
         //Has to be done in this order for it to work.
@@ -177,6 +195,10 @@ public class Spell_Stationary : Pooling_Object
         }
     }
 
+    /// <summary>
+    /// Deals damage to any object that implements the IDamageable or the IMagicEffect interfaces. 
+    /// Spawns a vfx if it destroys upon hitting something.
+    /// </summary>
     public void CheckHits()
     {
         if (!isActiveAndEnabled)
@@ -184,7 +206,6 @@ public class Spell_Stationary : Pooling_Object
             return;
         }
 
-        //Detta kan förbättras senare.
         if (!destroyOnHit)
         {
             effectTimer -= Time.deltaTime;
@@ -234,11 +255,19 @@ public class Spell_Stationary : Pooling_Object
         }
     }
 
+    /// <summary>
+    /// Sets that the spell hit something.
+    /// </summary>
     public void SetGotHitToTrue()
     {
         gotAHit = true;
     }
 
+    /// <summary>
+    /// Made by Anton L.
+    /// Damages the first object the spell hits if it has the  or the IMagicEffect interfaces.
+    /// </summary>
+    /// <param name="other">The object the spell hit</param>
     private void InstantCheckHits(Collider other)
     {
         IMagicEffect magicEffect = other.transform.GetComponent<IMagicEffect>();
@@ -261,47 +290,18 @@ public class Spell_Stationary : Pooling_Object
             Player_Health.killCount++;
         }
 
-        //if (effectObjectPoolName != "Error")
-        //{
-        //    for (int x = 0; x < effectInstanceAmount; x++)
-        //    {
-        //        Pooling_Object pooling_Object = Object_Pooler.Pools[effectObjectPoolName].Get();
-
-        //        pooling_Object.Initialize(transform.position, Quaternion.identity,
-        //                                     other.transform.position, Object_Pooler.Pools[effectObjectPoolName]);
-        //    }
-        //}
-
-        //if (stationarySpellPoolName != "Error")
-        //{
-        //    if (Physics.Raycast(transform.position + Vector3.up * spawnStationaryRangeAboveTransform,
-        //                                                    Vector3.down, out RaycastHit hitInfo, spawnStationaryRange, terrainLayer))
-        //    {
-        //        Spell_Stationary stationary = (Spell_Stationary)stationarySpellPool.Get();
-
-        //        //Rotates it along the ground.
-        //        Quaternion rotation = Quaternion.FromToRotation(transform.up, hitInfo.normal) * transform.rotation;
-
-
-        //        stationary.Initialize(hitInfo.point, rotation, stationarySpellPool);
-        //    }
-        //}
-
-        //if (other.gameObject.layer == terrainLayer)
-        //{
-        //    gotAHit = true;
-        //}
-
         if (gotAHit && destroyOnHit)
         {
             pool.Release(this);
         }
     }
 
+    /// <summary>
+    /// Uses an Overlap Sphere to deal damage to any objects it hits and that implement the IDamageable or the IMagicEffect interfaces.
+    /// Made by Anton L.
+    /// </summary>
     private void OverlapHit()
     {
-        //potential lag fix
-
         checkTimer -= Time.deltaTime;
         if (checkTimer > 0.0f) { return; }
         checkTimer = checkTime;
@@ -332,22 +332,14 @@ public class Spell_Stationary : Pooling_Object
                     {
                         Player_Health.killCount++;
                     }
-
-                    //if (effectObjectPoolName != "Error")
-                    //{
-                    //    for (int x = 0; x < effectInstanceAmount; x++)
-                    //    {
-                    //        Pooling_Object pooling_Object = Object_Pooler.Pools[effectObjectPoolName].Get();
-
-                    //        pooling_Object.Initialize(transform.position, Quaternion.identity,
-                    //                                     colliders[i].transform.position, Object_Pooler.Pools[effectObjectPoolName]);
-                    //    }
-                    //}
                 }
             }
         }
     }
 
+    /// <summary>
+    /// Draws the areas where the spell can damage enemies.
+    /// </summary>
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireCube(transform.position + hitBoxOffset, new Vector3(width / 2, height / 2, depth / 2));

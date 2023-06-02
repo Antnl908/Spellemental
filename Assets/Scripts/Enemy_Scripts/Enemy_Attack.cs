@@ -19,15 +19,10 @@ public class Enemy_Attack : MonoBehaviour
     [SerializeField]
     private float destructionTime = 10;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
+        //Destroys gameObject after a certain amount of time.
         destructionTime -= Time.deltaTime;
 
         if (destructionTime <= 0)
@@ -46,6 +41,10 @@ public class Enemy_Attack : MonoBehaviour
         CheckHits();
     }
 
+    /// <summary>
+    /// Checks for colliders on game object and tries to deal damage to any game object that impements the IDamageable interface.
+    /// It was used for testing purposes.
+    /// </summary>
     private void CheckHits()
     {
         Collider[] colliders = Physics.OverlapSphere(center.position, range);
@@ -61,6 +60,9 @@ public class Enemy_Attack : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Draws the attack range of the attack.
+    /// </summary>
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawSphere(center.position, range);

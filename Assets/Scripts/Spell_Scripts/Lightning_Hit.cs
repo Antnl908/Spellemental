@@ -33,6 +33,7 @@ public class Lightning_Hit : Pooling_Object
     // Update is called once per frame
     void Update()
     {
+        //Releases the object to its pool after a while.
         currentDestructionTime -= Time.deltaTime;
 
         if(currentDestructionTime <= 0 && enabled)
@@ -41,6 +42,13 @@ public class Lightning_Hit : Pooling_Object
         }
     }
 
+    /// <summary>
+    /// Sets lightning's starting values.
+    /// </summary>
+    /// <param name="position">The start position</param>
+    /// <param name="rotation">The rotation of the object</param>
+    /// <param name="direction">The destination where the lightning will finally land</param>
+    /// <param name="pool">The pool the object came from</param>
     public override void Initialize(Vector3 position, Quaternion rotation, Vector3 direction, IObjectPool<Pooling_Object> pool)
     {
         this.pool = pool;

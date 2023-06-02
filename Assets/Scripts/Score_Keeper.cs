@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public static class Score_Keeper
@@ -13,6 +11,9 @@ public static class Score_Keeper
 
     private const string saveFileName = "HighScoreSave";
 
+    /// <summary>
+    /// A class used to save all scores to a json string.
+    /// </summary>
     [Serializable]
     public class HighScoreList
     {
@@ -26,16 +27,26 @@ public static class Score_Keeper
 
     public static HighScoreList ScoreList { get => scoreList; }
 
+    /// <summary>
+    /// Puts the score back to zero.
+    /// </summary>
     public static void ResetScore()
     {
         score = 0;
     }
 
+    /// <summary>
+    /// Adds points to the score.
+    /// </summary>
+    /// <param name="addedScore">The amount of points added to the score</param>
     public static void AddScore(int addedScore)
     {
         score += addedScore;
     }
 
+    /// <summary>
+    /// Loads all of the high scores from a file using PlayerPrefs.
+    /// </summary>
     public static void LoadHighScores()
     {
         if (!PlayerPrefs.HasKey(saveFileName))
@@ -51,6 +62,9 @@ public static class Score_Keeper
         }
     }
 
+    /// <summary>
+    /// Saves the 10 highest scores to a file using json and PlayerPrefs.
+    /// </summary>
     public static void SaveHighScores()
     {
         int scoreToMoveDown = -1;
@@ -78,6 +92,9 @@ public static class Score_Keeper
         PlayerPrefs.SetString(saveFileName, json);
     }
 
+    /// <summary>
+    /// Deletes all of the saved scores.
+    /// </summary>
     public static void DeleteAllScores()
     {
         PlayerPrefs.DeleteKey(saveFileName);

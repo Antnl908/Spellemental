@@ -36,6 +36,9 @@ public class Pause_Menu : MonoBehaviour
         controls.Player1.Pause.performed -= SwapPauseState;
     }
 
+    /// <summary>
+    /// Returns the player to the main menu.
+    /// </summary>
     public void BackToMainMenu()
     {
         Time.timeScale = 1;
@@ -45,6 +48,10 @@ public class Pause_Menu : MonoBehaviour
         SceneManager.LoadScene(startMenu);
     }
 
+    /// <summary>
+    /// Pauses or unpauses dependnding on which state the game is already in.
+    /// </summary>
+    /// <param name="context">Is needed to subscribe this method to a button</param>
     private void SwapPauseState(InputAction.CallbackContext context)
     {
         if (isPaused)
@@ -57,6 +64,9 @@ public class Pause_Menu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Pauses the game.
+    /// </summary>
     private void Pause()
     {
         isPaused = true;
@@ -68,6 +78,9 @@ public class Pause_Menu : MonoBehaviour
         Time.timeScale = 0;
     }
 
+    /// <summary>
+    /// Unpauses the game.
+    /// </summary>
     public void UnPause()
     {
         isPaused = false;

@@ -1,13 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Spell_Select : MonoBehaviour
 {
-    private Collider colliderSelect;
-
     [SerializeField]
     private Image imageLeft;
 
@@ -34,12 +30,17 @@ public class Spell_Select : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        colliderSelect = GetComponent<Collider>();
-
         UnSelect(true);
         UnSelect(false);
     }
 
+    /// <summary>
+    /// Makes this Spell_Select selected if it is the closest to the player out of all the selects.
+    /// </summary>
+    /// <param name="playerPos">The player's position</param>
+    /// <param name="selects">A list of all the selects</param>
+    /// <param name="isLeftSprite">Wheter this is selecting the left or right sprite</param>
+    /// <returns>True if selected</returns>
     public bool SelectIfHit(Vector3 playerPos, List<Spell_Select> selects, bool isLeftSprite)
     {
         foreach(Spell_Select s in selects)
@@ -55,6 +56,10 @@ public class Spell_Select : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// Selects this Spell_Select.
+    /// </summary>
+    /// <param name="isLeftSprite">Wheter the left or right sprite is selected</param>
     public void Select(bool isLeftSprite)
     {
         if(isLeftSprite)
@@ -67,6 +72,10 @@ public class Spell_Select : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Unselects this Spell_Select.
+    /// </summary>
+    /// <param name="isLeftSprite">Wheter the left or right sprite is unselected</param>
     public void UnSelect(bool isLeftSprite)
     {
         if (isLeftSprite)

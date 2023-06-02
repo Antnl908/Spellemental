@@ -24,18 +24,20 @@ public class Interactable : MonoBehaviour, IDamageable
 
     public virtual bool TryToDestroyDamageable(int damage, Spell.SpellType? spellType)
     {
-        //if (!repeatable && activated) { return false; }
         if (activated) { return false; }
 
         if(spellType == localSpellType) { return false; }
         activated = true;
         ExecuteInteraction(damage, spellType);
-        //activated = true;
-        //Debug.Log("Activated");
-        //Debug.Log("Activated: " + $"{spellType}");
+        
         return false;
     }
 
+    /// <summary>
+    /// Attempts to deal damage to any object that has implemented the IDamageable interface and that is hit by the overlap sphere.
+    /// </summary>
+    /// <param name="damage">How much damage will be dealt</param>
+    /// <param name="spellType">Which type of damage will be dealt</param>
     public virtual void ExecuteInteraction(int damage, Spell.SpellType? spellType)
     {
         count = Physics.OverlapSphereNonAlloc(transform.position, radius, colliders, layerMask, QueryTriggerInteraction.Collide);
@@ -52,6 +54,11 @@ public class Interactable : MonoBehaviour, IDamageable
         activated = true;
     }
 
+    /// <summary>
+    /// Attempts to deal damage to any object that has implemented the IGuaranteedDamage interface and that is hit by the overlap sphere.
+    /// </summary>
+    /// <param name="damage"></param>
+    /// <param name="spellType"></param>
     protected void GuaranteedExecuteInteraction(int damage, Spell.SpellType? spellType)
     {
         guaranteedCount = Physics.OverlapSphereNonAlloc(transform.position, radius, guaranteedColliders, layerMask, QueryTriggerInteraction.Collide);
@@ -66,6 +73,9 @@ public class Interactable : MonoBehaviour, IDamageable
         }
     }
 
+    /// <summary>
+    /// Draws a blue wire sphere in the unity editor. It represents the area where objects can be hit by an overlap sphere.
+    /// </summary>
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;

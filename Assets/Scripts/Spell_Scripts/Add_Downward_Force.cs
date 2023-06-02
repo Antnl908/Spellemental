@@ -10,6 +10,9 @@ public class Add_Downward_Force : MonoBehaviour
     [SerializeField]
     private float force = 2f;
 
+    /// <summary>
+    /// Shoots the object downwards.
+    /// </summary>
     private void OnEnable()
     {
         rb.velocity = Vector3.zero;

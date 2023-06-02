@@ -41,6 +41,9 @@ public class Spell_Casting : MonoBehaviour
 
     private bool isRegeneratingMana = false;
 
+    /// <summary>
+    /// This class is used to represent which hand color correlates with which spell type.
+    /// </summary>
     [Serializable]
     public class HandColorsForSpells
     {
@@ -151,6 +154,10 @@ public class Spell_Casting : MonoBehaviour
         transform.rotation = player_Look.VirtualCamera.transform.rotation;
     }
 
+    /// <summary>
+    /// Casts a combo spell based on which spells the player has equipped in each of their hands.
+    /// </summary>
+    /// <param name="context">Is needed to subscribe this method to a button</param>
     private void CastCombinationSpell(InputAction.CallbackContext context)
     {
         if(Time.timeScale > 0)
@@ -168,6 +175,11 @@ public class Spell_Casting : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Makes a spell the currently used combo spell and activates its corresponding animation.
+    /// </summary>
+    /// <param name="spell">The spell which will be used.</param>
+    /// <returns></returns>
     private IEnumerator UseSpell(Spell spell)
     {
         while (isCasting)
@@ -177,10 +189,6 @@ public class Spell_Casting : MonoBehaviour
                 if (!animator.GetCurrentAnimatorStateInfo(0).IsName(spell.LeftAnimationName))
                 {
                     animator.SetBool(spell.AnimationBoolName, true);
-
-                    //spell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
-
-                    //AlterMana(-spell.ManaCost);
 
                     spellToCast = spell;
 
@@ -198,6 +206,9 @@ public class Spell_Casting : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Casts the currently used combo spell and removes the amount of mana it cost.
+    /// </summary>
     public void Cast()
     {
         spellToCast.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
@@ -205,11 +216,20 @@ public class Spell_Casting : MonoBehaviour
         AlterMana(-spellToCast.ManaCost);
     }
 
+    /// <summary>
+    /// Quits casting a spell.
+    /// </summary>
+    /// <param name="context">Is needed to subscribe this method to a button</param>
     private void QuitCasting(InputAction.CallbackContext context)
     {
         isCasting = false;
     }
 
+    /// <summary>
+    /// Sets the color on the hands based on which spells are currently equipped.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     public void SetHandColor(object sender, EventArgs e)
     {
         if(handSpellTypes == null)
@@ -239,6 +259,11 @@ public class Spell_Casting : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Displays how much the currently equipped combo spell costs.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void DisplaySpellCost(object sender, EventArgs e)
     {
         foreach(var recipe in recipes)
@@ -251,11 +276,19 @@ public class Spell_Casting : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Alters the amount of mana available to the player.
+    /// </summary>
+    /// <param name="amount"></param>
     public void AlterMana(int amount)
     {
         currentMana = Mathf.Clamp(currentMana + amount, 0, maxMana);
     }
 
+    /// <summary>
+    /// Regenerates mana over time.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator RegenerateMana()
     {
         isRegeneratingMana = true;
@@ -273,11 +306,19 @@ public class Spell_Casting : MonoBehaviour
         isRegeneratingMana = false;
     }
 
+    /// <summary>
+    /// The coclor on the left hand.
+    /// </summary>
+    /// <returns>Color</returns>
     public Color LeftHandColor()
     {
         return colorOnLeftHand;
     }
 
+    /// <summary>
+    /// The color on the right hand.
+    /// </summary>
+    /// <returns>Color</returns>
     public Color RightHandColor()
     {
         return colorOnRightHand;

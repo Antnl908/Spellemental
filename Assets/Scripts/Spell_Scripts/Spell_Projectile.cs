@@ -129,6 +129,18 @@ public class Spell_Projectile : Pooling_Object
         }
     }
 
+    /// <summary>
+    /// Initializes the spells starting values and shoots it forwards.
+    /// </summary>
+    /// <param name="damage">How much damage it deals</param>
+    /// <param name="effectDamage">How much effect damage it deals</param>
+    /// <param name="effectBuildUp">How many percentages of effect build up the spell will give</param>
+    /// <param name="spellType">The spells spell type</param>
+    /// <param name="direction">The direction the spell is shot in</param>
+    /// <param name="position">The position the spell is spawned at</param>
+    /// <param name="rotation">The rotation the spell is given</param>
+    /// <param name="pool">The pool the spell came from</param>
+    /// <param name="destructionTime">How ling it is until the spell is returned to its pool</param>
     public void Initialize(int damage, int effectDamage, int effectBuildUp, Spell.SpellType spellType, 
         Vector3 direction, Vector3 position, Quaternion rotation, IObjectPool<Pooling_Object> pool, float destructionTime)
     {
@@ -180,6 +192,11 @@ public class Spell_Projectile : Pooling_Object
         }
     }
 
+    /// <summary>
+    /// Deals damage to any object that implements the IDamageable or the IMagicEffect interfaces. 
+    /// Spawns a vfx if it destroys upon hitting something.
+    /// If it spawns a stationary spell upon hitting something, then that stationary spell is spawned.
+    /// </summary>
     private void CheckHits()
     {
         if (effectObjectPoolName != "Error" || !destroyOnHit)
@@ -288,6 +305,12 @@ public class Spell_Projectile : Pooling_Object
             }          
         }       
     }
+
+    /// <summary>
+    /// Made by Anton L.
+    /// Damages the first object the spell hits if it has the  or the IMagicEffect interfaces.
+    /// </summary>
+    /// <param name="other">The object the spell hit</param>
     private void InstantCheckHits(Collider other)
     {
         IMagicEffect magicEffect = other.transform.GetComponent<IMagicEffect>();
@@ -347,10 +370,12 @@ public class Spell_Projectile : Pooling_Object
         }
     }
 
+    /// <summary>
+    /// Uses an Overlap Sphere to deal damage to any objects it hits and that implement the IDamageable or the IMagicEffect interfaces.
+    /// Made by Anton L.
+    /// </summary>
     private void OverlapHit()
     {
-        //potential lag fix
-
         checkTimer -= Time.deltaTime;
         if (checkTimer > 0.0f) { return; }
         checkTimer = checkTime;
@@ -397,11 +422,21 @@ public class Spell_Projectile : Pooling_Object
         }
     }
 
+    /// <summary>
+    /// Addes some force to the object.
+    /// </summary>
+    /// <param name="position">Unused</param>
+    /// <param name="rotation">Unused</param>
+    /// <param name="direction">The direction it is shot in</param>
+    /// <param name="pool">Unused</param>
     public override void Initialize(Vector3 position, Quaternion rotation, Vector3 direction, IObjectPool<Pooling_Object> pool)
     {
         rb.AddForce(direction, ForceMode.Impulse);
     }
 
+    /// <summary>
+    /// Draws the areas where the spell can deal damage and where it can spawn a stationary spell.
+    /// </summary>
     private void OnDrawGizmosSelected()
     {
         Extra_Gizmos.DrawCapsule(point0.position, point1.position, damageRadius, capsuleColor);

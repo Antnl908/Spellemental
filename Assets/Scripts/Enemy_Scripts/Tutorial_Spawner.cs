@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Tutorial_Spawner : MonoBehaviour
 {
+    //Made by Daniel.
+
     [SerializeField]
     private Enemy_Health enemy;
 
@@ -18,6 +20,7 @@ public class Tutorial_Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Gives a tutorial enemy its starting values.
         enemy.Initialize(transform.position, Quaternion.identity, Vector3.zero, Object_Pooler.Pools[poolName]);
 
         enemy.SetWeaknessAndResistance(weakness, resistance);

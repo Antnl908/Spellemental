@@ -99,6 +99,9 @@ public class Player_Move : MonoBehaviour
         CheckIfGrounded();
     }
 
+    /// <summary>
+    /// Decreases currentGravitation to make the player fall. If the player has landed on the ground, then the Land() method is called.
+    /// </summary>
     private void Fall()
     {
         currentGravitation += downwardAcceleration * Time.deltaTime;
@@ -109,11 +112,18 @@ public class Player_Move : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sets currentGravitation to -1 so the player stays grounded when on the ground.
+    /// </summary>
     public void Land()
     {
         currentGravitation = -1;
     }
 
+    /// <summary>
+    /// If the player is on the ground, then currentGravitation is increased to make the player jump.
+    /// </summary>
+    /// <param name="context">Is needed to subscribe this method to a button</param>
     private void Jump(InputAction.CallbackContext context)
     {
         if(isGrounded && currentGravitation <= 0)
@@ -124,6 +134,9 @@ public class Player_Move : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Bounces the player high up into the air.
+    /// </summary>
     public void Bounce()
     {
         currentGravitation = Mathf.Clamp(currentGravitation + bounceHeight, maxDownwardAcceleration, bounceHeight);
@@ -131,6 +144,9 @@ public class Player_Move : MonoBehaviour
         isGrounded = false;
     }
 
+    /// <summary>
+    /// Checks wheter or not the player is grounded by looking for ground colliders.
+    /// </summary>
     private void CheckIfGrounded()
     {
         bool wasGrounded = isGrounded;
@@ -156,6 +172,9 @@ public class Player_Move : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// In the editor draws the sphere where the ground collision is checked for.
+    /// </summary>
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawSphere(groundCheck.position, groundCheckRadius);

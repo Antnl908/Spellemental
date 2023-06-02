@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-//using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -93,17 +91,29 @@ public class Spell_Wheel : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Ties the selection of left hand spells to a button. 
+    /// </summary>
+    /// <param name="context">Is needed to subscribe this method to a button</param>
     private void ActivateLeftHandSpell(InputAction.CallbackContext context)
     {
         ActivateSpells(leftHand, true);
     }
 
+    /// <summary>
+    /// Ties the selection of right hand spells to a button. 
+    /// </summary>
+    /// <param name="context">Is needed to subscribe this method to a button</param>
     private void ActivateRightHandSpell(InputAction.CallbackContext context)
     {
         ActivateSpells(rightHand, false);
     }
 
-    //Activates a SPell_Select if its spell matches one of your equipped spells.
+    /// <summary>
+    /// Activates a Spell_Select if its spell matches one of your equipped spells.
+    /// </summary>
+    /// <param name="hand">The hand where equipped spells are checked for</param>
+    /// <param name="isLeftSprite">Whether this checks the left or right hand</param>
     private void ActivateSpells(Spell_Hand hand, bool isLeftSprite)
     {
         if(Time.timeScale == 0)
@@ -120,7 +130,10 @@ public class Spell_Wheel : MonoBehaviour
         }       
     }
 
-    //Activates the spell wheel, places it in front of you and pauses time.
+    /// <summary>
+    /// Activates the spell wheel, places it in front of you and pauses time.
+    /// </summary>
+    /// <param name="context">Is needed to subscribe this method to a button</param>
     private void ActivateWheel(InputAction.CallbackContext context)
     {
         wheel.SetActive(true);
@@ -134,7 +147,10 @@ public class Spell_Wheel : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    //Deactivates the spell wheel and unpauses time.
+    /// <summary>
+    /// Deactivates the spell wheel and unpauses time.
+    /// </summary>
+    /// <param name="context">Is needed to subscribe this method to a button</param>
     private void DeactivateWheel(InputAction.CallbackContext context)
     {
         wheel.SetActive(false);
@@ -142,7 +158,9 @@ public class Spell_Wheel : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    //Gives all Spell_Select their selected sprites if they match any equipped spell.
+    /// <summary>
+    /// Gives all Spell_Select their selected sprites if they match any equipped spell.
+    /// </summary>
     private void ActivateSpellSelects()
     {
         foreach (Spell_Select spellSelect in spellSelects)
@@ -159,7 +177,9 @@ public class Spell_Wheel : MonoBehaviour
         }
     }
 
-    //Gives all Spell_Select their unselected sprites if they do not match any equipped spell.
+    /// <summary>
+    /// Gives all Spell_Select their unselected sprites if they do not match any equipped spell.
+    /// </summary>
     private void DeactivateUnusedSpellSelects()
     {
         for (int i = 0; i < spellSelects.Count; i++)

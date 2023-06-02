@@ -27,6 +27,13 @@ public class Pooled_VFX : Pooling_Object
         }
     }
 
+    /// <summary>
+    /// Gives the vfx its starting values
+    /// </summary>
+    /// <param name="position">The position it is spawned at</param>
+    /// <param name="rotation">The rotation it is given</param>
+    /// <param name="direction">Unused</param>
+    /// <param name="pool">The pool it came from</param>
     public override void Initialize(Vector3 position, Quaternion rotation, Vector3 direction, IObjectPool<Pooling_Object> pool)
     {
         this.pool = pool;

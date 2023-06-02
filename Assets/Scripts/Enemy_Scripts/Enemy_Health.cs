@@ -10,7 +10,7 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 {
     // Made by Daniel, edited by Andreas J
 
-    HealthBar healthBar;
+    private HealthBar healthBar;
 
     private int health;
 
@@ -103,6 +103,13 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
     [SerializeField]
     private float attackRadius = 1f;
 
+    [SerializeField]
+    private LayerMask playerMask;
+
+    private readonly Collider[] playerColliders = new Collider[50];
+
+    private int hitCount;
+
     [SerializeField] Ragdoll ragdoll;
 
     NavMeshAgent navMeshAgent;
@@ -138,15 +145,25 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
     private bool killedOnceOrMore = false;
 
+    /// <summary>
+    /// Not implemented.
+    /// </summary>
+    /// <param name="knockBack"></param>
     public void KnockBack(float knockBack)
     {
         //throw new System.NotImplementedException();
     }
 
     float ragdollTimer;
-    float ragdollDelay = 7f;
+    readonly float ragdollDelay = 7f;
 
-    //Deals damage to object. Regular damage and effect damage is handled seperately. Destroys object if health reaches 0.
+    /// <summary>
+    /// Deals damage to the enemy. Regular damage and effect damage are handled seperately.
+    /// Returns the enemy to its pool if health reaches 0. Updates the health bar.
+    /// </summary>
+    /// <param name="damage">How much damage is dealt</param>
+    /// <param name="spellType">Which type of damage is dealt. Is equal to null if it is effect damage.</param>
+    /// <returns>Returns true if enemy was killed</returns>
     public bool TryToDestroyDamageable(int damage, Spell.SpellType? spellType)
     {
         if (isDamageable && spellType != null)
@@ -179,7 +196,12 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
 
             SpawnDamageIndicator(damage);
         }
-        if(healthBar != null) { healthBar.SetHealthAmount((float)health / maxHealth); /*Debug.Log($"Enemy health:{health} Enemy maxHealth:{maxHealth} current health:{(float)health / maxHealth}");*/ }
+
+        if(healthBar != null) 
+        { 
+            healthBar.SetHealthAmount((float)health / maxHealth);
+        }
+
         if(health <= 0)
         {
             Death();
@@ -190,12 +212,18 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         return false;
     }
 
+    /// <summary>
+    /// Returns the enemy to its pool.
+    /// </summary>
     void DestroySelf()
     {
         pool.Release(this);
     }
 
-    //Spawns a damage indicator that shows how much damage was dealt to this enemy.
+    /// <summary>
+    /// Spawns a damage indicator that shows how much damage was dealt to this enemy.
+    /// </summary>
+    /// <param name="appliedDamage">The amount of damage that was dealt to the enemy</param>
     private void SpawnDamageIndicator(int appliedDamage)
     {
         if(appliedDamage > 0)
@@ -210,21 +238,8 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
     // Start is called before the first frame update
     void Start()
     {
-        //if (matInst == null) { matInst = GetComponent<MaterialInstance>(); }
-        //if(matInst != null) 
-        //{ 
-        //    matInst.albedo = ResColor; 
-        //    matInst.color = ResColor * (colorConfig ? colorConfig.amount : 1f);
-        //    matInst.MeshRenderer = transform.GetComponentsInChildren<MeshRenderer>();
-        //    matInst.SkinMesh = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
-        //    matInst.NewMBP();
-        //}
-
-        //ragdoll = GetComponent<Ragdoll>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         healthBar = GetComponentInChildren<HealthBar>();
-
-        //navMeshAgent.speed = config.speed;
 
         speedDownIcon.SetActive(false);
     }
@@ -234,20 +249,6 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         isDead = false;
 
         ragdollTimer = ragdollDelay;
-
-        //if(maxHealth > health)
-        //{
-        //    health = maxHealth;
-        //}
-
-        //if (healthBar != null) { healthBar.SetHealthAmount((float)health / maxHealth); }       
-
-        //if (ragdoll != null)
-        //{
-        //    ragdoll.DeactiveteRagdoll();
-        //}
-
-        //navMeshAgent.enabled = true;
 
         effectBuildUp = 0;
 
@@ -259,45 +260,79 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
     // Update is called once per frame
     void Update()
     {
+        DamageCountDown();
+
+        EffectDamageCountDown();
+
+        ApplyEffectDamage();
+
+        SlowDownCountDown();
+
+        RagdollCountDown();
+    }
+
+    /// <summary>
+    /// Counts down until the next time the enemy can be hit by regular damage.
+    /// </summary>
+    private void DamageCountDown()
+    {
         if (!isDamageable)
         {
             currentTimeUntilNextHit -= Time.deltaTime;
 
-            if(currentTimeUntilNextHit <= 0)
+            if (currentTimeUntilNextHit <= 0)
             {
                 isDamageable = true;
             }
         }
+    }
 
+    /// <summary>
+    /// Counts down until the next time the enemy can be hit by effect damage.
+    /// </summary>
+    private void EffectDamageCountDown()
+    {
         if (!canBeHitByEffect)
         {
             currentTimeUntilNextEffectDamage -= Time.deltaTime;
 
-            if(currentTimeUntilNextEffectDamage <= 0)
+            if (currentTimeUntilNextEffectDamage <= 0)
             {
                 canBeHitByEffect = true;
             }
         }
+    }
 
+    /// <summary>
+    /// Applies effect damage.
+    /// </summary>
+    private void ApplyEffectDamage()
+    {
         if (effectIsApplied)
         {
             TryToDestroyDamageable(effectDamage, null);
 
             timeUntilEffectDisappears -= Time.deltaTime;
 
-            if(timeUntilEffectDisappears <= 0)
+            if (timeUntilEffectDisappears <= 0)
             {
                 effectIsApplied = false;
             }
         }
+    }
 
-        if(isSlow)
+    /// <summary>
+    /// Counts down until slow down effect is over and removes it when it is over.
+    /// </summary>
+    private void SlowDownCountDown()
+    {
+        if (isSlow)
         {
             timeUntilSlowDownDisappears -= Time.deltaTime;
 
-            if(timeUntilSlowDownDisappears <= 0)
+            if (timeUntilSlowDownDisappears <= 0)
             {
-                if( usesNavMeshAgent)
+                if (usesNavMeshAgent)
                     navMeshAgent.speed = config.speed;
 
                 speedDownIcon.SetActive(false);
@@ -305,8 +340,14 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
                 isSlow = false;
             }
         }
+    }
 
-        if(ragdoll != null)
+    /// <summary>
+    /// Counts down until ragdoll is over and the exits the ragdoll state.
+    /// </summary>
+    private void RagdollCountDown()
+    {
+        if (ragdoll != null)
         {
             if (ragdoll.IsActivated && !isDead)
             {
@@ -319,16 +360,21 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
                         Death();
                         return;
                     }
+
                     ragdoll.DeactivateRagdoll();
                     ragdollTimer = ragdollDelay;
                     navMeshAgent.enabled = true;
                 }
 
             }
-        }       
+        }
     }
 
-    //Deals fire damage.
+    /// <summary>
+    /// Deals fire damage if effect build up reaches 100%.
+    /// </summary>
+    /// <param name="fireDamage">How much fire damage is dealt</param>
+    /// <param name="effectBuildUp">How large the effect buildup is</param>
     public void FireEffect(int fireDamage, int effectBuildUp)
     {
         this.effectBuildUp += effectBuildUp;
@@ -345,7 +391,11 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         }
     }
 
-    //Deals ice damage.
+    /// <summary>
+    /// Deals ice damage if effect build up reaches 100%.
+    /// </summary>
+    /// <param name="iceDamage">How much ice damage is dealt</param>
+    /// <param name="effectBuildUp">How large the effect buildup is</param>
     public void FrostEffect(int iceDamage, int effectBuildUp)
     {
         this.effectBuildUp += effectBuildUp;
@@ -364,7 +414,9 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         }
     }
 
-    //Slows down enemy movement.
+    /// <summary>
+    /// Slows down enemy movement.
+    /// </summary>
     public void SlowDownEffect()
     {
         if (usesNavMeshAgent)
@@ -375,11 +427,14 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         speedDownIcon.SetActive(true);
 
         isSlow = true;
-
-        //Debug.LogWarning("Slow down effect applied");
     }
 
-    //Damage is increased or decreased if enemy is weak or resistant to its type.
+    /// <summary>
+    /// Damage is increased if the enemy is weak to its type.
+    /// Damage is decreased if the enemy is resistant to its type.
+    /// </summary>
+    /// <param name="damage">The damage being dealt</param>
+    /// <param name="type">The type of damage</param>
     private void ApplyWeaknessOrResistanceToDamage(ref int damage, Spell.SpellType type)
     {
         if(type == weakness)
@@ -394,7 +449,10 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         }
     }
 
-    //Effect is applied and enemy will take effect damage.
+    /// <summary>
+    /// Effect is applied and enemy will take the applied effect damage.
+    /// </summary>
+    /// <param name="effectDamage">How much damage the effect does</param>
     private void ApplyEffect(int effectDamage)
     {
         this.effectDamage = effectDamage;
@@ -406,7 +464,12 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         effectIsApplied = true;
     }
 
-    //Tries to apply an effect of a certain type.
+    /// <summary>
+    /// Tries to apply an effect of a certain type.
+    /// </summary>
+    /// <param name="effectDamage">The effect damage</param>
+    /// <param name="effectBuildUp">How many percantages of the effect bar is filled</param>
+    /// <param name="spellType">Damage type</param>
     public void ApplyMagicEffect(int effectDamage, int effectBuildUp, Spell.SpellType spellType)
     {
         if(isDamageable)
@@ -434,6 +497,11 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         }
     }
 
+    /// <summary>
+    /// Deals lightning damage if effect build up reaches 100%.
+    /// </summary>
+    /// <param name="lightningDamage">How much lightning damage is dealt</param>
+    /// <param name="effectBuildUp">How large the effect buildup is</param>
     public void LightningEffect(int lightningDamage, int effectBuildUp)
     {
         this.effectBuildUp += effectBuildUp;
@@ -450,6 +518,11 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         }
     }
 
+    /// <summary>
+    /// Deals earth damage if effect build up reaches 100%.
+    /// </summary>
+    /// <param name="earthDamage">How much earth damage is dealt</param>
+    /// <param name="effectBuildUp">How large the effect buildup is</param>
     public void EarthEffect(int earthDamage, int effectBuildUp)
     {
         this.effectBuildUp += effectBuildUp;
@@ -468,24 +541,32 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         }
     }
 
+    /// <summary>
+    /// Tries to deal damage to the player.
+    /// </summary>
     public void Attack()
     {
-        Collider[] colliders = Physics.OverlapSphere(attackPoint.position, attackRadius);
+        hitCount = Physics.OverlapSphereNonAlloc(attackPoint.position, attackRadius, 
+                                                             playerColliders, playerMask, QueryTriggerInteraction.Collide);
 
-        for (int i = 0; i < colliders.Length; i++)
+        for (int i = 0; i < hitCount; i++)
         {
-            if (colliders[i].gameObject != gameObject)
+            if (playerColliders[i].gameObject != gameObject)
             {
-                IDamageable damagable = colliders[i].transform.GetComponent<IDamageable>();
+                IDamageable damagable = playerColliders[i].transform.GetComponent<IDamageable>();
 
                 damagable?.TryToDestroyDamageable(damage, null);
             }
         }
     }
 
+    /// <summary>
+    /// Draws attack radius in the editor.
+    /// </summary>
     private void OnDrawGizmosSelected()
     {
         if(attackPoint == null) { return; }
+
         Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }
 
@@ -527,6 +608,9 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         SetMaterial();
     }
 
+    /// <summary>
+    /// Made by Andreas.
+    /// </summary>
     void SetMaterial()
     {
         if (material == null) { return; }
@@ -547,6 +631,12 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         }
     }
 
+    /// <summary>
+    /// Deals guraranteed damage. Is not affected by hit delays.
+    /// </summary>
+    /// <param name="damage">How much damage will be dealt</param>
+    /// <param name="spellType">The type of damage</param>
+    /// <returns></returns>
     public bool GuaranteedDamage(int damage, Spell.SpellType? spellType)
     {
         int appliedDamage = damage;
@@ -571,6 +661,9 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         return false;
     }
 
+    /// <summary>
+    /// Kills the enemy and increases the players score.
+    /// </summary>
     private void Death()
     {
         if (!isDead)
@@ -623,6 +716,11 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         vfx.Initialize(visualEffectSpawnPos.position, visualEffectSpawnPos.rotation, Vector3.zero, Object_Pooler.Pools[poolName]);
     }
 
+    /// <summary>
+    /// Deals wind damage if effect build up reaches 100%.
+    /// </summary>
+    /// <param name="windDamage">How much wind damage is dealt</param>
+    /// <param name="effectBuildUp">How large the effect buildup is</param>
     public void WindEffect(int windDamage, int effectBuildUp)
     {
         this.effectBuildUp += effectBuildUp;
@@ -639,6 +737,13 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         }
     }
 
+    /// <summary>
+    /// Gives the enemy its starting values.
+    /// </summary>
+    /// <param name="position">The position the enemy is spawned at</param>
+    /// <param name="rotation">The rotation the enmy is spawned with</param>
+    /// <param name="direction">Unused</param>
+    /// <param name="pool">The pool that the enemy came from</param>
     public override void Initialize(Vector3 position, Quaternion rotation, Vector3 direction, IObjectPool<Pooling_Object> pool)
     {
         ragdoll = GetComponent<Ragdoll>();
@@ -674,6 +779,11 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         this.pool = pool;
     }
 
+    /// <summary>
+    /// Sets the enemy's weakness and resistance. Updates material albedo and color.
+    /// </summary>
+    /// <param name="weakness">The weakness</param>
+    /// <param name="resistance">The resistance</param>
     public void SetWeaknessAndResistance(Spell.SpellType weakness, Spell.SpellType resistance)
     {
         this.weakness = weakness;
@@ -687,6 +797,13 @@ public class Enemy_Health : Pooling_Object, IDamageable, IMagicEffect, IGuarante
         }
     }
 
+    /// <summary>
+    /// Sets the size and health of the enemy. Also sets which spawner that spawned it.
+    /// </summary>
+    /// <param name="isLarge">Wheter or not the enemy is extra large</param>
+    /// <param name="sizeMultiplier">How much larger the enemy will be if the enemy is extra large</param>
+    /// <param name="extraHealth">How much extra health the nemey will be given</param>
+    /// <param name="spawner">The spawner that spawned the enemy</param>
     public void SetSizeAndSpawner(bool isLarge, float sizeMultiplier, int extraHealth, Spawner_With_Increasing_Difficulty spawner)
     {
         this.spawner = spawner;       

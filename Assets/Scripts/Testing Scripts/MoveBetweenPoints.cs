@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveBetweenPoints : MonoBehaviour
@@ -29,6 +27,7 @@ public class MoveBetweenPoints : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Moves the object left and right between two points.
         if (isMovingRight)
         {
             if (transform.position.x < pointA.position.x)

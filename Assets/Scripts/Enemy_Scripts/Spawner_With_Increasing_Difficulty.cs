@@ -92,6 +92,7 @@ public class Spawner_With_Increasing_Difficulty : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Increases wave if enough hordes have been spawned.
         if ((currentEnemyHorde + 1) >= enemyHordeCountBeforeDifficultyIncrease * totalSpawners)
         {
             if(currentEnemyCount <= 0)
@@ -102,6 +103,7 @@ public class Spawner_With_Increasing_Difficulty : MonoBehaviour
             }            
         }
 
+        //Begins a new wave when all enemies have died.
         if (!hasBegunWave)
         {
             hasBegunWave = true;
@@ -119,6 +121,10 @@ public class Spawner_With_Increasing_Difficulty : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Spawns a new wave of enemies.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator SpawnWave()
     {
         int currentNormalPerWave = CurrentSpawnAmount(normalPerWave);
@@ -183,6 +189,11 @@ public class Spawner_With_Increasing_Difficulty : MonoBehaviour
         }        
     }
 
+    /// <summary>
+    /// Returns how many enemies that can currently be spawned.
+    /// </summary>
+    /// <param name="baseSpawnAmount">Amount of enemies that can be spawned at the start.</param>
+    /// <returns>Spawned enemy count</returns>
     private int CurrentSpawnAmount(int baseSpawnAmount)
     {
         if(baseSpawnAmount <= 0)
@@ -195,6 +206,12 @@ public class Spawner_With_Increasing_Difficulty : MonoBehaviour
         return returnedAmount;
     }
 
+    /// <summary>
+    /// Spawns one enemy.
+    /// </summary>
+    /// <param name="poolName">The pool the enemy comes from</param>
+    /// <param name="weakness">The enemies weakness</param>
+    /// <param name="resistance">The enemies resistance</param>
     private void SpawnEnemy(string poolName, Spell.SpellType weakness, Spell.SpellType resistance)
     {
         if(usesNavMesh && Spawner.PointCheck(transform.position, spawnRadius, out Vector3 point))
@@ -207,6 +224,13 @@ public class Spawner_With_Increasing_Difficulty : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Gets an enemy from its pool and sets it starting values.
+    /// </summary>
+    /// <param name="spawnPoint">Where it will spawn</param>
+    /// <param name="poolName">The pool it came from</param>
+    /// <param name="weakness">Its weakness</param>
+    /// <param name="resistance">Its strength</param>
     private void GetEnemy(Vector3 spawnPoint, string poolName, Spell.SpellType weakness, Spell.SpellType resistance)
     {
         Enemy_Health enemy = (Enemy_Health)Object_Pooler.Pools[poolName].Get();
@@ -230,6 +254,9 @@ public class Spawner_With_Increasing_Difficulty : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Decreases enemy count by one if this spanwers enemies count towards it.
+    /// </summary>
     public void MinusOneEnemy()
     {
         if (countsTowardEnemyCount)
@@ -238,6 +265,9 @@ public class Spawner_With_Increasing_Difficulty : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Draws spawn area in the editor.
+    /// </summary>
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

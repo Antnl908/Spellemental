@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -47,6 +45,14 @@ public class Player_Health : MonoBehaviour, IDamageable
         //throw new System.NotImplementedException();
     }
 
+    /// <summary>
+    /// Makes the player take damage. Can only damage the player once between each hit delay.
+    /// If the player has a shield equipped, then the player takes no damage and loses the shield.
+    /// If the player has no shield, then they lose 1 health and enter the dying state.
+    /// </summary>
+    /// <param name="damage"></param>
+    /// <param name="spellType"></param>
+    /// <returns></returns>
     public bool TryToDestroyDamageable(int damage, Spell.SpellType? spellType)
     {
         if(isDamageable)
@@ -84,11 +90,13 @@ public class Player_Health : MonoBehaviour, IDamageable
     // Update is called once per frame
     void Update()
     {
+        //Revives the player if they have been healed.
         if(hasHealthBuff)
         {
             SecondWind();
         }
 
+        //Activates the visual effect that is shown when the player is healed.
         if(applyHealthBuffEffect)
         {
             heart.ActivateHealthBuffEffect();
@@ -96,6 +104,8 @@ public class Player_Health : MonoBehaviour, IDamageable
             applyHealthBuffEffect = false;
         }
 
+        //If the player is in the dying state and they get a kill, then they are brought back to life.
+        //If they are in the dying state for more than the timeUntilDeath, then they lose and the death scene is loaded.
         if(isDying)
         {
             if(killCount > 0)
@@ -115,6 +125,7 @@ public class Player_Health : MonoBehaviour, IDamageable
             }
         }
 
+        //Activates the effect that is shown when the player is given a shield.
         if (giveHeartDefenseBuffColor)
         {
             heart.SetColor(true);
@@ -122,6 +133,7 @@ public class Player_Health : MonoBehaviour, IDamageable
             giveHeartDefenseBuffColor = false;
         }
 
+        //Counts down until the next time the player can be hit.
         if(!isDamageable)
         {
             currentTimeBetweenHits -= Time.deltaTime;
@@ -135,6 +147,9 @@ public class Player_Health : MonoBehaviour, IDamageable
         heart.SetHealth(currentHealth, maxHealth);
     }
 
+    /// <summary>
+    /// Brings the player back to life when they are in the dying state.
+    /// </summary>
     private void SecondWind()
     {
         isDying = false;
@@ -148,6 +163,9 @@ public class Player_Health : MonoBehaviour, IDamageable
         heart.SetIfIsDying(false);
     }
 
+    /// <summary>
+    /// Puts the player into the dying state.
+    /// </summary>
     private void Dying()
     {
         if(!isDying)
@@ -162,6 +180,9 @@ public class Player_Health : MonoBehaviour, IDamageable
         }       
     }
 
+    /// <summary>
+    /// Gives the player a shield.
+    /// </summary>
     public static void GiveDefenseBuff()
     {
         if (!isDying)
@@ -171,6 +192,9 @@ public class Player_Health : MonoBehaviour, IDamageable
         }
     }
 
+    /// <summary>
+    /// Brings the player back to life.
+    /// </summary>
     public static void GiveHealthBuff()
     {
         if(isDying)

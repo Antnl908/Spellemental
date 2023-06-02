@@ -36,7 +36,7 @@ public class NoiseGeneration : MonoBehaviour
 
     private void Awake()
     {
-        imageRenderer= GetComponent<Renderer>();
+        imageRenderer = GetComponent<Renderer>();
 
         offsetX = Random.Range(0, 999999);
         offsetY = Random.Range(0, 999999);
@@ -48,6 +48,9 @@ public class NoiseGeneration : MonoBehaviour
         controls.Player1.Enable();
     }
 
+    /// <summary>
+    /// Gives the Renderer component a random noise texture.
+    /// </summary>
     private void Update()
     {
         if(isActive)
@@ -58,7 +61,10 @@ public class NoiseGeneration : MonoBehaviour
         }
     }
 
-    //Creates new texture and goes through each pixel giving it a random value.
+    /// <summary>
+    /// Creates new texture and goes through each pixel giving it a random value.
+    /// </summary>
+    /// <returns>Returns a Texture2D</returns>
     private Texture2D NewNoiseTexture()
     {
         Texture2D texture = new(width, height, TextureFormat.RGB24, false);
@@ -78,7 +84,12 @@ public class NoiseGeneration : MonoBehaviour
         return texture;
     }
 
-    //Creates color using perlin noise.
+    /// <summary>
+    /// Creates color using perlin noise.
+    /// </summary>
+    /// <param name="x">Minimum value of perlin noise</param>
+    /// <param name="y">Maximum value of perlin noise</param>
+    /// <returns></returns>
     private Color NoiseColor(int x, int y)
     {
         float xPerlin = (float)x / width * scale + offsetX;
@@ -91,6 +102,10 @@ public class NoiseGeneration : MonoBehaviour
         return color;
     }
 
+    /// <summary>
+    /// Captures a screen shot and saves it to a file. Has to be commented out when making a release build.
+    /// </summary>
+    /// <param name="context">Is needed to subscribe this method to a button</param>
     private void CaptureScreenShot(InputAction.CallbackContext context)
     {
         //byte[] bytes = currentTex.EncodeToPNG();

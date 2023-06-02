@@ -22,6 +22,11 @@ public class Ice_Blast : MonoBehaviour
         projectile.OnInitialisation += SetShardStats;
     }
 
+    /// <summary>
+    /// Puts all ice shards in their respective positions.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void SetShardStats(object sender, EventArgs e)
     {
         for(int i = 0; i < iceShards.Count; i++)

@@ -57,7 +57,9 @@ public class GiveBurnProperties : MonoBehaviour
         SetProperties();
     }
 
-    //Sets the properties of VFX and Shader.
+    /// <summary>
+    /// Sets the properties of the VFX and the Shader.
+    /// </summary>
     private void SetProperties()
     {
         if(material)
@@ -101,6 +103,9 @@ public class GiveBurnProperties : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Draws where the effect and the shader effect are located in the editor.
+    /// </summary>
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = gizmoColor;

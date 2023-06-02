@@ -34,6 +34,7 @@ public class Wind_Hit : Pooling_Object
     // Update is called once per frame
     void Update()
     {
+        //Returns the object to its pool after a while.
         currentDestructionTime -= Time.deltaTime;
 
         if (currentDestructionTime <= 0 && enabled)
@@ -42,6 +43,13 @@ public class Wind_Hit : Pooling_Object
         }
     }
 
+    /// <summary>
+    /// Gives this object its starting values.
+    /// </summary>
+    /// <param name="position">Where it spawns</param>
+    /// <param name="rotation">The rotation it gets</param>
+    /// <param name="direction">How long it will be</param>
+    /// <param name="pool">The pool it came from</param>
     public override void Initialize(Vector3 position, Quaternion rotation, Vector3 direction, IObjectPool<Pooling_Object> pool)
     {
         currentDestructionTime = destructionTime;

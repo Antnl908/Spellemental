@@ -7,6 +7,13 @@ public static class Extra_Gizmos
 {
     //Added by Daniel.
 
+    /// <summary>
+    /// Draws a capsule in the unity editor.
+    /// </summary>
+    /// <param name="position1">The first position of the capsule</param>
+    /// <param name="position2">The second position of the capsule</param>
+    /// <param name="radius">Radius of the capsule</param>
+    /// <param name="color">The color that the capsule is drawn in</param>
     public static void DrawCapsule(Vector3 position1, Vector3 position2, float radius, Color color = default)
     {
         if (color != default) Handles.color = color;
@@ -39,6 +46,12 @@ public static class Extra_Gizmos
         }
     }
 
+    /// <summary>
+    /// Draws a line. Needs to be commented out when making a release build.
+    /// </summary>
+    /// <param name="x">Start position on x axis</param>
+    /// <param name="y">Start position on y axis</param>
+    /// <param name="forward">How far it goes in the z axis</param>
     private static void MakeLine(float x, float y, float forward)
     {
         //Handles.DrawLine(new Vector3(x, y, 0f), new Vector3(x, y, forward));

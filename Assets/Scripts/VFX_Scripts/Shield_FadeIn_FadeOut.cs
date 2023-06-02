@@ -29,6 +29,7 @@ public class Shield_FadeIn_FadeOut : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //The shield is faded in and then it is faded out after having been deactivated.
         if(fadeIn)
         {
             if(currentClipThreshold > 0)
@@ -53,6 +54,9 @@ public class Shield_FadeIn_FadeOut : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Deactivates the shield.
+    /// </summary>
     public void Deactivate()
     {
         fadeIn = false;

@@ -3907,6 +3907,9 @@ MonoBehaviour:
   damage: 1
   attackPoint: {fileID: 9052825564782672452}
   attackRadius: 1.3
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 8192
   ragdoll: {fileID: 0}
   slowedMoveSpeed: 1
   hitEffectPool: Blood_Splatter

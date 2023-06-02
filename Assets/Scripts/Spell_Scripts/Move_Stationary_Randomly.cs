@@ -8,7 +8,7 @@ public class Move_Stationary_Randomly : MonoBehaviour
     [SerializeField]
     private Spell_Stationary stationary;
 
-    private List<Vector3> positions = new();
+    private readonly List<Vector3> positions = new();
 
     [SerializeField]
     private int positionAmount = 30;
@@ -41,6 +41,11 @@ public class Move_Stationary_Randomly : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sets the different positions that the object can randomly move between.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="eventArgs"></param>
     private void BeginMovement(object sender, EventArgs eventArgs) 
     {
         positions.Clear();
@@ -51,14 +56,17 @@ public class Move_Stationary_Randomly : MonoBehaviour
         {
             for (int i = 0; i < positionAmount; i++)
             {
-                positions.Add(new Vector3(UnityEngine.Random.Range(transform.position.x - maxXDistance, transform.position.x + maxXDistance),
-                              transform.position.y, UnityEngine.Random.Range(transform.position.z - maxZDistance, transform.position.z + maxZDistance)));
+                positions.Add(new Vector3(UnityEngine.Random.Range(transform.position.x - maxXDistance, 
+                                                                   transform.position.x + maxXDistance),
+                                                transform.position.y, UnityEngine.Random.Range(transform.position.z - maxZDistance, 
+                                                                                                transform.position.z + maxZDistance)));
             }
         }
-
-        Debug.Log(positions.Count);
     }
 
+    /// <summary>
+    /// Moves the object between random positions.
+    /// </summary>
     private void Move()
     {
         if(positions.Count > 0)
@@ -77,6 +85,9 @@ public class Move_Stationary_Randomly : MonoBehaviour
         }        
     }
 
+    /// <summary>
+    /// In the editor, draws the area where the object can move.
+    /// </summary>
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(maxXDistance, 0, maxZDistance));

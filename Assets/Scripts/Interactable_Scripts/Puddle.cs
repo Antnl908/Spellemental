@@ -1,18 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Puddle : Interactable, IGuaranteedDamage, IDamageable
 {
-    //public override void ExecuteInteraction(int damage, Spell.SpellType? spellType)
-    //{
-    //    Debug.Log("Activated: "+$"{spellType}");
-    //}
-
-    float coolDown = 1f;
-    float timer;
-
     private Spell.SpellType lastCapturedSpellType;
 
     private int lastCapturedDamage;
@@ -30,29 +19,26 @@ public class Puddle : Interactable, IGuaranteedDamage, IDamageable
         lastCapturedDamage = 0;
     }
 
+    /// <summary>
+    /// Gives the puddle a new damage type and a new amount of damage.
+    /// </summary>
+    /// <param name="damage">How much damage the puddle gets</param>
+    /// <param name="spellType">What damage type the puddle gets</param>
+    /// <returns></returns>
     public override bool TryToDestroyDamageable(int damage, Spell.SpellType? spellType)
     {
-        //if (!repeatable && activated) { return false; }
-        //if (activated) { return false; }
 
         if (spellType == localSpellType || spellType == lastCapturedSpellType) { return false; }
 
-        //There has to be a better way to avoid infinite loops when testing for chain reactions
-        //activated = true;
-        //ExecuteInteraction(damage, spellType);
-
         lastCapturedSpellType = (Spell.SpellType)spellType;
         lastCapturedDamage = damage;
-        //activated = true;
-        //Debug.Log("Activated");
-        //Debug.Log("Activated: " + $"{spellType}");
+
         return false;
     }
 
     private void Update()
     {
-        //if (activated) { timer -= Time.deltaTime; if (timer < 0f) { activated = false; timer = coolDown; } }
-
+        //Deals damage to neearby enemies and puddles if possible.
         if(lastCapturedSpellType != Spell.SpellType.None)
         {
             if(canHit)
@@ -75,6 +61,12 @@ public class Puddle : Interactable, IGuaranteedDamage, IDamageable
         }
     }
 
+    /// <summary>
+    /// Gives the puddle a new damage type and a new amount of damage.
+    /// </summary>
+    /// <param name="damage">How much damage the puddle gets</param>
+    /// <param name="spellType">What damage type the puddle gets</param>
+    /// <returns></returns>
     public bool GuaranteedDamage(int damage, Spell.SpellType? spellType)
     {
         if(spellType == localSpellType || spellType == lastCapturedSpellType) 

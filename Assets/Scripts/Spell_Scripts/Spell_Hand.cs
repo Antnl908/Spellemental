@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -35,6 +34,9 @@ public class Spell_Hand : MonoBehaviour
     [SerializeField]
     private Spell_Hand otherHand;
 
+    /// <summary>
+    /// This class is used to determine which effect is tied to which spell.
+    /// </summary>
     [Serializable]
     public class Effect
     {
@@ -70,12 +72,10 @@ public class Spell_Hand : MonoBehaviour
         SetSpellEffect();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /// <summary>
+    /// Casts the currently equipped spell.
+    /// </summary>
+    /// <param name="context">Is needed to subscribe this method to a button</param>
     public void CastActiveSpell(InputAction.CallbackContext context)
     {
         if(Time.timeScale > 0)
@@ -98,6 +98,10 @@ public class Spell_Hand : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Repeatadely casts a spell with some delay between casts while the hands casting animation is being played.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator UseSpell()
     {
         while(isCasting)
@@ -108,9 +112,7 @@ public class Spell_Hand : MonoBehaviour
                 {
                     if (caster.CurrentMana >= ActiveSpell.ManaCost)
                     {
-                        ActiveSpell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
-
-                        caster.AlterMana(-ActiveSpell.ManaCost);
+                        Cast();
 
                         yield return new WaitForSeconds(ActiveSpell.TimeBetweenCasts);
                     }
@@ -130,9 +132,7 @@ public class Spell_Hand : MonoBehaviour
                 {
                     if (caster.CurrentMana >= ActiveSpell.ManaCost)
                     {
-                        ActiveSpell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
-
-                        caster.AlterMana(-ActiveSpell.ManaCost);
+                        Cast();
 
                         yield return new WaitForSeconds(ActiveSpell.TimeBetweenCasts);
                     }
@@ -150,6 +150,20 @@ public class Spell_Hand : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Casts the equipped spell.
+    /// </summary>
+    private void Cast()
+    {
+        ActiveSpell.CastSpell(player_Look, spellSpawn.position, Quaternion.Euler(transform.eulerAngles), transform.forward);
+
+        caster.AlterMana(-ActiveSpell.ManaCost);
+    }
+
+    /// <summary>
+    /// Quits casting spells.
+    /// </summary>
+    /// <param name="context">Is needed to subscribe this method to a button</param>
     public void QuitCasting(InputAction.CallbackContext context)
     {
         isCasting = false;
@@ -164,6 +178,10 @@ public class Spell_Hand : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Cycles through the available spells one at a time.
+    /// </summary>
+    /// <param name="context">Is needed to subscribe this method to a button</param>
     public void CycleSpell(InputAction.CallbackContext context)
     {
         if(Time.timeScale > 0)
@@ -178,6 +196,10 @@ public class Spell_Hand : MonoBehaviour
         }       
     }
 
+    /// <summary>
+    /// Sets the spell index in order to decide exactly which spell will be equipped.
+    /// </summary>
+    /// <param name="index"></param>
     public void SetSpellIndex(int index)
     {
         activeSpellIndex = index;
@@ -189,6 +211,9 @@ public class Spell_Hand : MonoBehaviour
         OnSwitchedSpell?.Invoke(this, EventArgs.Empty);
     }
 
+    /// <summary>
+    /// Makes sure the activeSpellIndex does not become larger than the amount of spells available.
+    /// </summary>
     private void WrapSpellIndex()
     {
         if (activeSpellIndex >= spells.Count)
@@ -197,6 +222,9 @@ public class Spell_Hand : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Activates the currently equipped spell's effect.
+    /// </summary>
     private void SetSpellEffect()
     {
         foreach(var effect in spellEffects)

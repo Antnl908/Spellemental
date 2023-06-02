@@ -14,15 +14,10 @@ public class Mana_Orb : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI manaText;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
+        //Updates mana status.
         manaText.text = caster.CurrentMana + " / " + caster.MaxMana;
 
         material.SetFloat("_Fill", (float)caster.CurrentMana / caster.MaxMana);
