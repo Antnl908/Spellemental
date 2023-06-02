@@ -15,7 +15,6 @@ public class Arrow : MonoBehaviour
     [Range(0.0f, 1.0f)]
     public float radius;
     
-
     private Rigidbody rb;
 
     public LayerMask destroyOnContactLayer;
@@ -36,41 +35,7 @@ public class Arrow : MonoBehaviour
         Physics.IgnoreLayerCollision(0,7);
         Physics.IgnoreLayerCollision(0, 12);
         Physics.IgnoreLayerCollision(0, 0);
-        //StartCoroutine(CollisionCheckRoutine());
     }
-
-    /*
-    private IEnumerator CollisionCheckRoutine()
-    {
-        WaitForSeconds waitTimer = new WaitForSeconds(routineDelay);
-
-        while (true)
-        {
-            yield return waitTimer;
-
-            CollisionCheck();
-        }
-    }
-    */
-
-    /*
-    private void CollisionCheck()
-    {
-        Collider[] collidersCheck = Physics.OverlapSphere(gameObject.transform.position, 0.002f, destroyOnContactLayer);
-
-        for (int i = 0; i < collidersCheck.Length; i++)
-        {
-            if (collidersCheck[i].gameObject != gameObject)
-            {
-                IDamageable damagable = collidersCheck[i].transform.GetComponent<IDamageable>();
-
-                damagable?.TryToDestroyDamageable(damage, null);
-
-                Destroy(gameObject);
-            }
-        }
-    }
-    */
 
     /// <summary>
     /// When colliding, try to deal damage then destroy

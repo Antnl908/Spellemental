@@ -20,6 +20,9 @@ public class ArcherEvents : MonoBehaviour
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
+    /// <summary>
+    /// Used for animation events
+    /// </summary>
     public void Hide_Arrow()
     {
         mesh.enabled = false;
