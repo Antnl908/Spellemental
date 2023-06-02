@@ -6,6 +6,7 @@ using UnityEngine.LowLevel;
 using UnityEngine.Pool;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UIElements;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class Spell_Projectile : Pooling_Object
 {
@@ -213,54 +214,14 @@ public class Spell_Projectile : Pooling_Object
         {
             if (enemyColliders[i].gameObject != gameObject)
             {
-                IMagicEffect magicEffect = enemyColliders[i].transform.GetComponent<IMagicEffect>();
-
-                magicEffect?.ApplyMagicEffect(effectDamage, effectBuildUp, spellType);
-
-                IDamageable damagable = enemyColliders[i].transform.GetComponent<IDamageable>();
-
-                bool gotAKill = false;
-
-                if (damagable != null)
-                {
-                    gotAKill = (bool)(damagable?.TryToDestroyDamageable(damage, spellType));                   
-                }
-
-                if (gotAKill)
-                {
-                    Player_Health.killCount++;
-                }
-
-                if (effectObjectPoolName != "Error")
-                {
-                    for (int x = 0; x < effectInstanceAmount; x++)
-                    {
-                        Pooling_Object pooling_Object = Object_Pooler.Pools[effectObjectPoolName].Get();
-
-                        pooling_Object.Initialize(transform.position, Quaternion.identity,
-                                                     enemyColliders[i].transform.position, Object_Pooler.Pools[effectObjectPoolName]);
-                    }
-                }
-
-                gotAHit = true;
+                HitEnemy(enemyColliders[i], damage, effectDamage, effectBuildUp, spellType, 
+                         effectObjectPoolName, effectInstanceAmount, transform, out gotAHit, true);
             }
         }
 
         if (stationarySpellPoolName != "Error")
         {
-            if (Physics.Raycast(transform.position + Vector3.up * spawnStationaryRangeAboveTransform, 
-                                                            Vector3.down, out RaycastHit hitInfo, spawnStationaryRange, terrainLayer))
-            {
-                Spell_Stationary stationary = (Spell_Stationary)stationarySpellPool.Get();
-
-                //Rotates it along the ground.
-                Quaternion rotation = Quaternion.FromToRotation(transform.up, hitInfo.normal) * transform.rotation;
-
-
-                stationary.Initialize(hitInfo.point, rotation, stationarySpellPool);
-
-                gotAHit = true;
-            }
+            SpawnStationary();
         }
         
         if(hitCount <= 0)
@@ -274,29 +235,22 @@ public class Spell_Projectile : Pooling_Object
             }
         }
 
-        if (gotAHit)
+        if (gotAHit && visualEffectPoolName != "Error")
         {
-            if (visualEffectPoolName != "Error")
+            if (!destroyOnHit)
             {
-                if(!destroyOnHit)
+                effectTimer -= Time.deltaTime;
+
+                if (effectTimer <= 0.0f)
                 {
-                    effectTimer -= Time.deltaTime;
+                    effectTimer = effectDelay;
 
-                    if (effectTimer <= 0.0f)
-                    {
-                        effectTimer = effectDelay;
-
-                        Pooled_VFX vfx = (Pooled_VFX)Object_Pooler.Pools[visualEffectPoolName].Get();
-
-                        vfx.Initialize(vfxSpawnPos.position, transform.rotation, Vector3.zero, Object_Pooler.Pools[visualEffectPoolName]);
-                    }
+                    SpawnVFX();
                 }
-                else
-                {
-                    Pooled_VFX vfx = (Pooled_VFX)Object_Pooler.Pools[visualEffectPoolName].Get();
-
-                    vfx.Initialize(vfxSpawnPos.position, transform.rotation, Vector3.zero, Object_Pooler.Pools[visualEffectPoolName]);
-                }              
+            }
+            else
+            {
+                SpawnVFX();
             }
 
             if (destroyOnHit)
@@ -313,50 +267,13 @@ public class Spell_Projectile : Pooling_Object
     /// <param name="other">The object the spell hit</param>
     private void InstantCheckHits(Collider other)
     {
-        IMagicEffect magicEffect = other.transform.GetComponent<IMagicEffect>();
-
-        magicEffect?.ApplyMagicEffect(effectDamage, effectBuildUp, spellType);
-
-        IDamageable damagable = other.transform.GetComponent<IDamageable>();
-
-        bool gotAKill = false;
-
-        if (damagable != null)
-        {
-            gotAKill = (bool)(damagable?.TryToDestroyDamageable(damage, spellType));
-
-            gotAHit = true;
-        }
-
-        if (gotAKill)
-        {
-            Player_Health.killCount++;
-        }
-
-        if (effectObjectPoolName != "Error")
-        {
-            for (int x = 0; x < effectInstanceAmount; x++)
-            {
-                Pooling_Object pooling_Object = Object_Pooler.Pools[effectObjectPoolName].Get();
-
-                pooling_Object.Initialize(transform.position, Quaternion.identity,
-                                             other.transform.position, Object_Pooler.Pools[effectObjectPoolName]);
-            }
-        }
+        HitEnemy(other, damage, effectDamage, effectBuildUp, spellType, effectObjectPoolName, effectInstanceAmount, 
+                                                                                                  transform, out gotAHit, true);
 
         if (stationarySpellPoolName != "Error")
         {
-            if (Physics.Raycast(transform.position + Vector3.up * spawnStationaryRangeAboveTransform, 
-                                                            Vector3.down, out RaycastHit hitInfo, spawnStationaryRange, terrainLayer))
-            {
-                Spell_Stationary stationary = (Spell_Stationary)stationarySpellPool.Get();
 
-                //Rotates it along the ground.
-                Quaternion rotation = Quaternion.FromToRotation(transform.up, hitInfo.normal) * transform.rotation;
-
-
-                stationary.Initialize(hitInfo.point, rotation, stationarySpellPool);
-            }
+            SpawnStationary();
         }
         
         if(other.gameObject.layer == terrainLayer)
@@ -387,36 +304,8 @@ public class Spell_Projectile : Pooling_Object
             {
                 if (colliders[i].gameObject != gameObject)
                 {
-                    IMagicEffect magicEffect = colliders[i].transform.GetComponent<IMagicEffect>();
-
-                    magicEffect?.ApplyMagicEffect(effectDamage, effectBuildUp, spellType);
-
-                    IDamageable damagable = colliders[i].transform.GetComponent<IDamageable>();
-
-                    bool gotAKill = false;
-
-                    if (damagable != null)
-                    {
-                        gotAKill = (bool)(damagable?.TryToDestroyDamageable(damage, spellType));
-
-                        gotAHit = true;
-                    }
-
-                    if (gotAKill)
-                    {
-                        Player_Health.killCount++;
-                    }
-
-                    if (effectObjectPoolName != "Error")
-                    {
-                        for (int x = 0; x < effectInstanceAmount; x++)
-                        {
-                            Pooling_Object pooling_Object = Object_Pooler.Pools[effectObjectPoolName].Get();
-
-                            pooling_Object.Initialize(transform.position, Quaternion.identity,
-                                                         colliders[i].transform.position, Object_Pooler.Pools[effectObjectPoolName]);
-                        }
-                    }
+                    HitEnemy(colliders[i], damage, effectDamage, effectBuildUp, spellType, effectObjectPoolName, 
+                                                                                   effectInstanceAmount, transform, out gotAHit, true);
                 }
             }
         }
@@ -457,4 +346,83 @@ public class Spell_Projectile : Pooling_Object
         }       
     }
 
+    /// <summary>
+    /// Hits an enemy.
+    /// </summary>
+    /// <param name="enemy">The collider to hit</param>
+    /// <param name="damage">How much damage to deal</param>
+    /// <param name="effectDamage">How much effect damage to deal</param>
+    /// <param name="effectBuildUp">How much effect build up to apply.</param>
+    /// <param name="spellType">What spell type to use</param>
+    /// <param name="effectObjectPoolName">Which poo,to grab an effect from</param>
+    /// <param name="effectInstanceAmount">the amount of effects used</param>
+    /// <param name="spellPosition">The position of the spell</param>
+    /// <param name="gotAHit">Is used to record wheter or not something was hit</param>
+    public static void HitEnemy(Collider enemy, int damage, int effectDamage, int effectBuildUp, Spell.SpellType spellType,
+                   string effectObjectPoolName, int effectInstanceAmount, Transform spellPosition, out bool gotAHit, bool usesEffects)
+    {
+        IMagicEffect magicEffect = enemy.transform.GetComponent<IMagicEffect>();
+
+        magicEffect?.ApplyMagicEffect(effectDamage, effectBuildUp, spellType);
+
+        IDamageable damagable = enemy.transform.GetComponent<IDamageable>();
+
+        bool gotAKill = false;
+
+        if (damagable != null)
+        {
+            gotAKill = (bool)(damagable?.TryToDestroyDamageable(damage, spellType));
+        }
+
+        if (gotAKill)
+        {
+            Player_Health.killCount++;
+        }
+
+        if (usesEffects)
+        {
+            if (effectObjectPoolName != "Error")
+            {
+                for (int x = 0; x < effectInstanceAmount; x++)
+                {
+                    Pooling_Object pooling_Object = Object_Pooler.Pools[effectObjectPoolName].Get();
+
+                    pooling_Object.Initialize(spellPosition.position, Quaternion.identity,
+                                                 enemy.transform.position, Object_Pooler.Pools[effectObjectPoolName]);
+                }
+            }
+        }       
+
+        gotAHit = true;
+    }
+
+    /// <summary>
+    /// Spawns a stationary.
+    /// </summary>
+    private void SpawnStationary()
+    {
+        if (Physics.Raycast(transform.position + Vector3.up * spawnStationaryRangeAboveTransform,
+                                                            Vector3.down, out RaycastHit hitInfo, spawnStationaryRange, terrainLayer))
+        {
+            Spell_Stationary stationary = (Spell_Stationary)stationarySpellPool.Get();
+
+            //Rotates it along the ground.
+            Quaternion rotation = Quaternion.FromToRotation(transform.up, hitInfo.normal) * transform.rotation;
+
+
+            stationary.Initialize(hitInfo.point, rotation, stationarySpellPool);
+
+            gotAHit = true;
+        }
+    }
+
+    /// <summary>
+    /// Spawns a VFX.
+    /// </summary>
+    private void SpawnVFX()
+    {
+        Pooled_VFX vfx = (Pooled_VFX)Object_Pooler.Pools[visualEffectPoolName].Get();
+
+        vfx.Initialize(vfxSpawnPos.position, transform.rotation, Vector3.zero, Object_Pooler.Pools[visualEffectPoolName]);
+    }
 }

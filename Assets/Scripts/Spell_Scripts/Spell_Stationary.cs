@@ -220,25 +220,8 @@ public class Spell_Stationary : Pooling_Object
         {
             if (enemyColliders[i].gameObject != gameObject && hitDelay <= 0)
             {
-                IMagicEffect magicEffect = enemyColliders[i].transform.GetComponent<IMagicEffect>();
-
-                magicEffect?.ApplyMagicEffect(effectDamage, effectBuildUp, spellType);
-
-                IDamageable damagable = enemyColliders[i].transform.GetComponent<IDamageable>();
-
-                bool gotAKill = false;
-
-                if (damagable != null)
-                {
-                    gotAKill = (bool)(damagable?.TryToDestroyDamageable(damage, spellType));
-                }
-
-                if (gotAKill)
-                {
-                    Player_Health.killCount++;
-                }
-
-                gotAHit = true;
+                Spell_Projectile.HitEnemy(enemyColliders[i], damage, effectDamage, effectBuildUp, spellType, "0", 0,
+                                                                                      transform, out gotAHit, false);
             }
         }
 
@@ -270,25 +253,8 @@ public class Spell_Stationary : Pooling_Object
     /// <param name="other">The object the spell hit</param>
     private void InstantCheckHits(Collider other)
     {
-        IMagicEffect magicEffect = other.transform.GetComponent<IMagicEffect>();
-
-        magicEffect?.ApplyMagicEffect(effectDamage, effectBuildUp, spellType);
-
-        IDamageable damagable = other.transform.GetComponent<IDamageable>();
-
-        bool gotAKill = false;
-
-        if (damagable != null)
-        {
-            gotAKill = (bool)(damagable?.TryToDestroyDamageable(damage, spellType));
-
-            gotAHit = true;
-        }
-
-        if (gotAKill)
-        {
-            Player_Health.killCount++;
-        }
+        Spell_Projectile.HitEnemy(other, damage, effectDamage, effectBuildUp, spellType, "0", 0,
+                                                                                      transform, out gotAHit, false);
 
         if (gotAHit && destroyOnHit)
         {
@@ -313,25 +279,8 @@ public class Spell_Stationary : Pooling_Object
             {
                 if (colliders[i].gameObject != gameObject)
                 {
-                    IMagicEffect magicEffect = colliders[i].transform.GetComponent<IMagicEffect>();
-
-                    magicEffect?.ApplyMagicEffect(effectDamage, effectBuildUp, spellType);
-
-                    IDamageable damagable = colliders[i].transform.GetComponent<IDamageable>();
-
-                    bool gotAKill = false;
-
-                    if (damagable != null)
-                    {
-                        gotAKill = (bool)(damagable?.TryToDestroyDamageable(damage, spellType));
-
-                        gotAHit = true;
-                    }
-
-                    if (gotAKill)
-                    {
-                        Player_Health.killCount++;
-                    }
+                    Spell_Projectile.HitEnemy(colliders[i], damage, effectDamage, effectBuildUp, spellType, "0", 0, 
+                                                                                      transform, out gotAHit, false);
                 }
             }
         }
