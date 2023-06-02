@@ -11,6 +11,9 @@ public class Player_Move : MonoBehaviour
     private Player_Controls controls;
     
     private Player_Look look;
+    private Free_Camera freeCam;
+    private Player_Health health;
+    private bool useFreeCam;
 
     [SerializeField]
     private CharacterController characterController;
@@ -52,6 +55,9 @@ public class Player_Move : MonoBehaviour
     [SerializeField]
     private UnityEvent OnLanding;
 
+    [SerializeField]
+    Transform ui;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,8 +67,13 @@ public class Player_Move : MonoBehaviour
 
         controls.Player1.Enable();
 
+        health = GetComponent<Player_Health>();
+
         look = GetComponent<Player_Look>();
         look.HideCursor = true;
+        freeCam = GetComponent<Free_Camera>();
+        controls.Player1.SwitchCamera.performed += SwitchCamera;
+
 
         OnLanding ??= new();
     }
@@ -70,12 +81,22 @@ public class Player_Move : MonoBehaviour
     private void OnDisable()
     {
         controls.Player1.Jump.performed -= Jump;
+        controls.Player1.SwitchCamera.performed -= SwitchCamera;
+    }
+    private void OnEnable()
+    {
+
+    }
+
+    void SwitchCamera(InputAction.CallbackContext context)
+    {
+        useFreeCam = !useFreeCam;
+        if (useFreeCam) { freeCam.SetPriority(100); look.SetPriority(0); health.useFreeCam = useFreeCam; ui.gameObject.SetActive(false); } else { freeCam.SetPriority(0); look.SetPriority(100); health.useFreeCam = useFreeCam; ui.gameObject.SetActive(true); }
     }
 
     // Update is called once per frame
     void Update()
     {
-        Fall();
 
         Vector2 direction = controls.Player1.Move.ReadValue<Vector2>();
         Vector2 lookDirection = controls.Player1.Look.ReadValue<Vector2>();
@@ -83,6 +104,14 @@ public class Player_Move : MonoBehaviour
         //Anton L 20/2/2023 edit: trying out camera based movement
         Vector3 moveVector = speed * Time.deltaTime * (look.Forward * direction.y + look.Right * -direction.x + 
                                                   Vector3.up * Mathf.Clamp(currentGravitation, maxDownwardAcceleration, bounceHeight));
+
+        freeCam.LookInput = lookDirection;
+        freeCam.InputDirection = direction;
+        freeCam.MoveVector = moveVector;
+        freeCam.useFreeCam = useFreeCam;
+
+        if (useFreeCam) { return; }
+        Fall();
 
         characterController.Move(moveVector);
 

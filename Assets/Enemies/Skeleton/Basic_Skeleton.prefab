@@ -6825,6 +6825,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WorldHealthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 2833144481914782344, guid: bf035642341d72e4e9a8c3be839dd46a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9174620421749785982, guid: bf035642341d72e4e9a8c3be839dd46a, type: 3}
       propertyPath: m_Layer
       value: 0

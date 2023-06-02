@@ -134,6 +134,15 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchCamera"",
+                    ""type"": ""Button"",
+                    ""id"": ""5a9ee4d5-5cea-4b91-a9db-412b0d85c504"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -345,6 +354,17 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
                     ""action"": ""RightTap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""35c3a955-6722-435a-9f0c-5a3c19293c32"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -371,6 +391,7 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
         m_Player1_Pause = m_Player1.FindAction("Pause", throwIfNotFound: true);
         m_Player1_LeftTap = m_Player1.FindAction("LeftTap", throwIfNotFound: true);
         m_Player1_RightTap = m_Player1.FindAction("RightTap", throwIfNotFound: true);
+        m_Player1_SwitchCamera = m_Player1.FindAction("SwitchCamera", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -444,6 +465,7 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player1_Pause;
     private readonly InputAction m_Player1_LeftTap;
     private readonly InputAction m_Player1_RightTap;
+    private readonly InputAction m_Player1_SwitchCamera;
     public struct Player1Actions
     {
         private @Player_Controls m_Wrapper;
@@ -460,6 +482,7 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
         public InputAction @Pause => m_Wrapper.m_Player1_Pause;
         public InputAction @LeftTap => m_Wrapper.m_Player1_LeftTap;
         public InputAction @RightTap => m_Wrapper.m_Player1_RightTap;
+        public InputAction @SwitchCamera => m_Wrapper.m_Player1_SwitchCamera;
         public InputActionMap Get() { return m_Wrapper.m_Player1; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -505,6 +528,9 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
             @RightTap.started += instance.OnRightTap;
             @RightTap.performed += instance.OnRightTap;
             @RightTap.canceled += instance.OnRightTap;
+            @SwitchCamera.started += instance.OnSwitchCamera;
+            @SwitchCamera.performed += instance.OnSwitchCamera;
+            @SwitchCamera.canceled += instance.OnSwitchCamera;
         }
 
         private void UnregisterCallbacks(IPlayer1Actions instance)
@@ -545,6 +571,9 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
             @RightTap.started -= instance.OnRightTap;
             @RightTap.performed -= instance.OnRightTap;
             @RightTap.canceled -= instance.OnRightTap;
+            @SwitchCamera.started -= instance.OnSwitchCamera;
+            @SwitchCamera.performed -= instance.OnSwitchCamera;
+            @SwitchCamera.canceled -= instance.OnSwitchCamera;
         }
 
         public void RemoveCallbacks(IPlayer1Actions instance)
@@ -585,5 +614,6 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnLeftTap(InputAction.CallbackContext context);
         void OnRightTap(InputAction.CallbackContext context);
+        void OnSwitchCamera(InputAction.CallbackContext context);
     }
 }

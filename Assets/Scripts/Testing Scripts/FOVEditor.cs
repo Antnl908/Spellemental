@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(FieldOfView))]
-public class FOVEditor : Editor
+//[CustomEditor(typeof(FieldOfView))]
+public class FOVEditor //: Editor
 {
     /*
     private void OnSceneGUI()

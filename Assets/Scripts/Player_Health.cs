@@ -41,6 +41,7 @@ public class Player_Health : MonoBehaviour, IDamageable
     private float currentTimeBetweenHits;
 
     private bool isDamageable = true;
+    public bool useFreeCam;
 
     public void KnockBack(float knockBack)
     {
@@ -49,6 +50,8 @@ public class Player_Health : MonoBehaviour, IDamageable
 
     public bool TryToDestroyDamageable(int damage, Spell.SpellType? spellType)
     {
+        if (useFreeCam) { return false; }
+
         if(isDamageable)
         {
             if (hasDefenseBuff)

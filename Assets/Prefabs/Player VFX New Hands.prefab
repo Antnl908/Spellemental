@@ -2190,6 +2190,7 @@ GameObject:
   - component: {fileID: 2286043860660082826}
   - component: {fileID: 8449200985530354748}
   - component: {fileID: 2979008036315325794}
+  - component: {fileID: 7336289464566349636}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2319,6 +2320,7 @@ MonoBehaviour:
   downwardAcceleration: -1
   maxDownwardAcceleration: -9.82
   jumpHeight: 1.5
+  bounceHeight: 30
   OnLanding:
     m_PersistentCalls:
       m_Calls:
@@ -2354,6 +2356,7 @@ MonoBehaviour:
   bobbingAmount: 0.03
   swayingAmount: 0.03
   fpsrig: {fileID: 7534308715239165527}
+  manaOrb: {fileID: 0}
 --- !u!114 &2286043860660082826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2369,6 +2372,7 @@ MonoBehaviour:
   maxHealth: 1
   heart: {fileID: 0}
   timeUntilDeath: 5
+  player_Look: {fileID: 0}
 --- !u!114 &8449200985530354748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2407,6 +2411,24 @@ MonoBehaviour:
   cone: 1
   radius: 0.85
   targetCheckTimer: 0.5
+--- !u!114 &7336289464566349636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2472789499150393691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15df73ca9da2cf4e910c88679f298c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSensitivity: 0.5
+  Xmin: -75
+  Xmax: 75
+  t: 50
+  useFreeCam: 0
+  speed: 10
 --- !u!1 &2472789499166848200
 GameObject:
   m_ObjectHideFlags: 0
@@ -2459,7 +2481,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 50952efc7ae79744499f3a149499cd47, type: 2}
   - {fileID: 11400000, guid: 537681fdb059f004c91f755fb3607034, type: 2}
   spellSpawn: {fileID: 6625702124099530224}
-  cooldownText: {fileID: 0}
+  caster: {fileID: 0}
+  otherHand: {fileID: 0}
   effects:
   - spellType: 0
     spellEffect: {fileID: 7933000746525932010}
@@ -2471,6 +2494,8 @@ MonoBehaviour:
     spellEffect: {fileID: 4635919609581485716}
   - spellType: 5
     spellEffect: {fileID: 6033695431805724959}
+  animator: {fileID: 0}
+  isLeftHand: 1
 --- !u!1 &2472789499633514285
 GameObject:
   m_ObjectHideFlags: 0
@@ -2523,7 +2548,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 50952efc7ae79744499f3a149499cd47, type: 2}
   - {fileID: 11400000, guid: 537681fdb059f004c91f755fb3607034, type: 2}
   spellSpawn: {fileID: 4511947335322431662}
-  cooldownText: {fileID: 0}
+  caster: {fileID: 0}
+  otherHand: {fileID: 0}
   effects:
   - spellType: 0
     spellEffect: {fileID: 7933000745915948589}
@@ -2535,6 +2561,8 @@ MonoBehaviour:
     spellEffect: {fileID: 3516900735532563500}
   - spellType: 5
     spellEffect: {fileID: 7367427045128464770}
+  animator: {fileID: 0}
+  isLeftHand: 1
 --- !u!1 &2472789500314471771
 GameObject:
   m_ObjectHideFlags: 0
@@ -3236,7 +3264,7 @@ VFXRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3516900735532563500}
   m_Enabled: 0
-  m_CastShadows: 0
+  m_CastShadows: 1
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -3334,6 +3362,7 @@ MonoBehaviour:
   noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 5160217962947058707}
+  isLeftHandEffect: 1
 --- !u!1 &3591102006755631209
 GameObject:
   m_ObjectHideFlags: 0
@@ -4062,6 +4091,7 @@ MonoBehaviour:
   noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 5160217962947058707}
+  isLeftHandEffect: 1
 --- !u!1 &4579864777431253290
 GameObject:
   m_ObjectHideFlags: 0
@@ -4192,53 +4222,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c5210153b209f81459b0b3aeedfd283b, type: 2}
   - {fileID: 11400000, guid: cfd51a4e8ecfc034eabdff9d6fff8f69, type: 2}
   - {fileID: 11400000, guid: 7019b96f6bec6424b80c4662ed209b0a, type: 2}
-  cooldownText: {fileID: 0}
-  handColors:
-  - leftHandSpell: 0
-    rightHandSpell: 0
-    handColor: {r: 0.6886792, g: 0, b: 0.05941554, a: 1}
-  - leftHandSpell: 0
-    rightHandSpell: 1
-    handColor: {r: 0.47058824, g: 0.17792808, b: 0.6415094, a: 1}
-  - leftHandSpell: 1
-    rightHandSpell: 1
-    handColor: {r: 0.15258981, g: 0.11698109, b: 1, a: 1}
-  - leftHandSpell: 4
-    rightHandSpell: 4
-    handColor: {r: 0.745283, g: 0.6130508, b: 0.12233887, a: 1}
-  - leftHandSpell: 4
-    rightHandSpell: 0
-    handColor: {r: 0.74509805, g: 0.42412043, b: 0.12156862, a: 1}
-  - leftHandSpell: 4
-    rightHandSpell: 1
-    handColor: {r: 0.12156862, g: 0.74509805, b: 0.56809664, a: 1}
-  - leftHandSpell: 2
-    rightHandSpell: 2
-    handColor: {r: 0.3490566, g: 0.12750874, b: 0.011196132, a: 1}
-  - leftHandSpell: 2
-    rightHandSpell: 0
-    handColor: {r: 0.5849056, g: 0.25603414, b: 0.25994924, a: 1}
-  - leftHandSpell: 2
-    rightHandSpell: 1
-    handColor: {r: 0.3741323, g: 0.22399428, b: 0.49056602, a: 1}
-  - leftHandSpell: 2
-    rightHandSpell: 4
-    handColor: {r: 0.4339623, g: 0.28148973, b: 0.054859374, a: 1}
-  - leftHandSpell: 5
-    rightHandSpell: 5
-    handColor: {r: 0.07227111, g: 1, b: 0, a: 1}
-  - leftHandSpell: 5
-    rightHandSpell: 0
-    handColor: {r: 0.732628, g: 1, b: 0, a: 1}
-  - leftHandSpell: 5
-    rightHandSpell: 1
-    handColor: {r: 0, g: 1, b: 0.71388006, a: 1}
-  - leftHandSpell: 5
-    rightHandSpell: 2
-    handColor: {r: 0.014625889, g: 0.3301887, b: 0, a: 1}
-  - leftHandSpell: 5
-    rightHandSpell: 4
-    handColor: {r: 0.32884097, g: 0.4528302, b: 0, a: 1}
+  maxMana: 1000
+  manaRegeneration: 10
+  manaRegenerationRate: 0.1
+  rightHandColors: []
+  leftHandColors: []
+  animator: {fileID: 0}
+  spellCostText: {fileID: 0}
 --- !u!1 &4635919609581485716
 GameObject:
   m_ObjectHideFlags: 0
@@ -4408,7 +4398,7 @@ VFXRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4635919609581485716}
   m_Enabled: 0
-  m_CastShadows: 0
+  m_CastShadows: 1
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -4506,6 +4496,7 @@ MonoBehaviour:
   noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 5160217962947058707}
+  isLeftHandEffect: 1
 --- !u!1 &4766028812560018419
 GameObject:
   m_ObjectHideFlags: 0
@@ -5005,6 +4996,7 @@ MonoBehaviour:
   noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 5160217962947058707}
+  isLeftHandEffect: 1
 --- !u!1 &6036714527862495247
 GameObject:
   m_ObjectHideFlags: 0
@@ -5092,6 +5084,7 @@ MonoBehaviour:
   noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 5160217962947058707}
+  isLeftHandEffect: 1
 --- !u!1 &6091122343521231680
 GameObject:
   m_ObjectHideFlags: 0
@@ -5991,6 +5984,7 @@ MonoBehaviour:
   noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 5160217962947058707}
+  isLeftHandEffect: 1
 --- !u!1 &7486431780346758354
 GameObject:
   m_ObjectHideFlags: 0
@@ -6543,6 +6537,7 @@ MonoBehaviour:
   noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 5160217962947058707}
+  isLeftHandEffect: 1
 --- !u!114 &7933000745915948590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6833,6 +6828,7 @@ MonoBehaviour:
   noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 5160217962947058707}
+  isLeftHandEffect: 1
 --- !u!114 &7933000746348922743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7123,6 +7119,7 @@ MonoBehaviour:
   noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 5160217962947058707}
+  isLeftHandEffect: 1
 --- !u!114 &7933000746525932000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7413,6 +7410,7 @@ MonoBehaviour:
   noiseSize: 1.7
   gizmoColor: {r: 0, g: 1, b: 0.0014023781, a: 0.19607843}
   spellCaster: {fileID: 5160217962947058707}
+  isLeftHandEffect: 1
 --- !u!114 &7933000746834307728
 MonoBehaviour:
   m_ObjectHideFlags: 0

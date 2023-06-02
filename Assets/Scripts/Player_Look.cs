@@ -109,6 +109,11 @@ public class Player_Look : MonoBehaviour
         set { vcam = value; }
     }
 
+    public void SetPriority(int p)
+    {
+        VirtualCamera.Priority = p;
+    }
+
     public Vector3 Forward
     {
         get { return Vector3.Cross(VirtualCamera.transform.right, Vector3.up); }

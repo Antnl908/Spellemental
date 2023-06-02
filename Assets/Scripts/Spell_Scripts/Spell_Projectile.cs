@@ -402,24 +402,24 @@ public class Spell_Projectile : Pooling_Object
         rb.AddForce(direction, ForceMode.Impulse);
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Extra_Gizmos.DrawCapsule(point0.position, point1.position, damageRadius, capsuleColor);
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Extra_Gizmos.DrawCapsule(point0.position, point1.position, damageRadius, capsuleColor);
 
-        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, 
-                           transform.position.y - (spawnStationaryRange - spawnStationaryRangeAboveTransform), transform.position.z));
+    //    Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, 
+    //                       transform.position.y - (spawnStationaryRange - spawnStationaryRangeAboveTransform), transform.position.z));
 
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.forward * -spawnOffset);
-        Gizmos.DrawLine(transform.position + Vector3.right * 2, transform.position + Vector3.up * spawnStationaryRangeAboveTransform
-                                                                                                                 + Vector3.right * 2);
+    //    Gizmos.DrawLine(transform.position, transform.position + Vector3.forward * -spawnOffset);
+    //    Gizmos.DrawLine(transform.position + Vector3.right * 2, transform.position + Vector3.up * spawnStationaryRangeAboveTransform
+    //                                                                                                             + Vector3.right * 2);
 
-        Gizmos.color = Color.yellow;
+    //    Gizmos.color = Color.yellow;
 
-        if(useOverlapSphere)
-        {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(spherePosition.position, range);
-        }       
-    }
+    //    if(useOverlapSphere)
+    //    {
+    //        Gizmos.color = Color.blue;
+    //        Gizmos.DrawWireSphere(spherePosition.position, range);
+    //    }       
+    //}
 
 }

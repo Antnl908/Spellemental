@@ -14301,6 +14301,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 652420865}
   m_Mesh: {fileID: -1550514412580984892, guid: a49b5bd3c6cdbca489c32388eab4bba3, type: 3}
+--- !u!224 &653694772 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8677477181337144947, guid: dd8daed611489de4fb5750d034525aad, type: 3}
+  m_PrefabInstance: {fileID: 255632123}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &671458176
 GameObject:
   m_ObjectHideFlags: 0
@@ -38502,6 +38507,10 @@ PrefabInstance:
       propertyPath: cooldownText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6962674744487178568, guid: b096caa3347bbe24cb4ec94d18e0a56b, type: 3}
+      propertyPath: ui
+      value: 
+      objectReference: {fileID: 653694772}
     - target: {fileID: 6962674744487178569, guid: b096caa3347bbe24cb4ec94d18e0a56b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.54
@@ -38529,7 +38538,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6962674744487178575, guid: b096caa3347bbe24cb4ec94d18e0a56b, type: 3}
   m_PrefabInstance: {fileID: 1865104702}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1927166589}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a74ba6dff6afbbe44acee09416f02ddd, type: 3}
@@ -39477,6 +39486,29 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1924833268}
   m_Mesh: {fileID: 4104380202958562290, guid: c389b9e42f70bda48af785f2fd2a8836, type: 3}
+--- !u!1 &1927166589 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6962674744487178614, guid: b096caa3347bbe24cb4ec94d18e0a56b, type: 3}
+  m_PrefabInstance: {fileID: 1865104702}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1927166590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927166589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15df73ca9da2cf4e910c88679f298c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSensitivity: 0.5
+  Xmin: -75
+  Xmax: 75
+  t: 50
+  useFreeCam: 0
+  speed: 10
 --- !u!1001 &1930706586
 PrefabInstance:
   m_ObjectHideFlags: 0
