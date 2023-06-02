@@ -47,7 +47,7 @@ public class Spawner : MonoBehaviour
         CurrentEnemyCount = 0;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
        // Debug.Log(timer);

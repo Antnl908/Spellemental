@@ -43,6 +43,9 @@ public class Enemy : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Legacy code used to get the NavMeshAgent of an enemy
+    /// </summary>
     public NavMeshAgent NavAgent
     {
         get
