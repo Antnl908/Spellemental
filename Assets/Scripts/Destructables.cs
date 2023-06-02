@@ -27,6 +27,7 @@ public class Destructables : MonoBehaviour, IDamageable
     // Update is called once per frame
     void Update()
     {
+
         if(dead)
         {
             timer -= Time.deltaTime;
@@ -37,6 +38,13 @@ public class Destructables : MonoBehaviour, IDamageable
         }
     }
 
+    /// <summary>
+    /// Destructable terrain gets hit, gets informed how much damage it should take.
+    /// Acts differently based on what level the destructible is in (full, partial and dead)
+    /// </summary>
+    /// <param name="damage">the amount of damage taken</param>
+    /// <param name="spellType">the type of damage from the spell</param>
+    /// <returns></returns>
     public bool TryToDestroyDamageable(int damage, Spell.SpellType? spellType)
     {
         health -= damage;
@@ -55,6 +63,9 @@ public class Destructables : MonoBehaviour, IDamageable
         }
         return false; }
 
+    /// <summary>
+    /// respawn functionality with a timer. Ensures that destructible terrain returns after some time.
+    /// </summary>
     private void respawn()
     {
         dead = false;
@@ -65,6 +76,11 @@ public class Destructables : MonoBehaviour, IDamageable
         remover.RemoveObject();
     }
     
+
+    /// <summary>
+    /// largely used for debugging
+    /// </summary>
+    /// <param name="knockBack"></param>
     public void KnockBack(float knockBack)
     { }
     

@@ -33,6 +33,9 @@ public class Ragdoll : MonoBehaviour
         DeactivateRagdoll();
     }
 
+    /// <summary>
+    /// used to activate ragdoll for an object
+    /// </summary>
     public void ActivateRagdoll()
     {
         if(useOverrideRagdol)
@@ -55,6 +58,9 @@ public class Ragdoll : MonoBehaviour
         isActivated = true;
     }
 
+    /// <summary>
+    /// Used to deactivate ragdoll
+    /// </summary>
     public void DeactivateRagdoll()
     {
         if (useOverrideRagdol)
@@ -76,6 +82,11 @@ public class Ragdoll : MonoBehaviour
         isActivated = false;
     }
 
+    /// <summary>
+    /// When ragdoll is activated it needs a direction and force to where it should fly, which applies here
+    /// </summary>
+    /// <param name="vector">the direction that they fly</param>
+    /// <param name="force">the force at which they are launched</param>
     public void ApplyForce(Vector3 vector, float force)
     {
         
@@ -87,6 +98,10 @@ public class Ragdoll : MonoBehaviour
     }
     public bool IsActivated => isActivated;
 
+    /// <summary>
+    /// Adjusts the position after ragdoll ends
+    /// </summary>
+    /// <returns></returns>
     public bool AdjustPosition()
     {
         if(body == null)
@@ -103,6 +118,11 @@ public class Ragdoll : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Finds closest point on the navmesh to where the ragdoll landed. If there is no point close enough, the object is destroyed.
+    /// </summary>
+    /// <param name="result">the adjusted position</param>
+    /// <returns></returns>
     bool RandomPoint(out Vector3 result)
     {
         NavMeshHit hit;

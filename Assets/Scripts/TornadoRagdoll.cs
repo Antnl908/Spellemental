@@ -36,6 +36,9 @@ public class TornadoRagdoll : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Checks to see if the tornado has hit something.
+    /// </summary>
     private void CheckHits()
     {
         Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position, range, enemyMask);
@@ -44,7 +47,7 @@ public class TornadoRagdoll : MonoBehaviour
         {
             if (colliders[i].gameObject != gameObject)
             {
-                //IGuaranteedDamage damagable = colliders[i].transform.GetComponent<IGuaranteedDamage>();
+                
                 Ragdoll ragdoll = colliders[i].transform.GetComponent<Ragdoll>();
 
                 
@@ -68,6 +71,9 @@ public class TornadoRagdoll : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Draws in editor
+    /// </summary>
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
